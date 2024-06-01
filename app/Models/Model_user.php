@@ -12,7 +12,9 @@ class Model_user extends Model
     protected $useSoftDeletes = true;
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ['username', 'email', 'password', 'created_by'];
+    protected $allowedFields = [
+        'username', 'email', 'password', 'created_by', 'id_role', 'id_entitas'
+    ];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';

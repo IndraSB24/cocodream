@@ -4,14 +4,7 @@
         
         <?= $title_meta ?>
 
-        <!-- DataTables -->
-        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
-        <!-- Responsive datatable examples -->
-        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />     
-
+        <?= $this->include('partials/custom-css') ?>
         <?= $this->include('partials/head-css') ?>
 
     </head>
@@ -34,49 +27,6 @@
                         <!-- start page title -->
                         <?= $page_title ?>
                         <!-- end page title -->
-
-                        <!-- filter  -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card bg-secondary text-light">
-                                    <div class="card-body">
-                                        <h5 class="mb-3 text-light">Filter</h5>
-                                        <form id="form-filter">
-                                            <div class="row">
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_nama" class="form-label">Nama</label>
-                                                    <select class="form-control select2" data-trigger name="filter_nama" id="filter_nama" placeholder="Pilih Saya">
-                                                        <option value="">Pilih Nama</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_provinsi" class="form-label">Provinsi</label>
-                                                    <select class="form-control select2" data-trigger name="filter_provinsi" id="filter_provinsi">
-                                                        <option value="">Pilih Alamat</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_kota" class="form-label">kota</label>
-                                                    <select class="form-control select2" data-trigger name="filter_kota" id="filter_kota">
-                                                        <option value="">Pilih Kode Pasien</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="col-lg-12" style="text-align: right">
-                                                    <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
-                                                    <button type="submit" class="btn btn-dark ml-3"> Filter </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row mb-3">
                             <div class="col-lg-12">
@@ -125,7 +75,7 @@
         <!-- END layout-wrapper -->
 
         <!-- modal add -->
-        <div id="modal_add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div id="modal_add" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
@@ -136,8 +86,12 @@
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
-                                    <label for="username" class="form-label">username</label>
+                                    <label for="username" class="form-label">Username</label>
                                     <input class="form-control" type="text" id="username" name="username" placeholder="Username" />
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama" />
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -146,6 +100,36 @@
                                 <div class="col-lg-12 mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input class="form-control" type="text" id="password" name="password" placeholder="password" />
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select class="form-control select2" data-trigger name="role" id="role">
+                                        <option value="">Pilih Role</option>
+                                        <?php
+                                            foreach($list_item_jenis as $row){
+                                                echo '
+                                                    <option value="'.$row->id.'"> '.
+                                                        $row->nama.
+                                                    '</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="entitas" class="form-label">Entitas</label>
+                                    <select class="form-control select2" data-trigger name="entitas" id="entitas">
+                                        <option value="">Pilih Entitas</option>
+                                        <?php
+                                            foreach($list_entitas as $row){
+                                                echo '
+                                                    <option value="'.$row->id.'"> '.
+                                                        $row->nama.
+                                                    '</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
@@ -161,36 +145,10 @@
             </div>
         </div>
 
-        <!-- Right Sidebar -->
-        <?= $this->include('partials/right-sidebar') ?>
-
         <!-- JAVASCRIPT -->
         <?= $this->include('partials/vendor-scripts') ?>
+        <?= $this->include('partials/custom-page-scripts') ?>
 
-        <!-- Required datatable js -->
-        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <!-- Buttons examples -->
-        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-        <script src="assets/libs/jszip/jszip.min.js"></script>
-        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
-        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-
-        <script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-        <script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
-        
-        <!-- Responsive examples -->
-        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
-        <!-- Datatable init js -->
-        <script src="assets/js/pages/datatables.init.js"></script>
-
-        <script src="assets/js/app.js"></script>
 
     </body>
 </html>
@@ -256,7 +214,10 @@
         const data = {
             username: $('#username').val(),
             password: $('#password').val(),
-            email: $('#email').val()
+            email: $('#email').val(),
+            nama: $('#nama').val(),
+            id_role: $('#role').val(),
+            id_entitas: $('#entitas').val()
         };
         
         loadQuestionalSwal(
