@@ -106,7 +106,7 @@
                                     <select class="form-control select2" data-trigger name="role" id="role">
                                         <option value="">Pilih Role</option>
                                         <?php
-                                            foreach($lsit_role as $row){
+                                            foreach($list_role as $row){
                                                 echo '
                                                     <option value="'.$row->id.'"> '.
                                                         $row->nama.
