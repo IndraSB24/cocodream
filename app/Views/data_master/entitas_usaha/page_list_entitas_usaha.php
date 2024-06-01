@@ -243,7 +243,7 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?= site_url('entitas_usaha/ajax_get/list_entitas_usaha') ?>",
+                "url": "<?= site_url('entitas_usaha/ajax_get_list_entitas') ?>",
                 "type": "POST",
                 "data": function (data) {
                     data.searchValue = $('#main_table_filter input').val();

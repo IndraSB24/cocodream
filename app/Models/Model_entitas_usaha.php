@@ -19,43 +19,59 @@ class Model_entitas_usaha extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // ajax for datatable list_pasien
-    protected $column_searchable = ['entitas.nama', 'et.nama', 'entitas.alamat', 'lk.nama','lp.nama'];
-    protected $column_orderable = ['id', 'nama', 'nama_entitas_tipe', 'alamat', 'nama_kota','nama_provinsi'];
-    public function getDatatables()
+    public function countNoFiltered()
+    {
+        $this->select('
+            *
+        ')
+        ->where('deleted_at', NULL);
+
+        return $this->countAllResults();
+    }
+
+    // get
+    public function get_datatable_main()
     {
         $request = service('request');
 
+        // set searchable and orderable
+        $column_searchable = [
+            'entitas.nama', 'et.nama', 'entitas.alamat', 'lk.nama','lp.nama'
+        ];
+        $column_orderable = [
+            'id', 'nama', 'nama_entitas_tipe', 'alamat', 'nama_kota','nama_provinsi'
+        ];
+
         $this->select('
-                entitas.*,
-                et.nama as nama_entitas_tipe,
-                lk.nama as nama_kota,
-                lp.nama as nama_provinsi
-            ')
-            ->join('entitas_tipe et', 'et.id=entitas.id_entitas_tipe', 'left')
-            ->join('list_kota lk', 'lk.id=entitas.id_kota', 'left')
-            ->join('list_provinsi lp', 'lp.id=lk.id_provinsi', 'left')
-            ->where('entitas.deleted_at', NULL);
+            entitas.*,
+            et.nama as nama_entitas_tipe,
+            lk.nama as nama_kota,
+            lp.nama as nama_provinsi
+        ')
+        ->join('entitas_tipe et', 'et.id=entitas.id_entitas_tipe', 'left')
+        ->join('list_kota lk', 'lk.id=entitas.id_kota', 'left')
+        ->join('list_provinsi lp', 'lp.id=lk.id_provinsi', 'left')
+        ->where('entitas.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
-            $i = 0; // Initialize loop counter
-            foreach ($this->column_searchable as $item) {
+            $i = 0;
+            foreach ($column_searchable as $item) {
                 if ($i === 0) {
-                    $this->groupStart(); // Open bracket for OR conditions
+                    $this->groupStart(); 
                     $this->like($item, $searchValue);
                 } else {
                     $this->orLike($item, $searchValue);
                 }
-                if (count($this->column_searchable) - 1 == $i) {
-                    $this->groupEnd(); // Close bracket for OR conditions
+                if (count($column_searchable) - 1 == $i) {
+                    $this->groupEnd(); 
                 }
                 $i++;
             }
         }
 
         if ($request->getPost('order')) {
-            $orderColumn = $this->column_orderable[$request->getPost('order')[0]['column']];
+            $orderColumn = $column_orderable[$request->getPost('order')[0]['column']];
             $orderDirection = $request->getPost('order')[0]['dir'];
             $this->orderBy($orderColumn, $orderDirection);
         } else {
@@ -66,46 +82,12 @@ class Model_entitas_usaha extends Model
             $this->limit($request->getPost('length'), $request->getPost('start'));
         }
 
-        return $this->get()->getResult();
-    }
+        // result set
+        $result['return_data'] = $this->get()->getResult();
+        $result['count_filtered'] = $this->countAllResults();
+        $result['count_all'] = $this->countNoFiltered();
 
-    public function countFiltered()
-    {
-        $request = service('request');
-
-        $this->select('
-                entitas.*,
-                et.nama as nama_entitas_tipe,
-                lk.nama as nama_kota,
-                lp.nama as nama_provinsi,
-                lp.id as id_provinsi
-            ')
-            ->join('entitas_tipe et', 'et.id=entitas.id_entitas_tipe', 'left')
-            ->join('list_kota lk', 'lk.id=entitas.id_kota', 'left')
-            ->join('list_provinsi lp', 'lp.id=lk.id_provinsi', 'left')
-            ->where('entitas.deleted_at', NULL);
-
-
-        if ($request->getPost('search')['value']) {
-            $searchValue = $request->getPost('search')['value'];
-            $this->groupStart();
-            foreach ($this->column_searchable as $field) {
-                $this->like($field, $searchValue);
-            }
-            $this->groupEnd();
-        }
-
-        return $this->countAllResults();
-    }
-
-    public function countNoFiltered()
-    {
-        $this->select('
-                *
-            ')
-            ->where('deleted_at', NULL);
-
-        return $this->countAllResults();
+        return $result;
     }
 
     // get by id
