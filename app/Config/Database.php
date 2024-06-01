@@ -33,9 +33,9 @@ class Database extends Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'u989781968_clarisa_clinic',
-		'password' => 'yF/0]BoIA',
-		'database' => 'u989781968_backoffice',
+		'username' => 'u1589757_digision',
+		'password' => 'digision123',
+		'database' => 'u1589757_cocodream',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
