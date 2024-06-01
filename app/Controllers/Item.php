@@ -37,7 +37,6 @@ class Item extends Controller
         return view('data_master/item/page_list_item', $data);
     }
 
-
     // Show =================================================================================================
 	public function show(request $param){
         switch($param->kode){
