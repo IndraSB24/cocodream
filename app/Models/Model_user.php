@@ -98,4 +98,15 @@ class Model_user extends Model
         return $this->get()->getRow();
     }
 
+    // add user
+    public function addUser(array $data)
+    {
+        // Hash the password before saving
+        if (isset($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+
+        return $this->insert($data);
+    }
+
 }

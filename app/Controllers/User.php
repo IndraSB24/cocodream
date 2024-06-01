@@ -23,125 +23,26 @@ class User extends Controller
         return view('data_user/page_list_user', $data);
     }
 
-    // Show ================================================================================================================================================================	
-	public function show(request $param){
-        switch($param->kode){
-            case 'document_timeline':
-                $title = $param;
-                $data = [
-        			'title_meta' => view('partials/title-meta', ['title' => $param->title.' Timeline']),
-        			'page_title' => view('partials/page-title', ['title' => 'Timeline', 'pagetitle' => $param->title]),
-        			'passed_data' => $this->doc_engineering_model->find()
-        		];
-        		return view('timeline-document', $data);
-            break;
-            case 'actual_ifr_file':
-                $data = [
-                    'actual_ifr_file'   => $this->request->getPost('file'),
-                    'actual_ifr'        => date_now(),
-                ];
-                $this->doc_engineering_model->update($id_update, $data);
-            break;
-            case 'actual_ifa_file':
-                $data = [
-                    'actual_ifa_file'   => $this->request->getPost('file'),
-                    'actual_ifa'        => date_now(),
-                ];
-                $this->doc_engineering_model->update($id_update, $data);
-            break;
-            case 'actual_ifc_file':
-                $data = [
-                    'actual_ifc_file'   => $this->request->getPost('file'),
-                    'actual_ifc'        => date_now(),
-                ];
-                $this->doc_engineering_model->update($id_update, $data);
-            break;
-        }
-    }
-	
-    // add ================================================================================================================================================================
-    public function add($kode = null)
-    {
-        switch ($kode) {
-            case 'karyawan':
-                $this->check_login();
-                $data = [
-                    'nama'          => $this->request->getPost('nama'), 
-                    'hp'            => $this->request->getPost('hp'),
-                    'alamat'        => $this->request->getPost('alamat'),
-                    'id_posisi'     => $this->request->getPost('posisi'),
-                    'id_service'    => activeServiceId(),
-                    'created_by'    => activeId()
-                ];
-                
-                $this->model_karyawan->reset_increment();
-                $insertData = $this->model_karyawan->save($data);
-                
-                if ($insertData) {
-                    $response = [
-                        'success' => true,
-                        'message' => 'Karyawan baru berhasil disimpan.'
-                    ];
-                } else {
-                    $response = [
-                        'success' => false,
-                        'message' => 'Gagal menyimpan Karyawan.'
-                    ];
-                }
-                return $this->response->setJSON($response);
-            break;
-        }
-    }
-    
-    // edit ================================================================================================================================================================
-    public function edit($kode = null)
-    {
-        $this->check_login();
-        switch ($kode) {
-            case 'karyawan':
-                $posisi_edit = $this->request->getPost('posisi_edit');
-                
-                $data = [
-                    'id'        => $this->request->getPost('id_edit'),
-                    'nama'      => $this->request->getPost('nama_edit'),
-                    'hp'        => $this->request->getPost('hp_edit'),
-                    'alamat'    => $this->request->getPost('alamat_edit')
-                ];
-                
-                if ($posisi_edit != "") {
-                    $data['id_posisi'] = $posisi_edit;
-                }
-                
-                $this->model_karyawan->reset_increment();
-                $insertData = $this->model_karyawan->save($data);
+    // create user
+    public function createUser(){
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'email'    => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+        ];
 
-                
-                if ($insertData) {
-                    $response = ['success' => true];
-                } else {
-                    $response = ['success' => false];
-                }
-                return $this->response->setJSON($response);
-            break;
-        }
-    }
-    
-    // delete ==============================================================================================================================================================
-    public function delete($kode = null)
-    {
-        $this->check_login();
-        switch ($kode) {
-            case 'data_pasien':
-                $deleteData = $this->model_pasien->delete($this->request->getPost('id'));
+        $addUser = $this->model_user->addUser($data);
 
-                if ($deleteData) {
-                    $response = ['success' => true];
-                } else {
-                    $response = ['success' => false];
-                }
-                return $this->response->setJSON($response);
-            break;
+        if ($addUser) {
+            $response = [
+                'success' => true
+            ];
+        } else {
+            $response = [
+                'success' => false
+            ];
         }
+        return $this->response->setJSON($response);
     }
 
     // ajax get list cashdrawer

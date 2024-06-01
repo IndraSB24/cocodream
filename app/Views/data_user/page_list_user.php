@@ -125,49 +125,41 @@
         <!-- END layout-wrapper -->
 
         <!-- modal add -->
-<div id="modal_add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Pasien</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="#" id="form_modal_add" method="POST">
-                    <div class="row">
-                        <div class="col-lg-12 mb-3">
-                            <label for="name" class="form-label">Nama Pasien</label>
-                            <input class="form-control" type="text" id="name" name="name" placeholder="Nama Pasien" />
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <label for="name" class="form-label">Tanggal Lahir</label>
-                            <input class="form-control" type="date" id="tanggallahir" name="tanggallahir" placeholder="Tanggal Lahir" />
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <label for="name" class="form-label">Alamat</label>
-                            <input class="form-control" type="text" id="alamat" name="alamat" placeholder="Alamat" />
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <label for="name" class="form-label">No Hp</label>
-                            <input class="form-control" type="text" id="nohp" name="nohp" placeholder="No Hp" />
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <label for="name" class="form-label">Kode Pasien</label>
-                            <input class="form-control" type="text" id="kodepasien" name="kodepasien" placeholder="Kode Pasien" />
-                        </div>
+        <div id="modal_add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Pasien</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12" style="text-align: right">
-                            <button type="button" class="btn btn-primary ml-3" id="btn-simpan" data-object="<?= base_url('customer/add/customer') ?>">
-                                Simpan
-                            </button>
-                        </div>
+                    <div class="modal-body">
+                        <form action="#" id="form_modal_add" method="POST">
+                            <div class="row">
+                                <div class="col-lg-12 mb-3">
+                                    <label for="username" class="form-label">username</label>
+                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username" />
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="Email" />
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input class="form-control" type="text" id="password" name="password" placeholder="password" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="text-align: right">
+                                    <button type="button" class="btn btn-primary ml-3" id="btn_simpan">
+                                        Simpan
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
         <!-- Right Sidebar -->
         <?= $this->include('partials/right-sidebar') ?>
@@ -206,10 +198,22 @@
 <script>
     // var
     const baseUrl = "<?= base_url() ?>";
+    var mainTable;
 
-    // data table loader
-    $(document).ready( function () {
-		$('#main_table').DataTable({
+    // Call the function when the document is ready
+    $(document).ready(function() {
+        mainDatatable();
+    });
+
+    // Initialize or reinitialize the DataTable
+    function mainDatatable() {
+        // Destroy the existing DataTable instance if it exists
+        if (mainTable) {
+            mainTable.destroy();
+        }
+
+        // Initialize the DataTable
+        mainTable = $('#main_table').DataTable({
 		    "processing": true,
             "serverSide": true,
             // "responsive": true,
@@ -243,7 +247,23 @@
                 },
             ],
 		});
-	});
+    }
+
+    // simpan
+    $(document).on('click', '#btn_simpan', function () {
+        const thisData = $(this).data();
+        const path = "<?= base_url('user/createUser') ?>";
+        const data = {
+            username: $('#username').val(),
+            password: $('#password').val(),
+            email: $('#email').val()
+        };
+        
+        loadQuestionalSwal(
+            path, data, 'Tambah user ?', 
+            'Ditambahakan!', 'User baru berhasil ditambahkan.', 'modal_add'
+        );
+    });
 
     // delete customer 
     $(document).on('click', '#btn_delete', function () {
