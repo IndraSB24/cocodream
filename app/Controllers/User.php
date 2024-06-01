@@ -146,7 +146,7 @@ class User extends Controller
 
     // ajax get list cashdrawer
     public function ajax_get_list_user(){
-        $returnedData = $this->model_user->get_datatable_list_cashdrawer();
+        $returnedData = $this->model_user->get_datatable_main();
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
