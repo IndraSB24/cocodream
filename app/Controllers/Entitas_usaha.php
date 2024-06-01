@@ -127,57 +127,6 @@ class Entitas_usaha extends Controller
                 return $this->response->setJSON($response);
     }
 
-    // ajax get =======================================================================================================
-    public function ajax_get($kode="")
-    {
-        switch ($kode) {
-            case 'list_entitas_usaha':
-                $returnedData = $this->model_entitas_usaha->getDatatables();
-
-                $data = [];
-                foreach ($returnedData as $itung => $baris) {
-                    $aksi = "
-                        <a class='btn btn-sm btn-info' id='btn_edit'
-                            data-id='$baris->id'
-                        >
-                            <i class='far fa-edit'></i>
-                        </a>
-                        <a class='btn btn-sm btn-danger' id='btn_delete' 
-                            data-id='$baris->id'
-                            data-nama='$baris->nama'
-                            data-path='".base_url('entitas_usaha/delete/data_entitas_usaha')."'
-                        > 
-                            <i class='fas fa-trash-alt'></i>
-                        </a>
-                    ";
-
-                    $data[] = [
-                        '<span class="text-center">' .($itung+1) . '</span>',
-                        '<span class="text-center">' . $baris->nama . '</span>',
-                        '<span class="text-center">' . $baris->nama_entitas_tipe . '</span>',
-                        '<span class="text-center">' . $baris->alamat . '</span>',
-                        '<span class="text-center">' . $baris->nama_kota . '</span>',
-                        '<span class="text-center">' . $baris->nama_provinsi . '</span>',
-                        $aksi
-                    ];
-                }
-
-                $output = [
-                    "draw" => $_POST['draw'],
-                    "recordsTotal" => $this->model_entitas_usaha->countNoFiltered(),
-                    "recordsFiltered" => $this->model_entitas_usaha->countFiltered(),
-                    "data" => $data,
-                ];
-
-                // Output to JSON format
-                return $this->response->setJSON($output);
-            break;
-
-            default:
-                return $this->response->setJSON(array());
-        }
-    }
-
     // ajax get data edit
     public function ajax_get_entitas_data(){
         $id_entitas = $this->request->getPost('id_entitas');
