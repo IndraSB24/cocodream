@@ -159,7 +159,6 @@ class User extends Controller
                 <a class='btn btn-sm btn-danger' id='btn_delete' 
                     data-id='$baris->id'
                     data-username='$baris->username'
-                    data-path='".base_url('user/delete/data_user')."'
                 > 
                     <i class='fas fa-trash-alt'></i>
                 </a>
@@ -174,7 +173,7 @@ class User extends Controller
             $data[] = [
                 '<span class="text-center">' . ($itung+1) . '</span>',
                 '<span class="text-center">' . $baris->username . '</span>',
-                '<span class="text-center">' . $baris->nama_karyawan ?: "no name" . '</span>',
+                '<span class="text-center"> no name </span>',
                 '<span class="text-center">' . $notset . '</span>',
                 '<span class="text-center">' . $notset . '</span>',
                 '<span class="text-center">' . $is_active . '</span>',
