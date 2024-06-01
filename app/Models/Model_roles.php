@@ -21,4 +21,14 @@ class Model_roles extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
+    // get by username
+    public function getRoles(){
+        $this->select('
+            *
+        ')
+        ->where('id !=', '1');
+        
+        return $this->get()->getRow();
+    }
+
 }
