@@ -77,14 +77,12 @@ class User extends Controller
                 '<span class="badge bg-success p-2">Active</span>' :
                 '<span class="badge bg-danger p-2">Not Active</span>';
 
-            $notset = "Not Set";
-
             $data[] = [
                 '<span class="text-center">' . ($itung+1) . '</span>',
                 '<span class="text-center">' . $baris->username . '</span>',
-                '<span class="text-center"> no name </span>',
-                '<span class="text-center">' . $notset . '</span>',
-                '<span class="text-center">' . $notset . '</span>',
+                '<span class="text-center">' . $baris->nama . '</span>',
+                '<span class="text-center">' . $baris->roles_name . '</span>',
+                '<span class="text-center">' . $baris->entitas_name . '</span>',
                 '<span class="text-center">' . $is_active . '</span>',
                 $aksi
             ];

@@ -13,7 +13,7 @@ class Model_user extends Model
     protected $useAutoIncrement = true;
 
     protected $allowedFields = [
-        'username', 'email', 'password', 'created_by', 'id_role', 'id_entitas'
+        'username', 'nama', 'email', 'password', 'created_by', 'id_role', 'id_entitas'
     ];
 
     protected $useTimestamps = true;
@@ -39,17 +39,21 @@ class Model_user extends Model
 
         // set searchable and orderable
         $column_searchable = [
-            'username'
+            'user.username'
         ];
         $column_orderable = [
-            'id', 'username'
+            'user.id', 'user.username'
         ];
 
         $this->select('
-            *
+            user.*,
+            r.nama as roles_name,
+            e.nama as entitas_name
         ')
-        ->where('id NOT IN (0, 1, 2)')
-        ->where('deleted_at', NULL);
+        ->join('roles r', 'r.id=user.id_role', 'LEFT')
+        ->join('entitas e', 'e.id=user.id_entitas', 'LEFT')
+        ->where('user.id NOT IN (0, 1, 2)')
+        ->where('user.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
