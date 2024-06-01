@@ -5,16 +5,16 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use App\Models\Model_user;
-use App\Models\Model_kategori;
+use App\Models\Model_roles;
 use App\Models\Model_entitas_usaha;
 
 class User extends Controller
 {
-    protected $model_user, $Model_kategori, $Model_entitas_usaha;
+    protected $model_user, $Model_roles, $Model_entitas_usaha;
  
     function __construct(){
         $this->model_user = new Model_user();
-        $this->Model_kategori = new Model_kategori();
+        $this->Model_roles = new Model_roles();
         $this->Model_entitas_usaha = new Model_entitas_usaha();
         helper(['session_helper', 'formatting_helper']);
     }
@@ -23,7 +23,7 @@ class User extends Controller
         $data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'List User']),
 			'page_title' => view('partials/page-title', ['title' => 'Data User', 'pagetitle' => 'List User']),
-            'list_item_jenis' => $this->Model_kategori->get_by_kode('item_jenis'),
+            'list_role' => $this->Model_roles->get_by_kode('item_jenis'),
             'list_entitas' => $this->Model_entitas_usaha->findAll()
 		];
         return view('data_user/page_list_user', $data);
