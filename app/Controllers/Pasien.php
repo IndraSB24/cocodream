@@ -158,7 +158,7 @@ class Pasien extends Controller
                     ";
 
                     $data[] = [
-                        '<span class="text-center">' . $itung+1 . '</span>',
+                        '<span class="text-center">' . ($itung+1) . '</span>',
                         '<span class="text-center text-uppercase">' . $baris->kode_pasien . '</span>',
                         '<span class="text-center text-capitalize">' . $baris->nama . '</span>',
                         '<span class="text-center">' . $baris->tanggal_lahir . '</span>',
