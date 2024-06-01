@@ -121,7 +121,7 @@ class Satuan extends Controller
                     ";
 
                     $data[] = [
-                        '<span class="text-center">' . $itung+1 . '</span>',
+                        '<span class="text-center">' . ($itung+1) . '</span>',
                         '<span class="text-center">' . $kode_urut. '</span>',
                         '<span class="text-center">' . $baris->kode . '</span>',
                         '<span class="text-center">' . $baris->nama . '</span>',

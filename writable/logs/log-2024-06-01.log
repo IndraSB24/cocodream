@@ -55,3 +55,86 @@ CRITICAL - 2024-06-01 22:28:32 --> A non-numeric value encountered
 #3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2024-06-01 22:36:30 --> A non-numeric value encountered
+#0 /home/u1589757/public_html/digision.id/cocodream/app/Controllers/Karyawan.php(175): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', '/home/u1589757/...', 175, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(936): App\Controllers\Karyawan->ajax_get('list_karyawan')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Karyawan))
+#3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-06-01 22:37:10 --> A non-numeric value encountered
+#0 /home/u1589757/public_html/digision.id/cocodream/app/Controllers/Brand.php(158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', '/home/u1589757/...', 158, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(936): App\Controllers\Brand->ajax_get('list_brand')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Brand))
+#3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-06-01 22:37:17 --> A non-numeric value encountered
+#0 /home/u1589757/public_html/digision.id/cocodream/app/Controllers/Registrasi.php(437): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', '/home/u1589757/...', 437, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(936): App\Controllers\Registrasi->ajax_get_list_registrasi()
+#2 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Registrasi))
+#3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-06-01 22:37:41 --> A non-numeric value encountered
+#0 /home/u1589757/public_html/digision.id/cocodream/app/Controllers/Pasien.php(161): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', '/home/u1589757/...', 161, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(936): App\Controllers\Pasien->ajax_get('list_pasien')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasien))
+#3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-06-01 22:42:40 --> A non-numeric value encountered
+#0 /home/u1589757/public_html/digision.id/cocodream/app/Controllers/Pasien.php(161): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', '/home/u1589757/...', 161, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(936): App\Controllers\Pasien->ajax_get('list_pasien')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasien))
+#3 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2024-06-01 22:45:21 --> The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'The behavior of...', '/home/u1589757/...', 124, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): include_once()
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('/home/u1589757/...')
+#3 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#5 [internal function]: spl_autoload_call('App\\Controllers...')
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#7 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#8 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-01 22:47:18 --> The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'The behavior of...', '/home/u1589757/...', 124, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): include_once()
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('/home/u1589757/...')
+#3 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#5 [internal function]: spl_autoload_call('App\\Controllers...')
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#7 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#8 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-01 22:48:10 --> The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'The behavior of...', '/home/u1589757/...', 124, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): include_once()
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('/home/u1589757/...')
+#3 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#5 [internal function]: spl_autoload_call('App\\Controllers...')
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#7 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#8 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-01 23:01:51 --> The behavior of unparenthesized expressions containing both '.' and '+'/'-' will change in PHP 8: '+'/'-' will take a higher precedence
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'The behavior of...', '/home/u1589757/...', 124, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(294): include_once()
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('/home/u1589757/...')
+#3 /home/u1589757/public_html/digision.id/cocodream/system/Autoloader/Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#5 [internal function]: spl_autoload_call('App\\Controllers...')
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#7 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#8 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#10 {main}
