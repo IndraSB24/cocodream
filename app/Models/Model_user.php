@@ -19,40 +19,55 @@ class Model_user extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // ajax for datatable list_pasien
-    protected $column_searchable = ['username'];
-    protected $column_orderable = ['id', 'username'];
-    public function getDatatables()
+    public function countNoFiltered()
+    {
+        $this->select('
+            *
+        ')
+        ->where('id NOT IN (0, 1, 2)')
+        ->where('deleted_at', NULL);
+
+        return $this->countAllResults();
+    }
+
+    // get
+    public function get_datatable_main()
     {
         $request = service('request');
 
+        // set searchable and orderable
+        $column_searchable = [
+            'username'
+        ];
+        $column_orderable = [
+            'id', 'username'
+        ];
+
         $this->select('
-                user.*,
-                k.nama as nama_karyawan
-            ')
-            ->join('karyawan k', 'k.id_user=user.id')
-            ->where('user.id NOT IN (0, 1, 2)')
-            ->where('user.deleted_at', NULL);
+            *
+        ')
+        ->where('id NOT IN (0, 1, 2)')
+        ->where('deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
-            $i = 0; // Initialize loop counter
-            foreach ($this->column_searchable as $item) {
+            $i = 0;
+            foreach ($column_searchable as $item) {
                 if ($i === 0) {
-                    $this->groupStart(); // Open bracket for OR conditions
+                    $this->groupStart(); 
                     $this->like($item, $searchValue);
                 } else {
                     $this->orLike($item, $searchValue);
                 }
-                if (count($this->column_searchable) - 1 == $i) {
-                    $this->groupEnd(); // Close bracket for OR conditions
+                if (count($column_searchable) - 1 == $i) {
+                    $this->groupEnd(); 
                 }
                 $i++;
             }
         }
 
         if ($request->getPost('order')) {
-            $orderColumn = $this->column_orderable[$request->getPost('order')[0]['column']];
+            $orderColumn = $column_orderable[$request->getPost('order')[0]['column']];
             $orderDirection = $request->getPost('order')[0]['dir'];
             $this->orderBy($orderColumn, $orderDirection);
         } else {
@@ -63,37 +78,12 @@ class Model_user extends Model
             $this->limit($request->getPost('length'), $request->getPost('start'));
         }
 
-        return $this->get()->getResult();
-    }
+        // result set
+        $result['return_data'] = $this->get()->getResult();
+        $result['count_filtered'] = $this->countAllResults();
+        $result['count_all'] = $this->countNoFiltered();
 
-    public function countFiltered()
-    {
-        $request = service('request');
-
-        $this->select('*')
-            ->where('id NOT IN (0, 1, 2)')
-            ->where('deleted_at', NULL);
-
-
-        if ($request->getPost('search')['value']) {
-            $searchValue = $request->getPost('search')['value'];
-            $this->groupStart();
-            foreach ($this->column_searchable as $field) {
-                $this->like($field, $searchValue);
-            }
-            $this->groupEnd();
-        }
-
-        return $this->countAllResults();
-    }
-
-    public function countNoFiltered()
-    {
-        $this->select('*')
-            ->where('id NOT IN (0, 1, 2)')
-            ->where('deleted_at', NULL);
-
-        return $this->countAllResults();
+        return $result;
     }
 
     // get by username

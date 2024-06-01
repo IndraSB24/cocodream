@@ -144,61 +144,53 @@ class User extends Controller
         }
     }
 
-    // ajax get =======================================================================================================
-    public function ajax_get($kode="")
-    {
-        switch ($kode) {
-            case 'list_user':
-                $returnedData = $this->model_user->getDatatables();
+    // ajax get list cashdrawer
+    public function ajax_get_list_user(){
+        $returnedData = $this->Model_cash_drawer_detail->get_datatable_list_cashdrawer();
 
-                $data = [];
-                foreach ($returnedData as $itung => $baris) {
-                    $aksi = "
-                        <a class='btn btn-sm btn-info' id='btn_edit'
-                            data-id='$baris->id'
-                        >
-                            <i class='far fa-edit'></i>
-                        </a>
-                        <a class='btn btn-sm btn-danger' id='btn_delete' 
-                            data-id='$baris->id'
-                            data-username='$baris->username'
-                            data-path='".base_url('user/delete/data_user')."'
-                        > 
-                            <i class='fas fa-trash-alt'></i>
-                        </a>
-                    ";
+        $data = [];
+        foreach ($returnedData['return_data'] as $itung => $baris) {
+            $aksi = "
+                <a class='btn btn-sm btn-info' id='btn_edit'
+                    data-id='$baris->id'
+                >
+                    <i class='far fa-edit'></i>
+                </a>
+                <a class='btn btn-sm btn-danger' id='btn_delete' 
+                    data-id='$baris->id'
+                    data-username='$baris->username'
+                    data-path='".base_url('user/delete/data_user')."'
+                > 
+                    <i class='fas fa-trash-alt'></i>
+                </a>
+            ";
 
-                    $is_active = $baris->is_active==1 ?
-                        '<span class="badge bg-success p-2">Active</span>' :
-                        '<span class="badge bg-danger p-2">Not Active</span>';
+            $is_active = $baris->is_active==1 ?
+                '<span class="badge bg-success p-2">Active</span>' :
+                '<span class="badge bg-danger p-2">Not Active</span>';
 
-                    $notset = "Not Set";
+            $notset = "Not Set";
 
-                    $data[] = [
-                        '<span class="text-center">' . $itung+1 . '</span>',
-                        '<span class="text-center">' . $baris->username . '</span>',
-                        '<span class="text-center">' . $baris->nama_karyawan ?: "no name" . '</span>',
-                        '<span class="text-center">' . $notset . '</span>',
-                        '<span class="text-center">' . $notset . '</span>',
-                        '<span class="text-center">' . $is_active . '</span>',
-                        $aksi
-                    ];
-                }
-
-                $output = [
-                    "draw" => $_POST['draw'],
-                    "recordsTotal" => $this->model_user->countNoFiltered(),
-                    "recordsFiltered" => $this->model_user->countFiltered(),
-                    "data" => $data,
-                ];
-
-                // Output to JSON format
-                return $this->response->setJSON($output);
-            break;
-
-            default:
-                return $this->response->setJSON(array());
+            $data[] = [
+                '<span class="text-center">' . $itung+1 . '</span>',
+                '<span class="text-center">' . $baris->username . '</span>',
+                '<span class="text-center">' . $baris->nama_karyawan ?: "no name" . '</span>',
+                '<span class="text-center">' . $notset . '</span>',
+                '<span class="text-center">' . $notset . '</span>',
+                '<span class="text-center">' . $is_active . '</span>',
+                $aksi
+            ];
         }
+
+        $output = [
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $returnedData['count_filtered'],
+            "recordsFiltered" => $returnedData['count_all'],
+            "data" => $data,
+        ];
+
+        // Output to JSON format
+        return $this->response->setJSON($output);
     }
 
 }

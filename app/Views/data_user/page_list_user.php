@@ -226,7 +226,7 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?php echo site_url('user/ajax_get/list_user')?>",
+                "url": "<?php echo site_url('user/ajax_get_list_user')?>",
                 "type": "POST",
                 "data": function ( data ) {
                     data.searchValue = $('#main_table_filter input').val();
