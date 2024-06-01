@@ -152,7 +152,7 @@ class Entitas_usaha extends Controller
                     ";
 
                     $data[] = [
-                        '<span class="text-center">' . $itung+1 . '</span>',
+                        '<span class="text-center">' .($itung+1) . '</span>',
                         '<span class="text-center">' . $baris->nama . '</span>',
                         '<span class="text-center">' . $baris->nama_entitas_tipe . '</span>',
                         '<span class="text-center">' . $baris->alamat . '</span>',
