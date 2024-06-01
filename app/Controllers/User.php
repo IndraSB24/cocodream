@@ -23,7 +23,7 @@ class User extends Controller
         $data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'List User']),
 			'page_title' => view('partials/page-title', ['title' => 'Data User', 'pagetitle' => 'List User']),
-            'list_role' => $this->Model_roles->get_by_kode('item_jenis'),
+            'list_role' => $this->Model_roles->findALl(),
             'list_entitas' => $this->Model_entitas_usaha->findAll()
 		];
         return view('data_user/page_list_user', $data);
