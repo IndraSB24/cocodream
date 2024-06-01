@@ -23,24 +23,10 @@
                         <span>Master Data</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?= base_url('pasien-get-list') ?>">Data Pasien</a></li>
-                        <li><a href="<?= base_url('karyawan-get-list') ?>">Data Karyawan</a></li>
-                        <li><a href="<?= base_url('vendor-get-list') ?>">Data Vendor</a></li>
                         <li><a href="<?= base_url('entitas-usaha-get-list') ?>">Data Entitas Usaha</a></li>
                         <li><a href="<?= base_url('item-get-list') ?>">Data Produk</a></li>
                         <li><a href="<?= base_url('satuan-get-list') ?>">Data Satuan</a></li>
-                        <li><a href="<?= base_url('jenis-item-get-list') ?>">Data Jenis Item</a></li>
-                        <li><a href="<?= base_url('kategori-item-get-list') ?>">Data Kategori Item</a></li>
-                        <li><a href="<?= base_url('brand-get-list') ?>">Data Brand</a></li>
                     </ul>
-
-                </li>
-
-                <li>
-                    <a href="<?= base_url('registrasi-get-list') ?>" class="waves-effect">
-                        <i class="fas fa-address-card"></i>
-                        <span>Registrasi</span>
-                    </a>
                 </li>
 
                 <li>
@@ -55,13 +41,6 @@
                 </li>
 
                 <li>
-                    <a href="<?= base_url('emr-show-list') ?>" class="waves-effect">
-                        <i class="fas fa-book-medical"></i>
-                        <span>MR</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-archive"></i>
                         <span>Inventory</span>
@@ -72,18 +51,6 @@
                         <li><a href="<?= base_url('stock-management-get-list') ?>">Managemen Stok</a></li>
                         <li><a href="<?= base_url('stock-opname-get-list') ?>">Stok Opname</a></li>
                         
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-people-arrows"></i>
-                        <span>HRM</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?= base_url('hrm-show-absensi') ?>">Absensi</a></li>
-                        <li><a href="<?= base_url('hrm-show-absensi-list/null') ?>">Rekap Absensi</a></li>
-                        <li><a href="<?= base_url('hrm-show-scheduling') ?>">Scheduling</a></li>
                     </ul>
                 </li>
 
