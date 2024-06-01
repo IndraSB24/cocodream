@@ -28,7 +28,7 @@ class Model_roles extends Model
         ')
         ->where('id !=', '1');
         
-        return $this->get()->getRow();
+        return $this->get()->getResult();
     }
 
 }
