@@ -7,15 +7,17 @@ use CodeIgniter\HTTP\RequestInterface;
 use App\Models\Model_cash_drawer;
 use App\Models\Model_cash_drawer_detail;
 use App\Models\Model_provinsi;
+use App\Models\Model_entitas_usaha;
 
 class Cash_drawer extends Controller
 {
-    protected $model_cash_drawer, $Model_provinsi, $Model_cash_drawer_detail;
+    protected $model_cash_drawer, $Model_provinsi, $Model_cash_drawer_detail, $Model_entitas_usaha;
  
     function __construct(){
         $this->model_satuan = new Model_cash_drawer();
         $this->Model_provinsi = new Model_provinsi();
         $this->Model_cash_drawer_detail = new Model_cash_drawer_detail();
+        $this->Model_entitas_usaha = new Model_entitas_usaha();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -24,6 +26,7 @@ class Cash_drawer extends Controller
 			'title_meta' => view('partials/title-meta', ['title' => 'List Cash Drawer']),
 			'page_title' => view('partials/page-title', ['title' => 'POS', 'pagetitle' => 'Data Cash Drawer']),
             'list_provinsi' => $this->Model_provinsi->findAll(),
+            'list_entitas' => $this->Model_entitas_usaha->findAll()
 		];
         return view('cash_drawer/page_list_cash_drawer', $data);
     }
