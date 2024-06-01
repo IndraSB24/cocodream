@@ -172,7 +172,7 @@ class User extends Controller
             $notset = "Not Set";
 
             $data[] = [
-                '<span class="text-center">' . $itung+1 . '</span>',
+                '<span class="text-center">' . ($itung+1) . '</span>',
                 '<span class="text-center">' . $baris->username . '</span>',
                 '<span class="text-center">' . $baris->nama_karyawan ?: "no name" . '</span>',
                 '<span class="text-center">' . $notset . '</span>',
