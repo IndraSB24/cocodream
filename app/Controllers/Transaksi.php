@@ -41,7 +41,7 @@ class Transaksi extends Controller
             'data_payment_status' => $this->Model_kategori->get_payment_status(),
             'data_registration_status' => $this->Model_kategori->get_registration_status(),
             'data_pasien' => $this->Model_pasien->findAll(),
-            'items' => $this->Model_item->findAll()
+            'items' => $this->Model_item->get_all_array()
 		];
         return view('kasir/page_kasir', $data);
     }

@@ -38,19 +38,27 @@ class Model_item extends Model
         $this->select('
             item.*,
             sd.nama as nama_satuan,
-            b.nama as nama_brand,
-            v.nama as nama_supplier,
-            k1.nama as nama_jenis,
-            k2.nama as nama_kategori
+            k1.nama as nama_jenis
         ')
         ->join('satuan_dasar sd', 'sd.id=item.id_satuan', 'LEFT')
-        ->join('brand b', 'b.id=item.id_brand', 'LEFT')
-        ->join('vendors v', 'v.id=item.id_supplier', 'LEFT')
         ->join('kategori k1', 'k1.id=item.id_kategori_jenis', 'LEFT')
-        ->join('kategori k2', 'k2.id=item.id_kategori_item', 'LEFT')
         ->where('item.deleted_at', NULL);
         
         return $this->get()->getResult();
+    }
+
+    // get all array
+    public function get_all_array(){
+        $this->select('
+            item.*,
+            sd.nama as nama_satuan,
+            k1.nama as nama_jenis
+        ')
+        ->join('satuan_dasar sd', 'sd.id=item.id_satuan', 'LEFT')
+        ->join('kategori k1', 'k1.id=item.id_kategori_jenis', 'LEFT')
+        ->where('item.deleted_at', NULL);
+        
+        return $this->get()->getResultArray();
     }
 
     // get by id
