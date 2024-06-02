@@ -56,8 +56,7 @@ class Item extends Controller
         $data = array_intersect_key(
             $this->request->getPost(),
             array_flip([
-                'kode_item', 'barcode', 'nama', 'id_kategori_jenis', 'id_satuan', 'id_kategori_item',
-                'id_brand', 'id_supplier', 'stok_minimum', 'harga_dasar'
+                'kode_item', 'nama', 'id_kategori_jenis', 'id_satuan'
             ])
         );
         $data['created_by'] = sess_activeUserId();
