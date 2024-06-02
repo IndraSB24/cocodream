@@ -35,7 +35,7 @@
                                 <div class="row" id="item-list">
                                     <?php foreach ($items as $item): ?>
                                         <div class="col-md-4 mb-3">
-                                            <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['name']; ?>" data-price="<?= $item['price']; ?>">
+                                            <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $item['name']; ?></h5>
                                                     <p class="card-text">Price: $<?= $item['price']; ?></p>
