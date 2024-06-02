@@ -224,17 +224,17 @@
 </html>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    $(document).ready(function () {
         let cart = [];
 
         function updateCart() {
-            const cartTableBody = document.querySelector('#cart-table tbody');
-            cartTableBody.innerHTML = '';
+            const $cartTableBody = $('#cart-table tbody');
+            $cartTableBody.empty();
             let total = 0;
             cart.forEach(item => {
                 const itemTotal = item.quantity * item.price;
                 total += itemTotal;
-                cartTableBody.innerHTML += `
+                $cartTableBody.append(`
                     <tr>
                         <td>${item.name}</td>
                         <td>
@@ -244,45 +244,39 @@
                         <td>$${itemTotal.toFixed(2)}</td>
                         <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
                     </tr>
-                `;
+                `);
             });
-            document.getElementById('cart-total').textContent = total.toFixed(2);
+            $('#cart-total').text(total.toFixed(2));
         }
 
-        document.getElementById('item-list').addEventListener('click', function (e) {
-            if (e.target.classList.contains('add-to-cart')) {
-                const card = e.target.closest('.item-box');
-                const itemId = card.dataset.id;
-                const itemName = card.dataset.name;
-                const itemPrice = parseFloat(card.dataset.price);
+        $('#item-list').on('click', '.add-to-cart', function () {
+            const $card = $(this).closest('.item-box');
+            const itemId = $card.data('id');
+            const itemName = $card.data('name');
+            const itemPrice = parseFloat($card.data('price'));
 
-                const existingItem = cart.find(item => item.id === itemId);
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({ id: itemId, name: itemName, price: itemPrice, quantity: 1 });
-                }
-                updateCart();
+            const existingItem = cart.find(item => item.id === itemId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: itemId, name: itemName, price: itemPrice, quantity: 1 });
             }
+            updateCart();
         });
 
-        document.getElementById('cart-table').addEventListener('click', function (e) {
-            if (e.target.classList.contains('remove-from-cart')) {
-                const itemId = e.target.dataset.id;
-                cart = cart.filter(item => item.id !== itemId);
-                updateCart();
-            }
+        $('#cart-table').on('click', '.remove-from-cart', function () {
+            const itemId = $(this).data('id');
+            cart = cart.filter(item => item.id !== itemId);
+            updateCart();
         });
 
-        document.getElementById('cart-table').addEventListener('change', function (e) {
-            if (e.target.classList.contains('quantity-input')) {
-                const itemId = e.target.dataset.id;
-                const newQuantity = parseInt(e.target.value);
-                const item = cart.find(item => item.id === itemId);
-                if (item && newQuantity > 0) {
-                    item.quantity = newQuantity;
-                    updateCart();
-                }
+        $('#cart-table').on('change', '.quantity-input', function () {
+            const itemId = $(this).data('id');
+            const newQuantity = parseInt($(this).val());
+            const item = cart.find(item => item.id === itemId);
+            if (item && newQuantity > 0) {
+                item.quantity = newQuantity;
+                updateCart();
             }
         });
     });
