@@ -224,7 +224,6 @@
 </html>
 
 <script>
-
     document.addEventListener('DOMContentLoaded', function () {
         let cart = [];
 
@@ -238,7 +237,9 @@
                 cartTableBody.innerHTML += `
                     <tr>
                         <td>${item.name}</td>
-                        <td>${item.quantity}</td>
+                        <td>
+                            <input type="number" class="form-control quantity-input" data-id="${item.id}" value="${item.quantity}" min="1">
+                        </td>
                         <td>$${item.price.toFixed(2)}</td>
                         <td>$${itemTotal.toFixed(2)}</td>
                         <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
@@ -272,6 +273,17 @@
                 updateCart();
             }
         });
-    });
 
+        document.getElementById('cart-table').addEventListener('change', function (e) {
+            if (e.target.classList.contains('quantity-input')) {
+                const itemId = e.target.dataset.id;
+                const newQuantity = parseInt(e.target.value);
+                const item = cart.find(item => item.id === itemId);
+                if (item && newQuantity > 0) {
+                    item.quantity = newQuantity;
+                    updateCart();
+                }
+            }
+        });
+    });
 </script>
