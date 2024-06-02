@@ -37,8 +37,8 @@
                                         <div class="col-md-4 mb-3">
                                             <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><?= $item['name']; ?></h5>
-                                                    <p class="card-text">Price: $<?= $item['price']; ?></p>
+                                                    <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                    <p class="card-text">Price: $<?= $item['item_price']; ?></p>
                                                     <button class="btn btn-primary add-to-cart">Add to Cart</button>
                                                 </div>
                                             </div>
