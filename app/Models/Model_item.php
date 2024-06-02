@@ -182,17 +182,11 @@ class Model_item extends Model
         $this->select('
             item.*,
             sd.nama as nama_satuan,
-            b.nama as nama_brand,
-            v.nama as nama_supplier,
             k1.nama as nama_jenis,
-            k2.nama as nama_kategori,
             COALESCE(ip.price, 0) as item_price
         ')
         ->join('satuan_dasar sd', 'sd.id=item.id_satuan', 'LEFT')
-        ->join('brand b', 'b.id=item.id_brand', 'LEFT')
-        ->join('vendors v', 'v.id=item.id_supplier', 'LEFT')
         ->join('kategori k1', 'k1.id=item.id_kategori_jenis', 'LEFT')
-        ->join('kategori k2', 'k2.id=item.id_kategori_item', 'LEFT')
         ->join('item_pricing ip', 'ip.id_item=item.id AND ip.is_active=1 ', 'LEFT')
         ->where('item.deleted_at', NULL);
 

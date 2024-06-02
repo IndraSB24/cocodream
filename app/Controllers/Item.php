@@ -137,13 +137,8 @@ class Item extends Controller
             $data[] = [
                 '<span class="text-center">' . ($itung + 1) . '</span>',
                 '<span class="text-center">' . $baris->kode_item . '</span>',
-                '<span class="text-center">' . $baris->barcode . '</span>',
                 '<span class="text-center">' . $baris->nama . '</span>',
-                '<span class="text-center">' . $baris->nama_kategori . '</span>',
                 '<span class="text-center">' . $baris->nama_jenis . '</span>',
-                '<span class="text-center">' . $baris->nama_brand . '</span>',
-                '<span class="text-center">' . $baris->nama_supplier . '</span>',
-                '<span class="text-center">' . $baris->stok_minimum . '</span>',
                 '<span class="text-center">' . $baris->nama_satuan . '</span>',
                 '<span class="text-center">Rp. ' . thousand_separator($baris->item_price) . '</span>',
                 '<span class="text-center">' . $detail . '</span>',
