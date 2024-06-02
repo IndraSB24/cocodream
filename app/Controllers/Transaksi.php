@@ -12,12 +12,13 @@ use App\Models\Model_transaksi_payment;
 use App\Models\Model_item_transaksi_stock;
 use App\Models\Model_medical_record;
 use App\Models\Model_medical_record_detail;
+use App\Models\Model_item;
 
 
 class Transaksi extends Controller
 {
     protected $Model_transaksi, $Model_kategori, $Model_pasien, $Model_transaksi_detail, $Model_transaksi_payment,
-        $Model_item_transaksi_stock, $Model_medical_record, $Model_medical_record_detail;
+        $Model_item_transaksi_stock, $Model_medical_record, $Model_medical_record_detail, $Model_item;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
@@ -28,6 +29,7 @@ class Transaksi extends Controller
         $this->Model_item_transaksi_stock = new Model_item_transaksi_stock();
         $this->Model_medical_record = new Model_medical_record();
         $this->Model_medical_record_detail = new Model_medical_record_detail();
+        $this->Model_item = new Model_item();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -38,9 +40,10 @@ class Transaksi extends Controller
             'data_payment_method' => $this->Model_kategori->get_payment_method(),
             'data_payment_status' => $this->Model_kategori->get_payment_status(),
             'data_registration_status' => $this->Model_kategori->get_registration_status(),
-            'data_pasien' => $this->Model_pasien->findAll()
+            'data_pasien' => $this->Model_pasien->findAll(),
+            'items' => $this->Model_item->findAll()
 		];
-        return view('kasir/page_list_kasir', $data);
+        return view('kasir/page_kasir', $data);
     }
 
     // show detail transaksi
