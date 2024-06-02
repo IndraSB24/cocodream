@@ -238,7 +238,7 @@
                     <tr>
                         <td>${item.name}</td>
                         <td>
-                            <input type="number" class="form-control quantity-input" data-id="${item.id}" value="${item.quantity}" min="1">
+                            <input type="text" class="form-control quantity-input" data-id="${item.id}" value="${item.quantity}">
                         </td>
                         <td>$${item.price.toFixed(2)}</td>
                         <td>$${itemTotal.toFixed(2)}</td>
@@ -247,6 +247,24 @@
                 `);
             });
             $('#cart-total').text(total.toFixed(2));
+
+            // Initialize TouchSpin on quantity inputs
+            $(".quantity-input").TouchSpin({
+                min: 1,
+                max: 100,
+                step: 1,
+                decimals: 0,
+                boostat: 5,
+                maxboostedstep: 10,
+            }).off('change').on('change', function () {
+                const itemId = $(this).data('id');
+                const newQuantity = parseInt($(this).val());
+                const item = cart.find(item => item.id === itemId);
+                if (item && newQuantity > 0) {
+                    item.quantity = newQuantity;
+                    updateCart();
+                }
+            });
         }
 
         $('#item-list').on('click', '.add-to-cart', function () {
@@ -268,16 +286,6 @@
             const itemId = $(this).data('id');
             cart = cart.filter(item => item.id !== itemId);
             updateCart();
-        });
-
-        $('#cart-table').on('change', '.quantity-input', function () {
-            const itemId = $(this).data('id');
-            const newQuantity = parseInt($(this).val());
-            const item = cart.find(item => item.id === itemId);
-            if (item && newQuantity > 0) {
-                item.quantity = newQuantity;
-                updateCart();
-            }
         });
     });
 </script>
