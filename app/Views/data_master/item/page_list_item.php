@@ -119,13 +119,8 @@
                                                     <tr>
                                                         <th class="text-center">No.</th>
                                                         <th class="text-center">Kode Item</th>
-                                                        <th class="text-center">Barcode</th>
                                                         <th class="text-center">Nama</th>
-                                                        <th class="text-center">Kategori</th>
                                                         <th class="text-center">Jenis</th>
-                                                        <th class="text-center">Brand</th>
-                                                        <th class="text-center">Supplier</th>
-                                                        <th class="text-center">Stock Minimum</th>
                                                         <th class="text-center">Satuan</th>
                                                         <th class="text-center">Harga Jual Aktif</th>
                                                         <th class="text-center">Detail</th>
@@ -171,14 +166,6 @@
                                     <input class="form-control" type="text" id="kode_item" name="kode_item" placeholder="Kode Item" />
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="barcode" class="form-label">Barcode</label>
-                                    <input class="form-control" type="text" id="barcode" name="barcode" placeholder="Barcode" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama" />
-                                </div>
-                                <div class="col-lg-6 mb-3">
                                     <label for="jenis" class="form-label">Jenis</label>
                                     <select class="form-control select2" id="jenis" name="jenis" >
                                         <option value="">Pilih Jenis</option>
@@ -187,38 +174,11 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="kategori" class="form-label">Kategori</label>
-                                    <select class="form-control select2" id="kategori" name="kategori" >
-                                        <option value="">Pilih Kategori</option>
-                                        <?php foreach ($data_kategori_item as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama" />
                                 </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="merek" class="form-label">Merek</label>
-                                    <select class="form-control select2" id="merek" name="merek" >
-                                        <option value="">Pilih Merek</option>
-                                        <?php foreach ($data_brand as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="supplier" class="form-label">Supplier</label>
-                                    <select class="form-control select2" id="supplier" name="supplier">
-                                        <option value="">Pilih Supplier</option>
-                                        <?php foreach ($data_supplier as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="stok_minimum" class="form-label">Stock Minimum</label>
-                                    <input class="form-control" type="number" id="stok_minimum" name="stok_minimum" />
-                                </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="satuan" class="form-label">Satuan</label>
                                     <select class="form-control select2" id="satuan" name="satuan">
                                         <option value="">Pilih Satuan</option>
@@ -405,14 +365,9 @@
         const path = "<?= site_url('item/add_item') ?>";
         const data = {
             kode_item: $('#kode_item').val(),
-            barcode: $('#barcode').val(),
             nama: $('#nama').val(),
             id_kategori_jenis: $('#jenis').val(),
-            id_satuan: $('#satuan').val(),
-            id_kategori_item: $('#kategori').val(),
-            id_brand: $('#merek').val(),
-            id_supplier: $('#supplier').val(),
-            stok_minimum: $('#stok_minimum').val()
+            id_satuan: $('#satuan').val()
         };
         
         loadQuestionalSwal(
