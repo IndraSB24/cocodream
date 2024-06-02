@@ -224,6 +224,7 @@
 </html>
 
 <script>
+
     $(document).ready(function () {
         let cart = [];
 
@@ -288,4 +289,48 @@
             updateCart();
         });
     });
+
+    // btn simpan
+    $(document).on('click', '#btn_simpan', function () {
+        const path = "<?= base_url('transaksi/add_transaksi') ?>";
+        let rowsData = [];
+
+        $('#cart-table tbody tr').each(function() {
+            let rowData = {};
+            $(this).find('td').each(function(index) {
+                switch(index) {
+                    case 0:
+                        rowData.nama = $(this).text();
+                        break;
+                    case 1:
+                        rowData.jumlah = parseFloat($(this).find('.quantity-input').val());
+                        break;
+                    case 2:
+                        rowData.harga = parseFloat($(this).text().replace('$', ''));
+                        break;
+                    case 3:
+                        rowData.total = parseFloat($(this).text().replace('$', ''));
+                        break;
+                    case 4:
+                        rowData.id_item = $(this).find('.remove-from-cart').data('id');
+                        break;
+                }
+            });
+            rowsData.push(rowData);
+        });
+
+        const data = {
+            id_pasien: $('#pasien').val(),
+            transaction_date: $('#tanggal').val(),
+            transaction_detail: rowsData
+        };
+        console.log(data);
+
+        // Assuming you have a function loadQuestionalSwal defined to handle the request
+        loadQuestionalSwal(
+            path, data, 'Tambah transaksi ?', 
+            'Disimpan!', 'Transaksi baru berhasil ditambahkan', 'modal_add'
+        );
+    });
+
 </script>
