@@ -38,7 +38,7 @@
                                             <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $item['nama']; ?></h5>
-                                                    <p class="card-text">Price: $<?= $item['item_price']; ?></p>
+                                                    <p class="card-text">Price: Rp. <?= $item['item_price']; ?></p>
                                                     <button class="btn btn-primary add-to-cart">Add to Cart</button>
                                                 </div>
                                             </div>
@@ -248,8 +248,8 @@
                         <td>
                             <input type="text" class="form-control quantity-input text-center" data-id="${item.id}" value="${item.quantity}">
                         </td>
-                        <td>$${item.price.toFixed(2)}</td>
-                        <td>$${itemTotal.toFixed(2)}</td>
+                        <td>Rp.${item.price}</td>
+                        <td>Rp.${itemTotal}</td>
                         <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
                     </tr>
                 `);
