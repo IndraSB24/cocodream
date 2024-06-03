@@ -37,21 +37,69 @@
                             <div class="col-md-6">
                                 <div class="card" style="height: 600px;">
                                     <div class="card-header bg-success">
-                                        <h4 class="mb-3">Items</h4>
+                                        <ul class="nav nav-tabs card-header-tabs" id="item-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="all-tab" data-bs-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="makanan-tab" data-bs-toggle="tab" href="#makanan" role="tab" aria-controls="makanan" aria-selected="false">Makanan</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="minuman-tab" data-bs-toggle="tab" href="#minuman" role="tab" aria-controls="minuman" aria-selected="false">Minuman</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="card-body overflow-auto">
-                                        <div class="row" id="item-list">
-                                            <?php foreach ($items as $item): ?>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title"><?= $item['nama']; ?></h5>
-                                                            <p class="card-text">Rp. <?= $item['item_price']; ?></p>
-                                                            <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="item-tab-content">
+                                            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                                                <div class="row scrollable-container" id="item-list-all">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <div class="col-md-4 mb-3">
+                                                            <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                    <p class="card-text">Rp. <?= $item['item_price']; ?></p>
+                                                                    <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php endforeach; ?>
                                                 </div>
-                                            <?php endforeach; ?>
+                                            </div>
+                                            <div class="tab-pane fade" id="makanan" role="tabpanel" aria-labelledby="makanan-tab">
+                                                <div class="row scrollable-container" id="item-list-makanan">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <?php if ($item['category'] == 'makanan'): ?>
+                                                            <div class="col-md-4 mb-3">
+                                                                <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                        <p class="card-text">Rp. <?= $item['item_price']; ?></p>
+                                                                        <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="minuman" role="tabpanel" aria-labelledby="minuman-tab">
+                                                <div class="row scrollable-container" id="item-list-minuman">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <?php if ($item['category'] == 'minuman'): ?>
+                                                            <div class="col-md-4 mb-3">
+                                                                <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                        <p class="card-text">Rp. <?= $item['item_price']; ?></p>
+                                                                        <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
