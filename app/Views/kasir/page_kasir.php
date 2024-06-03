@@ -331,14 +331,14 @@
             `);
 
             // Initialize TouchSpin on quantity inputs
-            $(".quantity-input").TouchSpin({
-                min: 1,
-                max: 100,
-                step: 1,
-                decimals: 0,
-                boostat: 5,
-                maxboostedstep: 10,
-            });
+            // $(".quantity-input").TouchSpin({
+            //     min: 1,
+            //     max: 100,
+            //     step: 1,
+            //     decimals: 0,
+            //     boostat: 5,
+            //     maxboostedstep: 10,
+            // });
 
             updateCartTotal();
         });
@@ -369,21 +369,6 @@
             });
 
             $('#cart-total').text(total.toLocaleString());
-        }
-    });
-
-    $(document).on('change', '.quantity-input', function () {
-        const itemId = $(this).closest('tr').find('.remove-from-cart').data('id');
-        const newQuantity = parseInt($(this).val());
-        const itemIndex = cart.findIndex(item => item.id === itemId);
-
-        if (itemIndex !== -1 && newQuantity > 0) {
-            cart[itemIndex].quantity = newQuantity;
-            updateCart();
-        } else {
-            // Reset the quantity input to the previous value if the new value is not valid
-            const previousQuantity = cart[itemIndex].quantity;
-            $(this).val(previousQuantity);
         }
     });
 
