@@ -185,7 +185,7 @@
                                     <label for="diskon_tambah" class="form-label">Tambah Diskon</label>
                                     <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="harga_akhir" class="form-label">Harus Dibayar</label>
                                     <input class="form-control text-center" type="text" id="harga_akhir" name="harga_akhir" readonly/>
                                 </div>
@@ -203,7 +203,7 @@
                                     <label for="nominal_dibayar" class="form-label">Nominal bayar</label>
                                     <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Nominal Kembalian</label>
                                     <input class="form-control text-center" type="text" id="nominal_kembalian" name="nominal_kembalian" readonly/>
                                 </div>
@@ -363,7 +363,8 @@
             $(this).val(inputedValue); // Update the input field value
         }
 
-        $('#harga_akhir').val(hargaAwal - diskonAwal - inputedValue);
+        const hargaAwal = $('#harga_awal').val();
+        $('#harga_akhir').val(hargaAwal - inputedValue);
     });
 
     // on input tambah diskon
