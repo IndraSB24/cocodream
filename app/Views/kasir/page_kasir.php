@@ -12,6 +12,29 @@
                 max-height: 600px;
                 overflow-y: auto;
             }
+
+            .table-responsive {
+                height: 400px; /* Set the desired height */
+                overflow-y: auto; /* Enable vertical scrolling */
+            }
+
+            #cart-table thead {
+                display: table;
+                width: calc(100% - 1em);
+                table-layout: fixed; /* Ensure thead width matches tbody */
+            }
+
+            #cart-table tbody {
+                display: block;
+                height: 200px; /* Set the desired height for the tbody */
+                overflow-y: auto; /* Enable vertical scrolling for tbody */
+                width: 100%;
+                table-layout: fixed; /* Ensure tbody width matches thead */
+            }
+
+            #cart-table th, #cart-table td {
+                width: 20%; /* Set column widths as needed */
+            }
         </style>
 
     </head>
@@ -46,7 +69,7 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $item['nama']; ?></h5>
                                                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
-                                                    <button class="btn btn-primary add-to-cart p-0">
+                                                    <button class="btn btn-primary add-to-cart">
                                                         Tambahkan
                                                     </button>
                                                 </div>
