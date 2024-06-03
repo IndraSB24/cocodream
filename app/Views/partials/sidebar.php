@@ -51,7 +51,6 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('data-stock-get-list') ?>">Buffer Stok</a></li>
                         <li><a href="<?= base_url('data-transaksi-stock-get-list') ?>">Transaksi Stok</a></li>
-                        <li><a href="<?= base_url('stock-management-get-list') ?>">Managemen Stok</a></li>
                         <li><a href="<?= base_url('stock-opname-get-list') ?>">Stok Opname</a></li>
                         
                     </ul>
@@ -66,7 +65,6 @@
                         <li><a href="<?= base_url('laporanpenjualan-show') ?>">Laporan Penjualan</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Pengeluaran</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Stok</a></li>
-                        <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Karyawan</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>

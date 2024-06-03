@@ -145,7 +145,9 @@
                                     </div>
                                     <div class="card-footer text-end">
                                         <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
-                                        <button class="btn btn-success" id="btn_bayar">Bayar</button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_pay">
+                                            Bayar
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -164,128 +166,52 @@
         </div>
         <!-- END layout-wrapper -->
 
-        <!-- modal add -->
-        <div id="modal_add" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
+        <!-- modal pay -->
+        <div id="modal_pay" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Transaksi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="btn_close_modal_add"
-                        >
-                        </button>
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Bayar Invoice</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="pasien" class="form-label">Pasien</label>
-                                    <select class="form-control select2" id="pasien" name="pasien" style="width: 100%;">
-                                        <option value="">Pilih Pasien</option>
+                                    <label for="harga_awal" class="form-label">Harga Awal</label>
+                                    <input class="form-control text-center" type="text" id="harga_awal" name="harga_awal" readonly/>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="diskon_tambah" class="form-label">Tambah Diskon</label>
+                                    <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="harga_akhir" class="form-label">Harus Dibayar</label>
+                                    <input class="form-control text-center" type="text" id="harga_akhir" name="harga_akhir" readonly/>
+                                </div>
+                                <hr>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
+                                    <select class="form-control select2" id="metode_bayar" name="metode_bayar" >
+                                        <option value="">Pilih Metode Bayar</option>
+                                        <?php foreach ($data_payment_method as $item): ?>
+                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="tanggal" class="form-label">Tanggal</label>
-                                    <input class="form-control" type="datetime-local" id="tanggal" name="tanggal" />
+                                    <label for="nominal_dibayar" class="form-label">Nominal bayar</label>
+                                    <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
-                                <div class="col-lg-12 mb-3">
-                                    <div class="card">
-                                        <div class="card-header">Detail Transaction</div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-6 mb-3">
-                                                    <label for="selected_item">Produk</label>
-                                                    <select class="form-control select2" id="selected_item" name="selected_item" style="width: 100%;">
-                                                        <option value="">Pilih Produk</option>
-                                                    </select>
-                                                    <input type="hidden" id="selected_item_nama"/>
-                                                    <input type="hidden" id="selected_item_harga"/>
-                                                    <input type="hidden" id="selected_item_id"/>
-                                                </div>
-                                                <div class="col-sm-2 mb-3">
-                                                    <label for="jumlah">Jumlah</label>
-                                                    <input type="number" class="form-control" id="jumlah"/>
-                                                </div>
-                                                <div class="col-sm-2 mb-3">
-                                                    <label for="satuan">Satuan</label>
-                                                    <input type="text" id="selected_item_satuan" class="form-control"/>
-                                                </div>
-                                                <div class="col-sm-2 mb-3">
-                                                    <label for="btn_add_item" class="text-white">btn</label>
-                                                    <span class="btn btn-primary form-control" id="btn_add_item">
-                                                        Add Transaction
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <table class="table mt-3">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Produk</th>
-                                                        <th>Harga Satuan</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Satuan</th>
-                                                        <th>Harga</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="transactionDetails">
-                                                   
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12" style="text-align: right">
-                                    <button type="button" class="btn btn-primary ml-3" id="btn_simpan">
-                                        Simpan
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal edit -->
-        <div id="modal_edit" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Edit Satuan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12 mb-3">
-                                    <label for="kode_urut_edit" class="form-label">Kode Urut</label>
-                                    <input class="form-control text-center" type="text" id="kode_urut_edit" name="kode_urut_edit" disabled />
-                                    <input type="hidden" id="edit_id" name="edit_id" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="kode_edit" class="form-label">Kode Satuan</label>
-                                    <input class="form-control" type="text" id="kode_edit" name="kode_edit" placeholder="Kode Satuan" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="nama_edit" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama_edit" name="nama_edit" placeholder="Nama Satuan" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="deskripsi_edit" class="form-label">Deskripsi</label>
-                                    <input class="form-control" type="text" id="deskripsi_edit" name="deskripsi_edit" placeholder="Deskripsi" />
+                                <div class="col-lg-6 mb-3">
+                                    <label for="nominal_kembalian" class="form-label">Nominal Kembalian</label>
+                                    <input class="form-control text-center" type="text" id="nominal_kembalian" name="nominal_kembalian" readonly/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
-                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit" 
-                                        data-path="<?= base_url('satuan/edit/satuan') ?>"
-                                    >
-                                        Konfirmasi Edit
+                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_bayar" >
+                                        Konfirmasi Bayar
                                     </button>
                                 </div>
                             </div>
@@ -416,6 +342,59 @@
         loadQuestionalSwal(
             path, data, 'Tambah transaksi ?', 
             'Disimpan!', 'Transaksi baru berhasil ditambahkan', 'modal_add'
+        );
+    });
+
+    // on modal_pay show
+    $('#modal_pay').on('shown.bs.modal', function () {
+        const subTotalText = $('#cart-total').text();
+        const subTotalNumeric = parseFloat(subTotalText.replace(/[^\d.]/g, ''));
+        $('#harga_awal').val(subTotalNumeric);
+        $('#harga_akhir').val(subTotalNumeric);
+    });
+
+
+    // on input tambah diskon
+    $('#diskon_tambah').on('input', function() {
+        var inputedValue = parseFloat($(this).val());
+        if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
+            // If negative, set it to 0
+            inputedValue = 0;
+            $(this).val(inputedValue); // Update the input field value
+        }
+
+        $('#harga_akhir').val(hargaAwal - diskonAwal - inputedValue);
+    });
+
+    // on input tambah diskon
+    $('#nominal_dibayar').on('input', function() {
+        var inputedValue = parseFloat($(this).val());
+        if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
+            // If negative, set it to 0
+            inputedValue = 0;
+            $(this).val(inputedValue); // Update the input field value
+        }
+
+        $('#nominal_kembalian').val( inputedValue - $('#harga_akhir').val() );
+    });
+
+    // konfirmasi bayar
+    $(document).on('click', '#btn_konfirmasi_bayar', function () {
+        const path = "<?= base_url('transaksi/add_payment') ?>";
+        const data = {
+            id_transaksi: idtransaksi,
+            nominal_awal: hargaAwal,
+            diskon_basic: diskonAwal,
+            diskon_tambahan: $('#diskon_tambah').val(),
+            nominal_akhir: $('#harga_akhir').val(),
+            nominal_bayar: $('#nominal_dibayar').val(),
+            nominal_kembalian: $('#nominal_kembalian').val(),
+            id_payment_method: $('#metode_bayar').val()
+        };
+        
+        loadQuestionalSwal(
+            path, data, 'Konfirmasi Bayar ?', 
+            'Dibayar!', 'Pembayaran Berhasil', 'modal_pay'
         );
     });
 
