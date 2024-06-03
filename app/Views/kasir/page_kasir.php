@@ -361,22 +361,22 @@
             $('#cart-total').text(total.toLocaleString());
 
             // Initialize TouchSpin on quantity inputs
-            $(".quantity-input").TouchSpin({
-                min: 1,
-                max: 100,
-                step: 1,
-                decimals: 0,
-                boostat: 5,
-                maxboostedstep: 10,
-            }).off('change').on('change', function () {
-                const itemId = $(this).data('id');
-                const newQuantity = parseInt($(this).val());
-                const item = cart.find(item => item.id === itemId);
-                if (item && newQuantity > 0) {
-                    item.quantity = newQuantity;
-                    updateCart();
-                }
-            });
+            // $(".quantity-input").TouchSpin({
+            //     min: 1,
+            //     max: 100,
+            //     step: 1,
+            //     decimals: 0,
+            //     boostat: 5,
+            //     maxboostedstep: 10,
+            // }).off('change').on('change', function () {
+            //     const itemId = $(this).data('id');
+            //     const newQuantity = parseInt($(this).val());
+            //     const item = cart.find(item => item.id === itemId);
+            //     if (item && newQuantity > 0) {
+            //         item.quantity = newQuantity;
+            //         updateCart();
+            //     }
+            // });
         }
     });
 
