@@ -146,7 +146,7 @@ class Auth extends Controller
 
                 return $data->role_name=='Cashier' ? 
                     redirect()->to('/transaksi-get-list') : 
-                    redirect()->to('/pasien-get-list');
+                    redirect()->to('/entitas-usaha-get-list');
 
             }else{
                 $session->setFlashdata('error', 'Password Anda Salah');
