@@ -8,7 +8,16 @@
         <?= $this->include('partials/head-css') ?>
 
         <style>
-            
+            .card-body {
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .row.scrollable-container {
+                flex-grow: 1;
+                overflow: auto;
+            }
         </style>
 
     </head>
