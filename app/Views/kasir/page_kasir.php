@@ -326,7 +326,11 @@
                     <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
                     <td>Rp. ${itemPrice.toLocaleString()}</td>
                     <td>Rp. ${(itemTotal).toLocaleString()}</td>
-                    <td><button class="btn btn-danger btn-sm remove-from-cart">Remove</button></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm remove-from-cart">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
                 </tr>
             `);
 
