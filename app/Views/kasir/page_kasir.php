@@ -7,6 +7,13 @@
         <?= $this->include('partials/custom-css') ?>
         <?= $this->include('partials/head-css') ?>
 
+        <style>
+            .scrollable-container {
+                max-height: 600px;
+                overflow-y: auto;
+            }
+        </style>
+
     </head>
 
     <?= $this->include('partials/body') ?>
@@ -32,7 +39,7 @@
                             <!-- Items List -->
                             <div class="col-md-6">
                                 <h4 class="mb-3">Items</h4>
-                                <div class="row" id="item-list">
+                                <div class="row scrollable-container" id="item-list">
                                     <?php foreach ($items as $item): ?>
                                         <div class="col-md-4 mb-3">
                                             <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
