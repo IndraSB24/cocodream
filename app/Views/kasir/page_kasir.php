@@ -69,7 +69,7 @@
                                             <div class="tab-pane fade" id="makanan" role="tabpanel" aria-labelledby="makanan-tab">
                                                 <div class="row scrollable-container" id="item-list-makanan">
                                                     <?php foreach ($items as $item): ?>
-                                                        <?php if ($item['category'] == 'makanan'): ?>
+                                                        <?php if ($item['nama_jenis'] == 'makanan'): ?>
                                                             <div class="col-md-4 mb-3">
                                                                 <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                                     <div class="card-body">
@@ -86,7 +86,7 @@
                                             <div class="tab-pane fade" id="minuman" role="tabpanel" aria-labelledby="minuman-tab">
                                                 <div class="row scrollable-container" id="item-list-minuman">
                                                     <?php foreach ($items as $item): ?>
-                                                        <?php if ($item['category'] == 'minuman'): ?>
+                                                        <?php if ($item['nama_jenis'] == 'minuman'): ?>
                                                             <div class="col-md-4 mb-3">
                                                                 <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                                     <div class="card-body">
