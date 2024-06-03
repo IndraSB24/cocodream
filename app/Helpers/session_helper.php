@@ -12,6 +12,10 @@
         return session('active_entitas_id');
     }
 
+    function sess_activeRole(){
+        return session('active_role');
+    }
+
     function sess_isLogin(){
         return session('is_login');
     }

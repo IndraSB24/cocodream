@@ -96,9 +96,9 @@ class Model_user extends Model
     public function get_by_username($username){
         $this->select('
             user.*,
-            k.id_entitas as id_entitas
+            r.nama as role_name
         ')
-        ->join('karyawan k', 'k.id_user=user.id', 'LEFT')
+        ->join('roles r', 'r.id=user.id_role', 'LEFT')
         ->where('user.username', $username);
         
         return $this->get()->getRow();

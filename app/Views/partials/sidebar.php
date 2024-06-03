@@ -10,6 +10,7 @@
                 <!--menu-->
                 <li class="menu-title">Menu</li>
 
+                <?php if(sess_activeRole() != 'Cashier'): ?>
                 <li>
                     <a href="<?= base_url('dashboard-show') ?>" class="waves-effect">
                         <i class="fas fa-chalkboard"></i>
@@ -28,6 +29,7 @@
                         <li><a href="<?= base_url('satuan-get-list') ?>">Data Satuan</a></li>
                     </ul>
                 </li>
+                <?php endif; ?>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -40,6 +42,7 @@
                     </ul>
                 </li>
 
+                <?php if(sess_activeRole() != 'Cashier'): ?>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-archive"></i>
@@ -66,6 +69,7 @@
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Karyawan</a></li>
                     </ul>
                 </li>
+                <?php endif; ?>
                 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -73,25 +77,10 @@
                         <span>Data User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                    <?php if(sess_activeRole() != 'Cashier'): ?>
                         <li><a href="<?= base_url('user-get-list') ?>">List User</a></li>
+                    <?php endif; ?>
                         <li><a href="<?= base_url('user-get-profile') ?>">Profil</a></li>
-                    </ul>
-                </li>
-
-                
-                <!--page-->
-                <li class="menu-title"><?= lang('Files.Pages') ?></li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-account-circle-line"></i>
-                        <span><?= lang('Files.Authentication') ?></span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="auth-login"><?= lang('Files.Login') ?></a></li>
-                        <li><a href="auth-register"><?= lang('Files.Register') ?></a></li>
-                        <li><a href="auth-recoverpw"><?= lang('Files.Recover_Password') ?></a></li>
-                        <li><a href="auth-lock-screen"><?= lang('Files.Lock_Screen') ?></a></li>
                     </ul>
                 </li>
 

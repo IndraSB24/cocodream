@@ -135,6 +135,7 @@ class Auth extends Controller
                     'active_user_id'    => $data->id,
                     'active_username'   => $data->username,
                     'active_entitas_id' => $data->id_entitas,
+                    'active_role'       => $data->role_name,
                     'is_login'          => true,
                     'last_activity'     => time()
                 ];
