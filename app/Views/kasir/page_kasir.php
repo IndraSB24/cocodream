@@ -8,22 +8,22 @@
         <?= $this->include('partials/head-css') ?>
 
         <style>
-            .card-body {
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
+        .card-body {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-            .tab-content {
-                flex-grow: 1;
-                overflow: auto;
-            }
+        .tab-content {
+            flex-grow: 1;
+            overflow: auto;
+        }
 
-            .row.overflow-auto {
-                flex-grow: 1;
-                overflow: auto;
-            }
-        </style>
+        .row.overflow-auto {
+            flex-grow: 1;
+            overflow: auto;
+        }
+    </style>
 
     </head>
 
@@ -323,7 +323,7 @@
             $('#cart-table tbody').append(`
                 <tr>
                     <td>${itemName}</td>
-                    <td><input type="number" class="form-control quantity-input" value="${itemQuantity}" min="1"></td>
+                    <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
                     <td>Rp. ${itemPrice.toLocaleString()}</td>
                     <td>Rp. ${(itemTotal).toLocaleString()}</td>
                     <td><button class="btn btn-danger btn-sm remove-from-cart">Remove</button></td>
@@ -359,6 +359,24 @@
             });
 
             $('#cart-total').text(total.toLocaleString());
+
+            // Initialize TouchSpin on quantity inputs
+            $(".quantity-input").TouchSpin({
+                min: 1,
+                max: 100,
+                step: 1,
+                decimals: 0,
+                boostat: 5,
+                maxboostedstep: 10,
+            }).off('change').on('change', function () {
+                const itemId = $(this).data('id');
+                const newQuantity = parseInt($(this).val());
+                const item = cart.find(item => item.id === itemId);
+                if (item && newQuantity > 0) {
+                    item.quantity = newQuantity;
+                    updateCart();
+                }
+            });
         }
     });
 
