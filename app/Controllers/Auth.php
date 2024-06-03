@@ -143,7 +143,11 @@ class Auth extends Controller
                 $session->setFlashdata('message', 'Login Berhasil');
                 // Log success
                 error_log("Login successful for username: $username");
-                return redirect()->to('/pasien-get-list');
+
+                return $data->role_name=='Cashier' ? 
+                    redirect()->to('/transaksi-get-list') : 
+                    redirect()->to('/pasien-get-list');
+
             }else{
                 $session->setFlashdata('error', 'Password Anda Salah');
                 
