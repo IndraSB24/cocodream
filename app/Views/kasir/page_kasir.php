@@ -49,25 +49,32 @@
 
                             <!-- Selected Items -->
                             <div class="col-md-6">
-                                <h4 class="mb-3">Cart</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="cart-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Item</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Cart items will be appended here dynamically -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="text-right">
-                                    <h5>Total: $<span id="cart-total">0.00</span></h5>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-3">Cart</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="cart-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                        <th>Total</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Cart items will be appended here dynamically -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <h5>Total: $<span id="cart-total">0.00</span></h5>
+                                        <button class="btn btn-success" id="btn_simpan">Save Transaction</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
