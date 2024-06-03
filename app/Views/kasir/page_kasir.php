@@ -248,8 +248,8 @@
                         <td>
                             <input type="text" class="form-control quantity-input text-center" data-id="${item.id}" value="${item.quantity}">
                         </td>
-                        <td>Rp.${item.price}</td>
-                        <td>Rp.${itemTotal}</td>
+                        <td>Rp.${item.price.toLocaleString('id-ID')}</td>
+                        <td>Rp.${itemTotal.toLocaleString('id-ID')}</td>
                         <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
                     </tr>
                 `);
@@ -313,10 +313,10 @@
                         rowData.jumlah = parseFloat($(this).find('.quantity-input').val());
                         break;
                     case 2:
-                        rowData.harga = parseFloat($(this).text().replace('$', ''));
+                        rowData.harga = parseFloat($(this).text().replace('Rp.', ''));
                         break;
                     case 3:
-                        rowData.total = parseFloat($(this).text().replace('$', ''));
+                        rowData.total = parseFloat($(this).text().replace('Rp.', ''));
                         break;
                     case 4:
                         rowData.id_item = $(this).find('.remove-from-cart').data('id');
