@@ -14,26 +14,30 @@
             }
 
             .table-responsive {
-                height: 400px; /* Set the desired height */
+                flex-grow: 1; /* Make the table container grow to fill the available space */
                 overflow-y: auto; /* Enable vertical scrolling */
             }
 
+            #cart-table {
+                height: 100%; /* Ensure the table takes up the full height of the container */
+                display: flex;
+                flex-direction: column;
+            }
+
             #cart-table thead {
-                display: table;
-                width: calc(100% - 1em);
-                table-layout: fixed; /* Ensure thead width matches tbody */
+                flex: 0 0 auto; /* Fix the height of the table header */
             }
 
             #cart-table tbody {
+                flex: 1 1 auto; /* Make the tbody take up the remaining space */
                 display: block;
-                height: 200px; /* Set the desired height for the tbody */
                 overflow-y: auto; /* Enable vertical scrolling for tbody */
-                width: 100%;
-                table-layout: fixed; /* Ensure tbody width matches thead */
+                height: 100%;
             }
 
             #cart-table th, #cart-table td {
                 width: 20%; /* Set column widths as needed */
+                box-sizing: border-box; /* Include padding and border in the element's total width and height */
             }
         </style>
 
