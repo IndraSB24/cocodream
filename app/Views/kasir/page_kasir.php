@@ -16,6 +16,7 @@
             .table-responsive {
                 flex-grow: 1; /* Make the table container grow to fill the available space */
                 overflow-y: auto; /* Enable vertical scrolling */
+                height: 100%;
             }
 
             #cart-table {
