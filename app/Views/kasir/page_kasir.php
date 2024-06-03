@@ -248,11 +248,15 @@
                     <tr>
                         <td>${item.name}</td>
                         <td>
-                            <input type="text" class="form-control quantity-input text-center" data-id="${item.id}" value="${item.quantity}">
+                            <input type="text" class="form-control quantity-input text-center p-0" data-id="${item.id}" value="${item.quantity}">
                         </td>
                         <td>${item.price.toLocaleString('id-ID')}</td>
                         <td>${itemTotal.toLocaleString('id-ID')}</td>
-                        <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
+                        <td>
+                            <button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
                     </tr>
                 `);
             });
