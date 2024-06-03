@@ -308,70 +308,58 @@
     $(document).ready(function () {
         let cart = [];
 
-        function updateCart() {
-            const $cartTableBody = $('#cart-table tbody');
-            $cartTableBody.empty();
+        // Handle adding items to cart
+        $('.add-to-cart').on('click', function() {
+            const itemBox = $(this).closest('.item-box');
+            const itemId = itemBox.data('id');
+            const itemName = itemBox.data('name');
+            const itemPrice = parseFloat(itemBox.data('price'));
+            const itemQuantity = 1; // Default quantity to 1
+
+            // Calculate item total
+            const itemTotal = itemPrice * itemQuantity;
+
+            // Append item to cart table
+            $('#cart-table tbody').append(`
+                <tr>
+                    <td>${itemName}</td>
+                    <td><input type="number" class="form-control quantity-input" value="${itemQuantity}" min="1"></td>
+                    <td>Rp. ${itemPrice.toLocaleString()}</td>
+                    <td>Rp. ${(itemTotal).toLocaleString()}</td>
+                    <td><button class="btn btn-danger btn-sm remove-from-cart">Remove</button></td>
+                </tr>
+            `);
+
+            updateCartTotal();
+        });
+
+        // Handle removing items from cart
+        $(document).on('click', '.remove-from-cart', function() {
+            $(this).closest('tr').remove();
+            updateCartTotal();
+        });
+
+        // Handle quantity change
+        $(document).on('input', '.quantity-input', function() {
+            const row = $(this).closest('tr');
+            const itemPrice = parseFloat(row.find('td:nth-child(3)').text().replace(/Rp\.|,/g, ''));
+            const itemQuantity = $(this).val();
+            const itemTotal = itemPrice * itemQuantity;
+
+            row.find('td:nth-child(4)').text('Rp. ' + itemTotal.toLocaleString());
+            updateCartTotal();
+        });
+
+        // Update cart total
+        function updateCartTotal() {
             let total = 0;
-            cart.forEach(item => {
-                const itemTotal = item.quantity * item.price;
+            $('#cart-table tbody tr').each(function() {
+                const itemTotal = parseFloat($(this).find('td:nth-child(4)').text().replace(/Rp\.|,/g, ''));
                 total += itemTotal;
-                $cartTableBody.append(`
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>
-                            <input type="text" class="form-control quantity-input text-center p-0" data-id="${item.id}" value="${item.quantity}">
-                        </td>
-                        <td>${item.price.toLocaleString('id-ID')}</td>
-                        <td>${itemTotal.toLocaleString('id-ID')}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `);
             });
-            $('#cart-total').text(total.toLocaleString('id-ID'));
 
-            // Initialize TouchSpin on quantity inputs
-            $(".quantity-input").TouchSpin({
-                min: 1,
-                max: 100,
-                step: 1,
-                decimals: 0,
-                boostat: 5,
-                maxboostedstep: 10,
-            }).off('change').on('change', function () {
-                const itemId = $(this).data('id');
-                const newQuantity = parseInt($(this).val());
-                const item = cart.find(item => item.id === itemId);
-                if (item && newQuantity > 0) {
-                    item.quantity = newQuantity;
-                    updateCart();
-                }
-            });
+            $('#cart-total').text(total.toLocaleString());
         }
-
-        $('#item-list').on('click', '.add-to-cart', function () {
-            const $card = $(this).closest('.item-box');
-            const itemId = $card.data('id');
-            const itemName = $card.data('name');
-            const itemPrice = parseFloat($card.data('price'));
-
-            const existingItem = cart.find(item => item.id === itemId);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id: itemId, name: itemName, price: itemPrice, quantity: 1 });
-            }
-            updateCart();
-        });
-
-        $('#cart-table').on('click', '.remove-from-cart', function () {
-            const itemId = $(this).data('id');
-            cart = cart.filter(item => item.id !== itemId);
-            updateCart();
-        });
     });
 
     // btn simpan
