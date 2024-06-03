@@ -256,7 +256,7 @@
                     </tr>
                 `);
             });
-            $('#cart-total').text(total.toLocaleString('id-ID').toFixed(2));
+            $('#cart-total').text(total.toLocaleString('id-ID'));
 
             // Initialize TouchSpin on quantity inputs
             $(".quantity-input").TouchSpin({
