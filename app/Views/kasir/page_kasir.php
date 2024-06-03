@@ -9,7 +9,7 @@
 
         <style>
             .scrollable-container {
-                max-height: 600px;
+                max-height: 100%;
                 overflow-y: auto;
             }
 
