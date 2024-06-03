@@ -246,7 +246,7 @@
                     <tr>
                         <td>${item.name}</td>
                         <td>
-                            <input type="text" class="form-control quantity-input" data-id="${item.id}" value="${item.quantity}">
+                            <input type="text" class="form-control quantity-input text-center" data-id="${item.id}" value="${item.quantity}">
                         </td>
                         <td>$${item.price.toFixed(2)}</td>
                         <td>$${itemTotal.toFixed(2)}</td>
