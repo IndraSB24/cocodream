@@ -46,7 +46,7 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $item['nama']; ?></h5>
                                                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
-                                                    <button class="btn btn-primary add-to-cart">
+                                                    <button class="btn btn-primary add-to-cart p-0">
                                                         Tambahkan
                                                     </button>
                                                 </div>
