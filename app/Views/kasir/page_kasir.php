@@ -8,33 +8,7 @@
         <?= $this->include('partials/head-css') ?>
 
         <style>
-            .scrollable-container {
-                max-height: 400px;
-                overflow-y: auto;
-            }
-
-            .table-responsive {
-                height: 100%; /* Set the desired height */
-                overflow-y: auto; /* Enable vertical scrolling */
-            }
-
-            #cart-table thead {
-                display: table;
-                width: calc(100% - 1em);
-                table-layout: fixed; /* Ensure thead width matches tbody */
-            }
-
-            #cart-table tbody {
-                display: block;
-                height: 200px; /* Set the desired height for the tbody */
-                overflow-y: auto; /* Enable vertical scrolling for tbody */
-                width: 100%;
-                table-layout: fixed; /* Ensure tbody width matches thead */
-            }
-
-            #cart-table th, #cart-table td {
-                width: 20%; /* Set column widths as needed */
-            }
+            
         </style>
 
     </head>
@@ -85,11 +59,11 @@
 
                             <!-- Selected Items -->
                             <div class="col-md-6">
-                                <div class="card" style="height: 600px">
+                                <div class="card" style="height: 600px;">
                                     <div class="card-header bg-success">
                                         <h4 class="mb-3">Cart</h4>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body overflow-auto">
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="cart-table">
                                                 <thead>
@@ -108,13 +82,12 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-end">
-                                        <h5>
-                                            Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span>
-                                        </h5>
+                                        <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
                                         <button class="btn btn-success" id="btn_bayar">Bayar</button>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
     
                     </div> <!-- container-fluid -->
