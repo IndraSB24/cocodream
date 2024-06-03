@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="card-footer text-end">
                                         <h5>Total: $<span id="cart-total">0.00</span></h5>
-                                        <button class="btn btn-success" id="btn_simpan">Save Transaction</button>
+                                        <button class="btn btn-success" id="btn_bayar">Bayar</button>
                                     </div>
                                 </div>
                             </div>
