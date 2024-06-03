@@ -8,16 +8,7 @@
         <?= $this->include('partials/head-css') ?>
 
         <style>
-            .card-body {
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .row.scrollable-container {
-                flex-grow: 1;
-                overflow: auto;
-            }
+            
         </style>
 
     </head>
@@ -61,7 +52,7 @@
                                     <div class="card-body">
                                         <div class="tab-content" id="item-tab-content">
                                             <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-                                                <div class="row scrollable-container" id="item-list-all">
+                                                <div class="row overflow-auto" id="item-list-all">
                                                     <?php foreach ($items as $item): ?>
                                                         <div class="col-md-4 mb-3">
                                                             <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
@@ -76,7 +67,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="makanan" role="tabpanel" aria-labelledby="makanan-tab">
-                                                <div class="row scrollable-container" id="item-list-makanan">
+                                                <div class="row overflow-auto" id="item-list-makanan">
                                                     <?php foreach ($items as $item): ?>
                                                         <?php if ($item['nama_jenis'] == 'makanan'): ?>
                                                             <div class="col-md-4 mb-3">
@@ -93,7 +84,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="minuman" role="tabpanel" aria-labelledby="minuman-tab">
-                                                <div class="row scrollable-container" id="item-list-minuman">
+                                                <div class="row overflow-auto" id="item-list-minuman">
                                                     <?php foreach ($items as $item): ?>
                                                         <?php if ($item['nama_jenis'] == 'minuman'): ?>
                                                             <div class="col-md-4 mb-3">
