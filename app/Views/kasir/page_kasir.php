@@ -81,7 +81,7 @@
 
                             <!-- Selected Items -->
                             <div class="col-md-6">
-                                <div class="card">
+                                <div class="card" style="height: 600px">
                                     <div class="card-header bg-success">
                                         <h4 class="mb-3">Cart</h4>
                                     </div>
