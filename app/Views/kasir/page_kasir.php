@@ -8,7 +8,21 @@
         <?= $this->include('partials/head-css') ?>
 
         <style>
-            
+            .card-body {
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tab-content {
+                flex-grow: 1;
+                overflow: auto;
+            }
+
+            .row.overflow-auto {
+                flex-grow: 1;
+                overflow: auto;
+            }
         </style>
 
     </head>
