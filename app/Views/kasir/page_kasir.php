@@ -305,73 +305,87 @@
 
 <script>
 
-$(document).ready(function () {
-    let cart = [];
+    $(document).ready(function () {
+        let cart = [];
 
-    // Handle adding items to cart
-    $('.add-to-cart').on('click', function() {
-        const itemBox = $(this).closest('.item-box');
-        const itemId = itemBox.data('id');
-        const itemName = itemBox.data('name');
-        const itemPrice = parseFloat(itemBox.data('price'));
-        const itemQuantity = 1; // Default quantity to 1
+        // Handle adding items to cart
+        $('.add-to-cart').on('click', function() {
+            const itemBox = $(this).closest('.item-box');
+            const itemId = itemBox.data('id');
+            const itemName = itemBox.data('name');
+            const itemPrice = parseFloat(itemBox.data('price'));
+            const itemQuantity = 1; // Default quantity to 1
 
-        // Calculate item total
-        const itemTotal = itemPrice * itemQuantity;
+            // Calculate item total
+            const itemTotal = itemPrice * itemQuantity;
 
-        // Append item to cart table
-        $('#cart-table tbody').append(`
-            <tr>
-                <td>${itemName}</td>
-                <td><input type="number" class="form-control quantity-input text-center p-0" data-id="${itemId}" value="${itemQuantity}" min="1"></td>
-                <td>Rp. ${itemPrice.toLocaleString()}</td>
-                <td>Rp. ${(itemTotal).toLocaleString()}</td>
-                <td><button class="btn btn-danger btn-sm remove-from-cart">Remove</button></td>
-            </tr>
-        `);
+            // Append item to cart table
+            $('#cart-table tbody').append(`
+                <tr>
+                    <td>${itemName}</td>
+                    <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
+                    <td>Rp. ${itemPrice.toLocaleString()}</td>
+                    <td>Rp. ${(itemTotal).toLocaleString()}</td>
+                    <td><button class="btn btn-danger btn-sm remove-from-cart">Remove</button></td>
+                </tr>
+            `);
 
-        // Initialize TouchSpin on quantity inputs
-        $(".quantity-input").TouchSpin({
-            min: 1,
-            max: 100,
-            step: 1,
-            decimals: 0,
-            boostat: 5,
-            maxboostedstep: 10,
+            // Initialize TouchSpin on quantity inputs
+            $(".quantity-input").TouchSpin({
+                min: 1,
+                max: 100,
+                step: 1,
+                decimals: 0,
+                boostat: 5,
+                maxboostedstep: 10,
+            });
+
+            updateCartTotal();
         });
 
-        updateCartTotal();
-    });
-
-    // Handle removing items from cart
-    $(document).on('click', '.remove-from-cart', function() {
-        $(this).closest('tr').remove();
-        updateCartTotal();
-    });
-
-    // Handle quantity change
-    $(document).on('input', '.quantity-input', function() {
-        const row = $(this).closest('tr');
-        const itemPrice = parseFloat(row.find('td:nth-child(3)').text().replace(/Rp\.|,/g, ''));
-        const itemQuantity = $(this).val();
-        const itemTotal = itemPrice * itemQuantity;
-
-        row.find('td:nth-child(4)').text('Rp. ' + itemTotal.toLocaleString());
-        updateCartTotal();
-    });
-
-    // Update cart total
-    function updateCartTotal() {
-        let total = 0;
-        $('#cart-table tbody tr').each(function() {
-            const itemTotal = parseFloat($(this).find('td:nth-child(4)').text().replace(/Rp\.|,/g, ''));
-            total += itemTotal;
+        // Handle removing items from cart
+        $(document).on('click', '.remove-from-cart', function() {
+            $(this).closest('tr').remove();
+            updateCartTotal();
         });
 
-        $('#cart-total').text(total.toLocaleString());
-    }
-});
+        // Handle quantity change
+        $(document).on('input', '.quantity-input', function() {
+            const row = $(this).closest('tr');
+            const itemPrice = parseFloat(row.find('td:nth-child(3)').text().replace(/Rp\.|,/g, ''));
+            const itemQuantity = $(this).val();
+            const itemTotal = itemPrice * itemQuantity;
 
+            row.find('td:nth-child(4)').text('Rp. ' + itemTotal.toLocaleString());
+            updateCartTotal();
+        });
+
+        // Update cart total
+        function updateCartTotal() {
+            let total = 0;
+            $('#cart-table tbody tr').each(function() {
+                const itemTotal = parseFloat($(this).find('td:nth-child(4)').text().replace(/Rp\.|,/g, ''));
+                total += itemTotal;
+            });
+
+            $('#cart-total').text(total.toLocaleString());
+        }
+    });
+
+    $(document).on('change', '.quantity-input', function () {
+        const itemId = $(this).closest('tr').find('.remove-from-cart').data('id');
+        const newQuantity = parseInt($(this).val());
+        const itemIndex = cart.findIndex(item => item.id === itemId);
+
+        if (itemIndex !== -1 && newQuantity > 0) {
+            cart[itemIndex].quantity = newQuantity;
+            updateCart();
+        } else {
+            // Reset the quantity input to the previous value if the new value is not valid
+            const previousQuantity = cart[itemIndex].quantity;
+            $(this).val(previousQuantity);
+        }
+    });
 
     // btn simpan
     $(document).on('click', '#btn_simpan', function () {
