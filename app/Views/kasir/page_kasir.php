@@ -45,8 +45,10 @@
                                             <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $item['nama']; ?></h5>
-                                                    <p class="card-text">Price: Rp. <?= $item['item_price']; ?></p>
-                                                    <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                                                    <p class="card-text">Rp. <?= $item['item_price']; ?></p>
+                                                    <button class="btn btn-primary add-to-cart">
+                                                        Tambahkan
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
