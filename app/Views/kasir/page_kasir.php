@@ -72,7 +72,9 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-end">
-                                        <h5>Total: $<span id="cart-total">0.00</span></h5>
+                                        <h5>
+                                            Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span>
+                                        </h5>
                                         <button class="btn btn-success" id="btn_bayar">Bayar</button>
                                     </div>
                                 </div>
@@ -248,13 +250,13 @@
                         <td>
                             <input type="text" class="form-control quantity-input text-center" data-id="${item.id}" value="${item.quantity}">
                         </td>
-                        <td>Rp.${item.price.toLocaleString('id-ID')}</td>
-                        <td>Rp.${itemTotal.toLocaleString('id-ID')}</td>
+                        <td>${item.price.toLocaleString('id-ID')}</td>
+                        <td>${itemTotal.toLocaleString('id-ID')}</td>
                         <td><button class="btn btn-danger btn-sm remove-from-cart" data-id="${item.id}">Remove</button></td>
                     </tr>
                 `);
             });
-            $('#cart-total').text(total.toFixed(2));
+            $('#cart-total').text(total.toLocaleString('id-ID').toFixed(2));
 
             // Initialize TouchSpin on quantity inputs
             $(".quantity-input").TouchSpin({
@@ -313,10 +315,10 @@
                         rowData.jumlah = parseFloat($(this).find('.quantity-input').val());
                         break;
                     case 2:
-                        rowData.harga = parseFloat($(this).text().replace('Rp.', ''));
+                        rowData.harga = parseFloat($(this).text().replace(/,/g, ''));
                         break;
                     case 3:
-                        rowData.total = parseFloat($(this).text().replace('Rp.', ''));
+                        rowData.total = parseFloat($(this).text().replace(/,/g, ''));
                         break;
                     case 4:
                         rowData.id_item = $(this).find('.remove-from-cart').data('id');
