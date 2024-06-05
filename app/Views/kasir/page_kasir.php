@@ -427,21 +427,16 @@
                         break;
                     case 4:
                         rowData.id_item = $(this).find('.remove-from-cart').data('id');
+                        rowData.unit = $(this).find('.remove-from-cart').data('unitItem');
                         break;
                 }
             });
             rowsData.push(rowData);
         });
 
-        const data1 = {
-            transaction_id: "<?= $id_transaksi ?>",
-            transaction_detail: rowsData
-        };
-
         const data = {
-            id_transaksi: idtransaksi,
-            nominal_awal: hargaAwal,
-            diskon_basic: diskonAwal,
+            transaction_detail: rowsData,
+            nominal_awal: $('#harga_awal').val(),
             diskon_tambahan: $('#diskon_tambah').val(),
             nominal_akhir: $('#harga_akhir').val(),
             nominal_bayar: $('#nominal_dibayar').val(),
