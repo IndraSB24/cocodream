@@ -13,7 +13,8 @@ class Model_transaksi_detail extends Model
     protected $useAutoIncrement = true;
 
     protected $allowedFields = [
-        'id_transaksi', 'id_item', 'id_pricing', 'quantity', 'price', 'subtotal', 'created_by'
+        'id_transaksi', 'id_item', 'id_pricing', 'quantity', 'price', 'subtotal', 'created_by',
+        'unit'
     ];
 
     protected $useTimestamps = true;

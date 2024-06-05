@@ -69,7 +69,12 @@
                                                 <div class="row overflow-auto" id="item-list-all">
                                                     <?php foreach ($items as $item): ?>
                                                         <div class="col-md-4 mb-3">
-                                                            <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                            <div class="card item-box" 
+                                                                data-id="<?= $item['id']; ?>" 
+                                                                data-name="<?= $item['nama']; ?>" 
+                                                                data-price="<?= $item['item_price']; ?>"
+                                                                data-unit="<?= $item['nama_satuan']; ?>"
+                                                            >
                                                                 <div class="card-body">
                                                                     <h5 class="card-title"><?= $item['nama']; ?></h5>
                                                                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
@@ -85,7 +90,12 @@
                                                     <?php foreach ($items as $item): ?>
                                                         <?php if ($item['nama_jenis'] == 'makanan'): ?>
                                                             <div class="col-md-4 mb-3">
-                                                                <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                                <div class="card item-box" 
+                                                                    data-id="<?= $item['id']; ?>" 
+                                                                    data-name="<?= $item['nama']; ?>" 
+                                                                    data-price="<?= $item['item_price']; ?>"
+                                                                    data-unit="<?= $item['nama_satuan']; ?>"
+                                                                >
                                                                     <div class="card-body">
                                                                         <h5 class="card-title"><?= $item['nama']; ?></h5>
                                                                         <p class="card-text">Rp. <?= $item['item_price']; ?></p>
@@ -102,7 +112,12 @@
                                                     <?php foreach ($items as $item): ?>
                                                         <?php if ($item['nama_jenis'] == 'minuman'): ?>
                                                             <div class="col-md-4 mb-3">
-                                                                <div class="card item-box" data-id="<?= $item['id']; ?>" data-name="<?= $item['nama']; ?>" data-price="<?= $item['item_price']; ?>">
+                                                                <div class="card item-box" 
+                                                                    data-id="<?= $item['id']; ?>" 
+                                                                    data-name="<?= $item['nama']; ?>" 
+                                                                    data-price="<?= $item['item_price']; ?>"
+                                                                    data-unit="<?= $item['nama_satuan']; ?>"
+                                                                >
                                                                     <div class="card-body">
                                                                         <h5 class="card-title"><?= $item['nama']; ?></h5>
                                                                         <p class="card-text">Rp. <?= $item['item_price']; ?></p>
@@ -127,7 +142,7 @@
                                     </div>
                                     <div class="card-body overflow-auto">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered" id="cart-table">
+                                            <table class="table" id="cart-table">
                                                 <thead>
                                                     <tr>
                                                         <th>Item</th>
@@ -239,6 +254,7 @@
             const itemBox = $(this).closest('.item-box');
             const itemId = itemBox.data('id');
             const itemName = itemBox.data('name');
+            const itemUnit = itemBox.data('unit');
             const itemPrice = parseFloat(itemBox.data('price'));
             const itemQuantity = 1; // Default quantity to 1
 
@@ -253,7 +269,10 @@
                     <td>Rp. ${itemPrice.toLocaleString()}</td>
                     <td>Rp. ${(itemTotal).toLocaleString()}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm remove-from-cart">
+                        <button class="btn btn-danger btn-sm remove-from-cart" 
+                            data-idItem="${itemId}"
+                            data-unitItem="${itemUnit}"
+                        >
                             <i class="fas fa-trash"></i>
                         </button>
                     </td>
@@ -324,7 +343,8 @@
                         rowData.total = parseFloat($(this).text().replace(/,/g, ''));
                         break;
                     case 4:
-                        rowData.id_item = $(this).find('.remove-from-cart').data('id');
+                        rowData.id_item = $(this).find('.remove-from-cart').data('idItem');
+                        rowData.unit = $(this).find('.remove-from-cart').data('unitItem');
                         break;
                 }
             });
@@ -332,9 +352,13 @@
         });
 
         const data = {
-            id_pasien: $('#pasien').val(),
-            transaction_date: $('#tanggal').val(),
-            transaction_detail: rowsData
+            transaction_detail: rowsData,
+            nominal_awal: $('#harga_awal').val(),
+            diskon_tambahan: $('#diskon_tambah').val(),
+            nominal_akhir: $('#harga_akhir').val(),
+            nominal_bayar: $('#nominal_dibayar').val(),
+            nominal_kembalian: $('#nominal_kembalian').val(),
+            id_payment_method: $('#metode_bayar').val()
         };
         console.log(data);
 
@@ -381,7 +405,39 @@
 
     // konfirmasi bayar
     $(document).on('click', '#btn_konfirmasi_bayar', function () {
-        const path = "<?= base_url('transaksi/add_payment') ?>";
+        const path = "<?= base_url('transaksi/add_transaksi') ?>";
+        var rowsData = [];
+
+        // Iterate over each row in the table
+        $('#cart-table tbody tr').each(function() {
+            let rowData = {};
+            $(this).find('td').each(function(index) {
+                switch(index) {
+                    case 0:
+                        rowData.nama = $(this).text();
+                        break;
+                    case 1:
+                        rowData.jumlah = parseFloat($(this).find('.quantity-input').val());
+                        break;
+                    case 2:
+                        rowData.harga = parseFloat($(this).text().replace(/,/g, ''));
+                        break;
+                    case 3:
+                        rowData.total = parseFloat($(this).text().replace(/,/g, ''));
+                        break;
+                    case 4:
+                        rowData.id_item = $(this).find('.remove-from-cart').data('id');
+                        break;
+                }
+            });
+            rowsData.push(rowData);
+        });
+
+        const data1 = {
+            transaction_id: "<?= $id_transaksi ?>",
+            transaction_detail: rowsData
+        };
+
         const data = {
             id_transaksi: idtransaksi,
             nominal_awal: hargaAwal,

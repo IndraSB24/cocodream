@@ -62,21 +62,18 @@ class Transaksi extends Controller
     }
 	
     // add ==================================================================================================
-    public function add_transaksi(){
+    public function add_transaksi($param=[]){
         // insert transaction
-        $data = array_intersect_key(
-            $this->request->getPost(),
-            array_flip([
-                'id_pasien', 'transaction_date'
-            ])
-        );
-        $data['created_by'] = sess_activeUserId();
+        $data = [
+            'transaction_date' => date('Y-m-d H:i:s'),
+            'created_by' => sess_activeUserId()
+        ];
         $insertDataId = $this->Model_transaksi->insertWithReturnId($data);
 
         if ($insertDataId) {
             // inject invoice code
             $data_trans_update = [
-                'no_invoice' => generate_general_code('INV', $insertDataId, 6)
+                'no_invoice' => generate_general_code('INV', $insertDataId, 9)
             ];
             $updateResult = $this->Model_transaksi->update($insertDataId, $data_trans_update);
 
@@ -90,6 +87,7 @@ class Transaksi extends Controller
                         'id_transaksi' =>  $insertDataId,
                         'id_item' => $transactionDetail['id_item'],
                         'quantity' => $transactionDetail['jumlah'],
+                        'unit' => $transactionDetail['unit'],
                         'price' => $transactionDetail['harga'],
                         'subtotal' => $transactionDetail['total']
                     ];
@@ -109,10 +107,29 @@ class Transaksi extends Controller
                     $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
                 }
             }
-        
-            $response = [
-                'success' => true
-            ];
+
+            // payment
+            $dataPayment = array_intersect_key(
+                $this->request->getPost(),
+                array_flip([
+                    'nominal_awal', 'diskon_tambahan', 'id_payment_method',
+                    'nominal_akhir', 'nominal_bayar', 'nominal_kembalian'
+                ])
+            );
+            $dataPayment['id_transaksi'] = $insertDataId;
+            $dataPayment['created_by'] = sess_activeUserId();
+            $insertPayment = $this->Model_transaksi_payment->save($dataPayment);
+            
+            if ($updateResult && $insertPayment) {
+                $response = [
+                    'success' => true
+                ];
+            } else {
+                $response = [
+                    'success' => false
+                ];
+            }
+            
         } else {
             $response = ['success' => false];
         }
