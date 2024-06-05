@@ -269,10 +269,9 @@
                     <td>Rp. ${itemPrice.toLocaleString()}</td>
                     <td>Rp. ${(itemTotal).toLocaleString()}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm remove-from-cart" 
-                            data-idItem="${itemId}"
-                            data-unitItem="${itemUnit}"
-                        >
+                        <input type="hidden" name="id_item" value="${itemId}">
+                        <input type="hidden" name="item_unit" value="${itemUnit}">
+                        <button class="btn btn-danger btn-sm remove-from-cart">
                             <i class="fas fa-trash"></i>
                         </button>
                     </td>
@@ -426,8 +425,8 @@
                         rowData.total = parseFloat($(this).text().replace(/,/g, ''));
                         break;
                     case 4:
-                        rowData.id_item = $(this).find('.remove-from-cart').data('idItem');
-                        rowData.unit = $(this).find('.remove-from-cart').data('unitItem');
+                        rowData.id_item = $(this).find('input[name="id_item"]').val();
+                        rowData.unit = $(this).find('input[name="item_unit"]').val();
                         break;
                 }
             });
