@@ -419,10 +419,10 @@
                         rowData.jumlah = parseFloat($(this).find('.quantity-input').val());
                         break;
                     case 2:
-                        rowData.harga = parseFloat($(this).text().replace(/,/g, ''));
+                        rowData.harga = parseFloat($(this).text().replace(/Rp\.\s?|,/g, ''));
                         break;
                     case 3:
-                        rowData.total = parseFloat($(this).text().replace(/,/g, ''));
+                        rowData.total = parseFloat($(this).text().replace(/Rp\.\s?|,/g, ''));
                         break;
                     case 4:
                         rowData.id_item = $(this).find('input[name="id_item"]').val();
