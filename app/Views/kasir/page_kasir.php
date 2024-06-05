@@ -426,7 +426,7 @@
                         rowData.total = parseFloat($(this).text().replace(/,/g, ''));
                         break;
                     case 4:
-                        rowData.id_item = $(this).find('.remove-from-cart').data('id');
+                        rowData.id_item = $(this).find('.remove-from-cart').data('idItem');
                         rowData.unit = $(this).find('.remove-from-cart').data('unitItem');
                         break;
                 }
