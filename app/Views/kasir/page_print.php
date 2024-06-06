@@ -65,7 +65,7 @@
     <div class="receipt">
         <div class="header">
             <img src="<?= base_url('assets/images/logo-dark.png') ?>" style="height: 100px; width: auto;">
-            <h2>Klinik Estetika Clarisa</h2>
+            <h2>Cocodream</h2>
             <p>
                 <?= $dataTransaksi[0]->entitas_address ?>
                 <br>Kota Pekanbaru, Riau 28289
