@@ -26,7 +26,7 @@
                                                     <a href="index.php" class="logo"><img src="assets/images/logo-dark.png" height="300" alt="logo"></a>
                                                 </div>
     
-                                                <h4 class="font-size-18 mt-4">Welcome!</h4>
+                                                <h4 class="font-size-18 mt-2">Welcome!</h4>
                                                 <p class="text-muted">Mulai dengan login Yuk</p>
                                             </div>
 
