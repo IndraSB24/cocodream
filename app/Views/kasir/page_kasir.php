@@ -70,13 +70,16 @@
                                                     <?php foreach ($items as $item): ?>
                                                         <div class="col-md-4 mb-3">
                                                             <div class="card item-box" 
-                                                                data-id="<?= $item['id']; ?>" 
-                                                                data-name="<?= $item['nama']; ?>" 
+                                                                data-id="<?= $item['id']; ?>"
+                                                                data-name="<?= $item['nama']; ?>"
                                                                 data-price="<?= $item['item_price']; ?>"
                                                                 data-unit="<?= $item['nama_satuan']; ?>"
                                                             >
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                    <img src="<?= $item['image_filename']; ?>" alt="<?= $item['nama']; ?>" 
+                                                                        class="img-fluid mb-3" style="max-width: 100%; height: auto;"
+                                                                    >    
+                                                                    <p class="card-text"><?= $item['nama']; ?></p>
                                                                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
                                                                     <button class="btn btn-primary add-to-cart">Tambahkan</button>
                                                                 </div>
