@@ -369,6 +369,13 @@
         mainDatatable(); 
     });
 
+    // filename set
+    $('#item_image').change(function() {
+        var fileInput = $(this);
+        var fileName = fileInput.val().split('\\').pop();
+        $('#item_image_filename').text("File Choosen: " + fileName);
+    });
+
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const path = "<?= site_url('item/add_item') ?>";
