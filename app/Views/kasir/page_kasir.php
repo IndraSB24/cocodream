@@ -76,7 +76,7 @@
                                                                 data-unit="<?= $item['nama_satuan']; ?>"
                                                             >
                                                                 <div class="card-body">
-                                                                    <img src="<?= $item['image_filename']; ?>" alt="<?= $item['nama']; ?>" 
+                                                                    <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
                                                                         class="img-fluid mb-3" style="max-width: 100%; height: auto;"
                                                                     >    
                                                                     <p class="card-text"><?= $item['nama']; ?></p>
@@ -100,7 +100,10 @@
                                                                     data-unit="<?= $item['nama_satuan']; ?>"
                                                                 >
                                                                     <div class="card-body">
-                                                                        <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                        <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
+                                                                            class="img-fluid mb-3" style="max-width: 100%; height: auto;"
+                                                                        >  
+                                                                        <p class="card-text"><?= $item['nama']; ?></p>
                                                                         <p class="card-text">Rp. <?= $item['item_price']; ?></p>
                                                                         <button class="btn btn-primary add-to-cart">Tambahkan</button>
                                                                     </div>
@@ -122,7 +125,10 @@
                                                                     data-unit="<?= $item['nama_satuan']; ?>"
                                                                 >
                                                                     <div class="card-body">
-                                                                        <h5 class="card-title"><?= $item['nama']; ?></h5>
+                                                                        <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
+                                                                            class="img-fluid mb-3" style="max-width: 100%; height: auto;"
+                                                                        >   
+                                                                        <p class="card-text"><?= $item['nama']; ?></p>
                                                                         <p class="card-text">Rp. <?= $item['item_price']; ?></p>
                                                                         <button class="btn btn-primary add-to-cart">Tambahkan</button>
                                                                     </div>
