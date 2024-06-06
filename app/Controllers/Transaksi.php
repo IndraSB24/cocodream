@@ -66,6 +66,7 @@ class Transaksi extends Controller
         // insert transaction
         $data = [
             'transaction_date' => date('Y-m-d H:i:s'),
+            'payment_status' => 'Dibayar',
             'created_by' => sess_activeUserId()
         ];
         $insertDataId = $this->Model_transaksi->insertWithReturnId($data);
