@@ -51,6 +51,11 @@
                                                     </button>
                                                 <?php endif; ?>
                                             </div>
+                                            <div class="col-sm-12">
+                                                <a href="<?= base_url('transaksi-get-list') ?>" class="btn btn-info">
+                                                    Halaman Kasir
+                                                </a>
+                                            </div>
                                         </div>
                                         
                                         <div class="row">
