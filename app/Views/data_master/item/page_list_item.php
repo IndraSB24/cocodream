@@ -380,6 +380,7 @@
     $(document).on('click', '#btn_simpan', function () {
         const path = "<?= site_url('item/add_item') ?>";
         var formData = new FormData();
+        $('#item_image_filename').text("No File Choosen");
 
         // Append the file to formData
         var i = $('#item_image'),
@@ -391,8 +392,6 @@
         formData.append('nama', $('#nama').val());
         formData.append('id_kategori_jenis', $('#jenis').val());
         formData.append('id_satuan', $('#satuan').val());
-
-        $('#item_image_filename').text("No File Choosen");
         
         loadQuestionalSwal(
             path, formData, 'Tambahkan Item dengan nama: '+$('#nama').val()+' ?', 
@@ -469,6 +468,16 @@
             path, data, 'Konfirmasi edit Item dengan Kode: '+ $('#kode_item_edit').val() +' ?', 
             'Diedit!', 'Item dengan kode: '+ $('#kode_item_edit').val() +' berhasil diedit.', 'modal_edit'
         );
+    });
+
+    // on modal_add hide
+    $('#modal_add').on('hidden.bs.modal', function () {
+        // Clear form fields
+        clearFieldValue([
+            'kode_item', 'nama', 'jenis', 'satuan', 'item_image'
+        ]);
+
+        $('#item_image_filename').text("No File Choosen");
     });
 
 </script>
