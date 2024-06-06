@@ -17,7 +17,7 @@
 <!-- custome script -->
 <script>
     // swall loader
-    function loadQuestionalSwal(
+    function loadQuestionalSwal_old(
         path, data, title1, title2, text2, modalToHide="", isTableReload=true, isPageReload=false
     ) {
         Swal.fire({
@@ -50,6 +50,50 @@
                         
                     });
                 }, 'json');
+            }
+        });
+    }
+
+    function loadQuestionalSwal(
+        path, data, title1, title2, text2, modalToHide = "", isTableReload = true, isPageReload = false
+    ) {
+        Swal.fire({
+            title: title1,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: path,
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        Swal.fire({
+                            title: title2,
+                            icon: 'success',
+                            text: text2,
+                            timer: 1000,
+                            confirmButtonColor: "#5664d2"
+                        }).then((result) => {
+                            if (modalToHide !== "") {
+                                $('#' + modalToHide).modal('hide');
+                            }
+
+                            if (isTableReload === true) {
+                                mainDatatable();
+                            }
+
+                            if (isPageReload === true) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    dataType: 'json'
+                });
             }
         });
     }

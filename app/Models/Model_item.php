@@ -14,7 +14,7 @@ class Model_item extends Model
 
     protected $allowedFields = [
         'kode_item', 'barcode', 'nama', 'id_kategori_jenis', 'id_satuan', 'id_kategori_item', 'created_by',
-        'id_brand', 'id_supplier', 'stok_minimum', 'harga_dasar'
+        'id_brand', 'id_supplier', 'stok_minimum', 'harga_dasar', 'image_filename'
     ];
 
     protected $useTimestamps = true;

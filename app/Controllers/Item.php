@@ -53,22 +53,46 @@ class Item extends Controller
 	
     // add ==================================================================================================
     public function add_item(){
-        $data = array_intersect_key(
-            $this->request->getPost(),
-            array_flip([
-                'kode_item', 'nama', 'id_kategori_jenis', 'id_satuan'
-            ])
-        );
-        $data['created_by'] = sess_activeUserId();
-
-        $insertData = $this->model_item->save($data);
         
-        if ($insertData) {
-            $response = ['success' => true];
-        } else {
-            $response = ['success' => false];
-        }
         return $this->response->setJSON($response);
+
+        // read the file
+        $uploaded_file = $this->request->getFile('file');
+                
+        // store the file
+        if($uploaded_file){
+            $store_file = $uploaded_file->move('upload/item_pict');
+
+            $data = array_intersect_key(
+                $this->request->getPost(),
+                array_flip([
+                    'kode_item', 'nama', 'id_kategori_jenis', 'id_satuan'
+                ])
+            );
+            $data['image_filename'] = $uploaded_file->getName();
+            $data['created_by'] = sess_activeUserId();
+            
+            // return and notif wa
+            if ($store_file && $insertData){
+                $response = [
+                    'success' => true,
+                    'message' => 'File Uploaded successfully.'
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Failed to Upload File.'
+                ];
+            }
+   
+        }else {
+            $response = [
+                'success' => false,
+                'message' => 'No file specified.'
+            ];
+        }
+
+        return json_encode($response);
     }
     
     // edit =================================================================================================

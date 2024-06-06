@@ -187,6 +187,11 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="item_image" id="up_item_image" class="btn btn-info">Choose File</label>
+                                    <input name="item_image" id="item_image" type="file" multiple="multiple" style="display: none;" />
+                                    &nbsp;<span id="item_image_filename">No File Choosen</span>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -363,15 +368,21 @@
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const path = "<?= site_url('item/add_item') ?>";
-        const data = {
-            kode_item: $('#kode_item').val(),
-            nama: $('#nama').val(),
-            id_kategori_jenis: $('#jenis').val(),
-            id_satuan: $('#satuan').val()
-        };
+        var formData = new FormData();
+
+        // Append the file to formData
+        var i = $('#item_image'),
+            file = i[0].files[0];
+        formData.append('file', file);
+
+        // Append other form data
+        formData.append('kode_item', $('#kode_item').val());
+        formData.append('nama', $('#nama').val());
+        formData.append('id_kategori_jenis', $('#jenis').val());
+        formData.append('id_satuan', $('#satuan').val());
         
         loadQuestionalSwal(
-            path, data, 'Tambahkan Item dengan nama: '+$('#nama').val()+' ?', 
+            path, formData, 'Tambahkan Item dengan nama: '+$('#nama').val()+' ?', 
             'Disimpan!', 'Item dengan nama: '+$('#nama').val()+' berhasil ditambahkan.', 'modal_add'
         );
     });
