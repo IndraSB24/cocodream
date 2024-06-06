@@ -17,7 +17,7 @@
 <!-- custome script -->
 <script>
     // swall loader
-    function loadQuestionalSwal_old(
+    function loadQuestionalSwal(
         path, data, title1, title2, text2, modalToHide="", isTableReload=true, isPageReload=false
     ) {
         Swal.fire({
@@ -54,7 +54,7 @@
         });
     }
 
-    function loadQuestionalSwal(
+    function loadQuestionalSwalFormData(
         path, data, title1, title2, text2, modalToHide = "", isTableReload = true, isPageReload = false
     ) {
         Swal.fire({
