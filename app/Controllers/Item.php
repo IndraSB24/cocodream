@@ -68,6 +68,7 @@ class Item extends Controller
             );
             $data['image_filename'] = $uploaded_file->getName();
             $data['created_by'] = sess_activeUserId();
+            $insertData = $this->model_item->save($data);
             
             // return and notif wa
             if ($store_file && $insertData){
