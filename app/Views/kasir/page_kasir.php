@@ -445,7 +445,7 @@
         
         loadQuestionalSwal(
             path, data, 'Konfirmasi Bayar ?', 
-            'Dibayar!', 'Pembayaran Berhasil', 'modal_pay'
+            'Dibayar!', 'Pembayaran Berhasil', 'modal_pay', false, true
         );
     });
 

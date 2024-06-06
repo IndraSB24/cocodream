@@ -393,7 +393,7 @@
         formData.append('id_kategori_jenis', $('#jenis').val());
         formData.append('id_satuan', $('#satuan').val());
         
-        loadQuestionalSwal(
+        loadQuestionalSwalFormData(
             path, formData, 'Tambahkan Item dengan nama: '+$('#nama').val()+' ?', 
             'Disimpan!', 'Item dengan nama: '+$('#nama').val()+' berhasil ditambahkan.', 'modal_add'
         );
