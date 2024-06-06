@@ -188,10 +188,14 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="item_image" id="up_item_image" class="btn btn-info">Choose File</label>
-                                    <input name="item_image" id="item_image" type="file" multiple="multiple" style="display: none;" />
-                                    &nbsp;<span id="item_image_filename">No File Choosen</span>
+                                    <label for="item_image" class="form-label">Gambar Produk</label>
+                                    <div >
+                                        <label for="item_image" id="up_item_image" class="btn btn-info">Choose File</label>
+                                        <input name="item_image" id="item_image" type="file" multiple="multiple" style="display: none;" />
+                                        &nbsp;<span id="item_image_filename">No File Choosen</span>
+                                    </div>
                                 </div>
+                                
                             </div>
 
                             <div class="row">
