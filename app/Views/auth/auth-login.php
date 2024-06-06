@@ -30,7 +30,7 @@
                                                 <p class="text-muted">Mulai dengan login Yuk</p>
                                             </div>
 
-                                            <div class="p-2 mt-5">
+                                            <div class="p-2 mt-3">
                                                 <form action="<?= base_url('auth-login') ?>" method="POST">
                     
                                                     <div class="mb-3 auth-form-group-custom mb-4">
