@@ -122,7 +122,9 @@ class Transaksi extends Controller
             
             if ($updateResult && $insertPayment) {
                 $response = [
-                    'success' => true
+                    'success' => true,
+                    "isRedirect" => true,
+                    "redirectUrl" => base_url('transaksi/show_detail_transaksi/'.$insertDataId)
                 ];
             } else {
                 $response = [

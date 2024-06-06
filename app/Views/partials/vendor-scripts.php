@@ -47,6 +47,10 @@
                         if(isPageReload === true){
                             location.reload();
                         }
+
+                        if (response.isRedirect === true && response.redirectUrl) {
+                            window.location.href = response.redirectUrl;
+                        }
                         
                     });
                 }, 'json');
@@ -54,6 +58,7 @@
         });
     }
 
+    // swall  with form data
     function loadQuestionalSwalFormData(
         path, data, title1, title2, text2, modalToHide = "", isTableReload = true, isPageReload = false
     ) {
