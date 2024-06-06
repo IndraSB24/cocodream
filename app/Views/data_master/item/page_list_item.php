@@ -384,6 +384,8 @@
         formData.append('nama', $('#nama').val());
         formData.append('id_kategori_jenis', $('#jenis').val());
         formData.append('id_satuan', $('#satuan').val());
+
+        $('#item_image_filename').text("No File Choosen");
         
         loadQuestionalSwal(
             path, formData, 'Tambahkan Item dengan nama: '+$('#nama').val()+' ?', 

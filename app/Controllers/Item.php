@@ -53,9 +53,6 @@ class Item extends Controller
 	
     // add ==================================================================================================
     public function add_item(){
-        
-        return $this->response->setJSON($response);
-
         // read the file
         $uploaded_file = $this->request->getFile('file');
                 
