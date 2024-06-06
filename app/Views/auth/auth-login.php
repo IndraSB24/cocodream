@@ -23,7 +23,7 @@
                                         <div>
                                             <div class="text-center">
                                                 <div>
-                                                    <a href="index.php" class="logo"><img src="assets/images/logo-dark.png" height="350" alt="logo"></a>
+                                                    <a href="index.php" class="logo"><img src="assets/images/logo-dark.png" height="300" alt="logo"></a>
                                                 </div>
     
                                                 <h4 class="font-size-18 mt-4">Welcome!</h4>
