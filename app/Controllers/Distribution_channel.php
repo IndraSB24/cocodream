@@ -97,7 +97,7 @@ class Distribution_channel extends Controller
     }
 
     // ajax get list item
-    public function ajax_get_list_payment_method(){
+    public function ajax_get_list_main(){
         $returnedData = $this->Model_distribution_channel->get_datatable_main();
 
         $data = [];

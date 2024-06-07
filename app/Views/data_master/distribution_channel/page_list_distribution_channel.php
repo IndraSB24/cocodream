@@ -46,8 +46,8 @@
                                                     <tr>
                                                         <th class="text-center">No.</th>
                                                         <th class="text-center">Kode</th>
-                                                        <th class="text-center">Nama Metode Pembayaran</th>
-                                                        <th class="text-center">Detail</th>
+                                                        <th class="text-center">Nama Channel Distribusi</th>
+                                                        <th class="text-center">Deskripsi</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -79,19 +79,19 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Metode Bayar</h5>
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Channel Distribusi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
-                                    <label for="name" class="form-label">Nama Metode Bayar</label>
-                                    <input class="form-control" type="text" id="name" name="name" placeholder="Nama Metode Bayar" />
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="name" name="name" placeholder="Nama Channel Distribusi" />
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="detail" class="form-label">Detail</label>
-                                    <input class="form-control" type="text" id="detail" name="detail" placeholder="detail" />
+                                    <label for="description" class="form-label">Deskripsi</label>
+                                    <input class="form-control" type="text" id="description" name="description" placeholder="Dekripsi" />
                                 </div>
                             </div>
                             <div class="row">
@@ -138,9 +138,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
-                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit" 
-                                        data-path="<?= base_url('satuan/edit/satuan') ?>"
-                                    >
+                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit">
                                         Konfirmasi Edit
                                     </button>
                                 </div>
@@ -198,7 +196,7 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?= site_url('payment_method/ajax_get_list_payment_method') ?>",
+                "url": "<?= site_url('distribution_channel/ajax_get_list_main') ?>",
                 "type": "POST",
                 "data": function (data) {
                     data.searchValue = $('#main_table_filter input').val();
@@ -220,29 +218,29 @@
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const thisData = $(this).data();
-        const path = "<?= base_url('payment_method/add') ?>";
+        const path = "<?= base_url('distribution_channel/add') ?>";
         const data = {
             name: $('#name').val(),
-            detail: $('#detail').val()
+            description: $('#description').val()
         };
         
         loadQuestionalSwal(
-            path, data, 'Simpan metode bayar '+$('#name').val()+' ?', 
-            'Disimpan!', 'Metode bayar '+$('#nama').val()+' berhasil disimpan.', 'modal_add'
+            path, data, 'Simpan channel distribusi '+$('#name').val()+' ?', 
+            'Disimpan!', 'Channel distribusi '+$('#nama').val()+' berhasil disimpan.', 'modal_add'
         );
     });
 
     // delete
     $(document).on('click', '#btn_delete', function () {
         const thisData = $(this).data();
-        const path = "<?= site_url('payment_method/delete') ?>";
+        const path = "<?= site_url('distribution_channel/delete') ?>";
         const data = {
             id : thisData['id']
         };
         
         loadQuestionalSwal(
-            path, data, 'Hapus metode bayar dengan kode: '+thisData['kode']+' ?', 
-            'Dihapus!', 'Metode bayar dengan kode: '+thisData['kode']+' berhasil dihapus.', ''
+            path, data, 'Hapus channel distribusi dengan kode: '+thisData['kode']+' ?', 
+            'Dihapus!', 'Channel distribusi dengan kode: '+thisData['kode']+' berhasil dihapus.', ''
         );
     });
 
