@@ -105,6 +105,12 @@ $routes->get('stock-management-get-list', 'Item_stock_management::show_stock_man
 $routes->get('cashdrawer-get-list', 'Cash_drawer::index');
 $routes->get('cashdrawer-get-detail/(:segment)/(:segment)', 'Cash_drawer::show_detail/$1/$2');
 
+// payment method
+$routes->get('paymentMethod-get-list', 'Payment_method::index');
+
+// channel distribution
+$routes->get('distributionChanel-get-list', 'Payment_method::index');
+
 
 
 

@@ -27,6 +27,8 @@
                         <li><a href="<?= base_url('entitas-usaha-get-list') ?>">Data Entitas Usaha</a></li>
                         <li><a href="<?= base_url('item-get-list') ?>">Data Produk</a></li>
                         <li><a href="<?= base_url('satuan-get-list') ?>">Data Satuan</a></li>
+                        <li><a href="<?= base_url('paymentMethod-get-list') ?>">Data Metode Bayar</a></li>
+                        <li><a href="<?= base_url('distributionChanel-get-list') ?>">Data Chanel Distribusi</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>
@@ -38,6 +40,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('transaksi-get-list') ?>">Kasir</a></li>
+                        <li><a href="<?= base_url('cashdrawer-get-list') ?>">List Transaksi</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Cash Drawer</a></li>
                     </ul>
                 </li>
