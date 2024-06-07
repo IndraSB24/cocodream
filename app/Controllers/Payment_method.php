@@ -23,20 +23,6 @@ class Payment_method extends Controller
 		];
         return view('data_master/payment_method/page_list_payment_method', $data);
     }
-
-    // Show =================================================================================================
-	public function show(request $param){
-        switch($param->kode){
-            case 'item_pricing':
-                $data = [
-                    'title_meta' => view('partials/title-meta', ['title' => 'Data Harga Jual']),
-                    'page_title' => view('partials/page-title', ['title' => 'List Item', 'pagetitle' => 'Data Harga Jual'])
-                ];
-                return view('data_master/item/page_data_pricing', $data);
-            break;
-            
-        }
-    }
 	
     // add ==================================================================================================
     public function add(){
@@ -47,9 +33,9 @@ class Payment_method extends Controller
             ])
         );
         $data['created_by'] = sess_activeUserId();
-        $insertData = $this->Model_payment_method->insertWithReturnId($data);
+        $insertDataId = $this->Model_payment_method->insertWithReturnId($data);
 
-        if ($insertData){
+        if ($insertDataId){
             $data_update = [
                 'kode' => generate_general_code('PM', $insertDataId, 3)
             ];
