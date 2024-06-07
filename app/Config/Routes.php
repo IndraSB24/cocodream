@@ -109,7 +109,7 @@ $routes->get('cashdrawer-get-detail/(:segment)/(:segment)', 'Cash_drawer::show_d
 $routes->get('paymentMethod-get-list', 'Payment_method::index');
 
 // channel distribution
-$routes->get('distributionChanel-get-list', 'Payment_method::index');
+$routes->get('distributionChanel-get-list', 'Distribution_channel::index');
 
 
 
