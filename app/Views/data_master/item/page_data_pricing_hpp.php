@@ -224,22 +224,23 @@
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const thisData = $(this).data();
-        const path = '<?= base_url('item_pricing/add_price') ?>';
+        const path = '<?= base_url('item_pricing/add_price/hpp') ?>';
         const data = {
             id_item: $('#selected_item').val(),
-            price: $('#harga_jual').val()
+            price: $('#harga_jual').val(),
+            id_entitas: 1
         };
         
         loadQuestionalSwal(
-            path, data, 'Simpan harga jual baru ?', 
-            'Disimpan!', 'Harga jual baru berhasil disimpan', 'modal_add', true, false
+            path, data, 'Simpan HPP baru ?', 
+            'Disimpan!', 'HPP baru berhasil disimpan', 'modal_add', true, false
         );
     });
 
     // delete
     $(document).on('click', '#btn_delete', function () {
         const thisData = $(this).data();
-        const path = "<?= site_url('satuan/delete/data_satuan') ?>";
+        const path = "<?= site_url('item_pricing/delete') ?>";
         const data = {
             id : thisData['id']
         };

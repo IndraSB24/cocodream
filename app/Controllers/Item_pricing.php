@@ -62,7 +62,7 @@ class Item_pricing extends Controller
     }
 	
     // add ==================================================================================================
-    public function add_price(){
+    public function add_price($type){
         // update is_active of old
         $idItem = $this->request->getPost('id_item');
         $idEntitas = $this->request->getPost('id_entitas');
@@ -72,9 +72,10 @@ class Item_pricing extends Controller
         $data = array_intersect_key(
             $this->request->getPost(),
             array_flip([
-                'id_item', 'price'
+                'id_item', 'price', 'id_entitas'
             ])
         );
+        $data['price_type'] = $type;
         $data['created_by'] = sess_activeUserId();
         $data['is_active'] = 1;
         $data['start_date'] = date('Y-m-d');
