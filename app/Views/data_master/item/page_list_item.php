@@ -177,7 +177,7 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-lg-12 mb-3">
+                                <div class="col-lg-6 mb-3">
                                     <label for="satuan" class="form-label">Satuan</label>
                                     <select class="form-control select2" id="satuan" name="satuan">
                                         <option value="">Pilih Satuan</option>
