@@ -111,18 +111,21 @@
                                                         <option value="">Pilih Item</option>
                                                     </select>
                                                     <input type="hidden" id="selected_item_nama"/>
-                                                    <input type="hidden" id="selected_item_harga"/>
                                                     <input type="hidden" id="selected_item_id"/>
                                                 </div>
                                                 <div class="col-sm-2 mb-3">
                                                     <label for="jumlah">Jumlah</label>
-                                                    <input type="number" class="form-control" id="jumlah"/>
+                                                    <input type="number" class="form-control text-center" id="jumlah"/>
                                                 </div>
                                                 <div class="col-sm-2 mb-3">
                                                     <label for="satuan">Satuan</label>
                                                     <input type="text" id="selected_item_satuan" class="form-control text-center"/>
                                                 </div>
                                                 <div class="col-sm-2 mb-3">
+                                                    <label for="harga">Harga</label>
+                                                    <input type="number" id="harga" class="form-control text-center"/>
+                                                </div>
+                                                <div class="col-sm-12 mb-3">
                                                     <label for="btn_add_item" class="text-white">btn</label>
                                                     <span class="btn btn-primary form-control" id="btn_add_item">
                                                         Tambah
@@ -339,12 +342,6 @@
         // reset dropdown produk
         resetSelect2('selected_item', 'Pilih Produk');
 
-        // reset dropdown pasien
-        resetSelect2('pasien', 'Pilih Pasien');
-
-        // load pasien dropdown
-        setSearchableDropdown('pasien', 3, "<?= base_url('pasien/ajax_get_pasien') ?>");
-
         // load item dropdown
         setSearchableDropdown('selected_item', 3, "<?= base_url('item/ajax_get_item_list') ?>");
     });
@@ -353,7 +350,8 @@
     $('#modal_add').on('hidden.bs.modal', function () {
         // Clear form fields
         clearFieldValue([
-            'jumlah', 'selected_item_nama', 'selected_item_satuan', 'selected_item_harga'
+            'jumlah', 'selected_item_nama', 'selected_item_satuan', 'selected_item_harga',
+            'harga'
         ]);
 
         // clear itemDetails content
@@ -370,17 +368,18 @@
             '<td>' + $('#selected_item_nama').val() + '</td>' +
             '<td>' + $('#jumlah').val() + '</td>' +
             '<td>' + $('#selected_item_satuan').val() + '</td>' +
-            '<td>' + $('#jumlah').val() * $('#selected_item_harga').val() + '</td>' +
+            '<td>' + $('#harga').val() + '</td>' +
             '<td>' +
-            '<input type="hidden" name="id_item" value="' + $('#selected_item_id').val() + '">' +
-            '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
+                '<input type="hidden" name="id_item" value="' + $('#selected_item_id').val() + '">' +
+                '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
             '</td>' +
             '</tr>'
         );
 
         // Clear form fields
         clearFieldValue([
-            'jumlah', 'selected_item_nama', 'selected_item_satuan', 'selected_item_harga'
+            'jumlah', 'selected_item_nama', 'selected_item_satuan', 'selected_item_harga',
+            'harga'
         ]);
 
         // reset dropdown produk
@@ -407,7 +406,6 @@
             success: function(response) {
                 $('#selected_item_nama').val(response.nama);
                 $('#selected_item_satuan').val(response.nama_satuan);
-                $('#selected_item_harga').val(response.item_price);
                 $('#selected_item_id').val(idItem);
             },
             error: function(xhr, status, error) {
