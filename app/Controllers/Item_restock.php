@@ -27,7 +27,68 @@ class Item_restock extends Controller
     }
 	
     // add ==================================================================================================
-    public function add() {
+    public function add(){
+        $itemDetail = $this->request->getPost('item_detail');
+        $allInsertionsSuccessful = true;
+
+        if (!empty($itemDetails) && is_array($itemDetails)) {
+            foreach ($itemDetails as $item) {
+                // Insert transaksi detail
+                $payload_restock = [
+                    'type' => 'pembelian',
+                    'id_item' => $item['id_item'],
+                    'quantity' => $item['jumlah'],
+                    'unit' => $item['satuan'],
+                    'price' => $item['harga'],
+                    'restock_date' => $this->request->getPost('restock_date')
+                ];
+                $insertedRestockId = $this->Model_item_restock->insertWithReturnId($payload_restock);
+
+                if ($insertedRestockId) {
+                    // Inject invoice code
+                    $data_restock_update = [
+                        'code' => generate_general_code('RST', $insertedRestockId, 9)
+                    ];
+                    $updateRestock = $this->Model_item_restock->update($insertedRestockId, $data_restock_update);
+
+                    // Insert transaksi stock
+                    $payload_add_transaksi_stock = [
+                        'id_item' => $item['id_item'],
+                        'jumlah' => -$item['jumlah'], 
+                        'jenis' => 'masuk', 
+                        'kegiatan' => 'restock',
+                        'id_kegiatan' => $insertedRestockId, 
+                        'tanggal_kegiatan' => $this->request->getPost('restock_date'),
+                        'id_entitas' => sess_activeEntitasId(),
+                        'created_by' => sess_activeUserId()
+                    ];
+                    $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
+                } else {
+                    // If any insertion fails, mark allInsertionsSuccessful as false
+                    $allInsertionsSuccessful = false;
+                    break;
+                }
+            }
+        } else {
+            // Handle the case where itemDetails is empty or not an array
+            $allInsertionsSuccessful = false;
+        }
+   
+        if ($allInsertionsSuccessful) {
+            $response = [
+                'success' => true,
+                "isRedirect" => true
+            ];
+        } else {
+            $response = [
+                'success' => false
+            ];
+        }
+
+        return json_encode($response);
+    }
+
+    public function add_1() {
         // Start the transaction
         $this->db->transBegin();
     
