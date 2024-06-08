@@ -68,7 +68,15 @@ class Item extends Controller
             );
             $data['image_filename'] = $uploaded_file->getName();
             $data['created_by'] = sess_activeUserId();
-            $insertData = $this->model_item->save($data);
+            $insertedId = $this->model_item->insertWithReturnId($data);
+
+            if($insertedId){
+                // inject invoice code
+                $item_code_update = [
+                    'kode_item' => generate_general_code('ITEM', $insertDataId, 9)
+                ];
+                $updateResult = $this->model_item->update($insertedId, $item_code_update);
+            }
             
             // return and notif wa
             if ($store_file && $insertData){

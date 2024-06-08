@@ -337,4 +337,17 @@ class Model_item extends Model
         return $result;
     }
 
+    // insert with db transaction
+    public function insertWithReturnId($data) {
+        $this->db->transBegin();
+
+        $this->db->table($this->table)->insert($data);
+
+        $transactionId = $this->db->insertID();
+
+        $this->db->transCommit();
+
+        return $transactionId;
+    }
+
 }
