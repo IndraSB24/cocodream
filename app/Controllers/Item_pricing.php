@@ -124,9 +124,50 @@ class Item_pricing extends Controller
         return $this->response->setJSON($response);
     }
 
-    // ajax get list item
-    public function ajax_get_list_item_pricing(){
-        $returnedData = $this->Model_item_pricing->get_datatable_main();
+    // ajax get selling price
+    public function ajax_get_list_selling(){
+        $returnedData = $this->Model_item_pricing->get_datatable_selling_price();
+
+        $data = [];
+        foreach ($returnedData['return_data'] as $itung => $baris) {
+            $status = $baris->is_active == 1 ?
+                '
+                    <span class="badge badge-xl badge-soft-success">
+                        Active
+                    </span>
+                ' :
+                '
+                    <span class="badge badge-xl badge-soft-danger">
+                        Not Active
+                    </span>
+                '
+            ;
+
+            $data[] = [
+                '<span class="text-center">' . ($itung + 1) . '</span>',
+                '<span class="text-center">' . $baris->item_code . '</span>',
+                '<span class="text-center">' . $baris->item_name . '</span>',
+                '<span class="text-center">' . thousand_separator($baris->price) . '</span>',
+                '<span class="text-center">' . $baris->nama_satuan . '</span>',
+                '<span class="text-center">' . indoDate($baris->start_date)	 . '</span>',
+                '<span class="text-center">' . $status . '</span>'
+            ];
+        }
+
+        $output = [
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $returnedData['count_filtered'],
+            "recordsFiltered" => $returnedData['count_all'],
+            "data" => $data,
+        ];
+
+        // Output to JSON format
+        return $this->response->setJSON($output);
+    }
+
+    // ajax get hpp
+    public function ajax_get_list_hpp(){
+        $returnedData = $this->Model_item_pricing->get_datatable_hpp();
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {

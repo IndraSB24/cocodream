@@ -115,7 +115,7 @@ class Model_item_pricing extends Model
         ->join('item i', 'i.id=item_pricing.id_item', 'LEFT')
         ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
         ->join('entitas e', 'e.id=item_pricing.id_entitas', 'LEFT')
-        ->where('item_pricing.price_type', 'selling')
+        ->where('item_pricing.price_type', 'hpp')
         ->where('item_pricing.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {
