@@ -31,8 +31,8 @@ class Model_item_pricing extends Model
         return $this->countAllResults();
     }
 
-    // ajax for  list stock management
-    public function get_datatable_main(){
+    // datatable get sellin price
+    public function get_datatable_selling_price(){
         $request = service('request');
 
         // set searchable and orderable
@@ -53,6 +53,69 @@ class Model_item_pricing extends Model
         ->join('item i', 'i.id=item_pricing.id_item', 'LEFT')
         ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
         ->join('entitas e', 'e.id=item_pricing.id_entitas', 'LEFT')
+        ->where('item_pricing.price_type', 'selling')
+        ->where('item_pricing.deleted_at', NULL);
+
+        if ($request->getPost('search')['value']) {
+            $searchValue = $request->getPost('search')['value'];
+            $i = 0;
+            foreach ($column_searchable as $item) {
+                if ($i === 0) {
+                    $this->groupStart(); 
+                    $this->like($item, $searchValue);
+                } else {
+                    $this->orLike($item, $searchValue);
+                }
+                if (count($column_searchable) - 1 == $i) {
+                    $this->groupEnd(); 
+                }
+                $i++;
+            }
+        }
+
+        if ($request->getPost('order')) {
+            $orderColumn = $column_orderable[$request->getPost('order')[0]['column']];
+            $orderDirection = $request->getPost('order')[0]['dir'];
+            $this->orderBy($orderColumn, $orderDirection);
+        } else {
+            $this->orderBy('id', 'ASC');
+        }
+
+        if ($request->getPost('length') != -1) {
+            $this->limit($request->getPost('length'), $request->getPost('start'));
+        }
+
+        // result set
+        $result['return_data'] = $this->get()->getResult();
+        $result['count_filtered'] = $this->countAllResults();
+        $result['count_all'] = $this->countNoFiltered();
+
+        return $result;
+    }
+
+    // datatable get hpp
+    public function get_datatable_hpp(){
+        $request = service('request');
+
+        // set searchable and orderable
+        $column_searchable = [
+            'i.nama'
+        ];
+        $column_orderable = [
+            'item_pricing.id', 'i.nama'
+        ];
+
+        $this->select('
+            item_pricing.*,
+            i.kode_item as item_code,
+            i.nama as item_name,
+            sd.nama as nama_satuan,
+            e.nama as entitas_name
+        ')
+        ->join('item i', 'i.id=item_pricing.id_item', 'LEFT')
+        ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
+        ->join('entitas e', 'e.id=item_pricing.id_entitas', 'LEFT')
+        ->where('item_pricing.price_type', 'selling')
         ->where('item_pricing.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {

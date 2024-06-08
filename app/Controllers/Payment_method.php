@@ -18,8 +18,8 @@ class Payment_method extends Controller
     public function index()
     {
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'List Item']),
-			'page_title' => view('partials/page-title', ['title' => 'Mater Data', 'pagetitle' => 'Data Item'])
+			'title_meta' => view('partials/title-meta', ['title' => 'List Metode Bayar']),
+			'page_title' => view('partials/page-title', ['title' => 'Mater Data', 'pagetitle' => 'Data Metode Bayar'])
 		];
         return view('data_master/payment_method/page_list_payment_method', $data);
     }

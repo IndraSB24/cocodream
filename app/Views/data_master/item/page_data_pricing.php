@@ -83,7 +83,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Satuan</h5>
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Harga Jual</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -122,7 +122,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Edit Satuan</h5>
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Edit Harga Jual</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
