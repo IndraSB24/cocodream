@@ -250,7 +250,7 @@
                         rowData.jumlah = parseFloat($(this).text());
                         break;
                     case 2: 
-                        rowData.satuan = parseFloat($(this).text());
+                        rowData.satuan = $(this).text();
                         break;
                     case 3: 
                         rowData.harga = parseFloat($(this).text());
