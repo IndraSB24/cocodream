@@ -98,19 +98,14 @@ class Item_restock extends Controller
 
     // ajax get list item
     public function ajax_get_list_main(){
-        $returnedData = $this->Model_distribution_channel->get_datatable_main();
+        $returnedData = $this->Model_item_restock->get_datatable_main();
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
             $aksi = "
-                <a class='btn btn-sm btn-info' id='btn_edit'
-                    data-id='$baris->id'
-                >
-                    <i class='far fa-edit'></i>
-                </a>
                 <a class='btn btn-sm btn-danger' id='btn_delete' 
                     data-id='$baris->id'
-                    data-kode='$baris->kode'
+                    data-code='$baris->code'
                 > 
                     <i class='fas fa-trash-alt'></i>
                 </a>
@@ -118,9 +113,13 @@ class Item_restock extends Controller
 
             $data[] = [
                 '<span class="text-center">' . ($itung + 1) . '</span>',
-                '<span class="text-center">' . $baris->kode . '</span>',
-                '<span class="text-center">' . $baris->name . '</span>',
-                '<span class="text-center">' . $baris->description . '</span>',
+                '<span class="text-center">' . $baris->code . '</span>',
+                '<span class="text-center">' . $baris->type . '</span>',
+                '<span class="text-center">' . $baris->item_name .' ('.$baris->item_code.')'. '</span>',
+                '<span class="text-center">' . $baris->quantity . '</span>',
+                '<span class="text-center">' . $baris->unit . '</span>',
+                '<span class="text-center">' . $baris->price . '</span>',
+                '<span class="text-center">' . $baris->restock_date . '</span>',
                 '<span class="text-center">' . $aksi . '</span>'
             ];
         }

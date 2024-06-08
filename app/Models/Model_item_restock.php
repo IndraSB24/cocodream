@@ -14,7 +14,7 @@ class Model_item_restock extends Model
 
     protected $allowedFields = [
         'id_item', 'quantity', 'restock_date', 'id_entitas', 'created_by',
-        'unit', 'type', 'price'
+        'unit', 'type', 'price', 'code'
     ];
 
     protected $useTimestamps = true;
@@ -49,16 +49,19 @@ class Model_item_restock extends Model
 
         // set searchable and orderable
         $column_searchable = [
-            'name', 'description'
+            
         ];
         $column_orderable = [
-            'id', 'name', 'description'
+            'item_restock.id'
         ];
 
         $this->select('
-            *
+            item_restock.*,
+            i.kode_item as item_code,
+            i.nama as item_name
         ')
-        ->where('deleted_at', NULL);
+        ->join('item i', 'i.id=item_restock.id_item', 'LEFT')
+        ->where('item_restock.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];

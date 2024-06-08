@@ -42,20 +42,20 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="table-responsive">
+                                        <!-- <div class="table-responsive"> -->
                                             <table id="main_table" class="table table-bordered nowrap" 
                                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;"
                                             >
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">No.</th>
-                                                        <th class="text-center">No Invoice</th>
-                                                        <th class="text-center">Kode Registrasi</th>
-                                                        <th class="text-center">Nama Pasien</th>
-                                                        <th class="text-center">Waktu</th>
-                                                        <th class="text-center">Subtotal</th>
-                                                        <th class="text-center">Status Pembayaran</th>
-                                                        <th class="text-center">Detail</th>
+                                                        <th class="text-center">Kode Restok</th>
+                                                        <th class="text-center">Tipe</th>
+                                                        <th class="text-center">Nama Item</th>
+                                                        <th class="text-center">Jumlah</th>
+                                                        <th class="text-center">Satuan</th>
+                                                        <th class="text-center">Harga Beli (Total)</th>
+                                                        <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -63,7 +63,7 @@
                                                     <!-- Table rows will be added dynamically -->
                                                 </tbody>
                                             </table>
-                                        </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
                             </div> <!-- end col -->
@@ -87,7 +87,7 @@
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Transaksi</h5>
+                        <h5 class="modal-title text-light" id="myLargeModalLabel">Tambah Restok</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="btn_close_modal_add"
                         >
@@ -97,24 +97,18 @@
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="pasien" class="form-label">Pasien</label>
-                                    <select class="form-control select2" id="pasien" name="pasien" style="width: 100%;">
-                                        <option value="">Pilih Pasien</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="tanggal" class="form-label">Tanggal</label>
-                                    <input class="form-control" type="datetime-local" id="tanggal" name="tanggal" />
+                                    <label for="restock_date" class="form-label">Tanggal</label>
+                                    <input class="form-control" type="datetime-local" id="restock_date" name="restock_date" />
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <div class="card">
-                                        <div class="card-header">Detail Transaction</div>
+                                        <div class="card-header">Detail Restok</div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-sm-6 mb-3">
-                                                    <label for="selected_item">Produk</label>
+                                                    <label for="selected_item">Item</label>
                                                     <select class="form-control select2" id="selected_item" name="selected_item" style="width: 100%;">
-                                                        <option value="">Pilih Produk</option>
+                                                        <option value="">Pilih Item</option>
                                                     </select>
                                                     <input type="hidden" id="selected_item_nama"/>
                                                     <input type="hidden" id="selected_item_harga"/>
@@ -126,12 +120,12 @@
                                                 </div>
                                                 <div class="col-sm-2 mb-3">
                                                     <label for="satuan">Satuan</label>
-                                                    <input type="text" id="selected_item_satuan" class="form-control"/>
+                                                    <input type="text" id="selected_item_satuan" class="form-control text-center"/>
                                                 </div>
                                                 <div class="col-sm-2 mb-3">
                                                     <label for="btn_add_item" class="text-white">btn</label>
                                                     <span class="btn btn-primary form-control" id="btn_add_item">
-                                                        Add Transaction
+                                                        Tambah
                                                     </span>
                                                 </div>
                                             </div>
@@ -140,7 +134,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Produk</th>
-                                                        <th>Harga Satuan</th>
                                                         <th>Jumlah</th>
                                                         <th>Satuan</th>
                                                         <th>Harga</th>
@@ -160,50 +153,6 @@
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_simpan">
                                         Simpan
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal edit -->
-        <div id="modal_edit" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-light" id="myLargeModalLabel">Edit Satuan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12 mb-3">
-                                    <label for="kode_urut_edit" class="form-label">Kode Urut</label>
-                                    <input class="form-control text-center" type="text" id="kode_urut_edit" name="kode_urut_edit" disabled />
-                                    <input type="hidden" id="edit_id" name="edit_id" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="kode_edit" class="form-label">Kode Satuan</label>
-                                    <input class="form-control" type="text" id="kode_edit" name="kode_edit" placeholder="Kode Satuan" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="nama_edit" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama_edit" name="nama_edit" placeholder="Nama Satuan" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="deskripsi_edit" class="form-label">Deskripsi</label>
-                                    <input class="form-control" type="text" id="deskripsi_edit" name="deskripsi_edit" placeholder="Deskripsi" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12" style="text-align: right">
-                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit" 
-                                        data-path="<?= base_url('satuan/edit/satuan') ?>"
-                                    >
-                                        Konfirmasi Edit
                                     </button>
                                 </div>
                             </div>
@@ -258,7 +207,7 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?= site_url('transaksi/ajax_get_list_transaksi') ?>",
+                "url": "<?= site_url('item_restock/ajax_get_list_main') ?>",
                 "type": "POST",
                 "data": function (data) {
                     data.searchValue = $('#main_table_filter input').val();

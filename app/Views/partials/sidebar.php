@@ -54,8 +54,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('data-stock-get-list') ?>">Buffer Stok</a></li>
                         <li><a href="<?= base_url('data-transaksi-stock-get-list') ?>">Transaksi Stok</a></li>
-                        <li><a href="<?= base_url('stock-opname-get-list') ?>">Stok Opname</a></li>
-                        
+                        <li><a href="<?= base_url('restock-get-list') ?>">Restock</a></li>
                     </ul>
                 </li>
 

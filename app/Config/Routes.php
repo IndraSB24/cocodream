@@ -100,7 +100,7 @@ $routes->get('emr-show-list', 'Emr::index');
 // Inventory
 $routes->get('data-stock-get-list', 'Item_stock_management::index');
 $routes->get('data-transaksi-stock-get-list', 'Item_transaksi_stock::index');
-$routes->get('stock-management-get-list', 'Item_stock_management::show_stock_management');
+$routes->get('restock-get-list', 'Item_restock::index');
 
 // Cash Drawer
 $routes->get('cashdrawer-get-list', 'Cash_drawer::index');
