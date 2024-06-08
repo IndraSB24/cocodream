@@ -5,13 +5,15 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use App\Models\Model_item_restock;
+use App\Models\Model_item_transaksi_stock;
 
 class Item_restock extends Controller
 {
-    protected $Model_item_restock;
+    protected $Model_item_restock, $Model_item_transaksi_stock;
  
     function __construct(){
         $this->Model_item_restock = new Model_item_restock();
+        $this->Model_item_transaksi_stock = new Model_item_transaksi_stock();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -26,33 +28,68 @@ class Item_restock extends Controller
 	
     // add ==================================================================================================
     public function add(){
-        $data = array_intersect_key(
-            $this->request->getPost(),
-            array_flip([
-                'name', 'description'
-            ])
-        );
-        $data['created_by'] = sess_activeUserId();
-        $insertDataId = $this->Model_distribution_channel->insertWithReturnId($data);
+        // insert transaction
+        $data = [
+            'transaction_date' => date('Y-m-d H:i:s'),
+            'payment_status' => 'Dibayar',
+            'created_by' => sess_activeUserId()
+        ];
+        $insertDataId = $this->Model_transaksi->insertWithReturnId($data);
 
-        if ($insertDataId){
-            $data_update = [
-                'kode' => generate_general_code('PM', $insertDataId, 3)
-            ];
-            $updateResult = $this->Model_distribution_channel->update($insertDataId, $data_update);
+        $itemDetail = $this->request->getPost('item_detail');
+        $allInsertionsSuccessful = true;
 
-            if($updateResult){
-                $response = ['success' => true];
-            } else {
-                $response = [
-                    'success' => false,
-                    'message' => 'failed to update kode'
+        if (!empty($itemDetails) && is_array($itemDetails)) {
+            foreach ($itemDetails as $item) {
+                // Insert transaksi detail
+                $payload_restock = [
+                    'type' => 'pembelian',
+                    'id_item' => $item['id_item'],
+                    'quantity' => $item['jumlah'],
+                    'unit' => $item['satuan'],
+                    'price' => $item['harga'],
+                    'restock_date' => $this->request->getPost('restock_date')
                 ];
+                $insertedRestockId = $this->Model_item_restock->insertWithReturnId($payload_restock);
+
+                if ($insertedRestockId) {
+                    // Inject invoice code
+                    $data_restock_update = [
+                        'code' => generate_general_code('RST', $insertedRestockId, 9)
+                    ];
+                    $updateRestock = $this->Model_item_restock->update($insertedRestockId, $data_restock_update);
+
+                    // Insert transaksi stock
+                    $payload_add_transaksi_stock = [
+                        'id_item' => $item['id_item'],
+                        'jumlah' => -$item['jumlah'], 
+                        'jenis' => 'masuk', 
+                        'kegiatan' => 'restock',
+                        'id_kegiatan' => $insertedRestockId, 
+                        'tanggal_kegiatan' => $this->request->getPost('restock_date'),
+                        'id_entitas' => sess_activeEntitasId(),
+                        'created_by' => sess_activeUserId()
+                    ];
+                    $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
+                } else {
+                    // If any insertion fails, mark allInsertionsSuccessful as false
+                    $allInsertionsSuccessful = false;
+                    break;
+                }
             }
         } else {
+            // Handle the case where itemDetails is empty or not an array
+            $allInsertionsSuccessful = false;
+        }
+   
+        if ($allInsertionsSuccessful) {
             $response = [
-                'success' => false,
-                'message' => 'failed'
+                'success' => true,
+                "isRedirect" => true
+            ];
+        } else {
+            $response = [
+                'success' => false
             ];
         }
 

@@ -247,13 +247,13 @@
                         rowData.nama = $(this).text();
                         break;
                     case 1:
-                        rowData.harga = parseFloat($(this).text());
-                        break;
-                    case 2: 
                         rowData.jumlah = parseFloat($(this).text());
                         break;
+                    case 2: 
+                        rowData.satuan = parseFloat($(this).text());
+                        break;
                     case 4: 
-                        rowData.total = parseFloat($(this).text());
+                        rowData.harga = parseFloat($(this).text());
                         break;
                     case 5:
                         rowData.id_item = $(this).find('input[name="id_item"]').val();
@@ -265,15 +265,14 @@
         });
 
         const data = {
-            id_pasien: $('#pasien').val(),
-            transaction_date: $('#tanggal').val(),
-            transaction_detail: rowsData
+            restock_date: $('#restock_date').val(),
+            item_detail: rowsData
         };
         console.log(data);
         
         loadQuestionalSwal(
-            path, data, 'Tambah transaksi ?', 
-            'Disimpan!', 'Transaksi baru berhasil ditambahkan', 'modal_add'
+            path, data, 'Tambah restok ?', 
+            'Disimpan!', 'Restok berhasil disimpan', 'modal_add'
         );
     });
 
@@ -288,52 +287,6 @@
         loadQuestionalSwal(
             path, data, 'Hapus transaksi dengan nomor invoice: '+thisData['invoice']+' ?', 
             'Dihapus!', 'Transaksi dengan invoice: '+thisData['invoice']+' berhasil dihapus.', ''
-        );
-    });
-
-    // load edit modal
-    $(document).on('click', '#btn_edit_1', function() {
-        var editId = $(this).data('id');
-        const path = "<?= site_url('satuan/ajax_get/edit_data') ?>";
-        const kode_urut = $(this).data('kode_urut');
-        
-        $.ajax({
-            url: path,
-            method: 'POST',
-            data: { edit_id: editId },
-            dataType: 'json',
-            success: function(response) {
-                // Populate modal fields with fetched data
-                $('#edit_id').val(editId);
-                $('#kode_urut_edit').val(kode_urut);
-                $('#kode_edit').val(response.kode);
-                $('#nama_edit').val(response.nama);
-                $('#deskripsi_edit').val(response.deskripsi);
-                
-                // Show the modal
-                $('#modal_edit').modal('show');
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.error(xhr.responseText);
-            }
-        });
-    });
-
-    // konfirmasi edit
-    $(document).on('click', '#btn_konfirmasi_edit', function () {
-        const thisData = $(this).data();
-        const path = thisData['path'];
-        const data = {
-            edit_id: $('#edit_id').val(),
-            kode_edit: $('#kode_edit').val(),
-            nama_edit: $('#nama_edit').val(),
-            deskripsi_edit: $('#deskripsi_edit').val()
-        };
-        
-        loadQuestionalSwal(
-            path, data, 'Konfirmasi edit Satuan dengan Kode Urut: '+ $('#kode_urut_edit').val() +' ?', 
-            'Diedit!', 'Satuan dengan kode Urut: '+ $('#kode_urut_edit').val() +' berhasil diedit.', 'modal_edit'
         );
     });
     
