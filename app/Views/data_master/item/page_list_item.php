@@ -221,19 +221,10 @@
                     </div>
                     <div class="modal-body">
                         <form action="#" id="form_modal_edit" method="POST">
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <label for="kode_item_edit" class="form-label">Kode Item</label>
                                     <input class="form-control" type="text" id="kode_item_edit" name="kode_item_edit" placeholder="Kode Item" />
-                                    <input type="hidden" id="edit_id" name="edit_id" />
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="barcode_edit" class="form-label">Barcode</label>
-                                    <input class="form-control" type="text" id="barcode_edit" name="barcode_edit" placeholder="Barcode" />
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="nama_edit" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama_edit" name="nama_edit" placeholder="Nama" />
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="jenis_edit" class="form-label">Jenis</label>
@@ -244,46 +235,28 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="kategori_edit" class="form-label">Kategori</label>
-                                    <select class="form-control select2" id="kategori_edit" name="kategori_edit" >
-                                        <option value="">Pilih Kategori</option>
-                                        <?php foreach ($data_kategori_item as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->kode ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nama_edit" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="nama_edit" name="nama_edit" placeholder="Nama" />
                                 </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="brand_edit" class="form-label">Brand</label>
-                                    <select class="form-control select2" id="brand_edit" name="brand_edit">
-                                        <option value="">Pilih Brand</option>
-                                        <?php foreach ($data_brand as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="supplier_edit" class="form-label">Supplier</label>
-                                    <select class="form-control select2" id="supplier_edit" name="supplier_edit">
-                                        <option value="">Pilih Supplier</option>
-                                        <?php foreach ($data_supplier as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label for="stok_minimum_edit" class="form-label">Stock Minimum</label>
-                                    <input class="form-control" type="number" id="stok_minimum_edit" name="stok_minimum_edit" placeholder="Stock Minimum" />
-                                </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="satuan_edit" class="form-label">Satuan</label>
                                     <select class="form-control select2" id="satuan_edit" name="satuan_edit">
                                         <option value="">Pilih Satuan</option>
                                         <?php foreach ($data_satuan as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->kode ?></option>
+                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="item_image_edit" class="form-label">Gambar Produk</label>
+                                    <div >
+                                        <label for="item_image_edit" id="up_item_image" class="btn btn-info">Choose File</label>
+                                        <input name="item_image_edit" id="item_image_edit" type="file" multiple="multiple" style="display: none;" />
+                                        &nbsp;<span id="item_image_filename">No File Choosen</span>
+                                    </div>
+                                </div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
