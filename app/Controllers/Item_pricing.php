@@ -43,6 +43,23 @@ class Item_pricing extends Controller
 		];
         return view('data_master/item/page_data_pricing', $data);
     }
+
+    // show hpp ================================================
+    public function show_hpp()
+    {
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Data HPP']),
+			'page_title' => view('partials/page-title', ['title' => 'Item', 'pagetitle' => 'Data HPP']),
+            'data_satuan'=> $this->Model_satuan->findAll(),
+            'data_jenis_item'=> $this->Model_kategori->get_item_jenis(),
+            'data_kategori_item'=> $this->Model_kategori->get_item_kategori(),
+            'data_supplier'=> $this->Model_vendors->findAll(),
+            'data_brand'=> $this->Model_brand->findAll(),
+            'data_item' => $this->model_item->findAll(),
+            'data_entitas' => $this->Model_entitas_usaha->findAll()
+		];
+        return view('data_master/item/page_data_pricing_hpp', $data);
+    }
 	
     // add ==================================================================================================
     public function add_price(){

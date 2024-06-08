@@ -104,6 +104,9 @@
                                 <a href="<?= base_url('item_pricing/index') ?>" class="btn btn-info">
                                     Data Harga Jual 
                                 </a>
+                                <a href="<?= base_url('item_pricing/show_hpp') ?>" class="btn btn-info">
+                                    Data HPP 
+                                </a>
                             </div>
                         </div>
                         
