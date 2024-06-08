@@ -49,7 +49,7 @@
                                                         <th class="text-center">No.</th>
                                                         <th class="text-center">Kode Item</th>
                                                         <th class="text-center">Nama Item</th>
-                                                        <th class="text-center">Harga Jual</th>
+                                                        <th class="text-center">HPP</th>
                                                         <th class="text-center">Per Satuan</th>
                                                         <th class="text-center">Tanggal Berlaku</th>
                                                         <th class="text-center">Status</th>
@@ -96,8 +96,8 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-3">
-                                    <label for="harga_jual">Harga Jual</label>
-                                    <input type="number" class="form-control text-center" id="harga_jual"/>
+                                    <label for="harga">HPP</label>
+                                    <input type="number" class="form-control text-center" id="harga"/>
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <label for="satuan">Per Satuan</label>
@@ -227,7 +227,7 @@
         const path = '<?= base_url('item_pricing/add_price/hpp') ?>';
         const data = {
             id_item: $('#selected_item').val(),
-            price: $('#harga_jual').val(),
+            price: $('#harga').val(),
             id_entitas: 1
         };
         
