@@ -252,10 +252,10 @@
                     case 2: 
                         rowData.satuan = parseFloat($(this).text());
                         break;
-                    case 4: 
+                    case 3: 
                         rowData.harga = parseFloat($(this).text());
                         break;
-                    case 5:
+                    case 4:
                         rowData.id_item = $(this).find('input[name="id_item"]').val();
                         break;
                 }
@@ -318,14 +318,14 @@
         // Append transaction details to table with delete button
         $('#itemDetails').append(
             '<tr>' +
-            '<td>' + $('#selected_item_nama').val() + '</td>' +
-            '<td>' + $('#jumlah').val() + '</td>' +
-            '<td>' + $('#selected_item_satuan').val() + '</td>' +
-            '<td>' + $('#harga').val() + '</td>' +
-            '<td>' +
-                '<input type="hidden" name="id_item" value="' + $('#selected_item_id').val() + '">' +
-                '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
-            '</td>' +
+                '<td>' + $('#selected_item_nama').val() + '</td>' +
+                '<td>' + $('#jumlah').val() + '</td>' +
+                '<td>' + $('#selected_item_satuan').val() + '</td>' +
+                '<td>' + $('#harga').val() + '</td>' +
+                '<td>' +
+                    '<input type="hidden" name="id_item" value="' + $('#selected_item_id').val() + '">' +
+                    '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
+                '</td>' +
             '</tr>'
         );
 
