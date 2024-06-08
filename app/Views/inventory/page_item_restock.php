@@ -54,7 +54,7 @@
                                                         <th class="text-center">Nama Item</th>
                                                         <th class="text-center">Jumlah</th>
                                                         <th class="text-center">Satuan</th>
-                                                        <th class="text-center">Harga Beli (Total)</th>
+                                                        <th class="text-center">Harga Total</th>
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
@@ -140,7 +140,7 @@
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="transactionDetails">
+                                                <tbody id="itemDetails">
                                                    
                                                 </tbody>
                                             </table>
@@ -229,11 +229,11 @@
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const thisData = $(this).data();
-        const path = "<?= base_url('transaksi/add_transaksi') ?>";
+        const path = "<?= base_url('item_restock/add') ?>";
         var rowsData = [];
 
         // Iterate over each row in the table
-        $('#transactionDetails tr').each(function() {
+        $('#itemDetails tr').each(function() {
             var rowData = {};
             
             // Find each cell (td) in the current row
@@ -356,8 +356,8 @@
             'jumlah', 'selected_item_nama', 'selected_item_satuan', 'selected_item_harga'
         ]);
 
-        // clear transactionDetails content
-        resetElementValue('transactionDetails');
+        // clear itemDetails content
+        resetElementValue('itemDetails');
     });
 
     // add item
@@ -365,10 +365,9 @@
         e.preventDefault();
 
         // Append transaction details to table with delete button
-        $('#transactionDetails').append(
+        $('#itemDetails').append(
             '<tr>' +
             '<td>' + $('#selected_item_nama').val() + '</td>' +
-            '<td>' + $('#selected_item_harga').val() + '</td>' +
             '<td>' + $('#jumlah').val() + '</td>' +
             '<td>' + $('#selected_item_satuan').val() + '</td>' +
             '<td>' + $('#jumlah').val() * $('#selected_item_harga').val() + '</td>' +
@@ -392,7 +391,7 @@
     });
 
     // Attach click event handler to delete buttons
-    $('#transactionDetails').on('click', '#deleteRow', function () {
+    $('#itemDetails').on('click', '#deleteRow', function () {
         $(this).closest('tr').remove();
     });
 
