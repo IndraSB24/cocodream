@@ -63,7 +63,7 @@ class Item extends Controller
             $data = array_intersect_key(
                 $this->request->getPost(),
                 array_flip([
-                    'kode_item', 'nama', 'id_kategori_jenis', 'id_satuan'
+                    'nama', 'id_kategori_jenis', 'id_satuan'
                 ])
             );
             $data['image_filename'] = $uploaded_file->getName();

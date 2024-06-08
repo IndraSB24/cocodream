@@ -164,9 +164,9 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
-                                <div class="col-lg-6 mb-3">
-                                    <label for="kode_item" class="form-label">Kode Item</label>
-                                    <input class="form-control" type="text" id="kode_item" name="kode_item" placeholder="Kode Item" />
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama" />
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="jenis" class="form-label">Jenis</label>
@@ -176,10 +176,6 @@
                                             <option value="<?= $item->id ?>"><?= $item->nama ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama" />
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label for="satuan" class="form-label">Satuan</label>
