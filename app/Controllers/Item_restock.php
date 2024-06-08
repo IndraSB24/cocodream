@@ -29,8 +29,7 @@ class Item_restock extends Controller
     // add ==================================================================================================
     public function add(){
         $itemDetail = $this->request->getPost('item_detail');
-        $allInsertionsSuccessful = true;
-
+        
         if (!empty($itemDetails) && is_array($itemDetails)) {
             foreach ($itemDetails as $item) {
                 // Insert transaksi detail
@@ -59,25 +58,20 @@ class Item_restock extends Controller
                         'kegiatan' => 'restock',
                         'id_kegiatan' => $insertedRestockId, 
                         'tanggal_kegiatan' => $this->request->getPost('restock_date'),
-                        'id_entitas' => sess_activeEntitasId(),
                         'created_by' => sess_activeUserId()
                     ];
                     $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
-                } else {
-                    // If any insertion fails, mark allInsertionsSuccessful as false
-                    $allInsertionsSuccessful = false;
-                    break;
                 }
             }
         } else {
-            // Handle the case where itemDetails is empty or not an array
-            $allInsertionsSuccessful = false;
+            $response = [
+                'success' => false
+            ];
         }
    
-        if ($allInsertionsSuccessful) {
+        if ($updateRestock) {
             $response = [
-                'success' => true,
-                "isRedirect" => true
+                'success' => true
             ];
         } else {
             $response = [
