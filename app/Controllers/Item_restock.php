@@ -28,14 +28,6 @@ class Item_restock extends Controller
 	
     // add ==================================================================================================
     public function add(){
-        // insert transaction
-        $data = [
-            'transaction_date' => date('Y-m-d H:i:s'),
-            'payment_status' => 'Dibayar',
-            'created_by' => sess_activeUserId()
-        ];
-        $insertDataId = $this->Model_transaksi->insertWithReturnId($data);
-
         $itemDetail = $this->request->getPost('item_detail');
         $allInsertionsSuccessful = true;
 
