@@ -59,7 +59,7 @@ class Item_restock extends Controller
                         'kegiatan' => 'restock',
                         'id_kegiatan' => $insertedRestockId, 
                         'tanggal_kegiatan' => $this->request->getPost('restock_date'),
-                        'id_entitas' => sess_activeEntitasId(),
+                        'id_entitas' => 1,
                         'created_by' => sess_activeUserId()
                     ];
                     $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);

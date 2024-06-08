@@ -116,7 +116,7 @@ class Transaksi extends Controller
                         'kegiatan' => 'penjualan kasir', 
                         'id_kegiatan' => $insertDataId, 
                         'tanggal_kegiatan' => date("Y-m-d"),
-                        'id_entitas' => sess_activeEntitasId(),
+                        'id_entitas' => 1,
                         'created_by' => sess_activeUserId()
                     ];
                     $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
