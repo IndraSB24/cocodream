@@ -79,7 +79,7 @@ class Item extends Controller
             }
             
             // return and notif wa
-            if ($store_file && $insertData){
+            if ($store_file && $insertedId){
                 $response = [
                     'success' => true,
                     'message' => 'File Uploaded successfully.'
