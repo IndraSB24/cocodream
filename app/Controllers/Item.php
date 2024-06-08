@@ -73,7 +73,7 @@ class Item extends Controller
             if($insertedId){
                 // inject invoice code
                 $item_code_update = [
-                    'kode_item' => generate_general_code('ITEM', $insertDataId, 9)
+                    'kode_item' => generate_general_code('ITEM', $insertedId, 9)
                 ];
                 $updateResult = $this->model_item->update($insertedId, $item_code_update);
             }
