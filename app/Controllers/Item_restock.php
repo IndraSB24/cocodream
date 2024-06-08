@@ -54,7 +54,7 @@ class Item_restock extends Controller
                     // Insert transaksi stock
                     $payload_add_transaksi_stock = [
                         'id_item' => $item['id_item'],
-                        'jumlah' => -$item['jumlah'], 
+                        'jumlah' => $item['jumlah'], 
                         'jenis' => 'masuk', 
                         'kegiatan' => 'restock',
                         'id_kegiatan' => $insertedRestockId, 

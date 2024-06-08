@@ -272,7 +272,7 @@
         
         loadQuestionalSwal(
             path, data, 'Tambah restok ?', 
-            'Disimpan!', 'Restok berhasil disimpan', 'modal_add', false
+            'Disimpan!', 'Restok berhasil disimpan', 'modal_add'
         );
     });
 
