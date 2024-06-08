@@ -39,8 +39,8 @@
                         <span>POS</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?= base_url('transaksi-get-list') ?>">Kasir</a></li>
-                        <li><a href="<?= base_url('cashdrawer-get-list') ?>">List Transaksi</a></li>
+                        <li><a href="<?= base_url('transaksi-show-cashier') ?>">Kasir</a></li>
+                        <li><a href="<?= base_url('transaksi-get-list') ?>">List Transaksi</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Cash Drawer</a></li>
                     </ul>
                 </li>

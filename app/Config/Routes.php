@@ -78,7 +78,8 @@ $routes->get('registrasi-get-list', 'Registrasi::index');
 $routes->get('registrasi-show-detail/(:segment)', 'Registrasi::show_registrasi_detail/$1');
 
 // kasir
-$routes->get('transaksi-get-list', 'Transaksi::index');
+$routes->get('transaksi-show-cashier', 'Transaksi::index');
+$routes->get('transaksi-get-list', 'Transaksi::show_list_transaksi');
 $routes->get('transaksi-show-detail/(:segment)', 'Transaksi::show_detail_transaksi/$1');
 
 // kategori
