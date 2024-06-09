@@ -228,7 +228,9 @@
                                     <select class="form-control select2" id="metode_bayar" name="metode_bayar" >
                                         <option value="">Pilih Metode Bayar</option>
                                         <?php foreach ($data_payment_method as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
+                                            <option value="<?= $item->id ?>">
+                                                <?= $item->detail ? $item->name.' ('.$item->detail.')' : $item->name ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
