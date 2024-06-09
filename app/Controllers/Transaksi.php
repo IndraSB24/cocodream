@@ -13,12 +13,14 @@ use App\Models\Model_item_transaksi_stock;
 use App\Models\Model_medical_record;
 use App\Models\Model_medical_record_detail;
 use App\Models\Model_item;
-
+use App\Models\Model_payment_method;
+use App\Models\Model_distribution_channel;
 
 class Transaksi extends Controller
 {
     protected $Model_transaksi, $Model_kategori, $Model_pasien, $Model_transaksi_detail, $Model_transaksi_payment,
-        $Model_item_transaksi_stock, $Model_medical_record, $Model_medical_record_detail, $Model_item;
+        $Model_item_transaksi_stock, $Model_medical_record, $Model_medical_record_detail, $Model_item,
+        $Model_payment_method, $Model_distribution_channel;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
@@ -30,6 +32,8 @@ class Transaksi extends Controller
         $this->Model_medical_record = new Model_medical_record();
         $this->Model_medical_record_detail = new Model_medical_record_detail();
         $this->Model_item = new Model_item();
+        $this->Model_payment_method = new Model_payment_method();
+        $this->Model_distribution_channel = new Model_distribution_channel();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -37,11 +41,12 @@ class Transaksi extends Controller
         $data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Kasir']),
 			'page_title' => view('partials/page-title', ['title' => 'POS', 'pagetitle' => 'Kasir']),
-            'data_payment_method' => $this->Model_kategori->get_payment_method(),
+            'data_payment_method' => $this->Model_payment_method->findAll(),
             'data_payment_status' => $this->Model_kategori->get_payment_status(),
             'data_registration_status' => $this->Model_kategori->get_registration_status(),
             'data_pasien' => $this->Model_pasien->findAll(),
-            'items' => $this->Model_item->get_all_array()
+            'items' => $this->Model_item->get_all_array(),
+            'data_distribution_channel' => $this->Model_distribution_channel->findAll()
 		];
         return view('kasir/page_kasir', $data);
     }
@@ -81,6 +86,8 @@ class Transaksi extends Controller
         $data = [
             'transaction_date' => date('Y-m-d H:i:s'),
             'payment_status' => 'Dibayar',
+            'id_distribution_channel' => $this->request->getPost('id_distribution_channel'),
+            'id_payment_method' => $this->request->getPost('id_payment_method'),
             'created_by' => sess_activeUserId()
         ];
         $insertDataId = $this->Model_transaksi->insertWithReturnId($data);

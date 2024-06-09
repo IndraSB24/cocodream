@@ -215,11 +215,20 @@
                                 </div>
                                 <hr>
                                 <div class="col-lg-6 mb-3">
+                                    <label for="distribution_channel" class="form-label">Channel Distribusi</label>
+                                    <select class="form-control select2" id="distribution_channel" name="distribution_channel" >
+                                        <option value="">Pilih Channel Distribusi</option>
+                                        <?php foreach ($data_distribution_channel as $item): ?>
+                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 mb-3">
                                     <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
                                     <select class="form-control select2" id="metode_bayar" name="metode_bayar" >
                                         <option value="">Pilih Metode Bayar</option>
                                         <?php foreach ($data_payment_method as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->nama ?></option>
+                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -227,7 +236,7 @@
                                     <label for="nominal_dibayar" class="form-label">Nominal bayar</label>
                                     <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
-                                <div class="col-lg-12 mb-3">
+                                <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Nominal Kembalian</label>
                                     <input class="form-control text-center" type="text" id="nominal_kembalian" name="nominal_kembalian" readonly/>
                                 </div>
@@ -449,7 +458,8 @@
             nominal_akhir: $('#harga_akhir').val(),
             nominal_bayar: $('#nominal_dibayar').val(),
             nominal_kembalian: $('#nominal_kembalian').val(),
-            id_payment_method: $('#metode_bayar').val()
+            id_payment_method: $('#metode_bayar').val(),
+            id_distribution_channel: $('#distribution_channel').val()
         };
         
         loadQuestionalSwal(

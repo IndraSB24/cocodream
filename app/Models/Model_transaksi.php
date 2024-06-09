@@ -15,7 +15,7 @@ class Model_transaksi extends Model
     protected $allowedFields = [
         'id_registration', 'id_pasien', 'transaction_date', 'total_amount', 'id_payment_method', 
         'payment_status', 'is_online_shop', 'is_from_registration', 'created_by', 'id_entitas', 
-        'no_invoice'
+        'no_invoice', 'id_distribution_channel'
     ];
 
     protected $useTimestamps = true;
