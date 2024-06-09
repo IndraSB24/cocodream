@@ -229,7 +229,7 @@
                                         <option value="">Pilih Metode Bayar</option>
                                         <?php foreach ($data_payment_method as $item): ?>
                                             <option value="<?= $item->id ?>">
-                                                <?= $item->detail ? $item->name.' ('.$item->detail.')' : $item->name ?>
+                                                <?= $item->detail ? $item->name.' - '.$item->detail : $item->name ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
