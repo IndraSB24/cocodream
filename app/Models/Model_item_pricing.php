@@ -13,7 +13,8 @@ class Model_item_pricing extends Model
     protected $useAutoIncrement = true;
 
     protected $allowedFields = [
-        'id_item', 'price', 'start_date', 'end_date', 'id_entitas', 'created_by', 'is_active'
+        'id_item', 'price', 'start_date', 'end_date', 'id_entitas', 'created_by', 'is_active',
+        'price_type'
     ];
 
     protected $useTimestamps = true;
