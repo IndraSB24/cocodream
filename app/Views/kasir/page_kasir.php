@@ -216,7 +216,7 @@
                                 <hr>
                                 <div class="col-lg-6 mb-3">
                                     <label for="distribution_channel" class="form-label">Channel Distribusi</label>
-                                    <select class="form-control select2" id="distribution_channel" name="distribution_channel" >
+                                    <select class="form-control" id="distribution_channel" name="distribution_channel" >
                                         <option value="">Pilih Channel Distribusi</option>
                                         <?php foreach ($data_distribution_channel as $item): ?>
                                             <option value="<?= $item->id ?>"><?= $item->name ?></option>
@@ -225,7 +225,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
-                                    <select class="form-control select2" id="metode_bayar" name="metode_bayar" >
+                                    <select class="form-control" id="metode_bayar" name="metode_bayar" >
                                         <option value="">Pilih Metode Bayar</option>
                                         <?php foreach ($data_payment_method as $item): ?>
                                             <option value="<?= $item->id ?>">
