@@ -147,7 +147,8 @@ class Transaksi extends Controller
                     'success' => true,
                     "isRedirect" => true,
                     // "redirectUrl" => base_url('transaksi/printReceipt/'.$insertDataId)
-                    "isPrintUrl" => base_url('transaksi/printReceipt/'.$insertDataId)
+                    // "isPrintUrl" => base_url('transaksi/printReceipt/'.$insertDataId)
+                    "isPrintUrl" => 'test Boy !!!!'
                 ];
             } else {
                 $response = [

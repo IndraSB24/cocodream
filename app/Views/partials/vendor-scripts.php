@@ -53,7 +53,9 @@
                         }
 
                         if (response.isPrintUrl) {
-                            ajax_print(response.isPrintUrl);
+                            // ajax_print(response.isPrintUrl);
+                            // window.location.href = response.isPrintUrl;
+                            BtPrint(response.isPrintUrl);
                         }
                         
                     });
@@ -205,6 +207,14 @@
             socket.close(1000, "Work complete");
         };
     }
+
+    function BtPrint(prn) {
+        var S = "#Intent;scheme=rawbt;";
+        var P =  "package=ru.a402d.rawbtprinter;end;";
+        var textEncoded = encodeURI(prn);
+        window.location.href = "intent:" + textEncoded + S + P;
+    }
+
 
 
 
