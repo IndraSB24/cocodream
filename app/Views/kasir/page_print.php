@@ -6,7 +6,7 @@
     <title>Pratinjau Cetak Printer Thermal</title>
     <style>
         @page {
-            size: 80mm auto; /* Specify the page size for the thermal printer */
+            size: 58mm auto; /* Specify the page size for the thermal printer */
             margin: 0; /* Remove default margins */
         }
 
@@ -17,7 +17,7 @@
         }
 
         .receipt {
-            width: 80mm; /* Set width for thermal printer */
+            width: 58mm; /* Set width for thermal printer */
             padding: 5mm;
             border: 1px solid #ddd;
             margin: auto;
