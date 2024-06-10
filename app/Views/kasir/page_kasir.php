@@ -286,8 +286,8 @@
                 <tr>
                     <td>${itemName}</td>
                     <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
-                    <td>Rp. ${itemPrice.toLocaleString()}</td>
-                    <td>Rp. ${(itemTotal).toLocaleString()}</td>
+                    <td>Rp. ${itemPrice}</td>
+                    <td>Rp. ${itemTotal}</td>
                     <td>
                         <input type="hidden" name="id_item" value="${itemId}">
                         <input type="hidden" name="item_unit" value="${itemUnit}">
