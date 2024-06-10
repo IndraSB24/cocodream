@@ -224,11 +224,12 @@
     // simpan
     $(document).on('click', '#btn_simpan', function () {
         const thisData = $(this).data();
-        const path = '<?= base_url('item_pricing/add_price/selling') ?>';
+        const path = '<?= base_url('item_pricing/add_price') ?>';
         const data = {
             id_item: $('#selected_item').val(),
             price: $('#harga_jual').val(),
-            id_entitas: 1
+            id_entitas: 1,
+            price_type: 'selling'
         };
         
         loadQuestionalSwal(

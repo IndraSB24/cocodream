@@ -72,10 +72,9 @@ class Item_pricing extends Controller
         $data = array_intersect_key(
             $this->request->getPost(),
             array_flip([
-                'id_item', 'price', 'id_entitas'
+                'id_item', 'price', 'id_entitas', 'price_type'
             ])
         );
-        $data['price_type'] = $type;
         $data['created_by'] = sess_activeUserId();
         $data['is_active'] = 1;
         $data['start_date'] = date('Y-m-d');
