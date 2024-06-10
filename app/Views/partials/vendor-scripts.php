@@ -51,6 +51,10 @@
                         if (response.isRedirect === true && response.redirectUrl) {
                             window.location.href = response.redirectUrl;
                         }
+
+                        if (response.isPrintUrl) {
+                            ajax_print(printUrl);
+                        }
                         
                     });
                 }, 'json');
@@ -172,6 +176,36 @@
         // Remove both commas and dots from the string
         return value.replace(/[.]/g, '');
     }
+
+    function ajax_print(url, btn) {
+        $.get(url, function (data) {
+            var ua = navigator.userAgent.toLowerCase();
+            var isAndroid = ua.indexOf("android") > -1;
+            if (isAndroid) {
+                android_print(data);
+            } else {
+                pc_print(data);
+            }
+        });
+    }
+
+    function android_print(data) {
+        // Android specific printing logic
+        window.location.href = data;
+    }
+
+    function pc_print(data) {
+        var socket = new WebSocket("ws://127.0.0.1:40213/");
+        socket.binaryType = "arraybuffer";  // Fixed typo: bufferType -> binaryType
+        socket.onerror = function(error) {
+            alert("Error connecting to WebSocket");
+        };
+        socket.onopen = function() {
+            socket.send(data);
+            socket.close(1000, "Work complete");
+        };
+    }
+
 
 
 </script>
