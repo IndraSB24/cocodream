@@ -53,7 +53,7 @@
                         }
 
                         if (response.isPrintUrl) {
-                            ajax_print(printUrl);
+                            ajax_print(response.isPrintUrl);
                         }
                         
                     });
