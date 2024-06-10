@@ -53,17 +53,7 @@
                         }
 
                         if (response.isPrintUrl) {
-                            // ajax_print(response.isPrintUrl);
-                            ajax_print(esponse.isPrintUrl).then(
-                            (printResult) => {
-                                console.log('print success');
-                                // Handle the print result here, if needed
-                            },
-                            (printError) => {
-                                console.error('print failed');
-                                // Handle the print error here, if needed
-                            }
-                        );
+                            ajax_print(response.isPrintUrl);
                         }
                         
                     });
