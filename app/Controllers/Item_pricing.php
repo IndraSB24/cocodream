@@ -62,7 +62,7 @@ class Item_pricing extends Controller
     }
 	
     // add ==================================================================================================
-    public function add_price($type){
+    public function add_price(){
         // update is_active of old
         $idItem = $this->request->getPost('id_item');
         $idEntitas = $this->request->getPost('id_entitas');
