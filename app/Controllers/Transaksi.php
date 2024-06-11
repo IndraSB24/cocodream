@@ -143,12 +143,14 @@ class Transaksi extends Controller
             $insertPayment = $this->Model_transaksi_payment->save($dataPayment);
             
             if ($updateResult && $insertPayment) {
+                $printData = [
+                    'dataTransaksi' => $this->Model_transaksi->get_by_id($insertDataId),
+                    'detailTransaksi' => $this->Model_transaksi_detail->get_by_id_transaksi($insertDataId),
+                    'detailBayar' => $this->Model_transaksi_payment->get_by_id_transaksi($insertDataId)
+                ];
                 $response = [
                     'success' => true,
-                    "isRedirect" => true,
-                    // "redirectUrl" => base_url('transaksi/printReceipt/'.$insertDataId)
-                    // "isPrintUrl" => base_url('transaksi/printReceipt/'.$insertDataId)
-                    "isPrintUrl" => 'test Boy !!!!'
+                    'printData' => $printData
                 ];
             } else {
                 $response = [

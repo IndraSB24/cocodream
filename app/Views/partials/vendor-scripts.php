@@ -52,10 +52,13 @@
                             window.location.href = response.redirectUrl;
                         }
 
-                        if (response.isPrintUrl) {
-                            // ajax_print(response.isPrintUrl);
-                            // window.location.href = response.isPrintUrl;
-                            BtPrint(response.isPrintUrl);
+                        if (response.printData) {
+                            var receiptText = generatePlainTextReceipt(
+                                response.printData.dataTransaksi,
+                                response.printData.detailTransaksi,
+                                response.printData.detailBayar
+                            );
+                            BtPrint(receiptText);
                         }
                         
                     });
@@ -214,6 +217,37 @@
         var textEncoded = encodeURI(prn);
         window.location.href = "intent:" + textEncoded + S + P;
     }
+
+    function generatePlainTextReceipt(dataTransaksi, detailTransaksi, detailBayar) {
+        let receipt = "";
+        receipt += "Cocodream\n";
+        receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
+        receipt += "-------------------------------\n";
+        receipt += `Invoice: ${dataTransaksi[0].invoice}\n`;
+        receipt += `Waktu: ${dataTransaksi[0].transaction_date}\n`;
+        receipt += `Pelanggan: ${dataTransaksi[0].nama_pasien}\n`;
+        receipt += "-------------------------------\n";
+
+        detailTransaksi.forEach(item => {
+            receipt += `${item.nama_item}\n`;
+            receipt += `  ${item.quantity} x Rp. ${thousand_separator(item.subtotal)}\n`;
+        });
+
+        receipt += "-------------------------------\n";
+        receipt += `Total: Rp. ${thousand_separator(dataTransaksi[0].totalPrice)}\n`;
+        receipt += `Diskon: Rp. ${thousand_separator(detailBayar[0].diskon_basic + detailBayar[0].diskon_tambahan)}\n`;
+        receipt += `Tunai: Rp. ${thousand_separator(detailBayar[0].nominal_bayar)}\n`;
+        receipt += `Kembali: Rp. ${thousand_separator(detailBayar[0].nominal_kembalian)}\n`;
+        receipt += "-------------------------------\n";
+        receipt += "Terima kasih atas kunjungan Anda\n";
+
+        return receipt;
+    }
+
+    function thousand_separator(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
 
 
 
