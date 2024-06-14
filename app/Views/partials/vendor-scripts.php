@@ -254,9 +254,7 @@
         receipt += "-------------------------------\n";
         receipt += "Terima kasih atas kunjungan Anda\n";
         receipt += "Tiktok: cocodream_pku\n";
-        receipt += "Instagram: almeiradeganjelly\n";
-
-        receipt += "\x1D\x56\x00";
+        receipt += "Instagram: almeiradeganjelly\n\n";
 
         return receipt;
     }
