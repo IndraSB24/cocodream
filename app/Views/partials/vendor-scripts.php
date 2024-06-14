@@ -54,12 +54,12 @@
 
                         if (response.printData) {
                             console.log(response.printData, 'PRINT DATA');
-                            // var receiptText = generatePlainTextReceipt(
-                            //     response.printData.dataTransaksi,
-                            //     response.printData.detailTransaksi,
-                            //     response.printData.detailBayar
-                            // );
-                            // BtPrint(receiptText);
+                            var receiptText = generatePlainTextReceipt(
+                                response.printData.dataTransaksi,
+                                response.printData.detailTransaksi,
+                                response.printData.detailBayar
+                            );
+                            BtPrint(receiptText);
                             // BtPrint("Hello, World!");
                         }
                         
@@ -220,14 +220,13 @@
         window.location.href = "intent:" + textEncoded + S + P;
     }
 
-    function generatePlainTextReceipt(dataTransaksi, detailTransaksi, detailBayar) {
+    function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[]) {
         let receipt = "";
         receipt += "Cocodream\n";
         receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
         receipt += "-------------------------------\n";
-        receipt += `Invoice: ${dataTransaksi[0].invoice}\n`;
+        receipt += `Invoice: ${dataTransaksi[0].no_invoice}\n`;
         receipt += `Waktu: ${dataTransaksi[0].transaction_date}\n`;
-        receipt += `Pelanggan: ${dataTransaksi[0].nama_pasien}\n`;
         receipt += "-------------------------------\n";
 
         detailTransaksi.forEach(item => {
@@ -236,8 +235,8 @@
         });
 
         receipt += "-------------------------------\n";
-        receipt += `Total: Rp. ${thousand_separator(dataTransaksi[0].totalPrice)}\n`;
-        receipt += `Diskon: Rp. ${thousand_separator(detailBayar[0].diskon_basic + detailBayar[0].diskon_tambahan)}\n`;
+        receipt += `Total: Rp. ${thousand_separator(detailBayar[0].nominal_awal)}\n`;
+        receipt += `Diskon: Rp. ${thousand_separator(detailBayar[0].diskon_tambahan)}\n`;
         receipt += `Tunai: Rp. ${thousand_separator(detailBayar[0].nominal_bayar)}\n`;
         receipt += `Kembali: Rp. ${thousand_separator(detailBayar[0].nominal_kembalian)}\n`;
         receipt += "-------------------------------\n";
