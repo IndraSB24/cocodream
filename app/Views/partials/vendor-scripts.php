@@ -238,7 +238,7 @@
         receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
         receipt += "-------------------------------\n";
         receipt += `Invoice: ${dataTransaksi[0].no_invoice}\n`;
-        receipt += `Waktu: ${dataTransaksi[0].transaction_date}\n`;
+        receipt += `Waktu: ${formatDateTime(dataTransaksi[0].transaction_date)}\n`;
         receipt += "-------------------------------\n";
 
         detailTransaksi.forEach(item => {
@@ -261,6 +261,18 @@
 
     function thousand_separator(num) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function formatDateTime(dateTimeStr) {
+        const date = new Date(dateTimeStr);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+        return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     }
 
     function fetchEscposLogo() {
