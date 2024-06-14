@@ -112,6 +112,9 @@ $routes->get('paymentMethod-get-list', 'Payment_method::index');
 // channel distribution
 $routes->get('distributionChanel-get-list', 'Distribution_channel::index');
 
+// print helper
+$routes->get('get-logo-escpos', 'PrintHelper::getLogoEscpos');
+
 
 
 

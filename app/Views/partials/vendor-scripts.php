@@ -54,12 +54,23 @@
 
                         if (response.printData) {
                             console.log(response.printData, 'PRINT DATA');
-                            var receiptText = generatePlainTextReceipt(
-                                response.printData.dataTransaksi,
-                                response.printData.detailTransaksi,
-                                response.printData.detailBayar
-                            );
-                            BtPrint(receiptText);
+                            fetchEscposLogo().then(escposLogo => {
+                                var receiptText = generatePlainTextReceipt(
+                                    response.printData.dataTransaksi,
+                                    response.printData.detailTransaksi,
+                                    response.printData.detailBayar,
+                                    escposLogo
+                                );
+                                BtPrint(receiptText);
+                            }).catch(error => {
+                                console.error("Failed to load logo:", error);
+                            });
+                            // var receiptText = generatePlainTextReceipt(
+                            //     response.printData.dataTransaksi,
+                            //     response.printData.detailTransaksi,
+                            //     response.printData.detailBayar
+                            // );
+                            // BtPrint(receiptText);
                             // BtPrint("Hello, World!");
                         }
                         
@@ -220,8 +231,11 @@
         window.location.href = "intent:" + textEncoded + S + P;
     }
 
-    function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[]) {
+    function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[], escposLogo) {
         let receipt = "";
+
+        receipt += escposLogo;
+
         receipt += "Cocodream\n";
         receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
         receipt += "-------------------------------\n";
@@ -251,7 +265,16 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-
+    function fetchEscposLogo() {
+        return fetch('/get-logo-escpos') // Change this to your actual route
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                return atob(data.escposLogo); // Decode base64 to binary string
+            });
+    }
 
 
 
