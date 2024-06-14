@@ -266,7 +266,7 @@
     }
 
     function fetchEscposLogo() {
-        return fetch('/get-logo-escpos') // Change this to your actual route
+        return fetch('<?= base_url('get-logo-escpos') ?>') // Change this to your actual route
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
