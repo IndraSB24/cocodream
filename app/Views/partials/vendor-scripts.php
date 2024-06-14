@@ -253,6 +253,8 @@
         receipt += `Kembali: Rp. ${thousand_separator(detailBayar[0].nominal_kembalian)}\n`;
         receipt += "-------------------------------\n";
         receipt += "Terima kasih atas kunjungan Anda\n";
+        receipt += "Tiktok: cocodream_pku\n";
+        receipt += "Instagram: almeiradeganjelly\n";
 
         receipt += "\x1D\x56\x00";
 
