@@ -11,7 +11,7 @@ class PrintHelper extends Controller
     }
 
     public function getLogoEscpos() {
-        $logoPath = WRITEPATH . 'assets/images/logo_cocodream.bmp';
+        $logoPath = base_url('assets/images/logo_cocodream.bmp');
         $escposLogo = imageToEscpos($logoPath);
 
         if ($escposLogo === null) {
