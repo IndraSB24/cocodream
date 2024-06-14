@@ -234,7 +234,7 @@
     function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[]) {
         let receipt = "";
 
-        receipt += "       Cocodream\n";
+        receipt += "              Cocodream\n\n";
         receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
         receipt += "-------------------------------\n";
         receipt += `Invoice: ${dataTransaksi[0].no_invoice}\n`;
