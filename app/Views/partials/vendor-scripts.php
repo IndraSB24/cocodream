@@ -242,6 +242,8 @@
         receipt += "-------------------------------\n";
         receipt += "Terima kasih atas kunjungan Anda\n";
 
+        receipt += "\x1D\x56\x00";
+
         return receipt;
     }
 
