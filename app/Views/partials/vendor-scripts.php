@@ -231,7 +231,7 @@
 
         detailTransaksi.forEach(item => {
             receipt += `${item.nama_item}\n`;
-            receipt += `  ${item.quantity} x Rp. ${thousand_separator(item.subtotal)}\n`;
+            receipt += `  ${item.quantity} ${item.nama_satuan} x Rp. ${thousand_separator(item.subtotal)}\n`;
         });
 
         receipt += "-------------------------------\n";
