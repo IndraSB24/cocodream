@@ -88,7 +88,8 @@ class Transaksi extends Controller
             'payment_status' => 'Dibayar',
             'id_distribution_channel' => $this->request->getPost('id_distribution_channel'),
             'id_payment_method' => $this->request->getPost('id_payment_method'),
-            'created_by' => sess_activeUserId()
+            'created_by' => sess_activeUserId(),
+            'id_entitas' => 1
         ];
         $insertDataId = $this->Model_transaksi->insertWithReturnId($data);
 
