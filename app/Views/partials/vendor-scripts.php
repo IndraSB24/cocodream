@@ -54,23 +54,23 @@
 
                         if (response.printData) {
                             console.log(response.printData, 'PRINT DATA');
-                            fetchEscposLogo().then(escposLogo => {
-                                var receiptText = generatePlainTextReceipt(
-                                    response.printData.dataTransaksi,
-                                    response.printData.detailTransaksi,
-                                    response.printData.detailBayar,
-                                    escposLogo
-                                );
-                                BtPrint(receiptText);
-                            }).catch(error => {
-                                console.error("Failed to load logo:", error);
-                            });
-                            // var receiptText = generatePlainTextReceipt(
-                            //     response.printData.dataTransaksi,
-                            //     response.printData.detailTransaksi,
-                            //     response.printData.detailBayar
-                            // );
-                            // BtPrint(receiptText);
+                            // fetchEscposLogo().then(escposLogo => {
+                            //     var receiptText = generatePlainTextReceipt(
+                            //         response.printData.dataTransaksi,
+                            //         response.printData.detailTransaksi,
+                            //         response.printData.detailBayar,
+                            //         escposLogo
+                            //     );
+                            //     BtPrint(receiptText);
+                            // }).catch(error => {
+                            //     console.error("Failed to load logo:", error);
+                            // });
+                            var receiptText = generatePlainTextReceipt(
+                                response.printData.dataTransaksi,
+                                response.printData.detailTransaksi,
+                                response.printData.detailBayar
+                            );
+                            BtPrint(receiptText);
                             // BtPrint("Hello, World!");
                         }
                         
@@ -231,10 +231,8 @@
         window.location.href = "intent:" + textEncoded + S + P;
     }
 
-    function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[], escposLogo) {
+    function generatePlainTextReceipt(dataTransaksi=[], detailTransaksi=[], detailBayar=[]) {
         let receipt = "";
-
-        receipt += escposLogo;
 
         receipt += "Cocodream\n";
         receipt += `${dataTransaksi[0].entitas_address}\nKota Pekanbaru, Riau 28289\nTelepon: +62 ${dataTransaksi[0].entitas_phone}\n`;
