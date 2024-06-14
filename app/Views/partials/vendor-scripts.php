@@ -53,13 +53,14 @@
                         }
 
                         if (response.printData) {
+                            console.log(response.printData, 'PRINT DATA');
                             // var receiptText = generatePlainTextReceipt(
                             //     response.printData.dataTransaksi,
                             //     response.printData.detailTransaksi,
                             //     response.printData.detailBayar
                             // );
                             // BtPrint(receiptText);
-                            BtPrint("Hello, World!");
+                            // BtPrint("Hello, World!");
                         }
                         
                     });
