@@ -113,7 +113,7 @@ class Model_item_detail extends Model
         ->where('item_detail.id_item_utama', $id_main_item)
         ->where('item_detail.deleted_at', NULL);
         
-        return $this->get()->getResult();
+        return $this->get()->getResultArray();
     }
 
 }
