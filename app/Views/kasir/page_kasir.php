@@ -338,7 +338,7 @@
         }
 
         // input format
-        formatInputWithThousandSeparator('diskon_tambah');
+        formatInputWithThousandSeparator($('#diskon_tambah'));
     });
 
     // btn simpan
