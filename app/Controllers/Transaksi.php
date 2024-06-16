@@ -142,7 +142,7 @@ class Transaksi extends Controller
                             // insert transaksi stock
                             $payload_add_transaksi_stock_formula = [
                                 'id_item' => $formula_list['id_item'],
-                                'jumlah' => -$formula_list['jumlah'] * (-$transactionDetail['jumlah']), 
+                                'jumlah' => -$formula_list['jumlah'] * $transactionDetail['jumlah'], 
                                 'jenis' => 'keluar', 
                                 'kegiatan' => 'otomasi formula dari penjualan kasir', 
                                 'id_kegiatan' => $insertDataId, 
