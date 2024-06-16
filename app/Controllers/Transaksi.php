@@ -84,7 +84,7 @@ class Transaksi extends Controller
 	
     // add ==================================================================================================
     public function add_transaksi($param=[]){
-        $currDateTime = date("Y-m-d");
+        $currDateTime = date("Y-m-d h:m:s");
         // insert transaction
         $data = [
             'transaction_date' => date('Y-m-d H:i:s'),
