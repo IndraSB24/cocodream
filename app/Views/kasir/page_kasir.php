@@ -384,7 +384,7 @@
 
     // on modal_pay show
     $('#modal_pay').on('shown.bs.modal', function () {
-        resetElement(
+        clearFieldValue(
             'nominal_kembalian', 'nominal_dibayar', 'diskon_tambah'
         )
         const subTotalText = $('#cart-total').text();
