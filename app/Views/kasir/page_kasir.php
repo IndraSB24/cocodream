@@ -196,7 +196,7 @@
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="harga_awal" class="form-label">Harga Awal</label>
+                                    <label for="harga_awal" class="form-label">Harga Barang</label>
                                     <input class="form-control text-center" type="text" id="harga_awal" name="harga_awal" readonly/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -204,7 +204,7 @@
                                     <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="harga_akhir" class="form-label">Harus Dibayar</label>
+                                    <label for="harga_akhir" class="form-label">Total</label>
                                     <input class="form-control text-center" type="text" id="harga_akhir" name="harga_akhir" readonly/>
                                 </div>
                                 <hr>
@@ -227,11 +227,11 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="nominal_dibayar" class="form-label">Nominal bayar</label>
+                                    <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
                                     <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="nominal_kembalian" class="form-label">Nominal Kembalian</label>
+                                    <label for="nominal_kembalian" class="form-label">Kembalian</label>
                                     <input class="form-control text-center" type="text" id="nominal_kembalian" name="nominal_kembalian" readonly/>
                                 </div>
                             </div>
