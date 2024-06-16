@@ -63,7 +63,8 @@ class Model_item_transaksi_stock extends Model
         ->join('item i', 'i.id=item_transaksi_stock.id_item', 'LEFT')
         ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
         ->join('entitas e', 'e.id=item_transaksi_stock.id_entitas', 'LEFT')
-        ->where('item_transaksi_stock.deleted_at', NULL);
+        ->where('item_transaksi_stock.deleted_at', NULL)
+        ->orderBy('item_transaksi_stock.id', 'DESC');
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
