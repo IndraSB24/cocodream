@@ -265,10 +265,26 @@
     thousandSeparatorInputs.forEach(input => {
         input.addEventListener('input', function(event) {
             let inputValue = event.target.value;
+            let cursorPosition = event.target.selectionStart;
+
+            // Save the initial length of the input
+            let initialLength = inputValue.length;
+
+            // Remove non-numeric characters
             inputValue = keepOnlyNumbers(inputValue);
 
+            // Add thousand separators
             const formattedValue = addThousandSeparator(inputValue);
+
+            // Update the input value
             event.target.value = formattedValue;
+
+            // Calculate the new cursor position
+            let newLength = formattedValue.length;
+            cursorPosition += newLength - initialLength;
+
+            // Set the cursor position
+            event.target.setSelectionRange(cursorPosition, cursorPosition);
         });
     });
 
