@@ -197,16 +197,18 @@
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="harga_awal" class="form-label">Harga Barang</label>
-                                    <input class="form-control text-center" type="text" id="harga_awal" name="harga_awal" readonly/>
+                                    <label for="harga_awal_show" class="form-label">Harga Barang</label>
+                                    <input class="form-control text-center" type="text" id="harga_awal_show" name="harga_awal_show" readonly/>
+                                    <input type="number" id="harga_awal">
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="diskon_tambah" class="form-label">Diskon</label>
                                     <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label for="harga_akhir" class="form-label">Total</label>
-                                    <input class="form-control text-center" type="text" id="harga_akhir" name="harga_akhir" readonly/>
+                                    <label for="harga_akhir_show" class="form-label">Total</label>
+                                    <input class="form-control text-center" type="text" id="harga_akhir_show" name="harga_akhir_show" readonly/>
+                                    <input type="number" id="harga_akhir">
                                 </div>
                                 <hr>
                                 <div class="col-lg-6 mb-3">
@@ -389,8 +391,10 @@
         clearFieldValue(['nominal_kembalian', 'nominal_dibayar', 'diskon_tambah']);
         
         const cartTotal = $('#cart_total_value').val();
-        $('#harga_awal').val(thousandSeparator(cartTotal));
-        $('#harga_akhir').val(thousandSeparator(cartTotal));
+        $('#harga_awal').val(cartTotal);
+        $('#harga_akhir').val(cartTotal);
+        $('#harga_awal_show').val(thousandSeparator(cartTotal));
+        $('#harga_akhir_show').val(thousandSeparator(cartTotal));
     });
 
 
