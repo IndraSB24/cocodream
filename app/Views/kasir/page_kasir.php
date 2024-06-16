@@ -163,6 +163,7 @@
                                     </div>
                                     <div class="card-footer text-end">
                                         <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
+                                        <input type="hidden" id="cart_total_value"/>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_pay">
                                             Bayar
                                         </button>
@@ -331,6 +332,7 @@
             });
 
             $('#cart-total').text(thousandSeparator(total));
+            $('#cart_total_value').val(total);
         }
     });
 
@@ -385,10 +387,10 @@
     // on modal_pay show
     $('#modal_pay').on('shown.bs.modal', function () {
         clearFieldValue(['nominal_kembalian', 'nominal_dibayar', 'diskon_tambah']);
-        const subTotalText = $('#cart-total').text();
-        const subTotalNumeric = parseFloat(subTotalText.replace(/[^\d.]/g, ''));
-        $('#harga_awal').val(subTotalText);
-        $('#harga_akhir').val(subTotalText);
+        
+        const cartTotal = $('#cart_total_value').val();
+        $('#harga_awal').val(thousandSeparator(cartTotal));
+        $('#harga_akhir').val(thousandSeparator(cartTotal));
     });
 
 
