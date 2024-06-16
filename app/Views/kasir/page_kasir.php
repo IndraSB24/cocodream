@@ -267,6 +267,7 @@
             const itemId = itemBox.data('id');
             const itemName = itemBox.data('name');
             const itemUnit = itemBox.data('unit');
+            const itemIsHasFormula = itemBox.data('is_has_formula');
             const itemPrice = parseFloat(itemBox.data('price'));
             const itemQuantity = 1; // Default quantity to 1
 
@@ -283,7 +284,7 @@
                     <td>
                         <input type="hidden" name="id_item" value="${itemId}">
                         <input type="hidden" name="item_unit" value="${itemUnit}">
-                        <input type="hidden" name="item_is_has_formula" value="${itemUnit}">
+                        <input type="hidden" name="item_is_has_formula" value="${itemIsHasFormula}">
                         <button class="btn btn-danger btn-sm remove-from-cart">
                             <i class="fas fa-trash"></i>
                         </button>

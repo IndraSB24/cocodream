@@ -59,8 +59,7 @@ class Model_item extends Model
         ->join('kategori k1', 'k1.id=item.id_kategori_jenis', 'LEFT')
         ->join('item_pricing ip', 'ip.id_item=item.id AND ip.is_active=1 ', 'LEFT')
         ->where('item.deleted_at', NULL)
-        ->where('k1.nama', 'makanan')
-        ->orWhere('k1.nama', 'minuman');
+        ->where('item.is_direct_sale', 1);
         
         return $this->get()->getResultArray();
     }
