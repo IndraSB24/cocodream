@@ -468,7 +468,7 @@
 
     function resetTheseElement(){
         resetElement(
-            '#cart-table tbody', ''
+            '#cart-table tbody', '#cart-total'
         )
     }
 
