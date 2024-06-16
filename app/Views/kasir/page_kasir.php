@@ -384,6 +384,9 @@
 
     // on modal_pay show
     $('#modal_pay').on('shown.bs.modal', function () {
+        resetElement(
+            'nominal_kembalian', 'nominal_dibayar', 'diskon_tambah'
+        )
         const subTotalText = $('#cart-total').text();
         const subTotalNumeric = parseFloat(subTotalText.replace(/[^\d.]/g, ''));
         $('#harga_awal').val(subTotalNumeric);
@@ -459,10 +462,16 @@
             id_distribution_channel: $('#distribution_channel').val()
         };
         
-        loadQuestionalSwal(
+        loadQuestionalSwalResetElement(
             path, data, 'Konfirmasi Bayar ?', 
-            'Dibayar!', 'Pembayaran Berhasil', 'modal_pay', false, false
+            'Dibayar!', 'Pembayaran Berhasil', 'modal_pay'
         );
     });
+
+    function resetTheseElement(){
+        resetElement(
+            '#cart-table tbody', ''
+        )
+    }
 
 </script>
