@@ -118,30 +118,6 @@ class Model_item_transaksi_stock extends Model
         ];
         $this->insert($data_main_item);
 
-        // check for item formula
-        $query_item_detail = $this->db->query("
-            SELECT *
-            FROM item_detail
-            WHERE id_item = ?
-        ", [$id_item]);
-        $item_formula = $query_item_detail->getResult();
-        
-        if($item_formula){
-            foreach ($item_formula as $index => $value) {
-                $data_item_formula = [
-                    'id_item' => $value->id_item,
-                    'jumlah' => $payload['jumlah'] * $value->jumlah,
-                    'jenis' => $payload['jenis'],
-                    'kegiatan' => $payload['kegiatan'],
-                    'id_kegiatan' => $payload['id_kegiatan'],
-                    'tanggal_kegiatan' => $payload['tanggal_kegiatan'],
-                    'id_entitas' => $payload['id_entitas'],
-                    'created_by' => $payload['created_by']
-                ];
-                $this->insert($data_item_formula);
-            }
-        }
-
         return true;
     }
 }
