@@ -330,7 +330,7 @@
                 total += itemTotal;
             });
 
-            $('#cart-total').text(total);
+            $('#cart-total').text(thousandSeparator(total));
         }
     });
 
