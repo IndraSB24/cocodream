@@ -471,7 +471,7 @@
             '#cart-table tbody'
         )
 
-        $('#cart-total').text('')
+        $('#cart-total').text('0')
     }
 
 </script>
