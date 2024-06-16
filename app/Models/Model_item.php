@@ -267,7 +267,7 @@ class Model_item extends Model
             'item.nama'
         ];
         $column_orderable = [
-            'item.id', 'item.kode_item', 'item.nama'
+            'item.id', 'item.kode_item', 'item.nama', 'sd.nama'
         ];
 
         // Get the distinct entity IDs from the EntitasModel
