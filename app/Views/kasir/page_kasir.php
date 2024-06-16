@@ -468,8 +468,10 @@
 
     function resetTheseElement(){
         resetElement(
-            '#cart-table tbody', '#cart-total'
+            '#cart-table tbody'
         )
+
+        $('#cart-total').text('')
     }
 
 </script>
