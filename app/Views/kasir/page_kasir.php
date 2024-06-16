@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="diskon_tambah" class="form-label">Diskon</label>
-                                    <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                    <input class="form-control text-center thousand-separator" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label for="harga_akhir_show" class="form-label">Total</label>
@@ -260,6 +260,17 @@
 </html>
 
 <script>
+
+    const thousandSeparatorInputs = document.querySelectorAll('.thousand-separator');
+    thousandSeparatorInputs.forEach(input => {
+        input.addEventListener('input', function(event) {
+            let inputValue = event.target.value;
+            inputValue = keepOnlyNumbers(inputValue);
+
+            const formattedValue = addThousandSeparator(inputValue);
+            event.target.value = formattedValue;
+        });
+    });
 
     $(document).ready(function () {
         let cart = [];

@@ -360,57 +360,12 @@
         });
     }
 
-    function formatNumberWithThousandSeparator(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // thousand separator set
+    function addThousandSeparator(value) {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
-    // Function to remove thousand separators
-    function removeThousandSeparator(formattedNumber) {
-        return formattedNumber.replace(/,/g, '');
+    function keepOnlyNumbers(input) {
+        return input.replace(/[^0-9]/g, '');
     }
-
-    // Function to handle input formatting
-    function handleInputFormatting(input) {
-        var value = removeThousandSeparator(input.val());
-        if (!isNaN(value) && value !== '') {
-            input.val(formatNumberWithThousandSeparator(value));
-        }
-    }
-
-    function formatInputWithThousandSeparator(inputField) {
-        inputField.on('input', function() {
-            let input = $(this).val();
-            // Remove non-numeric characters except for the comma (,) and minus (-)
-            input = input.replace(/[^0-9,]/g, '');
-            
-            // Replace the comma with a dot to handle the decimal part correctly
-            input = input.replace(/,/g, '.');
-
-            // Split the input into the integer and decimal parts (if any)
-            let parts = input.split('.');
-            let integerPart = parts[0];
-            let decimalPart = parts.length > 1 ? ',' + parts[1] : '';
-
-            // Format the integer part with thousand separators (periods)
-            let formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-            // Set the formatted value back to the input
-            $(this).val(formattedIntegerPart + decimalPart);
-        });
-
-        inputField.on('blur', function() {
-            // On blur, ensure the value is a valid number and remove formatting
-            let input = $(this).val();
-            // Remove periods
-            input = input.replace(/\./g, '');
-
-            // Replace comma with a dot to correctly parse the number
-            input = input.replace(/,/g, '.');
-
-            // Set the unformatted number as the value
-            $(this).val(parseFloat(input).toFixed(2).replace(/\./g, ','));
-        });
-    }
-
 
 </script>
