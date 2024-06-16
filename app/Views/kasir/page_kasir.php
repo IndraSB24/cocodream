@@ -402,7 +402,7 @@
         }
 
         const hargaAwal = $('#harga_awal').val();
-        const hargaAwalNumber = parseFloat(hargaAwal.replace(/,/g, ''));
+        const hargaAwalNumber = parseFloat(hargaAwal.replace(/./g, ''));
         $('#harga_akhir').val(thousandSeparator(hargaAwalNumber - inputedValue));
     });
 
