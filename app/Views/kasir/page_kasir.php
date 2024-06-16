@@ -403,7 +403,7 @@
 
         const hargaAwal = $('#harga_awal').val();
         const hargaAwalNumber = parseFloat(hargaAwal.replace(/,/g, ''));
-        $('#harga_akhir').val(hargaAwalNumber - inputedValue);
+        $('#harga_akhir').val(thousandSeparator(hargaAwalNumber - inputedValue));
     });
 
     // on input tambah diskon
