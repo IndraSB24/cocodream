@@ -384,9 +384,7 @@
 
     // on modal_pay show
     $('#modal_pay').on('shown.bs.modal', function () {
-        clearFieldValue(
-            'nominal_kembalian', 'nominal_dibayar', 'diskon_tambah'
-        )
+        clearFieldValue('nominal_kembalian', 'nominal_dibayar', 'diskon_tambah');
         const subTotalText = $('#cart-total').text();
         const subTotalNumeric = parseFloat(subTotalText.replace(/[^\d.]/g, ''));
         $('#harga_awal').val(subTotalNumeric);
