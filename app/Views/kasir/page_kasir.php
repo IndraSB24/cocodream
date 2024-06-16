@@ -1,3 +1,30 @@
+<?php
+    function renderItemCard($item) {
+        ob_start(); // Start output buffering
+        ?>
+        <div class="col-md-4 mb-3">
+            <div class="card item-box" 
+                data-id="<?= $item['id']; ?>"
+                data-name="<?= $item['nama']; ?>"
+                data-price="<?= $item['item_price']; ?>"
+                data-unit="<?= $item['nama_satuan']; ?>"
+                data-is_has_formula="<?= $item['is_has_formula']; ?>"
+            >
+                <div class="card-body">
+                    <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
+                        class="img-fluid mb-3" style="max-width: 100%; height: auto;"
+                    >    
+                    <p class="card-text"><?= $item['nama']; ?></p>
+                    <p class="card-text">Rp. <?= $item['item_price']; ?></p>
+                    <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                </div>
+            </div>
+        </div>
+        <?php
+        return ob_get_clean(); // Return the buffered output
+    }
+?>
+
 <?= $this->include('partials/main') ?>
 
     <head>
@@ -63,7 +90,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body d-none">
                                         <div class="tab-content" id="item-tab-content">
                                             <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                                                 <div class="row overflow-auto" id="item-list-all">
@@ -74,6 +101,7 @@
                                                                 data-name="<?= $item['nama']; ?>"
                                                                 data-price="<?= $item['item_price']; ?>"
                                                                 data-unit="<?= $item['nama_satuan']; ?>"
+                                                                data-is_has_formula="<?= $item['is_has_formula']; ?>"
                                                             >
                                                                 <div class="card-body">
                                                                     <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
@@ -98,6 +126,7 @@
                                                                     data-name="<?= $item['nama']; ?>" 
                                                                     data-price="<?= $item['item_price']; ?>"
                                                                     data-unit="<?= $item['nama_satuan']; ?>"
+                                                                    data-is_has_formula="<?= $item['is_has_formula']; ?>"
                                                                 >
                                                                     <div class="card-body">
                                                                         <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
@@ -123,6 +152,7 @@
                                                                     data-name="<?= $item['nama']; ?>" 
                                                                     data-price="<?= $item['item_price']; ?>"
                                                                     data-unit="<?= $item['nama_satuan']; ?>"
+                                                                    data-is_has_formula="<?= $item['is_has_formula']; ?>"
                                                                 >
                                                                     <div class="card-body">
                                                                         <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
@@ -140,6 +170,37 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="card-body">
+                                        <div class="tab-content" id="item-tab-content">
+                                            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                                                <div class="row overflow-auto" id="item-list-all">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <?= renderItemCard($item); ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="makanan" role="tabpanel" aria-labelledby="makanan-tab">
+                                                <div class="row overflow-auto" id="item-list-makanan">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <?php if ($item['nama_jenis'] == 'makanan'): ?>
+                                                            <?= renderItemCard($item); ?>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="minuman" role="tabpanel" aria-labelledby="minuman-tab">
+                                                <div class="row overflow-auto" id="item-list-minuman">
+                                                    <?php foreach ($items as $item): ?>
+                                                        <?php if ($item['nama_jenis'] == 'minuman'): ?>
+                                                            <?= renderItemCard($item); ?>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -289,6 +350,7 @@
                     <td>
                         <input type="hidden" name="id_item" value="${itemId}">
                         <input type="hidden" name="item_unit" value="${itemUnit}">
+                        <input type="hidden" name="item_is_has_formula" value="${itemUnit}">
                         <button class="btn btn-danger btn-sm remove-from-cart">
                             <i class="fas fa-trash"></i>
                         </button>
@@ -445,6 +507,7 @@
                     case 4:
                         rowData.id_item = $(this).find('input[name="id_item"]').val();
                         rowData.unit = $(this).find('input[name="item_unit"]').val();
+                        rowData.is_has_formula = $(this).find('input[name="item_is_has_formula"]').val();
                         break;
                 }
             });
