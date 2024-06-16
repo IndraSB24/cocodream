@@ -318,7 +318,7 @@
             const itemQuantity = $(this).val();
             const itemTotal = itemPrice * itemQuantity;
 
-            row.find('td:nth-child(4)').text('Rp. ' + itemTotal.toLocaleString());
+            row.find('td:nth-child(4)').text('Rp. ' + itemTotal);
             updateCartTotal();
         });
 
@@ -330,7 +330,7 @@
                 total += itemTotal;
             });
 
-            $('#cart-total').text(total.toLocaleString());
+            $('#cart-total').text(total);
         }
     });
 
