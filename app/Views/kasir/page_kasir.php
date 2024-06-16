@@ -336,9 +336,6 @@
             $('#cart-total').text(thousandSeparator(total));
             $('#cart_total_value').val(total);
         }
-
-        // input format
-        formatInputWithThousandSeparator($('#diskon_tambah'));
     });
 
     // btn simpan
