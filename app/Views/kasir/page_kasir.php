@@ -200,7 +200,7 @@
                                     <input class="form-control text-center" type="text" id="harga_awal" name="harga_awal" readonly/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <label for="diskon_tambah" class="form-label">Tambah Diskon</label>
+                                    <label for="diskon_tambah" class="form-label">Diskon</label>
                                     <input class="form-control text-center" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
                                 <div class="col-lg-12 mb-3">
