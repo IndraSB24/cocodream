@@ -401,7 +401,8 @@
             $(this).val(inputedValue); // Update the input field value
         }
 
-        const hargaAwal = $('#harga_awal').val();
+        // const hargaAwal = $('#harga_awal').val();
+        const hargaAwal = handleInputFormatting(harga_awal);
         $('#harga_akhir').val(hargaAwal - inputedValue);
     });
 

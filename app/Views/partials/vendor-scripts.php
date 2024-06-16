@@ -360,5 +360,22 @@
         });
     }
 
+    function formatNumberWithThousandSeparator(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Function to remove thousand separators
+    function removeThousandSeparator(formattedNumber) {
+        return formattedNumber.replace(/,/g, '');
+    }
+
+    // Function to handle input formatting
+    function handleInputFormatting(input) {
+        var value = removeThousandSeparator(input.val());
+        if (!isNaN(value) && value !== '') {
+            input.val(formatNumberWithThousandSeparator(value));
+        }
+    }
+
 
 </script>
