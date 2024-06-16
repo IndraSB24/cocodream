@@ -117,7 +117,8 @@ class Model_transaksi extends Model
         ->join('kategori k1', 'k1.id=transaksi.id_payment_method', 'LEFT')
         ->join('transaksi_detail td', 'td.id_transaksi=transaksi.id', 'LEFT')
         ->groupBy('transaksi.id')
-        ->where('transaksi.deleted_at', NULL);
+        ->where('transaksi.deleted_at', NULL)
+        ->orderBy('transaksi.id', 'DESC');
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
