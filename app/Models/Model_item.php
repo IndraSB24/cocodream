@@ -267,7 +267,7 @@ class Model_item extends Model
             'item.nama'
         ];
         $column_orderable = [
-            'item.id', 'item.nama'
+            'item.id', 'item.kode_item', 'item.nama'
         ];
 
         // Get the distinct entity IDs from the EntitasModel
@@ -283,6 +283,7 @@ class Model_item extends Model
         $sumStatements = '';
         foreach ($entityIDs as $entityID) {
             $sumStatements .= "SUM(CASE WHEN e.id = $entityID AND its.id_entitas = $entityID THEN its.jumlah ELSE 0 END) AS quantity_entity_$entityID, ";
+            $column_orderable[] = 'quantity_entity_'.$entityID;
         }
         // Remove the trailing comma
         $sumStatements = rtrim($sumStatements, ', ');
