@@ -13,6 +13,7 @@ use App\Models\Model_item_transaksi_stock;
 use App\Models\Model_medical_record;
 use App\Models\Model_medical_record_detail;
 use App\Models\Model_item;
+use App\Models\Model_item_detail;
 use App\Models\Model_payment_method;
 use App\Models\Model_distribution_channel;
 
@@ -20,7 +21,7 @@ class Transaksi extends Controller
 {
     protected $Model_transaksi, $Model_kategori, $Model_pasien, $Model_transaksi_detail, $Model_transaksi_payment,
         $Model_item_transaksi_stock, $Model_medical_record, $Model_medical_record_detail, $Model_item,
-        $Model_payment_method, $Model_distribution_channel;
+        $Model_payment_method, $Model_distribution_channel, $Model_item_detail;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
@@ -34,6 +35,7 @@ class Transaksi extends Controller
         $this->Model_item = new Model_item();
         $this->Model_payment_method = new Model_payment_method();
         $this->Model_distribution_channel = new Model_distribution_channel();
+        $this->Model_item_detail = new Model_item_detail();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -82,6 +84,7 @@ class Transaksi extends Controller
 	
     // add ==================================================================================================
     public function add_transaksi($param=[]){
+        $currDateTime = date("Y-m-d");
         // insert transaction
         $data = [
             'transaction_date' => date('Y-m-d H:i:s'),
@@ -123,11 +126,34 @@ class Transaksi extends Controller
                         'jenis' => 'keluar', 
                         'kegiatan' => 'penjualan kasir', 
                         'id_kegiatan' => $insertDataId, 
-                        'tanggal_kegiatan' => date("Y-m-d"),
+                        'tanggal_kegiatan' => $currDateTime,
                         'id_entitas' => 1,
                         'created_by' => sess_activeUserId()
                     ];
                     $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock);
+
+                    // if has formula
+                    if($transactionDetail['is_has_formula'] == 1){
+                        // get formula
+                        $get_formula = $this->Model_item_detail->get_by_id_main_item($transactionDetail['id_item']);
+
+                        // loop through it
+                        foreach($get_formula as $formula_list){
+                            // insert transaksi stock
+                            $payload_add_transaksi_stock_formula = [
+                                'id_item' => $formula_list['id_item'],
+                                'jumlah' => -$formula_list['jumlah'], 
+                                'jenis' => 'keluar', 
+                                'kegiatan' => 'otomasi formula dari penjualan kasir', 
+                                'id_kegiatan' => $insertDataId, 
+                                'tanggal_kegiatan' => $currDateTime,
+                                'id_entitas' => 1,
+                                'created_by' => sess_activeUserId()
+                            ];
+                            $this->Model_item_transaksi_stock->addTransaksiStock($payload_add_transaksi_stock_formula);
+                        }
+                    }
+
                 }
             }
 

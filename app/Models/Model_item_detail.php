@@ -105,9 +105,13 @@ class Model_item_detail extends Model
     // get by id main item
     public function get_by_id_main_item($id_main_item){
         $this->select('
-            *
+            item_detail.*,
+            sd.nama as nama_satuan
         ')
-        ->where('id_item_utama', $id_main_item);
+        ->join('item i', 'i.id=item_detail.id_item_utama', 'LEFT')
+        ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
+        ->where('item_detail.id_item_utama', $id_main_item)
+        ->where('item_detail.deleted_at', NULL);
         
         return $this->get()->getResult();
     }
