@@ -419,7 +419,7 @@
         }
 
         const hargaAwal = $('#harga_awal').val();
-        $('#harga_akhir').val(thousandSeparator(hargaAwalNumber - inputedValue));
+        $('#harga_akhir').val(thousandSeparator(hargaAwal - inputedValue));
     });
 
     // on input tambah diskon
