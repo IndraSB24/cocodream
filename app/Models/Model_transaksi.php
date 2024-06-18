@@ -227,10 +227,18 @@ class Model_transaksi extends Model
             $this->limit($request->getPost('length'), $request->getPost('start'));
         }
 
-        // result set
+        // count filtered
+        $filteredQuery = clone $this;
+
+        // Execute query and get results
         $result['return_data'] = $this->get()->getResult();
-        $result['count_filtered'] = $this->countAllResults();
-        $result['count_all'] = $this->countNoFiltered();
+
+        // Count filtered results
+        $result['count_filtered'] = $filteredQuery->countAllResults(false);
+
+        // Count all results without filters
+        $this->resetQuery();
+        $result['count_all'] = $this->countAllResults();
 
         return $result;
     }
