@@ -106,24 +106,16 @@
                                         <form id="form-filter">
                                             <div class="row">
                                                 <div class="col-lg-4 mb-3">
-                                                <form>
-                                                    <div class="form-group">
+                                                    <form>
                                                         <label for="filter_date_from" class="form-label">Dari Tanggal</label>
                                                         <input type="date" class="form-control" id="filter_date_from" name="filter_date_from">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="filter_date_until" class="form-label">Hingga Tanggal</label>
-                                                        <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Filter</button>
-                                                </form>
+                                                    </form>
                                                 </div>
                                                 <div class="col-lg-4 mb-3">
-                                                    <label for="filter_provinsi" class="form-label">Provinsi</label>
-                                                    <select class="form-control select2" data-trigger name="filter_provinsi" id="filter_provinsi">
-                                                        <option value="">Pilih Provinsi</option>
-                                                        
-                                                    </select>
+                                                    <form>
+                                                        <label for="filter_date_until" class="form-label">Hingga Tanggal</label>
+                                                        <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
+                                                    </form>
                                                 </div>
                                                 <div class="col-lg-4 mb-3">
                                                     <label for="filter_kota" class="form-label">kota</label>
