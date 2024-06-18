@@ -194,11 +194,11 @@ class Model_cash_drawer_detail extends Model
 
         // filter
         if ($request->getPost('filterDateFrom')) {
-            $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
+            $this->where('cash_drawer_detail.for_date >=', $request->getPost('filterDateFrom').' 00:00:00');
         }
 
         if ($request->getPost('filterDateUntil')) {
-            $this->where('transaksi.transaction_date <=', $request->getPost('filterDateUntil').' 23:59:59');
+            $this->where('cash_drawer_detail.for_date <=', $request->getPost('filterDateUntil').' 23:59:59');
         }
 
         $this->select('
