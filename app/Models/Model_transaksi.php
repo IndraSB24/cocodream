@@ -180,11 +180,11 @@ class Model_transaksi extends Model
 
         // filter
         if ($request->getPost('filterDateFrom')) {
-            $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom'));
+            $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
         }
 
         if ($request->getPost('filterDateUntil')) {
-            $this->where('transaksi.transaction_date <=', $request->getPost('filterDateUntil'));
+            $this->where('transaksi.transaction_date <=', $request->getPost('filterDateUntil').' 23:59:59');
         }
 
         $this->select('
