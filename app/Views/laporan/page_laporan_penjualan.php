@@ -36,7 +36,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Number of Sales</p>
+                                                <p class="text-truncate font-size-14 mb-2">Total Penjualan</p>
                                                 <h4 class="mb-0">1452</h4>
                                             </div>
                                             <div class="text-primary ms-auto">
@@ -58,7 +58,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Sales Revenue</p>
+                                                <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
                                                 <h4 class="mb-0">$ 38452</h4>
                                             </div>
                                             <div class="text-primary ms-auto">
@@ -79,7 +79,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Average Price</p>
+                                                <p class="text-truncate font-size-14 mb-2">Rata Rata Penjualan</p>
                                                 <h4 class="mb-0">$ 15.4</h4>
                                             </div>
                                             <div class="text-primary ms-auto">
