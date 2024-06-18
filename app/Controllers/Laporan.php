@@ -63,8 +63,8 @@ class Laporan extends Controller
 
         $output = [
             "draw" => $_POST['draw'],
-            "recordsTotal" => $returnedData['count_filtered'],
-            "recordsFiltered" => $returnedData['count_all'],
+            "recordsTotal" => $returnedData['count_all'],
+            "recordsFiltered" => $returnedData['count_filtered'],
             "data" => $data,
         ];
 
