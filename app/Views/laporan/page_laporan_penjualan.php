@@ -117,13 +117,6 @@
                                                         <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
                                                     </form>
                                                 </div>
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_kota" class="form-label">kota</label>
-                                                    <select class="form-control select2" data-trigger name="filter_kota" id="filter_kota">
-                                                        <option value="">Pilih Kota</option>
-                                                        
-                                                    </select>
-                                                </div>
                                             </div>
                                             
                                             <div class="row">
