@@ -201,7 +201,7 @@
                 },
                 "dataSrc": function (returnedData) {    
                     const formattedTotalPenjualan = thousandSeparator(returnedData.totalPenjualan);
-                    $('#total_penjualan').text("Rp. " + formattedTotalPenjualan);
+                    $('#total_penjualan').text("Rp " + formattedTotalPenjualan);
                 
                     return returnedData.data;
                 }
