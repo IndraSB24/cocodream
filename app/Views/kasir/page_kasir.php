@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
-                                    <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
+                                    <input class="form-control text-center thousand-separator" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
@@ -424,7 +424,7 @@
         }
 
         const hargaAwal = $('#harga_awal').val();
-        $('#harga_akhir').val(thousandSeparator(hargaAwal - inputedValue));
+        $('#harga_akhir').val(hargaAwal - inputedValue);
         $('#harga_akhir_show').val(thousandSeparator(hargaAwal - inputedValue));
     });
 
