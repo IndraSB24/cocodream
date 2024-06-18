@@ -428,6 +428,7 @@
     // on input tambah diskon
     $('#diskon_tambah').on('input', function() {
         var inputedValue = parseFloat($(this).val());
+        console.log(inputedValue, 'non-formated');
         if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
             // If negative, set it to 0
             inputedValue = 0;
@@ -436,6 +437,7 @@
 
         const hargaAwal = $('#harga_awal').val();
         $('#harga_akhir').val(thousandSeparator(hargaAwal - inputedValue));
+        $('#harga_akhir_show').val(thousandSeparator(hargaAwal - inputedValue));
     });
 
     // on input tambah diskon
