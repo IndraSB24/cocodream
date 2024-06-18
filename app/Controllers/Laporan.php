@@ -42,7 +42,7 @@ class Laporan extends Controller
                 '<span class="text-center">' . ($itung + 1) . '</span>',
                 '<span class="text-center">' . $baris->no_invoice . '</span>',
                 '<span class="text-center">' . $baris->transaction_date . '</span>',
-                '<span class="text-center">' . thousand_separator($baris->total_nominal). '</span>',
+                '<span class="text-center">Rp.' . thousand_separator($baris->total_nominal). '</span>',
                 '<span class="text-center">' . $baris->payment_method . '</span>',
                 '<span class="text-center">' . $baris->payment_status . '</span>',
                 '<span class="text-center">' . $detail . '</span>'
