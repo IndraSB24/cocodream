@@ -49,8 +49,6 @@ class Laporan extends Controller
                 '<span class="text-center">' . $invoice . '</span>',
                 '<span class="text-center">' . $baris->transaction_date . '</span>',
                 '<span class="text-center">" "</span>',
-                '<span class="text-center">' . $baris->nama_pasien . '</span>',
-                '<span class="text-center">" "</span>',
                 '<span class="text-center">' . $baris->payment_method . '</span>',
                 '<span class="text-center">' . $baris->payment_status . '</span>',
                 '<span class="text-center">' . $detail . '</span>'
