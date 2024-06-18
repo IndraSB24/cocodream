@@ -223,7 +223,8 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
-                                    <input class="form-control text-center" type="text" id="nominal_kembalian" name="nominal_kembalian" readonly/>
+                                    <input class="form-control text-center" type="text" id="nominal_kembalian_show" readonly/>
+                                    <input type="hidden" id="nominal_kembalian" />
                                 </div>
                             </div>
                             <div class="row">
@@ -430,7 +431,7 @@
 
     // on input tambah diskon
     $('#nominal_dibayar').on('input', function() {
-        var inputedValue = parseFloat($(this).val());
+        var inputedValue = parseFloat( removeThousandSeparator($(this).val()) );
         if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
             // If negative, set it to 0
             inputedValue = 0;
@@ -438,6 +439,7 @@
         }
 
         $('#nominal_kembalian').val( inputedValue - $('#harga_akhir').val() );
+        $('#nominal_kembalian_show').val( thousandSeparator(inputedValue - $('#harga_akhir').val()) );
     });
 
     // konfirmasi bayar
