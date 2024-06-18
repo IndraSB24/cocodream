@@ -105,13 +105,13 @@
                                         <h5 class="mb-3 text-light">Filter</h5>
                                         <form id="form-filter">
                                             <div class="row">
-                                                <div class="col-lg-4 mb-3">
+                                                <div class="col-lg-6 mb-3">
                                                     <form>
                                                         <label for="filter_date_from" class="form-label">Dari Tanggal</label>
                                                         <input type="date" class="form-control" id="filter_date_from" name="filter_date_from">
                                                     </form>
                                                 </div>
-                                                <div class="col-lg-4 mb-3">
+                                                <div class="col-lg-6 mb-3">
                                                     <form>
                                                         <label for="filter_date_until" class="form-label">Hingga Tanggal</label>
                                                         <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
