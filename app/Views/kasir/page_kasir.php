@@ -16,7 +16,7 @@
                     >    
                     <p class="card-text"><?= $item['nama']; ?></p>
                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
-                    <button class="btn btn-primary add-to-cart">Tambahkan</button>
+                    <button class="btn btn-primary add-to-cart">Tambah</button>
                 </div>
             </div>
         </div>
