@@ -5,15 +5,15 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use App\Models\Model_transaksi;
-use App\Models\Model_cash_drawer;
+use App\Models\Model_cash_drawer_detail;
 
 class Laporan extends Controller
 {
-    protected $Model_transaksi, $Model_cash_drawer;
+    protected $Model_transaksi, $Model_cash_drawer_detail;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
-        $this->Model_cash_drawer = new Model_cash_drawer();
+        $this->Model_cash_drawer_detail = new Model_cash_drawer_detail();
         helper(['session_helper', 'formatting_helper']);
     }
 
@@ -78,7 +78,7 @@ class Laporan extends Controller
 
     // ajax get laporan transaksi
     public function ajax_get_laporan_pengeluaran(){
-        $returnedData = $this->Model_cash_drawer->get_datatable_laporan_pengeluaran();
+        $returnedData = $this->Model_cash_drawer_detail->get_datatable_laporan_pengeluaran();
         $total_pengeluaran = 0;
         $total_kegiatan = 0;
 
