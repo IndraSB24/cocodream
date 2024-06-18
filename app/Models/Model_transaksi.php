@@ -180,7 +180,7 @@ class Model_transaksi extends Model
 
         $this->select('
             transaksi.*,
-            pm.nama as payment_method,
+            pm.name as payment_method,
             SUM(td.subtotal) as total_nominal
         ')
         ->join('payment_method pm', 'pm.id=transaksi.id_payment_method', 'LEFT')
