@@ -12,7 +12,7 @@
             >
                 <div class="card-body">
                     <img src="<?= base_url('upload/item_pict/'.$item['image_filename']); ?>" alt="<?= $item['nama']; ?>" 
-                        class="img-fluid mb-3" style="max-width: 100%; height: 50px"
+                        class="img-fluid mb-3" style="max-width: 100%; height: 100px"
                     >    
                     <p class="card-text"><?= $item['nama']; ?></p>
                     <p class="card-text">Rp. <?= $item['item_price']; ?></p>
