@@ -52,9 +52,6 @@
             }
         </style>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
-
     </head>
 
     <?= $this->include('partials/body') ?>
@@ -234,8 +231,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
-                                    <!-- <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/> -->
-                                    <input type="text" id="nominal_dibayar" class="form-control text-center rupiah-thousand" >
+                                    <input class="form-control text-center" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
@@ -510,19 +506,5 @@
 
         $('#cart-total').text('0')
     }
-
-    $(document).ready(function(){
-      $('.rupiah-thousand').inputmask({
-        alias: 'numeric',
-        groupSeparator: '.',
-        autoGroup: true,
-        digits: 0,
-        digitsOptional: false,
-        prefix: 'Rp ',
-        placeholder: '0',
-        rightAlign: false,
-        clearMaskOnLostFocus: false
-      });
-    });
 
 </script>
