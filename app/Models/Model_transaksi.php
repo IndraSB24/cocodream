@@ -178,6 +178,15 @@ class Model_transaksi extends Model
             'transaksi.id', 'i.nama'
         ];
 
+        // filter
+        if ($request->getPost('filterDateFrom')) {
+            $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
+        }
+
+        if ($request->getPost('filterDateUntil')) {
+            $this->where('transaksi.transaction_date <=', $request->getPost('filterDateUntil').' 23:59:59');
+        }
+
         $this->select('
             transaksi.*,
             pm.name as payment_method,
@@ -188,22 +197,6 @@ class Model_transaksi extends Model
         ->groupBy('transaksi.id')
         ->where('transaksi.deleted_at', NULL)
         ->orderBy('transaksi.id', 'DESC');
-
-        // clone for filtered
-        $filteredQuery = clone $this;
-
-        // Apply filters
-        if ($request->getPost('filterDateFrom')) {
-            $filterDateFrom = $request->getPost('filterDateFrom').' 00:00:00';
-            $this->where('transaksi.transaction_date >=', $filterDateFrom);
-            $filteredQuery->where('transaksi.transaction_date >=', $filterDateFrom);
-        }
-
-        if ($request->getPost('filterDateUntil')) {
-            $filterDateUntil = $request->getPost('filterDateUntil').' 23:59:59';
-            $this->where('transaksi.transaction_date <=', $filterDateUntil);
-            $filteredQuery->where('transaksi.transaction_date <=', $filterDateUntil);
-        }
 
         if ($request->getPost('search')['value']) {
             $searchValue = $request->getPost('search')['value'];
@@ -234,15 +227,17 @@ class Model_transaksi extends Model
             $this->limit($request->getPost('length'), $request->getPost('start'));
         }
 
-        // Execute query and get results
+        // count filtered
+        $countFiltered = clone $this;
+        $countFiltered->select('transaksi.id')->groupBy('transaksi.id');
+        $countFiltered->limit($request->getPost('length'), $request->getPost('start'));
+        $countFilteredResults = $countFiltered->countAllResults(false);
+
+        // result set
         $result['return_data'] = $this->get()->getResult();
-
-        // Count filtered results
-        $result['count_filtered'] = $filteredQuery->countAllResults(false);
-
-        // Count all results without filters
-        $this->resetQuery();
-        $result['count_all'] = $this->countAllResults();
+        // $result['count_filtered'] = $this->countAllResults();
+        $result['count_filtered'] = $countFilteredResults;
+        $result['count_all'] = $this->countNoFiltered();
 
         return $result;
     }
