@@ -28,56 +28,6 @@
                         <?= $page_title ?>
                         <!-- end page title -->
 
-                        <!-- filter  -->
-                        <!-- <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card bg-secondary text-light">
-                                    <div class="card-body">
-                                        <h5 class="mb-3 text-light">Filter</h5>
-                                        <form id="form-filter">
-                                            <div class="row">
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_gender" class="form-label">Gender</label>
-                                                    <select class="form-control select2" data-trigger name="filter_gender" id="filter_gender">
-                                                        <option value="">Pilih Gender</option>
-                                                        <option value="1">Laki-Laki</option>
-                                                        <option value="2">Perempuan</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_provinsi" class="form-label">Provinsi</label>
-                                                    <select class="form-control select2" data-trigger name="filter_provinsi" id="filter_provinsi">
-                                                        <option value="">Pilih Provinsi</option>
-                                                        <?php
-                                                            foreach($list_provinsi as $row){
-                                                                echo '
-                                                                    <option value="'.$row->id.'"> '.
-                                                                        $row->nama.
-                                                                    '</option>
-                                                                ';
-                                                            }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-4 mb-3">
-                                                    <label for="filter_kota" class="form-label">kota</label>
-                                                    <select class="form-control select2" data-trigger name="filter_kota" id="filter_kota">
-                                                        <option value="">Pilih Kota</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="col-lg-12" style="text-align: right">
-                                                    <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
-                                                    <button type="submit" class="btn btn-dark ml-3"> Filter </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
