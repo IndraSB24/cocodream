@@ -68,8 +68,10 @@ class Laporan extends Controller
             "recordsTotal" => $returnedData['count_all'],
             "recordsFiltered" => count($data),
             "data" => $data,
-            "totalPenjualan" => $total_penjualan
-        ];
+            "totalPenjualan" => $total_penjualan,
+            "totalTransaksi" => count($data),
+            "rata2Penjualan" => count($data) > 0 ? floatval($total_penjualan / count($data)) : 0
+        ];        
 
         // Output to JSON format
         return $this->response->setJSON($output);

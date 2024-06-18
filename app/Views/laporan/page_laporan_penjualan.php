@@ -51,7 +51,7 @@
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
                                                 <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
-                                                <h4 class="mb-0">$ 38452</h4>
+                                                <h4 id="total_transaksi" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-store-2-line font-size-24"></i>
@@ -66,7 +66,7 @@
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
                                                 <p class="text-truncate font-size-14 mb-2">Rata Rata Penjualan</p>
-                                                <h4 class="mb-0">$ 15.4</h4>
+                                                <h4 id="rata_penjualan" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-briefcase-4-line font-size-24"></i>
@@ -201,7 +201,12 @@
                 },
                 "dataSrc": function (returnedData) {    
                     const formattedTotalPenjualan = thousandSeparator(returnedData.totalPenjualan);
+                    const formattedTotalTransaksi = returnedData.totalTransaksi;
+                    const formattedRata2Penjualan = thousandSeparator(returnedData.rata2Penjualan);
+
                     $('#total_penjualan').text("Rp " + formattedTotalPenjualan);
+                    $('#total_transaksi').text(formattedTotalTransaksi);
+                    $('#rata_penjualan').text("Rp " + formattedRata2Penjualan);
                 
                     return returnedData.data;
                 }
