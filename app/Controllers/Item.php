@@ -131,16 +131,23 @@ class Item extends Controller
         $data = array_intersect_key(
             $this->request->getPost(),
             array_flip([
-                'kode_item', 'barcode', 'nama', 'id_kategori_jenis', 'id_satuan', 'id_kategori_item',
-                'id_brand', 'id_supplier', 'stok_minimum'
+                'nama', 'id_kategori_jenis', 'id_satuan'
             ])
         );
         $data['id'] = $this->request->getPost('edit_id');
         $data['created_by'] = sess_activeUserId();
 
-        $insertData = $this->model_item->save($data);
+        $uploaded_file = $this->request->getFile('file');
+                
+        // store the file
+        $store_file = $uploaded_file->move('upload/item_pict');
+        if($uploaded_file){
+            $data['image_filename'] = $uploaded_file->getName();
+        }
+
+        $updateData = $this->model_item->save($data);
         
-        if ($insertData) {
+        if ($updateData) {
             $response = ['success' => true];
         } else {
             $response = ['success' => false];
