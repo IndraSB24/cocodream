@@ -180,10 +180,10 @@ class Model_transaksi extends Model
 
         $this->select('
             transaksi.*,
-            k1.nama as payment_method,
+            pm.nama as payment_method,
             SUM(td.subtotal) as total_nominal
         ')
-        ->join('kategori k1', 'k1.id=transaksi.id_payment_method', 'LEFT')
+        ->join('payment_method pm', 'pm.id=transaksi.id_payment_method', 'LEFT')
         ->join('transaksi_detail td', 'td.id_transaksi=transaksi.id', 'LEFT')
         ->groupBy('transaksi.id')
         ->where('transaksi.deleted_at', NULL)
