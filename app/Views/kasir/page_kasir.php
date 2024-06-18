@@ -187,7 +187,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <label for="harga_awal_show" class="form-label">Harga Barang</label>
                                     <input class="form-control text-center" type="text" id="harga_awal_show" name="harga_awal_show" readonly/>
-                                    <input type="number" id="harga_awal">
+                                    <input type="hidden" id="harga_awal">
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="diskon_tambah" class="form-label">Diskon</label>
@@ -196,7 +196,7 @@
                                 <div class="col-lg-12 mb-3">
                                     <label for="harga_akhir_show" class="form-label">Total</label>
                                     <input class="form-control text-center" type="text" id="harga_akhir_show" name="harga_akhir_show" readonly/>
-                                    <input type="number" id="harga_akhir">
+                                    <input type="hidden" id="harga_akhir">
                                 </div>
                                 <hr>
                                 <div class="col-lg-6 mb-3">
@@ -393,7 +393,6 @@
             nominal_kembalian: $('#nominal_kembalian').val(),
             id_payment_method: $('#metode_bayar').val()
         };
-        console.log(data);
 
         // Assuming you have a function loadQuestionalSwal defined to handle the request
         loadQuestionalSwal(
@@ -417,7 +416,6 @@
     // on input tambah diskon
     $('#diskon_tambah').on('input', function() {
         var inputedValue = parseFloat( removeThousandSeparator($(this).val()) );
-        console.log(inputedValue, 'non-formated');
         if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
             // If negative, set it to 0
             inputedValue = 0;
