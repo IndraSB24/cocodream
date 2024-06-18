@@ -92,10 +92,35 @@ class Item extends Controller
             }
    
         }else {
-            $response = [
-                'success' => false,
-                'message' => 'No file specified.'
-            ];
+            $data = array_intersect_key(
+                $this->request->getPost(),
+                array_flip([
+                    'nama', 'id_kategori_jenis', 'id_satuan'
+                ])
+            );
+            $data['created_by'] = sess_activeUserId();
+            $insertedId = $this->model_item->insertWithReturnId($data);
+
+            if($insertedId){
+                // inject invoice code
+                $item_code_update = [
+                    'kode_item' => generate_general_code('ITEM', $insertedId, 9)
+                ];
+                $updateResult = $this->model_item->update($insertedId, $item_code_update);
+            }
+            
+            // return and notif wa
+            if ($insertedId){
+                $response = [
+                    'success' => true,
+                    'message' => 'ok'
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'not ok'
+                ];
+            }
         }
 
         return json_encode($response);

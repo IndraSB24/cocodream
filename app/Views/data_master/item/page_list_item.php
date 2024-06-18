@@ -223,7 +223,7 @@
                         <div class="row">
                                 <div class="col-lg-6 mb-3">
                                     <label for="kode_item_edit" class="form-label">Kode Item</label>
-                                    <input class="form-control" type="text" id="kode_item_edit" name="kode_item_edit" placeholder="Kode Item" />
+                                    <input class="form-control text-center" type="text" id="kode_item_edit" name="kode_item_edit" placeholder="Kode Item" readonly/>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="jenis_edit" class="form-label">Jenis</label>
@@ -252,16 +252,15 @@
                                     <div >
                                         <label for="item_image_edit" id="up_item_image" class="btn btn-info">Choose File</label>
                                         <input name="item_image_edit" id="item_image_edit" type="file" multiple="multiple" style="display: none;" />
-                                        &nbsp;<span id="item_image_filename">No File Choosen</span>
+                                        &nbsp;<span id="item_image_filename_edit">No File Choosen</span>
                                     </div>
                                 </div>
                                 
                             </div>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
-                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit" 
-                                        data-path="<?= base_url('item/add/item') ?>"
-                                    >
+                                    <input type="hidden" id="edit_id"/>
+                                    <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_edit">
                                         Konfirmasi Edit
                                     </button>
                                 </div>
@@ -357,7 +356,9 @@
         // Append the file to formData
         var i = $('#item_image'),
             file = i[0].files[0];
-        formData.append('file', file);
+        if (file) {
+            formData.append('file', file);
+        }
 
         // Append other form data
         formData.append('kode_item', $('#kode_item').val());
@@ -400,13 +401,8 @@
                 // Populate modal fields with fetched data
                 $('#edit_id').val(idItem);
                 $('#kode_item_edit').val(response.kode_item);
-                $('#barcode_edit').val(response.barcode);
                 $('#nama_edit').val(response.nama);
-                $('#kategori_edit').val(response.id_kategori_item).trigger('change');
                 $('#jenis_edit').val(response.id_kategori_jenis).trigger('change');
-                $('#brand_edit').val(response.id_brand).trigger('change');
-                $('#supplier_edit').val(response.id_supplier).trigger('change');
-                $('#stok_minimum_edit').val(response.stok_minimum);
                 $('#satuan_edit').val(response.id_satuan).trigger('change');
                 
                 // Show the modal
@@ -423,21 +419,24 @@
     $(document).on('click', '#btn_konfirmasi_edit', function () {
         const thisData = $(this).data();
         const path = "<?= site_url('item/edit_item') ?>";
-        const data = {
-            edit_id: $('#edit_id').val(),
-            kode_item: $('#kode_item_edit').val(),
-            barcode: $('#barcode_edit').val(),
-            nama: $('#nama_edit').val(),
-            id_kategori_jenis: $('#jenis_edit').val(),
-            id_satuan: $('#satuan_edit').val(),
-            id_kategori_item: $('#kategori_edit').val(),
-            id_brand: $('#brand_edit').val(),
-            id_supplier: $('#supplier_edit').val(),
-            stok_minimum: $('#stok_minimum_edit').val()
-        };
+        var formData = new FormData();
+        $('#item_image_filename_edit').text("No File Choosen");
+
+        // Append the file to formData
+        var i = $('#item_image_edit'),
+            file = i[0].files[0];
+        if (file) {
+            formData.append('file', file);
+        }
+
+        // Append other form data
+        formData.append('edit_id', $('#edit_id').val());
+        formData.append('nama', $('#nama_edit').val());
+        formData.append('id_kategori_jenis', $('#jenis_edit').val());
+        formData.append('id_satuan', $('#satuan_edit').val());
         
-        loadQuestionalSwal(
-            path, data, 'Konfirmasi edit Item dengan Kode: '+ $('#kode_item_edit').val() +' ?', 
+        loadQuestionalSwalFormData(
+            path, formData, 'Konfirmasi edit Item dengan Kode: '+ $('#kode_item_edit').val() +' ?', 
             'Diedit!', 'Item dengan kode: '+ $('#kode_item_edit').val() +' berhasil diedit.', 'modal_edit'
         );
     });
