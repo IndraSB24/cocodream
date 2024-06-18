@@ -427,7 +427,7 @@
 
     // on input tambah diskon
     $('#diskon_tambah').on('input', function() {
-        var inputedValue = parseFloat($(this).val());
+        var inputedValue = removeThousandSeparator(parseFloat($(this).val()));
         console.log(inputedValue, 'non-formated');
         if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
             // If negative, set it to 0
