@@ -65,7 +65,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('laporanpenjualan-show') ?>">Laporan Penjualan</a></li>
-                        <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Pengeluaran</a></li>
+                        <li><a href="<?= base_url('laporanpengeluaran-show') ?>">Laporan Pengeluaran</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Laporan Stok</a></li>
                     </ul>
                 </li>

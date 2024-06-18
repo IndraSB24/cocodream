@@ -94,6 +94,9 @@ $routes->get('hrm-show-absensi-list/(:segment)', 'Absensi::show_absensi_list/$1'
 // Laporan Penjualan
 $routes->get('laporanpenjualan-show', 'Laporan::index');
 
+// Laporan Pengeluaran
+$routes->get('laporanpengeluaran-show', 'Laporan::laporan_show_pengeluaran');
+
 // Emr
 $routes->get('emr-show-list', 'Emr::index');
 

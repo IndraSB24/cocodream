@@ -3,25 +3,37 @@
 namespace App\Controllers;
 
 use App\Models\Model_transaksi;
+use App\Models\Model_cash_drawer;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 
 class Laporan extends Controller
 {
     protected $Model_transaksi;
+    protected $Model_cash_drawer;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
+        $this->Model_cash_drawer = new Model_cash_drawer();
         helper(['session_helper', 'formatting_helper']);
     }
 
     public function index()
     {
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
+			'title_meta' => view('partials/title-meta', ['title' => 'Laporan Penjualan']),
 			'page_title' => view('partials/page-title', ['title' => 'Clarisa', 'pagetitle' => 'Laporan Penjualan'])
 		];
 		return view('laporan/page_laporan_penjualan', $data);
+    }
+
+    public function laporan_show_pengeluaran()
+    {
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Laporan Pengeluaran']),
+			'page_title' => view('partials/page-title', ['title' => 'Clarisa', 'pagetitle' => 'Laporan Pengeluaran'])
+		];
+		return view('laporan/page_laporan_pengeluaran', $data);
     }
 
     // ajax get laporan transaksi
