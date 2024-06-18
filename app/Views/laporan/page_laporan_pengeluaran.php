@@ -206,7 +206,7 @@
                     const formattedRata2Pengeluaran = thousandSeparator(returnedData.rata2Pengeluaran);
 
                     $('#total_pengeluaran').text("Rp " + formattedTotalPengeluaran);
-                    $('#total_kegiatan').text(formattedTotalTransaksi);
+                    $('#total_kegiatan').text(formattedTotalKegiatan);
                     $('#rata_pengeluaran').text("Rp " + formattedRata2Pengeluaran);
                 
                     return returnedData.data;
