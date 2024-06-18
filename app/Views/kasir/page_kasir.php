@@ -88,9 +88,6 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" id="minuman-tab" data-bs-toggle="tab" href="#minuman" role="tab" aria-controls="minuman" aria-selected="false">Minuman</a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="lainnya-tab" data-bs-toggle="tab" href="#lainnya" role="tab" aria-controls="lainnya" aria-selected="false">Lainnya</a>
-                                            </li>
                                         </ul>
                                     </div>
                                     
@@ -117,15 +114,6 @@
                                                 <div class="row overflow-auto" id="item-list-minuman">
                                                     <?php foreach ($items as $item): ?>
                                                         <?php if ($item['nama_jenis'] == 'minuman'): ?>
-                                                            <?= renderItemCard($item); ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab">
-                                                <div class="row overflow-auto" id="item-list-lainnya">
-                                                    <?php foreach ($items as $item): ?>
-                                                        <?php if ($item['nama_jenis'] == 'bahan' && $item['is_direct_sale'] == 1): ?>
                                                             <?= renderItemCard($item); ?>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
