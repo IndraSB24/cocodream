@@ -106,14 +106,9 @@ class Model_transaksi extends Model
 
         $this->select('
             transaksi.*,
-            r.kode as kode_registrasi,
-            p.kode_pasien as kode_pasien,
-            p.nama as nama_pasien,
             k1.nama as payment_method,
             SUM(td.subtotal) as total_nominal
         ')
-        ->join('registration r', 'r.id=transaksi.id_registration', 'LEFT')
-        ->join('pasien p', 'p.id=transaksi.id_pasien', 'LEFT')
         ->join('kategori k1', 'k1.id=transaksi.id_payment_method', 'LEFT')
         ->join('transaksi_detail td', 'td.id_transaksi=transaksi.id', 'LEFT')
         ->groupBy('transaksi.id')
@@ -168,6 +163,67 @@ class Model_transaksi extends Model
         $this->db->transCommit();
 
         return $transactionId;
+    }
+
+    // laporan penjualan
+    public function get_datatable_laporan_penjualan()
+    {
+        $request = service('request');
+
+        // set searchable and orderable
+        $column_searchable = [
+            'transaksi.nama'
+        ];
+        $column_orderable = [
+            'transaksi.id', 'i.nama'
+        ];
+
+        $this->select('
+            transaksi.*,
+            k1.nama as payment_method,
+            SUM(td.subtotal) as total_nominal
+        ')
+        ->join('kategori k1', 'k1.id=transaksi.id_payment_method', 'LEFT')
+        ->join('transaksi_detail td', 'td.id_transaksi=transaksi.id', 'LEFT')
+        ->groupBy('transaksi.id')
+        ->where('transaksi.deleted_at', NULL)
+        ->orderBy('transaksi.id', 'DESC');
+
+        if ($request->getPost('search')['value']) {
+            $searchValue = $request->getPost('search')['value'];
+            $i = 0;
+            foreach ($column_searchable as $item) {
+                if ($i === 0) {
+                    $this->groupStart(); 
+                    $this->like($item, $searchValue);
+                } else {
+                    $this->orLike($item, $searchValue);
+                }
+                if (count($column_searchable) - 1 == $i) {
+                    $this->groupEnd(); 
+                }
+                $i++;
+            }
+        }
+
+        if ($request->getPost('order')) {
+            $orderColumn = $column_orderable[$request->getPost('order')[0]['column']];
+            $orderDirection = $request->getPost('order')[0]['dir'];
+            $this->orderBy($orderColumn, $orderDirection);
+        } else {
+            $this->orderBy('id', 'ASC');
+        }
+
+        if ($request->getPost('length') != -1) {
+            $this->limit($request->getPost('length'), $request->getPost('start'));
+        }
+
+        // result set
+        $result['return_data'] = $this->get()->getResult();
+        $result['count_filtered'] = $this->countAllResults();
+        $result['count_all'] = $this->countNoFiltered();
+
+        return $result;
     }
 
 }

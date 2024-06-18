@@ -26,14 +26,10 @@ class Laporan extends Controller
 
     // ajax get laporan transaksi
     public function ajax_get_laporan_transaksi(){
-        $returnedData = $this->Model_transaksi->get_datatable_main();
+        $returnedData = $this->Model_transaksi->get_datatable_laporan_penjualan();
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
-            $invoice = generate_general_code('INV', $baris->id, 6);
-
-            
-
             $detail = '
                 <a id="btn_show_detail" href="transaksi-show-detail/'.$baris->id.'"
                     class="btn btn-sm btn-info"
@@ -42,13 +38,11 @@ class Laporan extends Controller
                 </a>
             ';
 
-            $kode_registrasi = $baris->kode_registrasi=='' ? '-' : $baris->kode_registrasi;
-
             $data[] = [
                 '<span class="text-center">' . ($itung + 1) . '</span>',
-                '<span class="text-center">' . $invoice . '</span>',
+                '<span class="text-center">' . $baris->no_invoice . '</span>',
                 '<span class="text-center">' . $baris->transaction_date . '</span>',
-                '<span class="text-center">" "</span>',
+                '<span class="text-center">' . $baris->total_nominal . '</span>',
                 '<span class="text-center">' . $baris->payment_method . '</span>',
                 '<span class="text-center">' . $baris->payment_status . '</span>',
                 '<span class="text-center">' . $detail . '</span>'
