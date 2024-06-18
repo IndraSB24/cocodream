@@ -28,6 +28,85 @@
                         <?= $page_title ?>
                         <!-- end page title -->
 
+                        <!-- Card Report -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-1 overflow-hidden">
+                                                <p class="text-truncate font-size-14 mb-2">Total Penjualan</p>
+                                                <h4 class="mb-0">1452</h4>
+                                            </div>
+                                            <div class="text-primary ms-auto">
+                                                <i class="ri-stack-line font-size-24"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-1 overflow-hidden">
+                                                <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
+                                                <h4 class="mb-0">$ 38452</h4>
+                                            </div>
+                                            <div class="text-primary ms-auto">
+                                                <i class="ri-store-2-line font-size-24"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-1 overflow-hidden">
+                                                <p class="text-truncate font-size-14 mb-2">Rata Rata Penjualan</p>
+                                                <h4 class="mb-0">$ 15.4</h4>
+                                            </div>
+                                            <div class="text-primary ms-auto">
+                                                <i class="ri-briefcase-4-line font-size-24"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- filter  -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card bg-secondary text-light">
+                                    <div class="card-body">
+                                        <h5 class="mb-3 text-light">Filter</h5>
+                                        <form id="form-filter">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                    <label for="filter_date_from" class="form-label">Dari Tanggal</label>
+                                                    <input type="date" class="form-control" id="filter_date_from" name="filter_date_from">
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                    <label for="filter_date_until" class="form-label">Hingga Tanggal</label>
+                                                    <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-lg-12" style="text-align: right">
+                                                    <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
+                                                    <button type="submit" class="btn btn-dark ml-3"> Filter </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
