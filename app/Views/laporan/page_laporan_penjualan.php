@@ -200,7 +200,8 @@
                     data.filterDateUntil = $('#filter_date_until').val();
                 },
                 "dataSrc": function (returnedData) {    
-                    $('#total_penjualan').text(returnedData.totalPenjualan);
+                    const formattedTotalPenjualan = thousandSeparator(returnedData.totalPenjualan);
+                    $('#total_penjualan').text("Rp. " + formattedTotalPenjualan);
                 
                     return returnedData.data;
                 }
