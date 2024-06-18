@@ -262,7 +262,7 @@
             inputValue = keepOnlyNumbers(inputValue);
 
             // Add thousand separators
-            const formattedValue = addThousandSeparator(inputValue);
+            const formattedValue = thousandSeparator(inputValue);
 
             // Update the input value
             event.target.value = formattedValue;
