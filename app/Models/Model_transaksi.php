@@ -178,6 +178,15 @@ class Model_transaksi extends Model
             'transaksi.id', 'i.nama'
         ];
 
+        // filter
+        if ($request->getPost('filter_date_from')) {
+            $this->where('transaksi.transaction_date >=', $request->getPost('filter_date_from'));
+        }
+
+        if ($request->getPost('filter_date_until')) {
+            $this->where('transaksi.transaction_date <=', $request->getPost('filter_date_until'));
+        }
+
         $this->select('
             transaksi.*,
             pm.name as payment_method,

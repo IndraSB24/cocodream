@@ -196,6 +196,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.searchValue = $('#main_table_filter input').val();
+                    data.filterDateFrom = $('#filter_date_from').val();
+                    data.filterDateUntil = $('#filter_date_until').val();
                 }
             },
             columnDefs: [
