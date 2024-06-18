@@ -36,7 +36,7 @@
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
                                                 <p class="text-truncate font-size-14 mb-2">Total Pengeluaran</p>
-                                                <h4 class="mb-0">1452</h4>
+                                                <h4 id="total_pengeluaran" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-stack-line font-size-24"></i>
@@ -50,8 +50,8 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Jumlah Pengeluaran</p>
-                                                <h4 class="mb-0">$ 38452</h4>
+                                                <p class="text-truncate font-size-14 mb-2">Total Kegiatan</p>
+                                                <h4 id="total_kegiatan" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-store-2-line font-size-24"></i>
@@ -66,7 +66,7 @@
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
                                                 <p class="text-truncate font-size-14 mb-2">Rata Rata Pengeluaran</p>
-                                                <h4 class="mb-0">$ 15.4</h4>
+                                                <h4 id="rata_pengeluaran" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-briefcase-4-line font-size-24"></i>
@@ -97,8 +97,8 @@
                                             
                                             <div class="row">
                                                 <div class="col-lg-12" style="text-align: right">
-                                                    <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
-                                                    <button type="submit" class="btn btn-dark ml-3"> Filter </button>
+                                                    <a id="btn_reset" class="btn btn-danger ml-3"> Reset </a>
+                                                    <button id="btn_filter" class="btn btn-dark ml-3"> Filter </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -106,7 +106,8 @@
                                 </div>
                             </div>
                         </div>
-
+                        
+                        <!-- table -->
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -132,7 +133,7 @@
                                     </div>
                                 </div>
                             </div> <!-- end col -->
-                        </div> <!-- end row -->
+                        </div>
 
                         
                     </div> <!-- container-fluid -->
@@ -147,7 +148,7 @@
         </div>
         <!-- END layout-wrapper -->
 
-
+       
         <!-- JAVASCRIPT -->
         <?= $this->include('partials/vendor-scripts') ?>
         <?= $this->include('partials/custom-page-scripts') ?>
@@ -192,10 +193,23 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?php echo site_url('cash_drawer/ajax_get_list_cashdrawer')?>",
+                "url": "<?php echo site_url('laporan/ajax_get_laporan_pengeluaran')?>",
                 "type": "POST",
                 "data": function ( data ) {
                     data.searchValue = $('#main_table_filter input').val();
+                    data.filterDateFrom = $('#filter_date_from').val();
+                    data.filterDateUntil = $('#filter_date_until').val();
+                },
+                "dataSrc": function (returnedData) {    
+                    const formattedTotalPengeluaran = thousandSeparator(returnedData.totalPengeluaran);
+                    const formattedTotalKegiatan = returnedData.totalKegiatan;
+                    const formattedRata2Pengeluaran = thousandSeparator(returnedData.rata2Pengeluaran);
+
+                    $('#total_pengeluaran').text("Rp " + formattedTotalPengeluaran);
+                    $('#total_kegiatan').text(formattedTotalTransaksi);
+                    $('#rata_pengeluaran').text("Rp " + formattedRata2Pengeluaran);
+                
+                    return returnedData.data;
                 }
             },
             columnDefs: [
@@ -211,170 +225,22 @@
 		});
     }
 
-    // simpan
-    $(document).on('click', '#btn_simpan', function () {
-        const thisData = $(this).data();
-        const path = "<?= base_url('pasien/add_pasien') ?>";
-        const data = {
-            kode_pasien: $('#kode_pasien').val(),
-            nama: $('#nama_pasien').val(),
-            tanggal_lahir: $('#tanggal_lahir').val(),
-            alamat: $('#alamat').val(),
-            phone: $('#nohp').val(),
-            id_kota: $('#kota').val()
-        };
-        
-        loadQuestionalSwal(
-            path, data, 'Simpan Pasien dengan nama: '+$('#nama_pasien').val()+' ?', 
-            'Disimpan!', 'Pasien dengan nama: '+$('#nama_pasien').val()+' berhasil disimpan.', 'modal_add'
-        );
-    });
-
-    // delete customer 
-    $(document).on('click', '#btn_delete', function () {
-        const thisData = $(this).data();
-        const path = "<?= base_url('pasien/delete_pasien') ?>";
-        const data = {
-            id : thisData['id']
-        };
-        
-        loadQuestionalSwal(
-            path, data, 'Hapus Pasien Dengan Nama: '+thisData['nama']+' ?', 
-            'Dihapus!', 'Pasien dengan Nama: '+thisData['nama']+' berhasil dihapus.', ''
-        );
-    });
-
-    // load edit modal
-    $(document).on('click', '#btn_edit', function() {
-        var idPasien = $(this).data('id');
-        const path = "<?= site_url('pasien/ajax_get_pasien_data') ?>";
-        
-        $.ajax({
-            url: path,
-            method: 'POST',
-            data: { id_pasien: idPasien },
-            dataType: 'json',
-            success: function(response) {
-                // Populate modal fields with fetched data
-                $('#edit_id').val(idPasien);
-                $('#tanggal_lahir_edit').val(response.tanggal_lahir);
-                $('#nama_pasien_edit').val(response.nama);
-                $('#kota_edit').val(response.id_kota).trigger('change');
-                $('#alamat_edit').val(response.alamat);
-                $('#nohp_edit').val(response.phone);
-                $('#kode_pasien_edit').val(response.kode_pasien);
-                
-                // Show the modal
-                $('#modal_edit').modal('show');
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.error(xhr.responseText);
-            }
-        });
-    });
-
-    // konfirmasi edit
-    $(document).on('click', '#btn_konfirmasi_edit', function () {
-        const thisData = $(this).data();
-        const path = "<?= site_url('pasien/edit_pasien') ?>";
-        const data = {
-            edit_id: $('#edit_id').val(),
-            nama: $('#nama_pasien_edit').val(),
-            tanggal_lahir: $('#tanggal_lahir_edit').val(),
-            alamat: $('#alamat_edit').val(),
-            phone: $('#nohp_edit').val(),
-            id_kota: $('#kota_edit').val()
-        };
-        
-        loadQuestionalSwal(
-            path, data, 'Konfirmasi edit Pasien dengan Kode: '+ $('#kode_pasien_edit').val() +' ?', 
-            'Diedit!', 'Pasien dengan kode: '+ $('#kode_pasien_edit').val() +' berhasil diedit.', 'modal_edit'
-        );
-    });
-
-    // on modal_add hide
-    $('#modal_add').on('hidden.bs.modal', function () {
-        // Clear form fields
-        clearFieldValue([
-            'deskripsi', 'debit', 'credit'
-        ]);
-
-        // clear cashDrawerDetail content
-        resetElementValue('cashDrawerDetail');
-    });
-
-    // add item
-    $(document).on('click', '#btn_add_detail', function (e) {
+    // btn filter
+    $('#btn_filter').on('click', function (e) {
         e.preventDefault();
-
-        // Append transaction details to table with delete button
-        $('#cashDrawerDetail').append(
-            '<tr>' +
-            '<td>' + $('#deskripsi').val() + '</td>' +
-            '<td>' + $('#debit').val() + '</td>' +
-            '<td>' + $('#credit').val() + '</td>' +
-            '<td>' +
-                '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
-            '</td>' +
-            '</tr>'
-        );
-
-        // Clear form fields
-        clearFieldValue([
-            'deskripsi', 'debit', 'credit'
-        ]);
+        mainDatatable();
     });
 
-    // Attach click event handler to delete buttons
-    $('#cashDrawerDetail').on('click', '#deleteRow', function () {
-        $(this).closest('tr').remove();
+    // btn reset
+    $('#btn_reset').on('click', function (e) {
+        e.preventDefault();
+        
+        // Clear the filter inputs
+        $('#filter_date_from').val('');
+        $('#filter_date_until').val('');
+        
+        // Redraw the table with cleared filters
+        mainDatatable();
     });
-
-    // konfirmasi add item
-    $(document).on('click', '#btn_konfirmasi_add_detail', function () {
-        const thisData = $(this).data();
-        const path = "<?= base_url('cash_drawer/add_cashdrawer_detail') ?>";
-        var rowsData = [];
-
-        // Iterate over each row in the table
-        $('#cashDrawerDetail tr').each(function() {
-            var rowData = {};
-            
-            // Find each cell (td) in the current row
-            $(this).find('td').each(function(index) {
-                // Extract the data from the cell and store it in the rowData object
-                switch(index) {
-                    case 0:
-                        rowData.deskripsi = $(this).text();
-                        break;
-                    case 1:
-                        rowData.debit = parseFloat($(this).text());
-                        break;
-                    case 2: 
-                        rowData.credit = parseFloat($(this).text());
-                        break;
-                }
-            });
-            
-            rowsData.push(rowData);
-        });
-
-        const data = {
-            cashdrawer_detail: rowsData,
-            for_date: $('#for_date').val()
-        };
-
-        loadQuestionalSwal(
-            path, data, 'Tambah Detail Cash Drawer ?', 
-            'Ditambahkan!', 'Detail baru berhasil ditambahkan pada Cash Drawer untuk Tanggal '+$('#for_date').val(), 'modal_add'
-        );
-    });
-
-    // Attach click event handler to delete buttons
-    $('#cashDrawerDetail').on('click', '#deleteRow', function () {
-        $(this).closest('tr').remove();
-    });
-
 
 </script>

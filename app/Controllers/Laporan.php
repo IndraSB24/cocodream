@@ -2,15 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\Model_transaksi;
-use App\Models\Model_cash_drawer;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
+use App\Models\Model_transaksi;
+use App\Models\Model_cash_drawer;
 
 class Laporan extends Controller
 {
-    protected $Model_transaksi;
-    protected $Model_cash_drawer;
+    protected $Model_transaksi, $Model_cash_drawer;
  
     function __construct(){
         $this->Model_transaksi = new Model_transaksi();
@@ -71,6 +70,50 @@ class Laporan extends Controller
             "totalPenjualan" => $total_penjualan,
             "totalTransaksi" => $returnedData['count_filtered'],
             "rata2Penjualan" => $returnedData['count_filtered'] > 0 ? floatval($total_penjualan / $returnedData['count_filtered']) : 0
+        ];        
+
+        // Output to JSON format
+        return $this->response->setJSON($output);
+    }
+
+    // ajax get laporan transaksi
+    public function ajax_get_laporan_pengeluaran(){
+        $returnedData = $this->Model_cash_drawer->get_datatable_laporan_pengeluaran();
+        $total_pengeluaran = 0;
+        $total_kegiatan = 0;
+
+        $data = [];
+        foreach ($returnedData['return_data'] as $itung => $baris) {
+            $total_pengeluaran += $baris->total_credit;
+            $total_kegiatan += $baris->kegiatan_total;
+
+            $detail = '
+                <a href="cashdrawer-get-detail/'.$baris->id_entitas.'/'.$baris->for_date.'"
+                    class="btn btn-sm btn-info"
+                >
+                    Detail
+                </a>
+            ';
+
+            $data[] = [
+                '<span class="text-center">' . ($itung + 1) . '</span>',
+                '<span class="text-center">' . $baris->for_date . '</span>',
+                '<span class="text-center">' . $baris->nama_entitas . '</span>',
+                '<span class="text-center">' . thousand_separator($baris->kegiatan_total). '</span>',
+                '<span class="text-center">Rp. ' . thousand_separator($baris->total_debit). '</span>',
+                '<span class="text-center">Rp. ' . thousand_separator($baris->total_credit). '</span>',
+                '<span class="text-center">' . $detail . '</span>'
+            ];
+        }
+
+        $output = [
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $returnedData['count_all'],
+            "recordsFiltered" => $returnedData['count_filtered'],
+            "data" => $data,
+            "totalPengeluaran" => $total_pengeluaran,
+            "totalKegiatan" => $kegiatan_total,
+            "rata2Pengeluaran" => $kegiatan_total > 0 ? floatval($total_pengeluaran / $kegiatan_total) : 0
         ];        
 
         // Output to JSON format

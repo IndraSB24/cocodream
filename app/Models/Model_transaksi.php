@@ -234,7 +234,6 @@ class Model_transaksi extends Model
 
         // result set
         $result['return_data'] = $this->get()->getResult();
-        // $result['count_filtered'] = $this->countAllResults();
         $result['count_filtered'] = $countFilteredResults;
         $result['count_all'] = $this->countNoFiltered();
 
