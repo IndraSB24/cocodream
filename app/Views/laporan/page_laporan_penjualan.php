@@ -97,7 +97,7 @@
                                             
                                             <div class="row">
                                                 <div class="col-lg-12" style="text-align: right">
-                                                    <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
+                                                    <a id="btn_reset" class="btn btn-danger ml-3"> Reset </a>
                                                     <button id="btn_filter" class="btn btn-dark ml-3"> Filter </button>
                                                 </div>
                                             </div>
@@ -224,10 +224,22 @@
 		});
     }
 
+    // btn filter
     $('#btn_filter').on('click', function (e) {
         e.preventDefault();
         mainDatatable();
     });
 
+    // btn reset
+    $('#btn_reset').on('click', function (e) {
+        e.preventDefault();
+        
+        // Clear the filter inputs
+        $('#filter_date_from').val('');
+        $('#filter_date_until').val('');
+        
+        // Redraw the table with cleared filters
+        mainDatatable();
+    });
 
 </script>
