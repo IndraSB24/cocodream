@@ -106,12 +106,17 @@
                                         <form id="form-filter">
                                             <div class="row">
                                                 <div class="col-lg-4 mb-3">
-                                                    <label for="filter_gender" class="form-label">Gender</label>
-                                                    <select class="form-control select2" data-trigger name="filter_gender" id="filter_gender">
-                                                        <option value="">Pilih Gender</option>
-                                                        <option value="1">Laki-Laki</option>
-                                                        <option value="2">Perempuan</option>
-                                                    </select>
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="filter_date_from" class="form-label">Dari Tanggal</label>
+                                                        <input type="date" class="form-control" id="filter_date_from" name="filter_date_from">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="filter_date_until" class="form-label">Hingga Tanggal</label>
+                                                        <input type="date" class="form-control" id="filter_date_until" name="filter_date_until">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                                </form>
                                                 </div>
                                                 <div class="col-lg-4 mb-3">
                                                     <label for="filter_provinsi" class="form-label">Provinsi</label>
