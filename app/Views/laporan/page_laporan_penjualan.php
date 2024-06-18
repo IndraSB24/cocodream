@@ -36,7 +36,7 @@
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
                                                 <p class="text-truncate font-size-14 mb-2">Total Penjualan</p>
-                                                <h4 class="mb-0">1452</h4>
+                                                <h4 id="total_penjualan" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-stack-line font-size-24"></i>
@@ -198,6 +198,11 @@
                     data.searchValue = $('#main_table_filter input').val();
                     data.filterDateFrom = $('#filter_date_from').val();
                     data.filterDateUntil = $('#filter_date_until').val();
+                },
+                "dataSrc": function (returnedData) {    
+                    $('#total_penjualan').text(returnedData.totalPenjualan);
+                
+                    return returnedData.data;
                 }
             },
             columnDefs: [

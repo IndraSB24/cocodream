@@ -68,7 +68,7 @@ class Laporan extends Controller
             "recordsTotal" => $returnedData['count_all'],
             "recordsFiltered" => count($data),
             "data" => $data,
-            "total_penjualan" => $total_penjualan
+            "totalPenjualan" => $total_penjualan
         ];
 
         // Output to JSON format
