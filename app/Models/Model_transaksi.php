@@ -229,7 +229,6 @@ class Model_transaksi extends Model
 
         // count filtered
         $countFiltered = clone $this;
-        $countFiltered->select('transaksi.id')->groupBy('transaksi.id');
         $countFiltered->limit($request->getPost('length'), $request->getPost('start'));
         $countFilteredResults = $countFiltered->countAllResults(false);
 
