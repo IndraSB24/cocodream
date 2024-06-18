@@ -98,7 +98,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12" style="text-align: right">
                                                     <a class="btn btn-danger ml-3" onClick="reloadPage()"> Reset </a>
-                                                    <button type="submit" class="btn btn-dark ml-3"> Filter </button>
+                                                    <button id="btn_filter" class="btn btn-dark ml-3"> Filter </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -212,6 +212,11 @@
             ],
 		});
     }
+
+    $('#btn_filter').on('click', function (e) {
+        e.preventDefault();
+        mainDatatable();
+    });
 
 
 </script>
