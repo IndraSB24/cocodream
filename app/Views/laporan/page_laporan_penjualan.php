@@ -29,7 +29,6 @@
                         <!-- end page title -->
 
                         <!-- Card Report -->
-
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card">
@@ -42,13 +41,6 @@
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-stack-line font-size-24"></i>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body border-top py-3">
-                                        <div class="text-truncate">
-                                            <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
-                                            <span class="text-muted ms-2">From previous period</span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,12 +58,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body border-top py-3">
-                                        <div class="text-truncate">
-                                            <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
-                                            <span class="text-muted ms-2">From previous period</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -85,12 +71,6 @@
                                             <div class="text-primary ms-auto">
                                                 <i class="ri-briefcase-4-line font-size-24"></i>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body border-top py-3">
-                                        <div class="text-truncate">
-                                            <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
-                                            <span class="text-muted ms-2">From previous period</span>
                                         </div>
                                     </div>
                                 </div>
