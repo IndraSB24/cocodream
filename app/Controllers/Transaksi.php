@@ -386,7 +386,7 @@ class Transaksi extends Controller
                 </a>
                 <a class='btn btn-sm btn-danger' id='btn_delete' 
                     data-id='$baris->id'
-                    data-invoice='$invoice'
+                    data-invoice='$baris->no_invoice'
                 > 
                     <i class='fas fa-trash-alt'></i>
                 </a>
