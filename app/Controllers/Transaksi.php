@@ -378,8 +378,6 @@ class Transaksi extends Controller
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
-            $invoice = generate_general_code('INV', $baris->id, 6);
-
             $aksi = "
                 <a class='btn btn-sm btn-info' id='btn_edit'
                     data-id='$baris->id'
@@ -402,13 +400,9 @@ class Transaksi extends Controller
                 </a>
             ';
 
-            $kode_registrasi = $baris->kode_registrasi=='' ? '-' : $baris->kode_registrasi;
-
             $data[] = [
                 '<span class="text-center">' . ($itung + 1) . '</span>',
                 '<span class="text-center">' . $baris->no_invoice . '</span>',
-                '<span class="text-center">' . $kode_registrasi . '</span>',
-                '<span class="text-center">' . $baris->nama_pasien . '</span>',
                 '<span class="text-center">' . $baris->transaction_date . '</span>',
                 '<span class="text-center">Rp. ' . thousand_separator($baris->total_nominal, 2) . '</span>',
                 '<span class="text-center">' . $baris->payment_status . '</span>',

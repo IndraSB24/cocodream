@@ -48,8 +48,6 @@
                                                     <tr>
                                                         <th class="text-center">No.</th>
                                                         <th class="text-center">No Invoice</th>
-                                                        <th class="text-center">Kode Registrasi</th>
-                                                        <th class="text-center">Nama Customer</th>
                                                         <th class="text-center">Waktu</th>
                                                         <th class="text-center">Subtotal</th>
                                                         <th class="text-center">Status Pembayaran</th>
