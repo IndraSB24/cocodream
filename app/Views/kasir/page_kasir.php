@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="diskon_tambah" class="form-label">Diskon</label>
-                                    <input class="form-control text-center thousand-separator bg-info" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                    <input class="form-control text-center thousand-separator bg-info text-light" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label for="harga_akhir_show" class="form-label">Total</label>
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
-                                    <input class="form-control text-center thousand-separator bg-info" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
+                                    <input class="form-control text-center thousand-separator bg-info text-light" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
                                     <input type="hidden" id="nominal_dibayar_number">
                                 </div>
                                 <div class="col-lg-6 mb-3">
