@@ -98,7 +98,7 @@ class Model_transaksi extends Model
         'transaksi.id'
     ];
     protected $main_column_orderable = [
-        'transaksi.id', 'transaksi.id'
+        'transaksi.id', 'transaksi.no_invoice', 'transaksi.transaction_date', 'SUM(td.subtotal)', 'transaksi.payment_status'
     ];
     public function get_datatable_main()
     {
