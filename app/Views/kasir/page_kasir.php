@@ -220,6 +220,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
                                     <input class="form-control text-center thousand-separator" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
+                                    <input type="hidden" id="nominal_dibayar_number">
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
@@ -438,6 +439,7 @@
 
         $('#nominal_kembalian').val( inputedValue - $('#harga_akhir').val() );
         $('#nominal_kembalian_show').val( thousandSeparator(inputedValue - $('#harga_akhir').val()) );
+        $('#nominal_dibayar_number').val(inputedValue);
     });
 
     // konfirmasi bayar
@@ -477,7 +479,7 @@
             nominal_awal: $('#harga_awal').val(),
             diskon_tambahan: $('#diskon_tambah').val(),
             nominal_akhir: $('#harga_akhir').val(),
-            nominal_bayar: $('#nominal_dibayar').val(),
+            nominal_bayar: $('#nominal_dibayar_number').val(),
             nominal_kembalian: $('#nominal_kembalian').val(),
             id_payment_method: $('#metode_bayar').val(),
             id_distribution_channel: $('#distribution_channel').val()
