@@ -74,7 +74,7 @@
                                                         <p class="text-truncate font-size-14 mb-2">Profit Bersih</p>
                                                         <h4 id="profit_bersih" class="mb-0">
                                                             Rp 
-                                                            <?= thousand_separator($transaction_data[0]->total_nominal - $transaction_data[0]->total_hpp - $cashdrawer_data[0]->total_credfit) ?>
+                                                            <?= thousand_separator($transaction_data[0]->total_nominal - $transaction_data[0]->total_hpp - $cashdrawer_data[0]->total_credit) ?>
                                                         </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
