@@ -39,10 +39,13 @@ class Laporan extends Controller
     public function ajax_get_laporan_transaksi(){
         $returnedData = $this->Model_transaksi->get_datatable_laporan_penjualan();
         $total_penjualan = 0;
+        $total_hpp = 0;
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
             $total_penjualan += $baris->total_nominal;
+            $total_hpp += $baris->total_hpp;
+
             $detail = '
                 <a id="btn_show_detail" href="transaksi-show-detail/'.$baris->id.'"
                     class="btn btn-sm btn-info"
@@ -69,7 +72,8 @@ class Laporan extends Controller
             "data" => $data,
             "totalPenjualan" => $total_penjualan,
             "totalTransaksi" => $returnedData['count_filtered'],
-            "rata2Penjualan" => $returnedData['count_filtered'] > 0 ? floatval($total_penjualan / $returnedData['count_filtered']) : 0
+            "rata2Penjualan" => $returnedData['count_filtered'] > 0 ? floatval($total_penjualan / $returnedData['count_filtered']) : 0,
+            "total_hpp" => $total_hpp
         ];        
 
         // Output to JSON format
