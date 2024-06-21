@@ -151,21 +151,13 @@
                         
                         <!-- start row 2 -->
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Top 5 Produk/Treatment</h4>
-                                                
-                                        <div id="donut_chart" class="apex-charts"  dir="ltr"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
+                            
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
                                         
 
-                                        <h4 class="card-title mb-3">Stok Terendah</h4>
+                                        <h4 class="card-title mb-3">Top 5 Produk</h4>
 
                                         <div>
                                             <div class="table-responsive mt-4">
@@ -254,15 +246,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Top 5 Customer</h4>
-                                                
-                                        <div id="pie_chart" class="apex-charts" dir="ltr"></div>
-                                            </div>
-                                        </div>
-                            </div>   
                         </div>
                         <!-- end row 2 -->
                     </div>
