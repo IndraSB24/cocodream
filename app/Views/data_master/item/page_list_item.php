@@ -125,6 +125,7 @@
                                                         <th class="text-center">Nama</th>
                                                         <th class="text-center">Jenis</th>
                                                         <th class="text-center">Satuan</th>
+                                                        <th class="text-center">HPP Aktif</th>
                                                         <th class="text-center">Harga Jual Aktif</th>
                                                         <th class="text-center">Detail</th>
                                                         <th class="text-center">Action</th>
@@ -324,11 +325,11 @@
             },
             columnDefs: [
                 { 
-                    "targets": [ 0, 1, 2, 3, 5, 6, 7 ],
+                    "targets": [ 0, 1, 2, 3, 5, 6, 7, 8 ],
                     "className": "text-center"
                 },
                 { 
-                    "targets": [ 0, 7 ],
+                    "targets": [ 0, 8 ],
                     "orderable": false,
                 },
             ],
