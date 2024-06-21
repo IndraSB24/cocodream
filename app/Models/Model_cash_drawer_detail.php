@@ -269,8 +269,8 @@ class Model_cash_drawer_detail extends Model
         }
 
         $this->select('
-            SUM(credit) as total_pengeluaran,
-            SUM(debit) as total_pemasukan
+            SUM(CASE WHEN jenis = "credit" THEN nominal ELSE 0 END) as total_credit,
+            SUM(CASE WHEN jenis = "debit" THEN nominal ELSE 0 END) as total_debit
         ')
         ->where('deleted_at', NULL);
         
