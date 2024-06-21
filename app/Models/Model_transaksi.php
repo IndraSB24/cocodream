@@ -255,6 +255,7 @@ class Model_transaksi extends Model
         }
 
         $this->select('
+            COUNT(transaksi.id) as total_transaksi,
             SUM(td.subtotal) as total_nominal,
             SUM(i.hpp * td.quantity) as total_hpp
         ')
