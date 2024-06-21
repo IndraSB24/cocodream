@@ -173,7 +173,7 @@
                                                             </td>
 
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Korea Carboxy CO2</h5>
+                                                                <h5 class="font-size-14 mb-0">Jelly Mixfruit</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">10</p>
@@ -188,7 +188,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Skin Booster Vitaran</h5>
+                                                                <h5 class="font-size-14 mb-0">Jelly Original</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">8</p>
@@ -203,7 +203,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Kelapa Cocopandan Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
@@ -218,7 +218,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Kelapa Orange Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
@@ -233,7 +233,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Jeruk Susu Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
