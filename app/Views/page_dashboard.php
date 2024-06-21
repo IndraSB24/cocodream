@@ -563,5 +563,5 @@
 </html>
 
 <script>
-    console.log(<? json_encode($transaction_data) ?>);
+    console.log(<? json_encode($transaction_data) ?>, 'TRANSACTION DATA');
 </script>
