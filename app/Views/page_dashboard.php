@@ -65,6 +65,26 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- total pengeluaran -->
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex-1 overflow-hidden">
+                                                        <p class="text-truncate font-size-14 mb-2">Total Pengeluaran</p>
+                                                        <h4 id="total_transaksi" class="mb-0">
+                                                            Rp <?= thousand_separator($cashdrawer_data[0]->total_credit) ?>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="text-primary ms-auto">
+                                                        <i class="ri-file-paper-2-line font-size-24"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- total keuntungan bersih -->
                                     <div class="col-md-4">
                                         <div class="card">
@@ -84,24 +104,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- total transaksi -->
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="flex-1 overflow-hidden">
-                                                        <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
-                                                        <h4 id="total_transaksi" class="mb-0">
-                                                            <?= thousand_separator($transaction_data[0]->total_transaksi) ?>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="text-primary ms-auto">
-                                                        <i class="ri-file-paper-2-line font-size-24"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    
                                 </div>
                                 <!-- end row -->
 
