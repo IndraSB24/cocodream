@@ -242,4 +242,26 @@ class Model_transaksi extends Model
         return $result;
     }
 
+    // data penjualan for dashboard
+    public function get_transaction_summary(){
+        // filter
+        if ($request->getPost('filterDateFrom')) {
+            $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
+        }
+
+        if ($request->getPost('filterDateUntil')) {
+            $this->where('transaksi.transaction_date <=', $request->getPost('filterDateUntil').' 23:59:59');
+        }
+
+        $this->select('
+            SUM(td.subtotal) as total_nominal,
+            SUM(i.hpp * td.quantity) as total_hpp
+        ')
+        ->join('transaksi_detail td', 'td.id_transaksi=transaksi.id', 'LEFT')
+        ->join('item i', 'i.id=td.id_item')
+        ->where('transaksi.deleted_at', NULL);
+
+        return $this->get()->getResult();
+    }
+
 }
