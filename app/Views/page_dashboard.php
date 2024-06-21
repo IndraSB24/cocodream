@@ -54,7 +54,9 @@
                                                 <div class="d-flex">
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Total Penjualan</p>
-                                                        <h4 id="total_penjualan" class="mb-0"></h4>
+                                                        <h4 id="total_penjualan" class="mb-0">
+                                                            <?= $transaction_data[0]->total_nominal ?>
+                                                        </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
                                                         <i class="ri-shopping-cart-2-line font-size-24"></i>
@@ -70,7 +72,9 @@
                                                 <div class="d-flex">
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Profit Bersih</p>
-                                                        <h4 id="profit_bersih" class="mb-0"></h4>
+                                                        <h4 id="profit_bersih" class="mb-0">
+                                                            <?= $transaction_data[0]->total_nominal ?>
+                                                        </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
                                                         <i class="ri-folder-received-line font-size-24"></i>
@@ -86,7 +90,9 @@
                                                 <div class="d-flex">
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
-                                                        <h4 id="total_transaksi" class="mb-0"></h4>
+                                                        <h4 id="total_transaksi" class="mb-0">
+                                                            <?= $transaction_data[0]->total_transaksi ?>
+                                                        </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
                                                         <i class="ri-file-paper-2-line font-size-24"></i>
