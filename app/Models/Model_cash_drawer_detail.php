@@ -256,4 +256,25 @@ class Model_cash_drawer_detail extends Model
         return $result;
     }
 
+    // get by id
+    public function get_total_cashdrawer(){
+        $request = service('request');
+        // filter
+        if ($request->getPost('filterDateFrom')) {
+            $this->where('for_date >=', $request->getPost('filterDateFrom'));
+        }
+
+        if ($request->getPost('filterDateUntil')) {
+            $this->where('for_date <=', $request->getPost('filterDateUntil'));
+        }
+
+        $this->select('
+            SUM(kredit) as total_pengeluaran,
+            SUM(debit) as total_pemasukan
+        ')
+        ->where('deleted_at', NULL);
+        
+        return $this->get()->getResult();
+    }
+
 }
