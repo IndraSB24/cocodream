@@ -30,16 +30,7 @@
                         <!-- filter  -->
                         <div class="row">
                             <div class="col-sm-6 mb-4">
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter
-                                           <i class="mdi mdi-chevron-down"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                         <a class="dropdown-item" href="#">Hari</a>
-                                        <a class="dropdown-item" href="#">Bulan</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -134,6 +125,16 @@
                                     <div class="card-body">
                                         
                                         <h4 class="card-title mb-4">Grafik Penjualan</h4>
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter
+                                                <i class="mdi mdi-chevron-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <a class="dropdown-item" href="#">Hari</a>
+                                                <a class="dropdown-item" href="#">Bulan</a>
+                                            </div>
+                                        </div>
                                         <div>
                                             <div id="line-column-chart" class="apex-charts" dir="ltr"></div>
                                         </div>
