@@ -48,7 +48,7 @@
                             <div class="col-xl-12">
                                 <div class="row">
                                     <!-- total penjualan -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex">
@@ -66,14 +66,33 @@
                                         </div>
                                     </div>
 
+                                    <!-- total hpp -->
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="flex-1 overflow-hidden">
+                                                        <p class="text-truncate font-size-14 mb-2">Total HPP</p>
+                                                        <h4 id="total_hpp" class="mb-0">
+                                                            Rp <?= thousand_separator($transaction_data[0]->total_hpp) ?>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="text-primary ms-auto">
+                                                        <i class="ri-file-paper-2-line font-size-24"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- total pengeluaran -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Total Pengeluaran</p>
-                                                        <h4 id="total_transaksi" class="mb-0">
+                                                        <h4 id="total_pengeluaran" class="mb-0">
                                                             Rp <?= thousand_separator($cashdrawer_data[0]->total_credit) ?>
                                                         </h4>
                                                     </div>
@@ -86,7 +105,7 @@
                                     </div>
 
                                     <!-- total keuntungan bersih -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex">
