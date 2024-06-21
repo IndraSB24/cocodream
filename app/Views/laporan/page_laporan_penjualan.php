@@ -218,10 +218,12 @@
                     const formattedTotalPenjualan = thousandSeparator(returnedData.totalPenjualan);
                     const formattedTotalTransaksi = returnedData.totalTransaksi;
                     const formattedRata2Penjualan = thousandSeparator(returnedData.rata2Penjualan);
+                    const formattedTotalHPP = thousandSeparator(returnedData.totalHPP);
 
                     $('#total_penjualan').text("Rp " + formattedTotalPenjualan);
                     $('#total_transaksi').text(formattedTotalTransaksi);
                     $('#rata_penjualan').text("Rp " + formattedRata2Penjualan);
+                    $('#margin_kotor').text("Rp " + formattedTotalHPP);
                 
                     return returnedData.data;
                 }
