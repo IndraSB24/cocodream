@@ -55,7 +55,7 @@
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Total Penjualan</p>
                                                         <h4 id="total_penjualan" class="mb-0">
-                                                            <?= $transaction_data[0]->total_nominal ?>
+                                                            Rp. <?= thousand_separator($transaction_data[0]->total_nominal) ?>
                                                         </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
@@ -73,7 +73,7 @@
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Profit Bersih</p>
                                                         <h4 id="profit_bersih" class="mb-0">
-                                                            <?= $transaction_data[0]->total_nominal - $transaction_data[0]->total_hpp ?>
+                                                            Rp <?= thousand_separator($transaction_data[0]->total_nominal - $transaction_data[0]->total_hpp) ?>
                                                         </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
