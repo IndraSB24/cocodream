@@ -91,7 +91,7 @@
                                                     <div class="flex-1 overflow-hidden">
                                                         <p class="text-truncate font-size-14 mb-2">Jumlah Transaksi</p>
                                                         <h4 id="total_transaksi" class="mb-0">
-                                                            <?= $transaction_data[0]->total_transaksi ?>
+                                                            <?= thousand_separator($transaction_data[0]->total_transaksi) ?>
                                                         </h4>
                                                     </div>
                                                     <div class="text-primary ms-auto">
