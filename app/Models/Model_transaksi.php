@@ -244,6 +244,7 @@ class Model_transaksi extends Model
 
     // data penjualan for dashboard
     public function get_transaction_summary(){
+        $request = service('request');
         // filter
         if ($request->getPost('filterDateFrom')) {
             $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
