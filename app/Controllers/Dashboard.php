@@ -12,6 +12,7 @@ class Dashboard extends Controller
  
     function __construct(){
         $this->model_transaksi = new Model_transaksi();
+        helper(['session_helper', 'formatting_helper']);
     }
 
     public function index()
