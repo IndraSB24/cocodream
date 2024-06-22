@@ -99,7 +99,6 @@
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Entitas</th>
                                                         <th class="text-center">Total Kegiatan</th>
-                                                        <th class="text-center">Total Debit</th>
                                                         <th class="text-center">Total Kredit</th>
                                                         <th class="text-center">Aksi</th>
                                                     </tr>
@@ -161,11 +160,7 @@
                                                     <label for="deskripsi">Deskripsi</label>
                                                     <textarea id="deskripsi" class="form-control"></textarea>
                                                 </div>
-                                                <div class="col-sm-6 mb-3">
-                                                    <label for="debit">Debit</label>
-                                                    <input id="debit" type="number" class="form-control" />
-                                                </div>
-                                                <div class="col-sm-6 mb-3">
+                                                <div class="col-sm-12 mb-3">
                                                     <label for="credit">Credit</label>
                                                     <input id="credit" type="number" class="form-control" />
                                                 </div>
@@ -183,7 +178,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Deskripsi</th>
-                                                        <th>Debit</th>
                                                         <th>Credit</th>
                                                         <th>Aksi</th>
                                                     </tr>
@@ -322,11 +316,11 @@
             },
             columnDefs: [
                 { 
-                "targets": [ 0, 1, 2, 3, 4, 5, 6 ],
+                "targets": [ 0, 1, 2, 3, 4, 5 ],
                 "className": "text-center"
                 },
                 { 
-                    "targets": [ 0, 6 ],
+                    "targets": [ 0, 5 ],
                     "orderable": false,
                 },
             ],
@@ -419,7 +413,7 @@
     $('#modal_add').on('hidden.bs.modal', function () {
         // Clear form fields
         clearFieldValue([
-            'deskripsi', 'debit', 'credit'
+            'deskripsi', 'credit'
         ]);
 
         // clear cashDrawerDetail content
@@ -434,7 +428,6 @@
         $('#cashDrawerDetail').append(
             '<tr>' +
             '<td>' + $('#deskripsi').val() + '</td>' +
-            '<td>' + $('#debit').val() + '</td>' +
             '<td>' + $('#credit').val() + '</td>' +
             '<td>' +
                 '<button class="btn btn-warning" id="deleteRow">Delete</button>'+
@@ -444,7 +437,7 @@
 
         // Clear form fields
         clearFieldValue([
-            'deskripsi', 'debit', 'credit'
+            'deskripsi', 'credit'
         ]);
     });
 
@@ -470,10 +463,7 @@
                     case 0:
                         rowData.deskripsi = $(this).text();
                         break;
-                    case 1:
-                        rowData.debit = parseFloat($(this).text());
-                        break;
-                    case 2: 
+                    case 1: 
                         rowData.credit = parseFloat($(this).text());
                         break;
                 }
