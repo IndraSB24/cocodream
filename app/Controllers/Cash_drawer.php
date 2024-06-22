@@ -62,7 +62,6 @@ class Cash_drawer extends Controller
                 '<span class="text-center">' . $baris->for_date . '</span>',
                 '<span class="text-center">' . $baris->nama_entitas . '</span>',
                 '<span class="text-center">' . $baris->kegiatan_total . '</span>',
-                '<span class="text-center">' . $baris->total_debit . '</span>',
                 '<span class="text-center">' . $baris->total_credit . '</span>',
                 '<span class="text-center">' . $aksi . '</span>'
             ];
