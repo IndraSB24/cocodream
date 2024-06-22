@@ -30,16 +30,7 @@
                         <!-- filter  -->
                         <div class="row">
                             <div class="col-sm-6 mb-4">
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Filter
-                                           <i class="mdi mdi-chevron-down"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                         <a class="dropdown-item" href="#">Hari</a>
-                                        <a class="dropdown-item" href="#">Bulan</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -134,6 +125,16 @@
                                     <div class="card-body">
                                         
                                         <h4 class="card-title mb-4">Grafik Penjualan</h4>
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Filter
+                                                <i class="mdi mdi-chevron-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <a class="dropdown-item" href="#">Hari</a>
+                                                <a class="dropdown-item" href="#">Bulan</a>
+                                            </div>
+                                        </div>
                                         <div>
                                             <div id="line-column-chart" class="apex-charts" dir="ltr"></div>
                                         </div>
@@ -150,21 +151,13 @@
                         
                         <!-- start row 2 -->
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Top 5 Produk/Treatment</h4>
-                                                
-                                        <div id="donut_chart" class="apex-charts"  dir="ltr"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
+                            
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
                                         
 
-                                        <h4 class="card-title mb-3">Stok Terendah</h4>
+                                        <h4 class="card-title mb-3">Top 5 Produk</h4>
 
                                         <div>
                                             <div class="table-responsive mt-4">
@@ -180,7 +173,7 @@
                                                             </td>
 
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Korea Carboxy CO2</h5>
+                                                                <h5 class="font-size-14 mb-0">Jelly Mixfruit</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">10</p>
@@ -195,7 +188,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Skin Booster Vitaran</h5>
+                                                                <h5 class="font-size-14 mb-0">Jelly Original</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">8</p>
@@ -210,7 +203,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Kelapa Cocopandan Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
@@ -225,7 +218,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Kelapa Orange Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
@@ -240,7 +233,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <h5 class="font-size-14 mb-0">Facial Kromosom (Fire&Ice)</h5>
+                                                                <h5 class="font-size-14 mb-0">Jeruk Susu Cup</h5>
                                                             </td>
                                                             <td>
                                                                 <p class="text-muted mb-0">7</p>
@@ -253,15 +246,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Top 5 Customer</h4>
-                                                
-                                        <div id="pie_chart" class="apex-charts" dir="ltr"></div>
-                                            </div>
-                                        </div>
-                            </div>   
                         </div>
                         <!-- end row 2 -->
                     </div>
