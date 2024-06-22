@@ -99,7 +99,7 @@
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Entitas</th>
                                                         <th class="text-center">Total Kegiatan</th>
-                                                        <th class="text-center">Total Kredit</th>
+                                                        <th class="text-center">Total Nominal</th>
                                                         <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -161,7 +161,7 @@
                                                     <textarea id="deskripsi" class="form-control"></textarea>
                                                 </div>
                                                 <div class="col-sm-12 mb-3">
-                                                    <label for="credit">Credit</label>
+                                                    <label for="credit">Nominal</label>
                                                     <input id="credit" type="number" class="form-control" />
                                                 </div>
                                             </div>
@@ -178,7 +178,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Deskripsi</th>
-                                                        <th>Credit</th>
+                                                        <th>Nominal</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
