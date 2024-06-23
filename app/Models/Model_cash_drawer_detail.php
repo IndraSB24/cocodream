@@ -259,6 +259,12 @@ class Model_cash_drawer_detail extends Model
     // get by id
     public function get_total_cashdrawer(){
         $request = service('request');
+        $today = date('Y-m-d');
+
+        if (!$request->getPost('filterDateFrom') || !$request->getPost('filterDateUntil')) {
+            $this->where('for_date =', $today);
+        }
+
         // filter
         if ($request->getPost('filterDateFrom')) {
             $this->where('for_date >=', $request->getPost('filterDateFrom'));
