@@ -292,5 +292,6 @@
     
     console.log(<?= json_encode($transaction_data) ?>, 'TRANSACTION DATA');
     console.log(<?= json_encode($cashdrawer_data) ?>, 'CASH DRAWER DATA');
+    console.log(<?= json_encode($most_product) ?>, 'MOST PRODUCT DATA');
     
 </script>
