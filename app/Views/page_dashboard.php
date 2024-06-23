@@ -168,7 +168,7 @@
                                                                 <td style="width: 60px;">
                                                                     <div class="avatar-xs">
                                                                         <div class="avatar-title rounded-circle bg-light">
-                                                                            <img src="assets/images/companies/img-1.png" alt="img-1" height="20">
+                                                                            <img src="<?= base_url('upload/item_pict/'.$item->image_filename); ?>" alt="img-1" height="20">
                                                                         </div>
                                                                     </div>
                                                                 </td>

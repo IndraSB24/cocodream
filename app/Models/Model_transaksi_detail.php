@@ -130,6 +130,7 @@ class Model_transaksi_detail extends Model
     public function getMostProduct() {
         $this->select('
             i.nama as nama_item,
+            i.image_filename as image_filename,
             SUM(transaksi_detail.quantity) as total_sell
         ')
         ->join('item i', 'i.id = transaksi_detail.id_item', 'LEFT')
