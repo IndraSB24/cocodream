@@ -163,82 +163,24 @@
                                             <div class="table-responsive mt-4">
                                                 <table class="table table-hover mb-0 table-centered table-nowrap">
                                                     <tbody>
-                                                        <tr>
-                                                            <td style="width: 60px;">
-                                                                <div class="avatar-xs">
-                                                                    <div class="avatar-title rounded-circle bg-light">
-                                                                        <img src="assets/images/companies/img-1.png" alt="img-1" height="20">
+                                                        <?php foreach($most_product as $list): ?>
+                                                            <tr>
+                                                                <td style="width: 60px;">
+                                                                    <div class="avatar-xs">
+                                                                        <div class="avatar-title rounded-circle bg-light">
+                                                                            <img src="assets/images/companies/img-1.png" alt="img-1" height="20">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
+                                                                </td>
 
-                                                            <td>
-                                                                <h5 class="font-size-14 mb-0">Jelly Mixfruit</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p class="text-muted mb-0">10</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="avatar-xs">
-                                                                    <div class="avatar-title rounded-circle bg-light">
-                                                                        <img src="assets/images/companies/img-2.png" alt="img-2" height="20">
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="font-size-14 mb-0">Jelly Original</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p class="text-muted mb-0">8</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="avatar-xs">
-                                                                    <div class="avatar-title rounded-circle bg-light">
-                                                                        <img src="assets/images/companies/img-3.png" alt="img-3" height="20">
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="font-size-14 mb-0">Kelapa Cocopandan Cup</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p class="text-muted mb-0">7</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="avatar-xs">
-                                                                    <div class="avatar-title rounded-circle bg-light">
-                                                                        <img src="assets/images/companies/img-3.png" alt="img-4" height="20">
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="font-size-14 mb-0">Kelapa Orange Cup</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p class="text-muted mb-0">7</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="avatar-xs">
-                                                                    <div class="avatar-title rounded-circle bg-light">
-                                                                        <img src="assets/images/companies/img-3.png" alt="img-5" height="20">
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="font-size-14 mb-0">Jeruk Susu Cup</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p class="text-muted mb-0">7</p>
-                                                            </td>
-                                                        </tr>
+                                                                <td>
+                                                                    <h5 class="font-size-14 mb-0">Jelly Mixfruit</h5>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="text-muted mb-0">10</p>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
                                                     </tbody>
                                                 </table>
                                             </div>
