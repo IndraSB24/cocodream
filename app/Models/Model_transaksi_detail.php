@@ -128,6 +128,8 @@ class Model_transaksi_detail extends Model
 
     // count most sell product
     public function getMostProduct() {
+        $today = date('Y-m-d');
+
         $this->select('
             i.nama as nama_item,
             i.image_filename as image_filename,
@@ -135,6 +137,7 @@ class Model_transaksi_detail extends Model
         ')
         ->join('item i', 'i.id = transaksi_detail.id_item', 'LEFT')
         ->where('transaksi_detail.deleted_at', NULL)
+        ->where('created_at =', $today)
         ->groupBy('i.nama')
         ->orderBy('total_sell', 'DESC')
         ->limit(5);;
