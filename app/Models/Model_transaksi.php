@@ -245,6 +245,19 @@ class Model_transaksi extends Model
     // data penjualan for dashboard
     public function get_transaction_summary(){
         $request = service('request');
+
+        // Get the current date
+        $today = date('Y-m-d');
+
+        // Construct the start and end timestamps for today
+        $startOfDay = $today . ' 00:00:00';
+        $endOfDay = $today . ' 23:59:59';
+
+        if (!$request->getPost('filterDateFrom') || !$request->getPost('filterDateUntil')) {
+            $this->where('transaksi.transaction_date >=', $startOfDay)
+                ->where('transaksi.transaction_date <=', $endOfDay);
+        }
+        
         // filter
         if ($request->getPost('filterDateFrom')) {
             $this->where('transaksi.transaction_date >=', $request->getPost('filterDateFrom').' 00:00:00');
