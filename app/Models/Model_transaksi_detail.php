@@ -137,7 +137,7 @@ class Model_transaksi_detail extends Model
         ')
         ->join('item i', 'i.id = transaksi_detail.id_item', 'LEFT')
         ->where('transaksi_detail.deleted_at', NULL)
-        ->where('created_at =', $today)
+        ->where('transaksi_detail.created_at =', $today)
         ->groupBy('i.nama')
         ->orderBy('total_sell', 'DESC')
         ->limit(5);;
