@@ -126,4 +126,18 @@ class Model_transaksi_detail extends Model
         return $result;
     }
 
+    // count most sell product
+    public function getMostProduct() {
+        $this->select('
+            i.nama as nama_item,
+            SUM(transaksi_detail.quantity) as total_sell
+        ')
+        ->join('item i', 'i.id = transaksi_detail.id_item', 'LEFT')
+        ->where('transaksi_detail.deleted_at', NULL)
+        ->groupBy('i.nama')
+        ->orderBy('total_sell', 'DESC');
+    
+        return $this->get()->getResult();
+    }
+    
 }
