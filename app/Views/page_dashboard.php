@@ -30,21 +30,21 @@
                         <!-- filter -->
                         <div class="row">
                             <div class="col-lg-2 mb-3">
-                                <label for="for_date">Dari Tanggal</label>
+                                <label for="filter_from_date">Dari Tanggal</label>
                                 <div class="input-group" id="datepicker2">
                                     <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                         data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                        data-date-autoclose="true" id="for_date"
+                                        data-date-autoclose="true" id="filter_from_date"
                                     >
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                <label for="for_date">Sampai Tanggal</label>
+                                <label for="filter_to_date">Sampai Tanggal</label>
                                 <div class="input-group" id="datepicker2">
                                     <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                         data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                        data-date-autoclose="true" id="for_date"
+                                        data-date-autoclose="true" id="filter_to_date"
                                     >
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
