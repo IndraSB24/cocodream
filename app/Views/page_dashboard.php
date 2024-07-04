@@ -63,14 +63,7 @@
                                                     </div>
                                             </div>
                                             <div class="col-lg-8" style="text-align: left">
-                                                <label for="for_date">&nbsp;</label>
-                                                <button class="btn btn-danger ml-3"> Reset </button>
-                                                <button class="btn btn-dark ml-3"> Filter </button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-lg-12" style="text-align: left">
+                                                <label>Aksi</label>
                                                 <button class="btn btn-danger ml-3"> Reset </button>
                                                 <button class="btn btn-dark ml-3"> Filter </button>
                                             </div>
