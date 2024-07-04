@@ -249,8 +249,8 @@
     console.log(<?= json_encode($most_product) ?>, 'MOST PRODUCT DATA');
     
     function resetFilter() {
-        document.getElementById('filter_from_date').value = '<?= $current_date ?>';
-        document.getElementById('filter_to_date').value = '<?= $current_date ?>';
+        document.getElementById('filterDateFrom').value = '<?= $current_date ?>';
+        document.getElementById('filterDateUntil').value = '<?= $current_date ?>';
         document.forms[0].submit();
     }
 
