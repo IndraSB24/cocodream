@@ -41,7 +41,7 @@
                                         <h5 class="mb-3 text-dark">Filter</h5>
                                         <div class="row">
                                             <div class="col-lg-2 mb-3">
-                                                <label for="for_date">Untuk Tanggal</label>
+                                                <label for="for_date">Dari Tanggal</label>
                                                     <div class="input-group" id="datepicker2">
                                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                                             data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
@@ -52,7 +52,7 @@
                                                     </div>
                                             </div>
                                             <div class="col-lg-2 mb-3">
-                                                <label for="for_date">Untuk Tanggal</label>
+                                                <label for="for_date">Sampai Tanggal</label>
                                                     <div class="input-group" id="datepicker2">
                                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                                             data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
@@ -63,6 +63,7 @@
                                                     </div>
                                             </div>
                                             <div class="col-lg-8" style="text-align: left">
+                                                <label for="for_date">&nbsp;</label>
                                                 <button class="btn btn-danger ml-3"> Reset </button>
                                                 <button class="btn btn-dark ml-3"> Filter </button>
                                             </div>
