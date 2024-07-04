@@ -28,35 +28,35 @@
                         <?= $page_title ?>
 
                         <!-- filter -->
-                        <div class="row">
-                            <div class="col-lg-2 mb-3">
-                                <label for="filter_from_date">Dari Tanggal</label>
-                                <div class="input-group" id="datepicker2">
-                                    <input type="text" class="form-control" placeholder="yyyy-mm-dd"
-                                        data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                        data-date-autoclose="true" id="filter_from_date"
-                                    >
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        <form method="post" action="<?= base_url('dashboard/index') ?>">
+                            <div class="row">
+                                <div class="col-lg-2 mb-3">
+                                    <label for="filterDateFrom">Dari Tanggal</label>
+                                    <div class="input-group" id="datepicker2">
+                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                            data-date-autoclose="true" id="filterDateFrom" name="filterDateFrom">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label for="filterDateUntil">Sampai Tanggal</label>
+                                    <div class="input-group" id="datepicker2">
+                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                            data-date-autoclose="true" id="filterDateUntil" name="filterDateUntil">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 mb-5">
+                                    <label class="text-light">_</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-dark ml-3">Filter</button>
+                                        <button type="reset" class="btn btn-danger ml-3">Reset</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
-                                <label for="filter_to_date">Sampai Tanggal</label>
-                                <div class="input-group" id="datepicker2">
-                                    <input type="text" class="form-control" placeholder="yyyy-mm-dd"
-                                        data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                        data-date-autoclose="true" id="filter_to_date"
-                                    >
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 mb-5">
-                                <label class="text-light">_</label>
-                                <div>
-                                    <button class="btn btn-dark ml-3">Filter</button>
-                                    <button class="btn btn-danger ml-3">Reset</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
 
                         <!-- row 1 -->
                         <div class="row">
@@ -233,18 +233,6 @@
 
         <!-- apexcharts init -->
         <script src="assets/js/pages/apexcharts.init.js"></script>
-
-        <!-- jquery.vectormap map -->
-        <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"></script>
-
-        <!-- Required datatable js -->
-        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-
-        <!-- Responsive examples -->
-        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
         <script src="assets/js/pages/dashboard.init.js"></script>
         <?= $this->include('partials/vendor-scripts') ?>
