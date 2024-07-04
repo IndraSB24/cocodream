@@ -49,9 +49,9 @@
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 mb-3">
                                 <label for="btn_reset">Aksi</label>
-                                <button class="btn btn-danger ml-3" id="btn_reset"> Reset </button>
+                                <button class="btn btn-danger ml-3" id="btn_reset" name="btn_reset"> Reset </button>
                                 <button class="btn btn-dark ml-3"> Filter </button>
                             </div>
                         </div>
