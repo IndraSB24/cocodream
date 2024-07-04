@@ -39,7 +39,7 @@
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
                             </div>
-                            <div class="col-lg-2 mb-1">
+                            <div class="col-lg-2">
                                 <label for="for_date">Sampai Tanggal</label>
                                 <div class="input-group" id="datepicker2">
                                     <input type="text" class="form-control" placeholder="yyyy-mm-dd"
@@ -49,7 +49,7 @@
                                     <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                 </div>
                             </div>
-                            <div class="col-lg-8 mb-3">
+                            <div class="col-lg-8 mb-5">
                                 <label class="text-light">_</label>
                                 <div>
                                     <button class="btn btn-dark ml-3">Filter</button>
