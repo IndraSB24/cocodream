@@ -34,6 +34,47 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card bg-light text-dark">
+                                    <div class="card-body">
+                                        <h5 class="mb-3 text-dark">Filter</h5>
+                                        <div class="row">
+                                            <div class="col-lg-4 mb-3">
+                                                <label for="for_date">Untuk Tanggal</label>
+                                                    <div class="input-group" id="datepicker2">
+                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                                            data-date-autoclose="true" id="for_date"
+                                                        >
+
+                                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-4 mb-3">
+                                                <label for="for_date">Untuk Tanggal</label>
+                                                    <div class="input-group" id="datepicker2">
+                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                                            data-date-autoclose="true" id="for_date"
+                                                        >
+
+                                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-12" style="text-align: left">
+                                                <button class="btn btn-danger ml-3"> Reset </button>
+                                                <button class="btn btn-dark ml-3"> Filter </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- row 1 -->
                         <div class="row">
                             <div class="col-xl-12">
