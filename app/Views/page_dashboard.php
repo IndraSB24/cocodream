@@ -27,19 +27,8 @@
                         <!-- start page title -->
                         <?= $page_title ?>
 
-                        <!-- filter  -->
+                        <!-- filter -->
                         <div class="row">
-                            <div class="col-sm-6 mb-4">
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card bg-light text-dark">
-                                    <div class="card-body">
-                                        <h5 class="mb-3 text-dark">Filter</h5>
-                                        <div class="row">
                                             <div class="col-lg-2 mb-3">
                                                 <label for="for_date">Dari Tanggal</label>
                                                     <div class="input-group" id="datepicker2">
@@ -68,10 +57,6 @@
                                                 <button class="btn btn-dark ml-3"> Filter </button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- row 1 -->
                         <div class="row">
