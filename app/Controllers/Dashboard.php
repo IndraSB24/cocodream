@@ -21,12 +21,17 @@ class Dashboard extends Controller
 
     public function index()
     {
+        $from_date = $this->request->getPost('filterDateFrom') ?? date('Y-m-d');
+        $to_date = $this->request->getPost('filterDateUntil') ?? date('Y-m-d');
+
         $data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
 			'page_title' => view('partials/page-title', ['title' => 'Clarisa', 'pagetitle' => 'Dashboard']),
             'transaction_data' => $this->Model_transaksi->get_transaction_summary(),
             'cashdrawer_data' => $this->Model_cash_drawer_detail->get_total_cashdrawer(),
-            'most_product' =>$this->Model_transaksi_detail->getMostProduct()
+            'most_product' =>$this->Model_transaksi_detail->getMostProduct(),
+            'filter_from_date' => $from_date,
+            'filter_to_date' => $to_date
 		];
 		return view('page_dashboard', $data);
     }

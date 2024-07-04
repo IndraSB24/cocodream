@@ -35,7 +35,7 @@
                                     <div class="input-group" id="datepicker2">
                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                             data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                            data-date-autoclose="true" id="filterDateFrom" name="filterDateFrom">
+                                            data-date-autoclose="true" id="filterDateFrom" name="filterDateFrom" value="<?= $filter_from_date ?>">
                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <div class="input-group" id="datepicker2">
                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
                                             data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                            data-date-autoclose="true" id="filterDateUntil" name="filterDateUntil">
+                                            data-date-autoclose="true" id="filterDateUntil" name="filterDateUntil" value="<?= $filter_to_date ?>">
                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                     <label class="text-light">_</label>
                                     <div>
                                         <button type="submit" class="btn btn-dark ml-3">Filter</button>
-                                        <button type="reset" class="btn btn-danger ml-3">Reset</button>
+                                        <button type="button" class="btn btn-danger ml-3" onclick="resetFilter()">Reset</button>
                                     </div>
                                 </div>
                             </div>
@@ -248,4 +248,10 @@
     console.log(<?= json_encode($cashdrawer_data) ?>, 'CASH DRAWER DATA');
     console.log(<?= json_encode($most_product) ?>, 'MOST PRODUCT DATA');
     
+    function resetFilter() {
+        document.getElementById('filter_from_date').value = '<?= $current_date ?>';
+        document.getElementById('filter_to_date').value = '<?= $current_date ?>';
+        document.forms[0].submit();
+    }
+
 </script>
