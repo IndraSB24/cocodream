@@ -30,7 +30,7 @@
                         <!-- filter -->
                         <form method="post" action="<?= base_url('dashboard/index') ?>">
                             <div class="row">
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-3 mb-3">
                                     <label for="filterDateFrom">Dari Tanggal</label>
                                     <div class="input-group" id="datepicker2">
                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
@@ -39,7 +39,7 @@
                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <label for="filterDateUntil">Sampai Tanggal</label>
                                     <div class="input-group" id="datepicker2">
                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
@@ -48,7 +48,7 @@
                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 mb-5">
+                                <div class="col-lg-6 mb-5">
                                     <label class="text-light">_</label>
                                     <div>
                                         <button type="submit" class="btn btn-dark ml-3">Filter</button>
