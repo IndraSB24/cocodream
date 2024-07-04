@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-8 mb-3">
-                                <label for="btn_reset">Aksi</label>
+                                <label class="text-light">Aksi</label>
                                 <div>
                                     <button class="btn btn-dark ml-3">Filter</button>
                                     <button class="btn btn-danger ml-3">Reset</button>
