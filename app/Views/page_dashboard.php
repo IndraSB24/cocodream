@@ -29,34 +29,32 @@
 
                         <!-- filter -->
                         <div class="row">
-                                            <div class="col-lg-2 mb-3">
-                                                <label for="for_date">Dari Tanggal</label>
-                                                    <div class="input-group" id="datepicker2">
-                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
-                                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                                            data-date-autoclose="true" id="for_date"
-                                                        >
-
-                                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                                    </div>
-                                            </div>
-                                            <div class="col-lg-2 mb-3">
-                                                <label for="for_date">Sampai Tanggal</label>
-                                                    <div class="input-group" id="datepicker2">
-                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd"
-                                                            data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
-                                                            data-date-autoclose="true" id="for_date"
-                                                        >
-
-                                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                                    </div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <label for="btn_reset">Aksi</label>
-                                                <button class="btn btn-danger ml-3" id="btn_reset"> Reset </button>
-                                                <button class="btn btn-dark ml-3"> Filter </button>
-                                            </div>
-                                        </div>
+                            <div class="col-lg-2 mb-3">
+                                <label for="for_date">Dari Tanggal</label>
+                                <div class="input-group" id="datepicker2">
+                                    <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                        data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                        data-date-autoclose="true" id="for_date"
+                                    >
+                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 mb-3">
+                                <label for="for_date">Sampai Tanggal</label>
+                                <div class="input-group" id="datepicker2">
+                                    <input type="text" class="form-control" placeholder="yyyy-mm-dd"
+                                        data-date-format="yyyy-mm-dd" data-date-container='#datepicker2' data-provide="datepicker"
+                                        data-date-autoclose="true" id="for_date"
+                                    >
+                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <label for="btn_reset">Aksi</label>
+                                <button class="btn btn-danger ml-3" id="btn_reset"> Reset </button>
+                                <button class="btn btn-dark ml-3"> Filter </button>
+                            </div>
+                        </div>
 
                         <!-- row 1 -->
                         <div class="row">
