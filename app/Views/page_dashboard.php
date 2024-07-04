@@ -40,7 +40,7 @@
                                     <div class="card-body">
                                         <h5 class="mb-3 text-dark">Filter</h5>
                                         <div class="row">
-                                            <div class="col-lg-4 mb-3">
+                                            <div class="col-lg-2 mb-3">
                                                 <label for="for_date">Untuk Tanggal</label>
                                                     <div class="input-group" id="datepicker2">
                                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
@@ -51,7 +51,7 @@
                                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                                     </div>
                                             </div>
-                                            <div class="col-lg-4 mb-3">
+                                            <div class="col-lg-2 mb-3">
                                                 <label for="for_date">Untuk Tanggal</label>
                                                     <div class="input-group" id="datepicker2">
                                                         <input type="text" class="form-control" placeholder="yyyy-mm-dd"
@@ -61,6 +61,10 @@
 
                                                         <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                                     </div>
+                                            </div>
+                                            <div class="col-lg-8" style="text-align: left">
+                                                <button class="btn btn-danger ml-3"> Reset </button>
+                                                <button class="btn btn-dark ml-3"> Filter </button>
                                             </div>
                                         </div>
                                         
