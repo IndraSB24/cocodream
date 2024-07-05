@@ -194,11 +194,13 @@ class Model_item extends Model
             item.*,
             sd.nama as nama_satuan,
             k1.nama as nama_jenis,
-            COALESCE(ip.price, 0) as item_price
+            COALESCE(ip.price, 0) as item_price,
+            COALESCE(ip2.price, 0) as hpp
         ')
         ->join('satuan_dasar sd', 'sd.id=item.id_satuan', 'LEFT')
         ->join('kategori k1', 'k1.id=item.id_kategori_jenis', 'LEFT')
-        ->join('item_pricing ip', 'ip.id_item=item.id AND ip.is_active=1 ', 'LEFT')
+        ->join('item_pricing ip', 'ip.id_item=item.id AND ip.price_type="selling" ip.is_active=1 ', 'LEFT')
+        ->join('item_pricing ip2', 'ip2.id_item=item.id AND ip2.is_active=1 AND ip.price_type="hpp" ', 'LEFT')
         ->where('item.deleted_at', NULL);
 
         if ($request->getPost('search')['value']) {

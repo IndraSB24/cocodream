@@ -202,8 +202,8 @@ class Item extends Controller
                 '<span class="text-center">' . $baris->nama . '</span>',
                 '<span class="text-center">' . $baris->nama_jenis . '</span>',
                 '<span class="text-center">' . $baris->nama_satuan . '</span>',
-                '<span class="text-center">Rp. ' . thousand_separator($baris->hpp) . '</span>',
                 '<span class="text-center">Rp. ' . thousand_separator($baris->item_price) . '</span>',
+                '<span class="text-center">Rp. ' . thousand_separator($baris->hpp) . '</span>',
                 '<span class="text-center">' . $detail . '</span>',
                 '<span class="text-center">' . $aksi . '</span>'
             ];
