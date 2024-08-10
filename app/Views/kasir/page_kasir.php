@@ -192,6 +192,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <label for="diskon_tambah" class="form-label">Diskon</label>
                                     <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                    <input type="hidden" id="diskon_tambah_number">
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label for="harga_akhir_show" class="form-label">Total</label>
@@ -426,6 +427,7 @@
         const hargaAwal = $('#harga_awal').val();
         $('#harga_akhir').val(hargaAwal - inputedValue);
         $('#harga_akhir_show').val(thousandSeparator(hargaAwal - inputedValue));
+        $('#diskon_tambah_number').val(inputedValue);
     });
 
     // on input tambah diskon
@@ -477,7 +479,7 @@
         const data = {
             transaction_detail: rowsData,
             nominal_awal: $('#harga_awal').val(),
-            diskon_tambahan: $('#diskon_tambah').val(),
+            diskon_tambahan: $('#diskon_tambah_number').val(),
             nominal_akhir: $('#harga_akhir').val(),
             nominal_bayar: $('#nominal_dibayar_number').val(),
             nominal_kembalian: $('#nominal_kembalian').val(),

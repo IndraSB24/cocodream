@@ -185,6 +185,59 @@
         });
     }
 
+    // swall with error
+    function loadQuestionalSwalWithError(
+        path, data, title1, title2, text2, modalToHide="", isTableReload=true, isPageReload=false
+    ) {
+        Swal.fire({
+            title: title1,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+        }).then(function (result) {
+            if (result.value) {
+                $.post(path, data, function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: title2,
+                            icon: 'success',
+                            text: text2,
+                            timer: 1000,
+                            confirmButtonColor: "#5664d2"
+                        }).then((result) => {
+                            if(modalToHide !== ""){
+                                $('#'+modalToHide).modal('hide');   
+                            }
+
+                            if(isTableReload === true){
+                                mainDatatable();
+                            }
+
+                            if(isPageReload === true){
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: response.message_title,
+                            icon: 'error',
+                            text: response.message,
+                            confirmButtonColor: "#d33"
+                        });
+                    }
+                }, 'json').fail(function() {
+                    Swal.fire({
+                        title: 'Error',
+                        icon: 'error',
+                        text: 'An unexpected error occurred while processing the request.',
+                        confirmButtonColor: "#d33"
+                    });
+                });
+            }
+        });
+    }
+
     // searchable dropdown initiator
     function setSearchableDropdown(id, minimumLength, path) {
         $('#' + id).select2({
@@ -366,6 +419,46 @@
     }
     function keepOnlyNumbers(input) {
         return input.replace(/[^0-9]/g, '');
+    }
+
+    function formatThousand(value) {
+        // Convert the number to a string
+        let valueStr = value.toString();
+
+        // Split the number into integer and decimal parts
+        let parts = valueStr.split('.');
+
+        // Format integer part with periods
+        let integerPart = parts[0];
+        let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Join back the decimal part with a comma if it exists
+        return parts.length > 1 ? formattedInteger + ',' + parts[1] : formattedInteger;
+    }
+
+    function formatNumber(input) {
+        input.value = input.value.replace(/[^0-9,]/g, '');
+        // Remove all periods to handle changes correctly
+        let value = input.value.replace(/\./g, '');
+
+        // Split the number into integer and decimal parts
+        let parts = value.split(',');
+
+        // Format integer part with periods
+        let integerPart = parts[0];
+        let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Join back the decimal part if it exists
+        input.value = parts.length > 1 ? formattedInteger + ',' + parts[1] : formattedInteger;
+    }
+
+    function getRawNumber(formattedValue) {
+        let valueStr = formattedValue.toString();
+        // Remove all periods to extract the raw number
+        let rawValue = valueStr.replace(/\./g, '');
+
+        // Convert to number
+        return Number(rawValue.replace(',', '.')); // Handle decimal point if any
     }
 
 </script>
