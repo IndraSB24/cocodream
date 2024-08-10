@@ -228,6 +228,20 @@
                                     <input class="form-control text-center" type="text" id="nominal_kembalian_show" readonly/>
                                     <input type="hidden" id="nominal_kembalian" />
                                 </div>
+                                <!-- fixed nominal -->
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nominal_options" class="form-label">Pilihan Nominal</label>
+                                    <div id="nominal_options" class="d-flex flex-wrap gap-2">
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(1000)">1.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(2000)">2.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(5000)">5.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(10000)">10.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(20000)">20.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(50000)">50.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(100000)">100.000</button>
+                                        <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
