@@ -230,6 +230,21 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-lg-12 mb-3">
+                                    <label for="nominal_options" class="form-label">Pilihan Nominal</label>
+                                    <div id="nominal_options" class="d-flex flex-wrap gap-2">
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(1000)">1.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(2000)">2.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(5000)">5.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(10000)">10.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(20000)">20.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(50000)">50.000</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addNominal(100000)">100.000</button>
+                                        <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_bayar" >
                                         Konfirmasi Bayar
@@ -241,6 +256,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
         <!-- JAVASCRIPT -->
         <?= $this->include('partials/vendor-scripts') ?>
@@ -501,4 +519,27 @@
         $('#cart-total').text('0')
     }
 
+</script>
+
+<script>
+    function addNominal(amount) {
+        let nominalDibayarInput = document.getElementById('nominal_dibayar');
+        let currentAmount = parseInt(nominalDibayarInput.value.replace(/\D/g,'')) || 0;
+        nominalDibayarInput.value = new Intl.NumberFormat('id-ID').format(currentAmount + amount);
+        calculateChange();
+    }
+
+    function setExactAmount() {
+        let hargaAkhir = parseInt(document.getElementById('harga_akhir').value.replace(/\D/g,'')) || 0;
+        document.getElementById('nominal_dibayar').value = new Intl.NumberFormat('id-ID').format(hargaAkhir);
+        calculateChange();
+    }
+
+    function calculateChange() {
+        let hargaAkhir = parseInt(document.getElementById('harga_akhir').value.replace(/\D/g,'')) || 0;
+        let nominalDibayar = parseInt(document.getElementById('nominal_dibayar').value.replace(/\D/g,'')) || 0;
+        let change = nominalDibayar - hargaAkhir;
+        document.getElementById('nominal_kembalian_show').value = new Intl.NumberFormat('id-ID').format(change > 0 ? change : 0);
+        document.getElementById('nominal_kembalian').value = change > 0 ? change : 0;
+    }
 </script>
