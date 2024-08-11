@@ -53,6 +53,20 @@ class Transaksi extends Controller
         return view('kasir/page_kasir', $data);
     }
 
+    public function show_kasir_new(){
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Kasir']),
+			'page_title' => view('partials/page-title', ['title' => 'POS', 'pagetitle' => 'Kasir']),
+            'data_payment_method' => $this->Model_payment_method->findAll(),
+            'data_payment_status' => $this->Model_kategori->get_payment_status(),
+            'data_registration_status' => $this->Model_kategori->get_registration_status(),
+            'data_pasien' => $this->Model_pasien->findAll(),
+            'items' => $this->Model_item->get_all_array(),
+            'data_distribution_channel' => $this->Model_distribution_channel->findAll()
+		];
+        return view('kasir/page_kasir_2', $data);
+    }
+
     // show list transaksi
     public function show_list_transaksi(){
         $data = [
