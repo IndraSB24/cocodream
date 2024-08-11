@@ -184,9 +184,10 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
-                                <div class="col-lg-6 mb-3 text-center">
+                                <div class="col-lg-12 mb-3 text-center">
                                     <span>Total Belanja</span>
-                                    <span id="harga_awal_show"></span>
+                                    <br>
+                                    <h3 id="harga_awal_show"></h3>
                                     <input type="hidden" id="harga_awal">
                                 </div>
                                 <div class="col-lg-6 mb-3">
