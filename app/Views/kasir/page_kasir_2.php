@@ -187,7 +187,7 @@
                                 <div class="col-lg-12 mb-1 text-center">
                                     <span>Total Belanja</span>
                                     <br>
-                                    <h2 id="harga_awal_show"></h2>
+                                    <h1 id="harga_awal_show"></h1>
                                     <input type="hidden" id="harga_awal">
                                     <input type="hidden" id="harga_akhir">
                                 </div>
