@@ -191,6 +191,7 @@
                                     <input type="hidden" id="harga_awal">
                                     <input type="hidden" id="harga_akhir">
                                 </div>
+                                <hr>
                                 <!-- uang konsumen -->
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
@@ -217,20 +218,6 @@
                                     <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="diskon_tambah" name="diskon_tambah"/>
                                     <input type="hidden" id="diskon_tambah_number">
                                 </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label for="harga_akhir_show" class="form-label">Total</label>
-                                    <input class="form-control text-center" type="text" id="harga_akhir_show" name="harga_akhir_show" readonly/>
-                                    
-                                </div>
-                                <hr>
-                                <div class="col-lg-6 mb-3 d-none">
-                                    <label for="distribution_channel" class="form-label">Channel Distribusi</label>
-                                    <select class="form-control" id="distribution_channel" name="distribution_channel" >
-                                        <?php foreach ($data_distribution_channel as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
                                 <!-- payment method -->
                                 <div class="col-lg-6 mb-3">
                                     <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
@@ -243,11 +230,20 @@
                                     </select>
                                 </div>
                                 
-                                
+                                <!-- kembalian -->
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
                                     <input class="form-control text-center" type="text" id="nominal_kembalian_show" readonly/>
                                     <input type="hidden" id="nominal_kembalian" />
+                                </div>
+                                <!-- cahnnel distribusi -->
+                                <div class="col-lg-6 mb-3 d-none">
+                                    <label for="distribution_channel" class="form-label">Channel Distribusi</label>
+                                    <select class="form-control" id="distribution_channel" name="distribution_channel" >
+                                        <?php foreach ($data_distribution_channel as $item): ?>
+                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                                 
                             </div>
