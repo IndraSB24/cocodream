@@ -19,5 +19,29 @@
     function sess_isLogin(){
         return session('is_login');
     }
+
+    function sess($kode) {
+        return session()->get($kode);
+    }
+
+    function all_sess() {
+        return session()->get();
+    }
+
+    function check_session()
+    {
+        if (session()->get('is_login') === null) {
+            return redirect()->to('/auth/logout')->send();
+            exit;
+            
+        } else {
+            $lastActivity = session()->get('last_activity');
+            if ($lastActivity && ((time() - $lastActivity) > (2 * 3600))) {
+                session()->destroy();
+                return redirect()->to('/auth/logout');
+                exit;
+            }
+        }
+    }
     
     
