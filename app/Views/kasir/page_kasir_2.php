@@ -184,9 +184,9 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
-                                <div class="col-lg-6 mb-3">
-                                    <label for="harga_awal_show" class="form-label">Harga Barang</label>
-                                    <input class="form-control text-center" type="text" id="harga_awal_show" name="harga_awal_show" readonly/>
+                                <div class="col-lg-6 mb-3 text-center">
+                                    <span>Total Belanja</span>
+                                    <span id="harga_awal_show"></span>
                                     <input type="hidden" id="harga_awal">
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -427,7 +427,7 @@
         const cartTotal = $('#cart_total_value').val();
         $('#harga_awal').val(cartTotal);
         $('#harga_akhir').val(cartTotal);
-        $('#harga_awal_show').val(thousandSeparator(cartTotal));
+        $('#harga_awal_show').text(thousandSeparator(cartTotal));
         $('#harga_akhir_show').val(thousandSeparator(cartTotal));
     });
 
