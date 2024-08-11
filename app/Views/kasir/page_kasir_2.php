@@ -187,7 +187,7 @@
                                 <div class="col-lg-12 mb-3 text-center">
                                     <span>Total Belanja</span>
                                     <br>
-                                    <h3 id="harga_awal_show"></h3>
+                                    <h2 id="harga_awal_show"></h2>
                                     <input type="hidden" id="harga_awal">
                                 </div>
                                 <div class="col-lg-6 mb-3">
@@ -428,7 +428,7 @@
         const cartTotal = $('#cart_total_value').val();
         $('#harga_awal').val(cartTotal);
         $('#harga_akhir').val(cartTotal);
-        $('#harga_awal_show').text(thousandSeparator(cartTotal));
+        $('#harga_awal_show').text('Rp. ' + thousandSeparator(cartTotal));
         $('#harga_akhir_show').val(thousandSeparator(cartTotal));
     });
 
