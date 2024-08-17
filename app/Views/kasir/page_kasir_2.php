@@ -320,10 +320,34 @@
             const itemTotal = itemPrice * itemQuantity;
 
             // Append item to cart table
+            // $('#cart-table tbody').append(`
+            //     <tr>
+            //         <td>${itemName}</td>
+            //         <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
+            //         <td>Rp. ${itemPrice}</td>
+            //         <td>Rp. ${itemTotal}</td>
+            //         <td>
+            //             <input type="hidden" name="id_item" value="${itemId}">
+            //             <input type="hidden" name="item_unit" value="${itemUnit}">
+            //             <input type="hidden" name="item_is_has_formula" value="${itemIsHasFormula}">
+            //             <button class="btn btn-danger btn-sm remove-from-cart">
+            //                 <i class="fas fa-trash"></i>
+            //             </button>
+            //         </td>
+            //     </tr>
+            // `);
+
+            // Append item to cart table
             $('#cart-table tbody').append(`
                 <tr>
                     <td>${itemName}</td>
-                    <td><input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1"></td>
+                    <td>
+                        <div class="input-group quantity-wrapper">
+                            <button class="btn btn-outline-secondary btn-sm btn-decrease-quantity" type="button">-</button>
+                            <input type="number" class="form-control quantity-input text-center p-0" value="${itemQuantity}" min="1">
+                            <button class="btn btn-outline-secondary btn-sm btn-increase-quantity" type="button">+</button>
+                        </div>
+                    </td>
                     <td>Rp. ${itemPrice}</td>
                     <td>Rp. ${itemTotal}</td>
                     <td>
@@ -336,16 +360,6 @@
                     </td>
                 </tr>
             `);
-
-            // Initialize TouchSpin on quantity inputs
-            // $(".quantity-input").TouchSpin({
-            //     min: 1,
-            //     max: 100,
-            //     step: 1,
-            //     decimals: 0,
-            //     boostat: 5,
-            //     maxboostedstep: 10,
-            // });
 
             updateCartTotal();
         });
@@ -537,5 +551,20 @@
 
         $('#cart-total').text('0')
     }
+
+    $(document).on('click', '.btn-increase-quantity', function () {
+        let input = $(this).siblings('.quantity-input');
+        let currentValue = parseInt(input.val()) || 1;
+        input.val(currentValue + 1).trigger('input'); // Increment and trigger input event for further handling
+    });
+
+    $(document).on('click', '.btn-decrease-quantity', function () {
+        let input = $(this).siblings('.quantity-input');
+        let currentValue = parseInt(input.val()) || 1;
+        if (currentValue > 1) {
+            input.val(currentValue - 1).trigger('input'); // Decrement and trigger input event for further handling
+        }
+    });
+
 
 </script>
