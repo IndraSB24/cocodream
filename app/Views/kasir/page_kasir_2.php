@@ -530,17 +530,19 @@
 
     // on input tambah diskon
     $('#diskon_tambah').on('input', function() {
-        var inputedValue = parseFloat(removeThousandSeparator($(this).val()));
-        if (inputedValue < 0 || isNaN(inputedValue)) {
-            inputedValue = 0;
-            $(this).val(inputedValue);
-        }
+        var inputedValue = parseFloat(removeThousandSeparator($(this).val())) || 0;
+        inputedValue = inputedValue < 0 ? 0 : inputedValue; // Ensure no negative numbers
 
-        const hargaAwal = $('#harga_awal').val();
-        $('#harga_akhir').val(hargaAwal - inputedValue);
-        $('#harga_akhir_show').val(thousandSeparator(hargaAwal - inputedValue));
+        const hargaAwal = parseFloat($('#harga_awal').val()) || 0;
+        const hargaAkhir = hargaAwal - inputedValue;
+
+        $('#harga_akhir').val(hargaAkhir);
+        $('#harga_akhir_show').text('Rp. ' + thousandSeparator(hargaAkhir));
+        $(this).val(thousandSeparator(inputedValue)); // Reapply thousand separator
+
         $('#diskon_tambah_number').val(inputedValue);
     });
+
 
     // on input uang konsumen
     $('#nominal_dibayar').on('input', function() {
