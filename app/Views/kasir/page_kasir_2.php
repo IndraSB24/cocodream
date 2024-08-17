@@ -297,7 +297,7 @@
                                         <!-- diskon -->
                                         <div class="col-lg-12 mb-3">
                                             <label for="diskon_tambah" class="form-label">Diskon</label>
-                                            <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                            <input class="form-control text-center thousand-separator bg-info text-white" type="text" id="diskon_tambah" name="diskon_tambah"/>
                                             <input type="hidden" id="diskon_tambah_number">
                                         </div>
                                         <!-- payment method -->
