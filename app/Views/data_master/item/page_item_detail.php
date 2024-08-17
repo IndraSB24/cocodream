@@ -92,21 +92,31 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
+                                <!-- bahan -->
                                 <div class="col-lg-6 mb-3">
-                                    <label for="item" class="form-label">Item</label>
+                                    <label for="item" class="form-label">Bahan</label>
                                     <select class="form-control select2" id="item" name="item" >
-                                        <option value="">Pilih Item</option>
+                                        <option value="">Pilih Bahan</option>
                                         <?php foreach ($data_item as $item): ?>
                                             <option value="<?= $item->id ?>"><?= $item->nama ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+
+                                <!-- jumlah -->
                                 <div class="col-lg-6 mb-3">
-                                    <label for="jumlah" class="form-label">Jumlah</label>
+                                    <label for="jumlah" class="form-label">Jumlah per satuan bahan</label>
                                     <input class="form-control" type="number" id="jumlah" name="jumlah" />
+                                </div>
+
+                                <!-- satuan -->
+                                <div class="col-sm-6 mb-3">
+                                    <label for="satuan">Satuan</label>
+                                    <input type="text" id="satuan" class="form-control text-center" readonly/>
                                 </div>
                             </div>
 
+                            <!-- buttion -->
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_simpan">
@@ -309,6 +319,24 @@
             path, data, 'Konfirmasi edit Item dengan Kode: '+ $('#kode_item_edit').val() +' ?', 
             'Diedit!', 'Item dengan kode: '+ $('#kode_item_edit').val() +' berhasil diedit.', 'modal_edit'
         );
+    });
+
+    // set input value change by selected item
+    $('#item').on('change', function() {
+        var selectedOption = $(this).find('option:selected');
+        var idItem = selectedOption.val();
+
+        $.ajax({
+            url: "<?= base_url('item/ajax_get_item_data') ?>",
+            type: 'POST',
+            data: { id_item: idItem },
+            success: function(response) {
+                $('#satuan').val(response.nama_satuan);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching additional data:', error);
+            }
+        });
     });
 
 </script>
