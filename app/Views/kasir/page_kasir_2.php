@@ -184,6 +184,7 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
+                                <!-- total belanja -->
                                 <div class="col-lg-12 mb-1 text-center">
                                     <span>Total Belanja</span>
                                     <br>
@@ -192,50 +193,61 @@
                                     <input type="hidden" id="harga_akhir">
                                 </div>
                                 <hr>
-                                <!-- uang konsumen -->
+
                                 <div class="col-lg-6 mb-3">
-                                    <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
-                                    <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
-                                    <input type="hidden" id="nominal_dibayar_number">
-                                </div>
-                                <!-- fixed nominal -->
-                                <div class="col-lg-6 mb-3">
-                                    <label for="nominal_options" class="form-label">Pilihan Nominal</label>
-                                    <div id="nominal_options" class="d-flex flex-wrap gap-2">
-                                        <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(1000)">1.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(2000)">2.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(5000)">5.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(10000)">10.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(20000)">20.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(50000)">50.000</button>
-                                        <button type="button" class="btn btn-secondary" onclick="addNominal(100000)">100.000</button>
+                                    <div class="row">
+                                        <!-- uang konsumen -->
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
+                                            <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
+                                            <input type="hidden" id="nominal_dibayar_number">
+                                        </div>
+                                        <!-- diskon -->
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="diskon_tambah" class="form-label">Diskon</label>
+                                            <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="diskon_tambah" name="diskon_tambah"/>
+                                            <input type="hidden" id="diskon_tambah_number">
+                                        </div>
+                                        <!-- payment method -->
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
+                                            <select class="form-control" id="metode_bayar" name="metode_bayar" >
+                                                <?php foreach ($data_payment_method as $item): ?>
+                                                    <option value="<?= $item->id ?>">
+                                                        <?= $item->detail ? $item->name.' - '.$item->detail : $item->name ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- diskon -->
+
                                 <div class="col-lg-6 mb-3">
-                                    <label for="diskon_tambah" class="form-label">Diskon</label>
-                                    <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="diskon_tambah" name="diskon_tambah"/>
-                                    <input type="hidden" id="diskon_tambah_number">
+                                    <div class="row">
+                                        <!-- fixed nominal -->
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="nominal_options" class="form-label">Pilihan Nominal</label>
+                                            <div id="nominal_options" class="d-flex flex-wrap gap-2">
+                                                <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(1000)">1.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(2000)">2.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(5000)">5.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(10000)">10.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(20000)">20.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(50000)">50.000</button>
+                                                <button type="button" class="btn btn-secondary" onclick="addNominal(100000)">100.000</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- payment method -->
-                                <div class="col-lg-6 mb-3">
-                                    <label for="metode_bayar" class="form-label">Metode Pembayaran</label>
-                                    <select class="form-control" id="metode_bayar" name="metode_bayar" >
-                                        <?php foreach ($data_payment_method as $item): ?>
-                                            <option value="<?= $item->id ?>">
-                                                <?= $item->detail ? $item->name.' - '.$item->detail : $item->name ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                
+  
                                 <!-- kembalian -->
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
                                     <input class="form-control text-center" type="text" id="nominal_kembalian_show" readonly/>
                                     <input type="hidden" id="nominal_kembalian" />
                                 </div>
+                                
                                 <!-- cahnnel distribusi -->
                                 <div class="col-lg-6 mb-3 d-none">
                                     <label for="distribution_channel" class="form-label">Channel Distribusi</label>
