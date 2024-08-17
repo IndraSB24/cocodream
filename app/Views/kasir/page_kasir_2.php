@@ -474,8 +474,6 @@
         $('#nominal_kembalian_show').val('Rp. ' + thousandSeparator(nominalKembalian));
     });
 
-
-
     // on input uang konsumen
     $('#nominal_dibayar').on('input', function() {
         var inputedValue = parseFloat(removeThousandSeparator($(this).val()));

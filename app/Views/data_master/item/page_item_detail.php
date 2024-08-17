@@ -95,7 +95,7 @@
                                 <!-- bahan -->
                                 <div class="col-lg-6 mb-3">
                                     <label for="item" class="form-label">Bahan</label>
-                                    <select class="form-control select2" id="item" name="item" >
+                                    <select class="form-control select2" id="item" >
                                         <option value="">Pilih Bahan</option>
                                         <?php foreach ($data_item as $item): ?>
                                             <option value="<?= $item->id ?>"><?= $item->nama ?></option>
@@ -106,7 +106,7 @@
                                 <!-- jumlah -->
                                 <div class="col-lg-4 mb-3">
                                     <label for="jumlah" class="form-label">Jumlah per satuan bahan</label>
-                                    <input class="form-control" type="number" id="jumlah" name="jumlah" />
+                                    <input class="form-control" type="number" id="jumlah" />
                                 </div>
 
                                 <!-- satuan -->
@@ -337,6 +337,15 @@
                 console.error('Error fetching additional data:', error);
             }
         });
+    });
+
+    // on modal_add_item hidden
+    $('#modal_add').on('hidden.bs.modal', function () {
+        // reset dropdown produk
+        $('#item').val('');
+
+        // reset other elem
+        resetElement(['satuan', 'jumlah'])
     });
 
 </script>
