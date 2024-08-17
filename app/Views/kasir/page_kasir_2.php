@@ -165,8 +165,7 @@
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
-                
+     
                 <?= $this->include('partials/footer') ?>
             </div>
             <!-- end main content-->
@@ -207,7 +206,7 @@
                                         <div class="col-lg-12 mb-3">
                                             <label for="diskon_tambah" class="form-label">Diskon</label>
                                             <input class="form-control text-center thousand-separator bg-info text-white" type="text" id="diskon_tambah"/>
-                                            <input type="hidden" id="diskon_tambah_number">
+                                            <input type="number" id="diskon_tambah_number">
                                         </div>
                                         <!-- payment method -->
                                         <div class="col-lg-12 mb-3">
