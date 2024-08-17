@@ -202,6 +202,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <label for="nominal_options" class="form-label">Pilihan Nominal</label>
                                     <div id="nominal_options" class="d-flex flex-wrap gap-2">
+                                        <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(1000)">1.000</button>
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(2000)">2.000</button>
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(5000)">5.000</button>
@@ -209,7 +210,6 @@
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(20000)">20.000</button>
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(50000)">50.000</button>
                                         <button type="button" class="btn btn-secondary" onclick="addNominal(100000)">100.000</button>
-                                        <button type="button" class="btn btn-success" onclick="setExactAmount()">Uang Pas</button>
                                     </div>
                                 </div>
                                 <!-- diskon -->
@@ -247,6 +247,9 @@
                                 </div>
                                 
                             </div>
+
+                            <hr>
+                            <!-- button -->
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_bayar" >
