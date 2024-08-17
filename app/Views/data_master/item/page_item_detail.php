@@ -104,13 +104,13 @@
                                 </div>
 
                                 <!-- jumlah -->
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-4 mb-3">
                                     <label for="jumlah" class="form-label">Jumlah per satuan bahan</label>
                                     <input class="form-control" type="number" id="jumlah" name="jumlah" />
                                 </div>
 
                                 <!-- satuan -->
-                                <div class="col-sm-6 mb-3">
+                                <div class="col-sm-2 mb-3">
                                     <label for="satuan">Satuan</label>
                                     <input type="text" id="satuan" class="form-control text-center" readonly/>
                                 </div>
