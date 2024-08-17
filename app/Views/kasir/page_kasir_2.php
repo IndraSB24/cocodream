@@ -248,16 +248,6 @@
                                     <input type="hidden" id="nominal_kembalian" />
                                 </div>
                                 
-                                <!-- cahnnel distribusi -->
-                                <div class="col-lg-6 mb-3 d-none">
-                                    <label for="distribution_channel" class="form-label">Channel Distribusi</label>
-                                    <select class="form-control" id="distribution_channel" name="distribution_channel" >
-                                        <?php foreach ($data_distribution_channel as $item): ?>
-                                            <option value="<?= $item->id ?>"><?= $item->name ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                
                             </div>
 
                             <hr>
@@ -439,7 +429,7 @@
     // on modal_pay show
     $('#modal_pay').on('shown.bs.modal', function () {
         clearFieldValue(['nominal_kembalian', 'nominal_dibayar', 'diskon_tambah']);
-        
+
         const cartTotal = $('#cart_total_value').val();
         $('#harga_awal').val(cartTotal);
         $('#harga_akhir').val(cartTotal);
@@ -447,14 +437,12 @@
         $('#harga_akhir_show').val(thousandSeparator(cartTotal));
     });
 
-
     // on input tambah diskon
     $('#diskon_tambah').on('input', function() {
-        var inputedValue = parseFloat( removeThousandSeparator($(this).val()) );
-        if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
-            // If negative, set it to 0
+        var inputedValue = parseFloat(removeThousandSeparator($(this).val()));
+        if (inputedValue < 0 || isNaN(inputedValue)) {
             inputedValue = 0;
-            $(this).val(inputedValue); // Update the input field value
+            $(this).val(inputedValue);
         }
 
         const hargaAwal = $('#harga_awal').val();
@@ -463,19 +451,31 @@
         $('#diskon_tambah_number').val(inputedValue);
     });
 
-    // on input tambah diskon
+    // on input uang konsumen
     $('#nominal_dibayar').on('input', function() {
-        var inputedValue = parseFloat( removeThousandSeparator($(this).val()) );
-        if (inputedValue < 0 || inputedValue === '' || isNaN(inputedValue)) {
-            // If negative, set it to 0
+        var inputedValue = parseFloat(removeThousandSeparator($(this).val()));
+        if (inputedValue < 0 || isNaN(inputedValue)) {
             inputedValue = 0;
-            $(this).val(inputedValue); // Update the input field value
+            $(this).val(inputedValue);
         }
 
-        $('#nominal_kembalian').val( inputedValue - $('#harga_akhir').val() );
-        $('#nominal_kembalian_show').val( thousandSeparator(inputedValue - $('#harga_akhir').val()) );
+        $('#nominal_kembalian').val(inputedValue - $('#harga_akhir').val());
+        $('#nominal_kembalian_show').val(thousandSeparator(inputedValue - $('#harga_akhir').val()));
         $('#nominal_dibayar_number').val(inputedValue);
     });
+
+    // fixed nominal buttons
+    function addNominal(amount) {
+        let currentAmount = parseFloat(removeThousandSeparator($('#nominal_dibayar').val())) || 0;
+        let updatedAmount = currentAmount + amount;
+
+        $('#nominal_dibayar').val(thousandSeparator(updatedAmount)).trigger('input');
+    }
+
+    function setExactAmount() {
+        const hargaAkhir = parseFloat($('#harga_akhir').val());
+        $('#nominal_dibayar').val(thousandSeparator(hargaAkhir)).trigger('input');
+    }
 
     // konfirmasi bayar
     $(document).on('click', '#btn_konfirmasi_bayar', function () {
@@ -519,12 +519,13 @@
             id_payment_method: $('#metode_bayar').val(),
             id_distribution_channel: $('#distribution_channel').val()
         };
-        
+
         loadQuestionalSwalResetElement(
             path, data, 'Konfirmasi Bayar ?', 
             'Dibayar!', 'Pembayaran Berhasil', 'modal_pay'
         );
     });
+
 
     function resetTheseElement(){
         resetElement(
