@@ -50,6 +50,22 @@
                 flex-grow: 1;
                 overflow: auto;
             }
+
+            .quantity-wrapper {
+                display: flex;
+                align-items: center;
+            }
+
+            .quantity-wrapper .quantity-input {
+                max-width: 60px;
+            }
+
+            .quantity-wrapper button {
+                width: 30px;
+                height: 38px;
+                padding: 0;
+            }
+
         </style>
 
     </head>
