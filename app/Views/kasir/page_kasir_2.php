@@ -462,10 +462,18 @@
 
         $('#harga_akhir').val(hargaAkhir);
         $('#harga_akhir_show').text('Rp. ' + thousandSeparator(hargaAkhir));
-        $(this).val(thousandSeparator(inputedValue)); // Reapply thousand separator
-
+        $(this).val(thousandSeparator(inputedValue));
         $('#diskon_tambah_number').val(inputedValue);
+
+        // Calculate the "kembalian" based on the current "nominal_dibayar" input
+        const nominalDibayar = parseFloat(removeThousandSeparator($('#nominal_dibayar').val())) || 0;
+        const nominalKembalian = nominalDibayar - hargaAkhir;
+
+        // Set "kembalian" value
+        $('#nominal_kembalian').val(nominalKembalian);
+        $('#nominal_kembalian_show').val('Rp. ' + thousandSeparator(nominalKembalian));
     });
+
 
 
     // on input uang konsumen
