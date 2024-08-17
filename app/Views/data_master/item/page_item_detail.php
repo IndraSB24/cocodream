@@ -342,7 +342,7 @@
     // on modal_add_item hidden
     $('#modal_add').on('hidden.bs.modal', function () {
         // reset dropdown produk
-        $('#item').val('');
+        $('#item').val('').trigger('change');;
 
         // reset other elem
         clearFieldValue(['satuan', 'jumlah'])
