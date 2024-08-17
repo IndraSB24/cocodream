@@ -345,7 +345,7 @@
         $('#item').val('');
 
         // reset other elem
-        resetElement(['satuan', 'jumlah'])
+        clearFieldValue(['satuan', 'jumlah'])
     });
 
 </script>
