@@ -89,21 +89,27 @@
                     <div class="modal-body">
                         <form action="#" id="form_modal_add" method="POST">
                             <div class="row">
+                                <!-- produk -->
                                 <div class="col-sm-12 mb-3">
                                     <label for="selected_item">Produk</label>
                                     <select class="form-control select2" id="selected_item" name="selected_item" style="width: 100%;">
                                         <option value="">Pilih Produk</option>
                                     </select>
                                 </div>
+                                <!-- hpp -->
                                 <div class="col-sm-6 mb-3">
-                                    <label for="harga">HPP</label>
+                                    <label for="harga">Harga Beli per Satuan</label>
                                     <input type="number" class="form-control text-center" id="harga"/>
                                 </div>
+                                <!-- satuan -->
                                 <div class="col-sm-6 mb-3">
-                                    <label for="satuan">Per Satuan</label>
+                                    <label for="satuan">Satuan</label>
                                     <input type="text" id="satuan" class="form-control text-center" readonly/>
                                 </div>
-                                </div>
+                            </div>
+
+                            <hr>
+                            <!-- button -->
                             <div class="row">
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_simpan" >
