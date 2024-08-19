@@ -252,7 +252,7 @@
 
                             <hr>
                             <!-- button -->
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col-lg-12" style="text-align: right">
                                     <button type="button" class="btn btn-primary ml-3" id="btn_konfirmasi_bayar" >
                                         Konfirmasi Bayar
