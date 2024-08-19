@@ -238,7 +238,7 @@
             price_type: 'hpp'
         };
         
-        loadQuestionalSwal(
+        loadQuestionalSwalWithError(
             path, data, 'Simpan HPP baru ?', 
             'Disimpan!', 'HPP baru berhasil disimpan', 'modal_add', true, false
         );
