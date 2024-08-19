@@ -80,6 +80,12 @@ class Item_pricing extends Controller
         $data['start_date'] = date('Y-m-d');
 
         $insertData = $this->Model_item_pricing->save($data);
+
+        if ($this->request->getPost('price_type') == 'hpp') {
+            $updated_item_id = $this->request->getPost('id_item');
+            // update hpp
+            $this->Model_item_pricing->updateItemHppByFormula($updated_item_id);
+        }
         
         if ($insertData) {
             $response = ['success' => true];

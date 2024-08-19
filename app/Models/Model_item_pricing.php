@@ -190,4 +190,81 @@ class Model_item_pricing extends Model
         return $this->set($data)->update();
     }
 
+    // update item hpp by update formula hpp
+    public function updateItemHppByFormula($formulaId)
+    {
+        // Start transaction
+        $this->db->transBegin();
+
+        try {
+            // Find all item_utama that contain the specified bahan in item_detail
+            $query = $this->db->query("
+                SELECT DISTINCT id_item_utama
+                FROM item_detail
+                WHERE id_item = ?
+                ", [$formulaId])
+            ;
+
+            $itemUtamaIds = array_column($query->getResultArray(), 'id_item_utama');
+
+            // Process each item_utama
+            foreach ($itemUtamaIds as $itemUtamaId) {
+                // Get item_detail for each item_utama, including item ID and quantity
+                $query = $this->db->query("
+                    SELECT id_item, jumlah
+                    FROM item_detail
+                    WHERE id_item_utama = ?
+                    ", [$itemUtamaId])
+                ;
+
+                $itemDetails = $query->getResultArray();
+
+                $totalHpp = 0;
+
+                // Calculate the HPP by summing up item_pricing values for each item detail
+                foreach ($itemDetails as $itemDetail) {
+                    $idItem = $itemDetail['id_item'];
+                    $jumlah = $itemDetail['jumlah'];
+
+                    // Get the HPP value for this item from item_pricing
+                    $query = $this->db->query("
+                        SELECT price
+                        FROM item_pricing
+                        WHERE id_item = ?
+                        AND price_type = 'hpp'
+                        ORDER BY created_at DESC
+                        LIMIT 1
+                    ", [$idItem]);
+
+                    $pricing = $query->getRow();
+
+                    if ($pricing) {
+                        // Calculate the contribution to the total HPP
+                        $totalHpp += $pricing->value * $jumlah;
+                    }
+                }
+
+                // set last hpp to inactive
+                $this->autoInactive($itemUtamaId, 1);
+
+                // Insert the calculated HPP into item_pricing for the item_utama
+                $this->db->query("
+                    INSERT INTO item_pricing (price_type, id_item, price, start_date, id_entitas, is_active)
+                    VALUES ('hpp', ?, ?, NOW(), 1, 1)
+                ", [$itemUtamaId, $totalHpp]);
+
+            }
+
+
+            // Commit transaction
+            $this->db->transCommit();
+            return true;
+        } catch (\Exception $e) {
+            // Rollback transaction on error
+            $this->db->transRollback();
+            throw $e; // Re-throw the exception to handle it where this method is called
+        }
+    }
+
+
 }
