@@ -240,7 +240,7 @@ class Model_item_pricing extends Model
 
                     if ($pricing) {
                         // Calculate the contribution to the total HPP
-                        $totalHpp += $pricing->value * $jumlah;
+                        $totalHpp += $pricing->price * $jumlah;
                     }
                 }
 
