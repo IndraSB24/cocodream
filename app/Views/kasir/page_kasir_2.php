@@ -127,7 +127,7 @@
                             </div>
 
                             <!-- Selected Items -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-none">
                                 <div class="card" style="height: 600px;">
                                     <div class="card-header bg-success">
                                         <h4 class="mb-3">Cart</h4>
@@ -159,6 +159,42 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="card" style="height: 600px;">
+                                    <div class="card-header bg-success">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h4 class="mb-3">Cart</h4>
+                                            <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
+                                        </div>
+                                        <input type="hidden" id="cart_total_value"/>
+                                    </div>
+                                    <div class="card-body overflow-auto">
+                                        <div class="table-responsive">
+                                            <table class="table" id="cart-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                        <th>Total</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Cart items will be appended here dynamically -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-end">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_pay">
+                                            Bayar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
     
