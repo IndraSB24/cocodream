@@ -161,15 +161,20 @@
                             </div>
 
                             <div class="col-md-6">
-                                <div class="card" style="height: 600px;">
+                                <div class="card" style="height: auto; min-height: 200px;">
                                     <div class="card-header bg-success">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h4 class="mb-3">Cart</h4>
-                                            <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
-                                        </div>
-                                        <input type="hidden" id="cart_total_value"/>
+                                        <h4 class="mb-3">Cart</h4>
                                     </div>
-                                    <div class="card-body overflow-auto">
+
+                                    <div class="card-footer text-end" id="bayar-button-container">
+                                        <h5>Total: Rp. <span id="cart-total"> <?= thousand_separator(0) ?> </span></h5>
+                                        <input type="hidden" id="cart_total_value"/>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_pay">
+                                            Bayar
+                                        </button>
+                                    </div>
+
+                                    <div class="card-body overflow-auto" id="cart-body-container" style="max-height: 400px;">
                                         <div class="table-responsive">
                                             <table class="table" id="cart-table">
                                                 <thead>
@@ -187,13 +192,9 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="card-footer text-end">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_pay">
-                                            Bayar
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
+
 
 
                         </div>
