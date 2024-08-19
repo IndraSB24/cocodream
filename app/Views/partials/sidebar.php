@@ -39,12 +39,10 @@
                         <span>POS</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?= base_url('transaksi-show-cashier') ?>">Kasir</a></li>
+                        <li><a href="<?= base_url('transaksi/show_kasir_new') ?>">Kasir</a></li>
+                        <li class="d-none"><a href="<?= base_url('transaksi-show-cashier') ?>">Kasir Old</a></li>
                         <li><a href="<?= base_url('transaksi-get-list') ?>">List Transaksi</a></li>
                         <li><a href="<?= base_url('cashdrawer-get-list') ?>">Cash Drawer</a></li>
-                        <?php if (sess('active_user_id')=='1') : ?>
-                            <li><a href="<?= base_url('transaksi/show_kasir_new') ?>">Kasir New</a></li>
-                        <?php endif; ?>
                     </ul>
                 </li>
 
