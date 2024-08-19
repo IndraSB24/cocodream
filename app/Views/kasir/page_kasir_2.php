@@ -244,7 +244,7 @@
                                 <!-- kembalian -->
                                 <div class="col-lg-12 mb-3">
                                     <label for="nominal_kembalian" class="form-label">Kembalian</label>
-                                    <input class="form-control text-center" type="text" id="nominal_kembalian_show" readonly/>
+                                    <input class="form-control text-center bg-info" type="text" id="nominal_kembalian_show" readonly/>
                                     <input type="hidden" id="nominal_kembalian" />
                                 </div>
                                 
