@@ -177,7 +177,7 @@ class Model_item_pricing extends Model
     }
 
     // set auto inactive
-    public function autoInactive($id_item, $id_entitas)
+    public function autoInactive($id_item, $id_entitas, $price_type="selling")
     {
         // Data to be updated
         $data = [
@@ -185,6 +185,7 @@ class Model_item_pricing extends Model
         ];
 
         $this->where('id_item', $id_item);
+        $this->where('price_type', $price_type);
 
         // Update the record where 'id' is $id
         return $this->set($data)->update();
@@ -245,7 +246,7 @@ class Model_item_pricing extends Model
                 }
 
                 // set last hpp to inactive
-                $this->autoInactive($itemUtamaId, 1);
+                $this->autoInactive($itemUtamaId, 1, 'hpp');
 
                 // Insert the calculated HPP into item_pricing for the item_utama
                 $this->db->query("
