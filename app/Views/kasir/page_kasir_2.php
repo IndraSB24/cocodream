@@ -129,8 +129,9 @@
                             <!-- Selected Items -->
                             <div class="col-md-6">
                                 <div class="card" style="height: auto;">
-                                    <div class="card-header bg-success">
+                                    <div class="card-header bg-success d-flex justify-space-between">
                                         <h4 class="mb-3">Cart</h4>
+                                        <a class="btn btn-light" href="<?= base_url('transaksi-get-list') ?>">History</a>
                                     </div>
 
                                     <div class="card-body overflow-auto" id="cart-body-container" style="max-height: 400px;">
