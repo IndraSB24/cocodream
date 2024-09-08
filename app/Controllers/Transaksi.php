@@ -50,7 +50,7 @@ class Transaksi extends Controller
             'items' => $this->Model_item->get_all_array(),
             'data_distribution_channel' => $this->Model_distribution_channel->findAll()
 		];
-        return view('kasir/page_kasir', $data);
+        return view('kasir/page_kasir_2', $data);
     }
 
     public function show_kasir_new(){
