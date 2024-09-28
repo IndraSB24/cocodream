@@ -503,10 +503,23 @@
         $('#nominal_dibayar').val(thousandSeparator(updatedAmount)).trigger('input');
     }
 
+    // function setExactAmount() {
+    //     const hargaAkhir = parseFloat($('#harga_akhir').val());
+    //     $('#nominal_dibayar').val(thousandSeparator(hargaAkhir)).trigger('input');
+    // }
     function setExactAmount() {
         const hargaAkhir = parseFloat($('#harga_akhir').val());
-        $('#nominal_dibayar').val(thousandSeparator(hargaAkhir)).trigger('input');
+        
+        // Convert to string before passing to the thousandSeparator
+        const formattedAmount = thousandSeparator(hargaAkhir.toString());
+
+        // Set the formatted value and trigger the input event if needed
+        $('#nominal_dibayar').val(formattedAmount);
+        
+        // Optionally, if you need to trigger input events (for any listener that may be attached)
+        $('#nominal_dibayar').trigger('input');
     }
+
 
     // konfirmasi bayar
     $(document).on('click', '#btn_konfirmasi_bayar', function () {
