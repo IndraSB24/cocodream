@@ -199,7 +199,8 @@
                                     <input type="hidden" id="harga_akhir">
                                 </div>
                                 <hr>
-
+                                
+                                <!-- payment detail -->
                                 <div class="col-lg-6 mb-3">
                                     <div class="row">
                                         <!-- uang konsumen -->
@@ -228,6 +229,7 @@
                                     </div>
                                 </div>
 
+                                <!-- nominal button -->
                                 <div class="col-lg-6 mb-3">
                                     <div class="row">
                                         <!-- fixed nominal -->

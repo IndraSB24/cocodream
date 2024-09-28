@@ -292,7 +292,7 @@
     }
 
     // thousand separator
-    function thousandSeparator(number, decimalPlaces) {
+    function thousandSeparator_old(number, decimalPlaces) {
         number = parseFloat(number);
         var formattedNumber = number.toFixed(decimalPlaces);
 
@@ -302,6 +302,26 @@
 
         return formattedNumber;
     }
+    // Thousand separator function without parseFloat
+    function thousandSeparator(numberString, decimalPlaces = 0) {
+        // Separate the integer and decimal parts
+        let [integerPart, decimalPart] = numberString.split('.');
+        
+        // Remove any non-numeric characters from the integer part
+        integerPart = integerPart.replace(/\D/g, '');
+
+        // Add thousand separators to the integer part
+        let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        // If decimal places are required, append the decimal part
+        if (decimalPlaces > 0 && decimalPart !== undefined) {
+            decimalPart = decimalPart.slice(0, decimalPlaces); // Trim to the desired decimal places
+            return `${formattedInteger},${decimalPart}`;
+        }
+
+        return formattedInteger;
+    }
+
 
     function removeThousandSeparator(value) {
         // Remove both commas and dots from the string
