@@ -206,7 +206,7 @@
                                         <!-- uang konsumen -->
                                         <div class="col-lg-12 mb-3">
                                             <label for="nominal_dibayar" class="form-label">Uang Konsumen</label>
-                                            <input class="form-control text-center thousand-separator bg-info text-white" type="number" id="nominal_dibayar" name="nominal_dibayar"/>
+                                            <input class="form-control text-center thousand-separator bg-info text-white" type="text" id="nominal_dibayar" name="nominal_dibayar"/>
                                             <input type="hidden" id="nominal_dibayar_number">
                                         </div>
                                         <!-- diskon -->
