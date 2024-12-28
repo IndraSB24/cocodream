@@ -1,0 +1,20 @@
+CRITICAL - 2024-11-29 13:00:12 --> Undefined variable: totalTime
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar/Views/toolbar.tpl.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/home/u1589757/...', 41, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(456): include('/home/u1589757/...')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(413): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#3 /home/u1589757/public_html/digision.id/cocodream/app/Config/Events.php(52): CodeIgniter\Debug\Toolbar->respond()
+#4 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#5 /home/u1589757/public_html/digision.id/cocodream/system/Events/Events.php(166): call_user_func(Object(Closure))
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(314): CodeIgniter\Events\Events::trigger('pre_system')
+#7 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2024-11-29 13:00:15 --> Undefined variable: totalTime
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar/Views/toolbar.tpl.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/home/u1589757/...', 41, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(456): include('/home/u1589757/...')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(413): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#3 /home/u1589757/public_html/digision.id/cocodream/app/Config/Events.php(52): CodeIgniter\Debug\Toolbar->respond()
+#4 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#5 /home/u1589757/public_html/digision.id/cocodream/system/Events/Events.php(166): call_user_func(Object(Closure))
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(314): CodeIgniter\Events\Events::trigger('pre_system')
+#7 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}

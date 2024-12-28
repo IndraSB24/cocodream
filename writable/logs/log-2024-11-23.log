@@ -1,0 +1,21 @@
+CRITICAL - 2024-11-23 11:28:47 --> unlink(/home/u1589757/public_html/digision.id/cocodream/writable/debugbar/debugbar_1732258562.json): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(/home/u1...', '/home/u1589757/...', 78, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar/Collectors/History.php(78): unlink('/home/u1589757/...')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(441): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles(1732336121, 20)
+#3 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(413): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#4 /home/u1589757/public_html/digision.id/cocodream/app/Config/Events.php(52): CodeIgniter\Debug\Toolbar->respond()
+#5 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#6 /home/u1589757/public_html/digision.id/cocodream/system/Events/Events.php(166): call_user_func(Object(Closure))
+#7 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(314): CodeIgniter\Events\Events::trigger('pre_system')
+#8 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2024-11-23 20:35:57 --> Undefined variable: totalTime
+#0 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar/Views/toolbar.tpl.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', '/home/u1589757/...', 41, Array)
+#1 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(456): include('/home/u1589757/...')
+#2 /home/u1589757/public_html/digision.id/cocodream/system/Debug/Toolbar.php(413): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#3 /home/u1589757/public_html/digision.id/cocodream/app/Config/Events.php(52): CodeIgniter\Debug\Toolbar->respond()
+#4 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#5 /home/u1589757/public_html/digision.id/cocodream/system/Events/Events.php(166): call_user_func(Object(Closure))
+#6 /home/u1589757/public_html/digision.id/cocodream/system/CodeIgniter.php(314): CodeIgniter\Events\Events::trigger('pre_system')
+#7 /home/u1589757/public_html/digision.id/cocodream/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
