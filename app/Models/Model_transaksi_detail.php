@@ -146,8 +146,11 @@ class Model_transaksi_detail extends Model
     }
 
     // ajax for report transaksi by product
-    protected $reportByProductColumnSearchable = ['i.nama'];
-    protected $reportByProductColumnOrderable = ['i.nama', 'transaksi_detail.price', 'SUM(transaksi_detail.quantity)'];
+    protected $reportByProductColumnSearchable = ['i.nama', 'i.kode_item'];
+    protected $reportByProductColumnOrderable = [
+        'DATE(transaksi_detail.created_at)', 'i.kode_item', 'i.nama', 
+        'SUM(transaksi_detail.quantity)', 'SUM(transaksi_detail.price * transaksi_detail.quantity)'
+    ];
     public function getDatatableReportByProduct()
     {
         $request = service('request');
@@ -167,11 +170,9 @@ class Model_transaksi_detail extends Model
             i.kode_item as kode_item,
             i.nama as nama_item,
             SUM(transaksi_detail.quantity) as total_quantity,
-            SUM(transaksi_detail.price * transaksi_detail.quantity) as total_price,
-            sd.nama as nama_satuan
+            SUM(transaksi_detail.price * transaksi_detail.quantity) as total_price
         ')
         ->join('item i', 'i.id=transaksi_detail.id_item', 'LEFT')
-        ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
         ->where('transaksi_detail.deleted_at', NULL);
 
         // Apply date range filter
