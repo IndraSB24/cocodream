@@ -148,7 +148,7 @@ class Model_transaksi_detail extends Model
     // ajax for report transaksi by product
     protected $reportByProductColumnSearchable = ['i.nama', 'i.kode_item'];
     protected $reportByProductColumnOrderable = [
-        'DATE(transaksi_detail.created_at)', 'i.kode_item', 'i.nama', 
+        'transaksi_detail.id', 'DATE(transaksi_detail.created_at)', 'i.kode_item', 'i.nama', 
         'SUM(transaksi_detail.quantity)', 'SUM(transaksi_detail.price * transaksi_detail.quantity)'
     ];
     public function getDatatableReportByProduct()
