@@ -28,55 +28,6 @@
                         <?= $page_title ?>
                         <!-- end page title -->
 
-                        <!-- Card Report -->
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Jumlah Terjual</p>
-                                                <h4 id="total_pengeluaran" class="mb-0"></h4>
-                                            </div>
-                                            <div class="text-primary ms-auto">
-                                                <i class="ri-stack-line font-size-24"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Total Terjual</p>
-                                                <h4 id="total_kegiatan" class="mb-0"></h4>
-                                            </div>
-                                            <div class="text-primary ms-auto">
-                                                <i class="ri-store-2-line font-size-24"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Rata Rata Penjualan</p>
-                                                <h4 id="rata_pengeluaran" class="mb-0"></h4>
-                                            </div>
-                                            <div class="text-primary ms-auto">
-                                                <i class="ri-briefcase-4-line font-size-24"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- filter  -->
                         <div class="row">
                             <div class="col-lg-12">
@@ -120,7 +71,7 @@
                                                         <th class="text-center">Tanggal</th>
                                                         <th class="text-center">Nama Produk</th>
                                                         <th class="text-center">Jumlah Terjual</th>
-                                                        <th class="text-center">Total Terjual</th>
+                                                        <th class="text-center">Total Penjualan</th>
                                                         <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -192,32 +143,24 @@
                 ['10', '25', '50', '100', 'ALL']
             ],
             ajax: {
-                "url": "<?php echo site_url('laporan/ajax_get_laporan_pengeluaran')?>",
+                "url": "<?php echo site_url('laporan/ajaxGetReportByProduct')?>",
                 "type": "POST",
                 "data": function ( data ) {
                     data.searchValue = $('#main_table_filter input').val();
                     data.filterDateFrom = $('#filter_date_from').val();
                     data.filterDateUntil = $('#filter_date_until').val();
                 },
-                "dataSrc": function (returnedData) {    
-                    const formattedTotalPengeluaran = thousandSeparator(returnedData.totalPengeluaran);
-                    const formattedTotalKegiatan = returnedData.totalKegiatan;
-                    const formattedRata2Pengeluaran = thousandSeparator(returnedData.rata2Pengeluaran);
-
-                    $('#total_pengeluaran').text("Rp " + formattedTotalPengeluaran);
-                    $('#total_kegiatan').text(formattedTotalKegiatan);
-                    $('#rata_pengeluaran').text("Rp " + formattedRata2Pengeluaran);
-                
+                "dataSrc": function (returnedData) {                    
                     return returnedData.data;
                 }
             },
             columnDefs: [
                 { 
-                "targets": [ 0, 1, 2, 3, 4, 5, 6 ],
+                "targets": [ 0, 1, 2, 3, 4 ],
                 "className": "text-center"
                 },
                 { 
-                    "targets": [ 0, 6 ],
+                    "targets": [ 0, 4 ],
                     "orderable": false,
                 },
             ],

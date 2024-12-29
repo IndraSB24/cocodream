@@ -138,30 +138,15 @@ class Laporan extends Controller
     // ajax get laporan transaksi per produk
     public function ajaxGetReportByProduct(){
         $returnedData = $this->Model_transaksi_detail->getDatatableReportByProduct();
-        $total_penjualan = 0;
-        $total_hpp = 0;
 
         $data = [];
         foreach ($returnedData['return_data'] as $itung => $baris) {
-            $total_penjualan += $baris->total_nominal;
-            $total_hpp += $baris->total_hpp;
-
-            $detail = '
-                <a id="btn_show_detail" href="transaksi-show-detail/'.$baris->id.'"
-                    class="btn btn-sm btn-info"
-                >
-                    Detail
-                </a>
-            ';
-
             $data[] = [
                 '<span class="text-center">' . ($itung + 1) . '</span>',
-                '<span class="text-center">' . $baris->no_invoice . '</span>',
-                '<span class="text-center">' . $baris->transaction_date . '</span>',
-                '<span class="text-center">Rp. ' . thousand_separator($baris->total_nominal). '</span>',
-                '<span class="text-center">' . $baris->payment_method . '</span>',
-                '<span class="text-center">' . $baris->payment_status . '</span>',
-                '<span class="text-center">' . $detail . '</span>'
+                '<span class="text-center">' . indoDate($baris->transaksi_date) . '</span>',
+                '<span class="text-center">' . $baris->nama_item . '</span>',
+                '<span class="text-center">' . thousand_separator($baris->total_quantity). '</span>',
+                '<span class="text-center">Rp. ' . thousand_separator($baris->total_price). '</span>'
             ];
         }
 
@@ -169,11 +154,7 @@ class Laporan extends Controller
             "draw" => $_POST['draw'],
             "recordsTotal" => $returnedData['count_all'],
             "recordsFiltered" => $returnedData['count_filtered'],
-            "data" => $data,
-            "totalPenjualan" => $total_penjualan,
-            "totalTransaksi" => $returnedData['count_filtered'],
-            "rata2Penjualan" => $returnedData['count_filtered'] > 0 ? floatval($total_penjualan / $returnedData['count_filtered']) : 0,
-            "totalHPP" => $total_hpp
+            "data" => $data
         ];        
 
         // Output to JSON format
