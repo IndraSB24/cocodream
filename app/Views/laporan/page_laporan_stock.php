@@ -35,7 +35,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Total Pengeluaran</p>
+                                                <p class="text-truncate font-size-14 mb-2">Jumlah Terjual</p>
                                                 <h4 id="total_pengeluaran" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
@@ -50,7 +50,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Total Kegiatan</p>
+                                                <p class="text-truncate font-size-14 mb-2">Total Terjual</p>
                                                 <h4 id="total_kegiatan" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
@@ -65,7 +65,7 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-1 overflow-hidden">
-                                                <p class="text-truncate font-size-14 mb-2">Rata Rata Pengeluaran</p>
+                                                <p class="text-truncate font-size-14 mb-2">Rata Rata Penjualan</p>
                                                 <h4 id="rata_pengeluaran" class="mb-0"></h4>
                                             </div>
                                             <div class="text-primary ms-auto">
@@ -116,12 +116,11 @@
                                             <table id="main_table" class="table table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">No.</th>
+                                                    <th class="text-center">No.</th>
                                                         <th class="text-center">Tanggal</th>
-                                                        <th class="text-center">Entitas</th>
-                                                        <th class="text-center">Total Kegiatan</th>
-                                                        <th class="text-center">Total Debit</th>
-                                                        <th class="text-center">Total Kredit</th>
+                                                        <th class="text-center">Nama Produk</th>
+                                                        <th class="text-center">Jumlah Terjual</th>
+                                                        <th class="text-center">Total Terjual</th>
                                                         <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
