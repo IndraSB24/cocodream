@@ -67,7 +67,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('laporanpenjualan-show') ?>">Laporan Penjualan</a></li>
                         <li><a href="<?= base_url('laporanpengeluaran-show') ?>">Laporan Pengeluaran</a></li>
-                        <li><a href="<?= base_url('laporanpenjualanproduk-show') ?>">Laporan Stok</a></li>
+                        <li><a href="<?= base_url('laporanpenjualanproduk-show') ?>">Laporan Penjualan Produk</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>
