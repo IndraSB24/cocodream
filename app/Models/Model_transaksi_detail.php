@@ -153,8 +153,8 @@ class Model_transaksi_detail extends Model
         $request = service('request');
 
         // Get date range from the request
-        $startDate = $request->getPost('start_date') ?: null; // e.g., '2024-01-01'
-        $endDate = $request->getPost('end_date') ?: null;     // e.g., '2024-01-31'
+        $startDate = $request->getPost('filterDateFrom') ?: null; // e.g., '2024-01-01'
+        $endDate = $request->getPost('filterDateUntil') ?: null;     // e.g., '2024-01-31'
 
         // Default to today's date if no date filters are provided
         if (!$startDate && !$endDate) {
