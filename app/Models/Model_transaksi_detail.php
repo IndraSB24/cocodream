@@ -156,6 +156,12 @@ class Model_transaksi_detail extends Model
         $startDate = $request->getPost('start_date') ?: null; // e.g., '2024-01-01'
         $endDate = $request->getPost('end_date') ?: null;     // e.g., '2024-01-31'
 
+        // Default to today's date if no date filters are provided
+        if (!$startDate && !$endDate) {
+            $startDate = date('Y-m-d');
+            $endDate = date('Y-m-d');
+        }
+
         $this->select('
             DATE(transaksi_detail.created_at) as transaksi_date,
             i.kode_item as kode_item,
@@ -168,7 +174,7 @@ class Model_transaksi_detail extends Model
         ->join('satuan_dasar sd', 'sd.id=i.id_satuan', 'LEFT')
         ->where('transaksi_detail.deleted_at', NULL);
 
-        // Apply date range filter if provided
+        // Apply date range filter
         if ($startDate && $endDate) {
             $this->where('DATE(transaksi_detail.created_at) >=', $startDate);
             $this->where('DATE(transaksi_detail.created_at) <=', $endDate);
