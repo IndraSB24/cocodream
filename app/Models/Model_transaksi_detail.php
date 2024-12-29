@@ -208,12 +208,12 @@ class Model_transaksi_detail extends Model
             $orderDirection = $request->getPost('order')[0]['dir'];
             $this->orderBy($orderColumn, $orderDirection);
         } else {
-            $this->orderBy('transaksi_date', 'ASC'); // Default order by date
+            $this->orderBy('transaksi_date', 'DESC'); // Default order by date
             // $this->orderBy('i.nama', 'ASC'); // Then by item name
         }
 
         // Apply grouping by date and item
-        $this->groupBy('transaksi_date, i.id');
+        $this->groupBy('transaksi_date, transaksi_detail.id_item');
 
         // Apply pagination
         if ($request->getPost('length') != -1) {
