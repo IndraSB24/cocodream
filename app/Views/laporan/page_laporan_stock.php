@@ -72,7 +72,6 @@
                                                         <th class="text-center">Nama Produk</th>
                                                         <th class="text-center">Jumlah Terjual</th>
                                                         <th class="text-center">Total Penjualan</th>
-                                                        <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
