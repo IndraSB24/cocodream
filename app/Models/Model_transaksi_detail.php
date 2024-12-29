@@ -145,7 +145,7 @@ class Model_transaksi_detail extends Model
         return $this->get()->getResult();
     }
 
-    // ajax for registrasi detail
+    // ajax for report transaksi by product
     protected $reportByProductColumnSearchable = ['i.nama'];
     protected $reportByProductColumnOrderable = ['i.nama', 'transaksi_detail.price', 'SUM(transaksi_detail.quantity)'];
     public function getDatatableReportByProduct()
