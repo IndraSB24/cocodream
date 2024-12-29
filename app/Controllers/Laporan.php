@@ -37,6 +37,15 @@ class Laporan extends Controller
 		return view('laporan/page_laporan_pengeluaran', $data);
     }
 
+    public function laporan_show_penjualan_produk()
+    {
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Laporan Penjualan Produk']),
+			'page_title' => view('partials/page-title', ['title' => 'Clarisa', 'pagetitle' => 'Laporan Penjualan Produk'])
+		];
+		return view('laporan/page_laporan_stock', $data);
+    }
+
     // ajax get laporan transaksi
     public function ajax_get_laporan_transaksi(){
         $returnedData = $this->Model_transaksi->get_datatable_laporan_penjualan();
