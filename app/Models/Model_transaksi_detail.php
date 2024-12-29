@@ -209,7 +209,7 @@ class Model_transaksi_detail extends Model
             $this->orderBy($orderColumn, $orderDirection);
         } else {
             $this->orderBy('transaksi_date', 'ASC'); // Default order by date
-            $this->orderBy('i.nama', 'ASC'); // Then by item name
+            // $this->orderBy('i.nama', 'ASC'); // Then by item name
         }
 
         // Apply grouping by date and item
