@@ -97,6 +97,9 @@ $routes->get('laporanpenjualan-show', 'Laporan::index');
 // Laporan Pengeluaran
 $routes->get('laporanpengeluaran-show', 'Laporan::laporan_show_pengeluaran');
 
+// Laporan Penjualan Produk
+$routes->get('laporanpenjualanproduk-show', 'Laporan::laporan_show_penjualan_produk');
+
 // Emr
 $routes->get('emr-show-list', 'Emr::index');
 
