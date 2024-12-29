@@ -124,10 +124,10 @@
 
         // Initialize the DataTable
         mainTable = $('#main_table').DataTable({
-		    "processing": true,
-            "serverSide": true,
-            "scrollX": true,
-            "autoWidth": false,
+		    processing: true,
+            serverSide: true,
+            scrollX: true,
+            autoWidth: false,
             // "responsive": true,
 			language: {
 				"paginate": {
@@ -141,6 +141,7 @@
                 [10, 25, 50, 100, -1],
                 ['10', '25', '50', '100', 'ALL']
             ],
+            pageLength: 50,
             ajax: {
                 "url": "<?php echo site_url('laporan/ajaxGetReportByProduct')?>",
                 "type": "POST",

@@ -146,7 +146,7 @@ class Laporan extends Controller
                 '<span class="text-center">' . indoDate($baris->transaksi_date) . '</span>',
                 '<span class="text-center">' . $baris->nama_item . '</span>',
                 '<span class="text-center">' . thousand_separator($baris->total_quantity). '</span>',
-                '<span class="text-center">Rp. ' . thousand_separator($baris->total_price). '</span>'
+                '<span style="float: left;">Rp.</span><span style="float: right;">' . thousand_separator($baris->total_price) . '</span>'
             ];
         }
 
