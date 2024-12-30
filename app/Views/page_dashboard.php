@@ -256,40 +256,60 @@
     }
 
     // chart rekap penjualan produk
-    $(document).ready(function () {
-        // Fetch data from server
-        $.ajax({
-            url: "<?php echo site_url('dashboard/getMostProductData'); ?>",
-            method: "GET",
-            dataType: "json",
-            success: function (response) {
-                // Render pie chart using ApexCharts
-                var options = {
-                    series: response.map(item => item.y), // Data values
-                    chart: {
-                        type: 'pie',
-                    },
-                    labels: response.map(item => item.name), // Labels
-                    responsive: [{
-                        breakpoint: 480,
-                        options: {
-                            chart: {
-                                width: 200
-                            },
-                            legend: {
-                                position: 'bottom'
-                            }
-                        }
-                    }]
-                };
+    $.ajax({
+    url: "<?php echo site_url('dashboard/getMostProductData'); ?>",
+    method: "GET",
+    dataType: "json",
+    success: function (response) {
+        var seriesData = response.map(item => item.y); // Quantities
+        var labelsData = response.map(item => item.name); // Product names
 
-                var chart = new ApexCharts(document.querySelector("#chart_penjualan_produk"), options);
-                chart.render();
+        var options = {
+            chart: {
+                height: 320,
+                type: 'pie',
             },
-            error: function (xhr, status, error) {
-                console.error("Failed to fetch pie chart data:", error);
-            }
-        });
-    });
+            series: seriesData,
+            labels: labelsData,
+            colors: [
+                "#1cbb8c", "#5664d2", "#fcb92c", "#4aa3ff", "#ff3d60", 
+                "#9a5ab5", "#ff8533", "#33ccff", "#70db70", "#cc0066", 
+                "#ff9933", "#9933ff", "#ff66cc", "#66ff99", "#ff3333"
+            ], // 15 colors
+            legend: {
+                show: true,
+                position: 'bottom',
+                horizontalAlign: 'center',
+                verticalAlign: 'middle',
+                floating: false,
+                fontSize: '14px',
+                offsetX: 0,
+                offsetY: 5
+            },
+            responsive: [{
+                breakpoint: 600,
+                options: {
+                    chart: {
+                        height: 240
+                    },
+                    legend: {
+                        show: false
+                    },
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(
+            document.querySelector("#chart_penjualan_produk"),
+            options
+        );
+
+        chart.render();
+    },
+    error: function (xhr, status, error) {
+        console.error("Failed to fetch pie chart data:", error);
+    }
+});
+
 
 </script>
