@@ -14,6 +14,12 @@
 <!-- fontawesome icons init -->
 <script src="<?= base_url('assets/js/pages/fontawesome.init.js') ?>"></script>
 
+<!-- apexcharts -->
+<script src="<?= base_url('assets/libs/apexcharts/apexcharts.min.js'); ?>"></script>
+
+<!-- apexcharts init -->
+<script src="<?= base_url('assets/js/pages/apexcharts.init.js'); ?>"></script>
+
 <!-- custome script -->
 <script>
     // swall loader

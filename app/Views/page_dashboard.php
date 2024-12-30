@@ -217,13 +217,6 @@
         </div>
         <!-- END layout-wrapper -->
 
-        <!-- JAVASCRIPT -->
-        <!-- apexcharts -->
-        <script src="<?= base_url('assets/libs/apexcharts/apexcharts.min.js'); ?>"></script>
-
-        <!-- apexcharts init -->
-        <script src="<?= base_url('assets/js/pages/apexcharts.init.js'); ?>"></script>
-
         <!-- jquery.vectormap map -->
         <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
         <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"></script>
