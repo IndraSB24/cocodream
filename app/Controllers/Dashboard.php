@@ -37,6 +37,23 @@ class Dashboard extends Controller
 		return view('page_dashboard', $data);
     }
 
-    
+    public function getMostProductData()
+    {
+        // Fetch data from the model
+        $data = $this->Model_transaksi_detail->getMostProduct();
+
+        // Format data for the pie chart
+        $chartData = [];
+        foreach ($data as $row) {
+            $chartData[] = [
+                'name' => $row->nama_item,
+                'y' => (int) $row->total_sell, // Ensure the value is an integer
+            ];
+        }
+
+        // Return as JSON response
+        return $this->response->setJSON($chartData);
+    }
+
 
 }
