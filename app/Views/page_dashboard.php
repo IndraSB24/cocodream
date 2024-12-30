@@ -219,10 +219,10 @@
 
         <!-- JAVASCRIPT -->
         <!-- apexcharts -->
-        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="<?= base_url('assets/libs/apexcharts/apexcharts.min.js'); ?>"></script>
 
         <!-- apexcharts init -->
-        <script src="assets/js/pages/apexcharts.init.js"></script>
+        <script src="<?= base_url('assets/js/pages/apexcharts.init.js'); ?>"></script>
 
         <!-- jquery.vectormap map -->
         <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
@@ -245,9 +245,6 @@
 </html>
 
 <script>
-    console.log(<?= json_encode($transaction_data) ?>, 'TRANSACTION DATA');
-    console.log(<?= json_encode($cashdrawer_data) ?>, 'CASH DRAWER DATA');
-    console.log(<?= json_encode($most_product) ?>, 'MOST PRODUCT DATA');
 
     function resetFilter() {
         document.getElementById('filterDateFrom').value = '<?= $current_date ?>';
