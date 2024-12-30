@@ -162,6 +162,15 @@
                                         <div>
                                             <div id="line-column-chart" class="apex-charts" dir="ltr"></div>
                                         </div>
+                                        <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title mb-4">Pie Chart</h4>
+                                                
+                                                <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                                            </div>
+                                        </div>
+                            </div>
                                     </div>
 
                                     
