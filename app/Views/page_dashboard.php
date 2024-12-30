@@ -145,10 +145,10 @@
 
 
                         <!-- Revenue Analytics -->
-                        <div class="row">
+                        <div class="card">
 
                                 <div class="col-lg-6">
-                                    <div class="row">
+                                    <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title mb-4">Pie Chart</h4>
 
