@@ -11,3 +11,6 @@
 <link href="<?= base_url('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') ?>" rel="stylesheet">
 <link href="<?= base_url('assets/libs/spectrum-colorpicker2/spectrum.min.css') ?>" rel="stylesheet" type="text/css">
 <link href="<?= base_url('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') ?>" rel="stylesheet">
+
+<!-- ApexCharts (optional, for additional customization) -->
+<link href="<?= base_url('assets/libs/apexcharts/apexcharts.css') ?>" rel="stylesheet" type="text/css" />
