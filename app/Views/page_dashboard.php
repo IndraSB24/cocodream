@@ -146,7 +146,7 @@
 
                         <!-- Revenue Analytics -->
                         <div class="card">
-                            <div class="card-body">
+
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
@@ -156,10 +156,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-
-
                         </div>
                         <!-- Revenue Analytics -->
                     </div>
