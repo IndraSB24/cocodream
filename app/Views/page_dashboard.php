@@ -151,7 +151,7 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
 
-                                                    <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                                                    <div id="chart_penjualan_produk" class="apex-charts" dir="ltr"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +283,7 @@
                     }]
                 };
 
-                var chart = new ApexCharts(document.querySelector("#pie_chart"), options);
+                var chart = new ApexCharts(document.querySelector("#chart_penjualan_produk"), options);
                 chart.render();
             },
             error: function (xhr, status, error) {
