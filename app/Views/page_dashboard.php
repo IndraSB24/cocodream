@@ -245,6 +245,10 @@
             url: "<?php echo site_url('dashboard/getMostProductData'); ?>",
             method: "GET",
             dataType: "json",
+            data: {
+                filterDateFrom: $('#filterDateFrom').val(),
+                filterDateUntil: $('#filterDateUntil').val()
+            },
             success: function (response) {
                 // console.log("respon ajax: ", response); // Debugging
                 var seriesData = response.map(item => item.y); // Quantities
