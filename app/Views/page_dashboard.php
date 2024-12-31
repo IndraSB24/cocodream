@@ -146,24 +146,14 @@
 
                                 <!-- Revenue Analytics -->
                                 <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
-
-                                                    <div id="chart_penjualan_produk" class="apex-charts" dir="ltr"></div>
-                                                </div>
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
+                                                <div id="chart_penjualan_produk" class="apex-charts" dir="ltr"></div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
-
-                                                    <div id="test_chart" class="apex-charts" dir="ltr"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Revenue Analytics -->
                             </div>
@@ -261,7 +251,7 @@
             method: "GET",
             dataType: "json",
             success: function (response) {
-                console.log("respon ajax: ", response); // Debugging
+                // console.log("respon ajax: ", response); // Debugging
                 var seriesData = response.map(item => item.y); // Quantities
                 var labelsData = response.map(item => item.name); // Product names
 
@@ -312,46 +302,5 @@
             }
         });
     });
-
-
-    var testOptions = {
-        chart: {
-            height: 320,
-            type: 'pie',
-        },
-        series: [44, 55, 41, 17, 15],
-        labels: ["WIDYA", "DESI AFIFAH", "NITA", "AULIA IFA", "VIRA ZULFA"],
-        colors: ["#1cbb8c", "#5664d2", "#fcb92c", "#4aa3ff", "#ff3d60"],
-        legend: {
-            show: true,
-            position: 'bottom',
-            horizontalAlign: 'center',
-            verticalAlign: 'middle',
-            floating: false,
-            fontSize: '14px',
-            offsetX: 0,
-            offsetY: 5
-        },
-        responsive: [{
-            breakpoint: 600,
-            options: {
-                chart: {
-                    height: 240
-                },
-                legend: {
-                    show: false
-                },
-            }
-        }]
-
-    }
-
-    var testChart = new ApexCharts(
-        document.querySelector("#test_chart"),
-        testOptions
-    );
-
-    testChart.render();
-
 
 </script>
