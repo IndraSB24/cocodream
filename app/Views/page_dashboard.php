@@ -146,11 +146,47 @@
 
                                 <!-- Revenue Analytics -->
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
                                                 <div id="chart_penjualan_produk" class="apex-charts" dir="ltr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+
+
+                                                <h4 class="card-title mb-3">Top 5 Produk</h4>
+
+                                                <div>
+                                                    <div class="table-responsive mt-4">
+                                                        <table class="table table-hover mb-0 table-centered table-nowrap">
+                                                            <tbody>
+                                                                <?php foreach ($most_product as $list): ?>
+                                                                    <tr>
+                                                                        <td style="width: 60px;">
+                                                                            <div class="avatar-xs">
+                                                                                <div class="avatar-title rounded-circle bg-light">
+                                                                                    <img src="<?= base_url('upload/item_pict/' . $list->image_filename); ?>" alt="img-1" height="30">
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <h5 class="font-size-14 mb-0"><?= $list->nama_item ?></h5>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p class="text-muted mb-0"><?= thousand_separator($list->total_sell) ?></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,47 +198,6 @@
                         </div>
                         <!-- end row -->
 
-                        <!-- start row 2 -->
-                        <div class="row">
-
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-
-
-                                        <h4 class="card-title mb-3">Top 5 Produk</h4>
-
-                                        <div>
-                                            <div class="table-responsive mt-4">
-                                                <table class="table table-hover mb-0 table-centered table-nowrap">
-                                                    <tbody>
-                                                        <?php foreach ($most_product as $list): ?>
-                                                            <tr>
-                                                                <td style="width: 60px;">
-                                                                    <div class="avatar-xs">
-                                                                        <div class="avatar-title rounded-circle bg-light">
-                                                                            <img src="<?= base_url('upload/item_pict/' . $list->image_filename); ?>" alt="img-1" height="30">
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <h5 class="font-size-14 mb-0"><?= $list->nama_item ?></h5>
-                                                                </td>
-                                                                <td>
-                                                                    <p class="text-muted mb-0"><?= thousand_separator($list->total_sell) ?></p>
-                                                                </td>
-                                                            </tr>
-                                                        <?php endforeach; ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row 2 -->
                     </div>
 
                 </div>
