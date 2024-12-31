@@ -155,6 +155,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title mb-4">Rekap Penjualan Produk</h4>
+
+                                                    <div id="test_chart" class="apex-charts" dir="ltr"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                                 <!-- Revenue Analytics -->
                             </div>
@@ -247,59 +256,98 @@
 
     // chart rekap penjualan produk
     $.ajax({
-    url: "<?php echo site_url('dashboard/getMostProductData'); ?>",
-    method: "GET",
-    dataType: "json",
-    success: function (response) {
-        var seriesData = response.map(item => item.y); // Quantities
-        var labelsData = response.map(item => item.name); // Product names
+        url: "<?php echo site_url('dashboard/getMostProductData'); ?>",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            var seriesData = response.map(item => item.y); // Quantities
+            var labelsData = response.map(item => item.name); // Product names
 
-        var options = {
-            chart: {
-                height: 320,
-                type: 'pie',
-            },
-            series: seriesData,
-            labels: labelsData,
-            colors: [
-                "#1cbb8c", "#5664d2", "#fcb92c", "#4aa3ff", "#ff3d60", 
-                "#9a5ab5", "#ff8533", "#33ccff", "#70db70", "#cc0066", 
-                "#ff9933", "#9933ff", "#ff66cc", "#66ff99", "#ff3333"
-            ], // 15 colors
-            legend: {
-                show: true,
-                position: 'bottom',
-                horizontalAlign: 'center',
-                verticalAlign: 'middle',
-                floating: false,
-                fontSize: '14px',
-                offsetX: 0,
-                offsetY: 5
-            },
-            responsive: [{
-                breakpoint: 600,
-                options: {
-                    chart: {
-                        height: 240
-                    },
-                    legend: {
-                        show: false
-                    },
-                }
-            }]
-        };
+            var options = {
+                chart: {
+                    height: 320,
+                    type: 'pie',
+                },
+                series: seriesData,
+                labels: labelsData,
+                colors: [
+                    "#1cbb8c", "#5664d2", "#fcb92c", "#4aa3ff", "#ff3d60", 
+                    "#9a5ab5", "#ff8533", "#33ccff", "#70db70", "#cc0066", 
+                    "#ff9933", "#9933ff", "#ff66cc", "#66ff99", "#ff3333"
+                ], // 15 colors
+                legend: {
+                    show: true,
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+                    verticalAlign: 'middle',
+                    floating: false,
+                    fontSize: '14px',
+                    offsetX: 0,
+                    offsetY: 5
+                },
+                responsive: [{
+                    breakpoint: 600,
+                    options: {
+                        chart: {
+                            height: 240
+                        },
+                        legend: {
+                            show: false
+                        },
+                    }
+                }]
+            };
 
-        var chart = new ApexCharts(
-            document.querySelector("#chart_penjualan_produk"),
-            options
-        );
+            var chart = new ApexCharts(
+                document.querySelector("#chart_penjualan_produk"),
+                options
+            );
 
-        chart.render();
-    },
-    error: function (xhr, status, error) {
-        console.error("Failed to fetch pie chart data:", error);
+            chart.render();
+        },
+        error: function (xhr, status, error) {
+            console.error("Failed to fetch pie chart data:", error);
+        }
+    });
+
+    var testOptions = {
+        chart: {
+            height: 320,
+            type: 'pie',
+        },
+        series: [44, 55, 41, 17, 15],
+        labels: ["WIDYA", "DESI AFIFAH", "NITA", "AULIA IFA", "VIRA ZULFA"],
+        colors: ["#1cbb8c", "#5664d2", "#fcb92c", "#4aa3ff", "#ff3d60"],
+        legend: {
+            show: true,
+            position: 'bottom',
+            horizontalAlign: 'center',
+            verticalAlign: 'middle',
+            floating: false,
+            fontSize: '14px',
+            offsetX: 0,
+            offsetY: 5
+        },
+        responsive: [{
+            breakpoint: 600,
+            options: {
+                chart: {
+                    height: 240
+                },
+                legend: {
+                    show: false
+                },
+            }
+        }]
+
     }
-});
+
+    var testChart = new ApexCharts(
+        document.querySelector("#test_chart"),
+        testOptions
+    );
+
+    testChart.render();
 
 
 </script>
