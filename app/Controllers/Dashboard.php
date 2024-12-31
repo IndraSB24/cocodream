@@ -29,7 +29,7 @@ class Dashboard extends Controller
 			'page_title' => view('partials/page-title', ['title' => 'Clarisa', 'pagetitle' => 'Dashboard']),
             'transaction_data' => $this->Model_transaksi->get_transaction_summary(),
             'cashdrawer_data' => $this->Model_cash_drawer_detail->get_total_cashdrawer(),
-            'most_product' =>$this->Model_transaksi_detail->getMostProduct(),
+            'most_product' =>$this->Model_transaksi_detail->getMostProduct(5),
             'current_date' => date('Y-m-d'),
             'filter_from_date' => $from_date,
             'filter_to_date' => $to_date

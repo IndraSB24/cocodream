@@ -127,9 +127,9 @@ class Model_transaksi_detail extends Model
     }
 
     // count most sell product
-    public function getMostProduct() {
+    public function getMostProduct($limit = null) {
         $request = service('request');
-        
+
         // Get date range from the request
         $startDate = $request->getPost('filterDateFrom') ?: null; // e.g., '2024-01-01'
         $endDate = $request->getPost('filterDateUntil') ?: null;     // e.g., '2024-01-31'
@@ -148,6 +148,10 @@ class Model_transaksi_detail extends Model
             $this->where('DATE(transaksi_detail.created_at) >=', $startDate);
         } elseif ($endDate) {
             $this->where('DATE(transaksi_detail.created_at) <=', $endDate);
+        }
+
+        if ($limit) {
+            $this->limit($limit);
         }
 
         $this->select('
