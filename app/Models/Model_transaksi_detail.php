@@ -128,7 +128,25 @@ class Model_transaksi_detail extends Model
 
     // count most sell product
     public function getMostProduct() {
-        $today = date('Y-m-d');
+        // Get date range from the request
+        $startDate = $request->getPost('filterDateFrom') ?: null; // e.g., '2024-01-01'
+        $endDate = $request->getPost('filterDateUntil') ?: null;     // e.g., '2024-01-31'
+
+        // Default to today's date if no date filters are provided
+        if (!$startDate && !$endDate) {
+            $startDate = date('Y-m-d');
+            $endDate = date('Y-m-d');
+        }
+
+        // Apply date range filter
+        if ($startDate && $endDate) {
+            $this->where('DATE(transaksi_detail.created_at) >=', $startDate);
+            $this->where('DATE(transaksi_detail.created_at) <=', $endDate);
+        } elseif ($startDate) {
+            $this->where('DATE(transaksi_detail.created_at) >=', $startDate);
+        } elseif ($endDate) {
+            $this->where('DATE(transaksi_detail.created_at) <=', $endDate);
+        }
 
         $this->select('
             i.nama as nama_item,
@@ -137,7 +155,6 @@ class Model_transaksi_detail extends Model
         ')
         ->join('item i', 'i.id = transaksi_detail.id_item', 'LEFT')
         ->where('transaksi_detail.deleted_at', NULL)
-        ->where('transaksi_detail.created_at =', $today)
         ->groupBy('i.nama')
         ->orderBy('total_sell', 'DESC');
     
