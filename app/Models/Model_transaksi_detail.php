@@ -128,6 +128,8 @@ class Model_transaksi_detail extends Model
 
     // count most sell product
     public function getMostProduct() {
+        $request = service('request');
+        
         // Get date range from the request
         $startDate = $request->getPost('filterDateFrom') ?: null; // e.g., '2024-01-01'
         $endDate = $request->getPost('filterDateUntil') ?: null;     // e.g., '2024-01-31'
