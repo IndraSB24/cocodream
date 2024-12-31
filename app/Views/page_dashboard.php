@@ -250,6 +250,7 @@
                 filterDateUntil: $('#filterDateUntil').val()
             },
             success: function (response) {
+                console.log("char respon: ", response)
                 var seriesData = response.map(item => item.y); // Quantities
                 var labelsData = response.map(item => item.name); // Product names
 
