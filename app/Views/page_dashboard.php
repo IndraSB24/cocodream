@@ -261,7 +261,7 @@
             method: "GET",
             dataType: "json",
             success: function (response) {
-                console.log(response); // Debugging
+                console.log("respon ajax: ", response); // Debugging
                 var seriesData = response.map(item => item.y); // Quantities
                 var labelsData = response.map(item => item.name); // Product names
 
